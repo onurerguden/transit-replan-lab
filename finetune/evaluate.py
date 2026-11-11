@@ -52,6 +52,12 @@ def main() -> None:
     parser.add_argument("--split", choices=("valid", "test"), required=True)
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
+    if args.split == "test":
+        decision = args.output.parent / "decision.json"
+        if not decision.is_file():
+            raise SystemExit(
+                "Record the development adoption decision before held-out evaluation."
+            )
     raw = (args.data / f"{args.split}.jsonl").read_bytes()
     expected_hash = json.loads((args.data / "manifest.json").read_text())[args.split][
         "sha256"
@@ -59,9 +65,27 @@ def main() -> None:
     if hashlib.sha256(raw).hexdigest() != expected_hash:
         raise SystemExit("Dataset checksum mismatch.")
     rows = [json.loads(line) for line in raw.splitlines()]
+    adapter_hash = hashlib.sha256(
+        (args.adapter / "adapters.safetensors").read_bytes()
+    ).hexdigest()
+    condition = {
+        "split": args.split,
+        "sha256": expected_hash,
+        "model_revision": MODEL_REVISION,
+        "adapter_sha256": adapter_hash,
+        "max_tokens": 100,
+    }
     results = []
     args.output.parent.mkdir(parents=True, exist_ok=True)
-    for name, adapter in (("base", None), ("adapter", str(args.adapter))):
+    if args.output.is_file():
+        previous = json.loads(args.output.read_text())
+        if any(previous.get(key) != value for key, value in condition.items()):
+            raise SystemExit(
+                "Existing scores belong to a different evaluation condition."
+            )
+        results = previous["scores"]
+    models = (("base", None), ("adapter", str(args.adapter)))
+    for name, adapter in models[len(results) :]:
         model, tokenizer = load(str(args.model), adapter_path=adapter)
         mx.reset_peak_memory()
         started = perf_counter()
@@ -109,13 +133,11 @@ def main() -> None:
         del model, tokenizer
         gc.collect()
         mx.clear_cache()
-        args.output.write_text(
+        temporary = args.output.with_suffix(".tmp")
+        temporary.write_text(
             json.dumps(
                 {
-                    "split": args.split,
-                    "sha256": expected_hash,
-                    "model_revision": MODEL_REVISION,
-                    "max_tokens": 100,
+                    **condition,
                     "scores": results,
                 },
                 ensure_ascii=False,
@@ -123,6 +145,7 @@ def main() -> None:
             )
             + "\n"
         )
+        temporary.replace(args.output)
 
 
 if __name__ == "__main__":
