@@ -1,6 +1,6 @@
 # Roadmap
 
-The current phase is **3 · Service and persistence**. Run `make check` and review the checklist before each phase commit.
+The current phase is **4 · Simulation interface**. Run `make check` and review the checklist before each phase commit.
 
 ## 0 · Foundation
 
@@ -29,9 +29,9 @@ The Phase 0 workflow passed on macOS and in an Ubuntu container via act. The mai
 
 ## 3 · Service and persistence
 
-- [ ] Add SQLite WAL migrations, repositories, and the rules-based graph with persistent checkpoints.
-- [ ] Implement versioned idempotent commands, RFC 9457 errors, and event replay with Last-Event-ID.
-- [ ] Verify model-free replanning, conflicting commands, restart recovery, and SSE resume. Generate OpenAPI.
+- [x] Add SQLite WAL migrations, repositories, and the rules-based graph with persistent checkpoints.
+- [x] Implement versioned idempotent commands, RFC 9457 errors, and event replay with Last-Event-ID.
+- [x] Verify model-free replanning, conflicting commands, restart recovery, and SSE resume. Generate OpenAPI.
 
 ## 4 · Simulation interface
 
