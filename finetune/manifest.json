@@ -1,0 +1,59 @@
+{
+  "train": {
+    "count": 360,
+    "unique_notices": 341,
+    "templates": [
+      "train:ambiguous:en",
+      "train:ambiguous:tr",
+      "train:cancellation:en",
+      "train:cancellation:tr",
+      "train:closure:en",
+      "train:closure:tr",
+      "train:delay:en",
+      "train:delay:tr",
+      "train:missing_time:en",
+      "train:missing_time:tr",
+      "train:unknown_stop:en",
+      "train:unknown_stop:tr"
+    ],
+    "sha256": "bb1ca98550632d08155fd48b19224ee17bbddaf2afdbd46e2fc6538d280b6a90"
+  },
+  "valid": {
+    "count": 60,
+    "unique_notices": 60,
+    "templates": [
+      "valid:ambiguous:en",
+      "valid:ambiguous:tr",
+      "valid:cancellation:en",
+      "valid:cancellation:tr",
+      "valid:closure:en",
+      "valid:closure:tr",
+      "valid:delay:en",
+      "valid:delay:tr",
+      "valid:missing_time:en",
+      "valid:missing_time:tr",
+      "valid:unknown_stop:en",
+      "valid:unknown_stop:tr"
+    ],
+    "sha256": "778e1b7ed62df13d3d5fcbf3d3e59124d3f2af8e02e35af2506d32befc981c1e"
+  },
+  "test": {
+    "count": 60,
+    "unique_notices": 59,
+    "templates": [
+      "test:ambiguous:en",
+      "test:ambiguous:tr",
+      "test:cancellation:en",
+      "test:cancellation:tr",
+      "test:closure:en",
+      "test:closure:tr",
+      "test:delay:en",
+      "test:delay:tr",
+      "test:missing_time:en",
+      "test:missing_time:tr",
+      "test:unknown_stop:en",
+      "test:unknown_stop:tr"
+    ],
+    "sha256": "3c91ec311b55e8f4289d2e407fe3f8344255bc28c7197f934a1fb8d8313e4464"
+  }
+}

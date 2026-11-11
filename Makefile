@@ -48,3 +48,21 @@ e2e:
 .PHONY: experiment
 experiment:
 	$(PY) python -m experiments.runner $(EXPERIMENT_ARGS)
+
+FT_PY ?= .local/mlx/venv/bin/python
+FT_MODEL ?= .local/mlx/qwen35-4b
+FINETUNE_SPLIT ?= valid
+
+.PHONY: finetune-data finetune-pilot finetune finetune-eval
+finetune-data:
+	$(PY) python -m finetune.data
+
+finetune-pilot: finetune-data
+	$(FT_PY) -m mlx_lm lora --config finetune/pilot.yml --model "$(FT_MODEL)"
+
+finetune: finetune-data
+	$(FT_PY) -m mlx_lm lora --config finetune/train.yml --model "$(FT_MODEL)"
+
+finetune-eval:
+	$(FT_PY) -m finetune.evaluate --model "$(FT_MODEL)" --split "$(FINETUNE_SPLIT)" \
+		--output ".local/finetune/$(FINETUNE_SPLIT).json"
