@@ -66,7 +66,7 @@ The Phase 0 workflow passed on macOS and in an Ubuntu container via act. The mai
 
 ## 9 · Packaging and release
 
-- [ ] Validate Docker and local setup from a clean checkout and run model-free browser CI.
-- [ ] Publish a project README with screenshots, reproduction commands, outcomes, attribution, and limitations.
-- [ ] Review candidate files, complete history, prompts, data, and secret scans with the maintainer.
+- [x] Validate Docker and local setup from a clean checkout and run model-free browser CI.
+- [x] Publish a project README with screenshots, reproduction commands, outcomes, attribution, and limitations.
+- [x] Review candidate files, complete history, prompts, data, and secret scans with the maintainer.
 - [ ] Create and push the public repository after approval and tag v1.0.0.

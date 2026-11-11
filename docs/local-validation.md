@@ -9,3 +9,7 @@ The bundled demo was executed twice on Apple M1 Pro with 16 GB, Ollama 0.40.16, 
 | Tight meeting window | Infeasible | 1 | 845 | 47 |
 
 Reproduce with `OLLAMA_BASE_URL=http://127.0.0.1:11434 uv run --locked --project backend pytest -m ollama backend/tests/test_agents.py -s`. These are smoke tests. The [experiment protocol](experiment-protocol.md) defines the comparative evaluation once that phase is reached.
+
+## v1 release candidate
+
+On 2026-11-12, a clean local clone passed locked dependency installation, lint, strict type checking, 25 backend tests, the frontend test, the production build, and four Playwright tests. The same clone built and started with Docker Compose. Its Nginx deployment passed the reconnection and route verification browser test. The production containers also reached local Ollama on the host and returned verified and infeasible outcomes for the two bundled scenarios. The verified real-model run used seven calls and 158 generated tokens.
