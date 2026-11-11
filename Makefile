@@ -9,8 +9,8 @@ setup:
 	$(WEB) install --frozen-lockfile
 
 check:
-	$(PY) ruff check backend scripts
-	$(PY) ruff format --check backend scripts
+	$(PY) ruff check backend scripts experiments
+	$(PY) ruff format --check backend scripts experiments
 	$(PY) pyright --project backend/pyproject.toml
 	$(PY) pytest backend/tests -m "not ollama" \
 		--cov=trl.routing --cov=trl.verify --cov=trl.disruptions --cov=trl.storage \
@@ -44,3 +44,7 @@ verify-public:
 
 e2e:
 	$(WEB) run e2e
+
+.PHONY: experiment
+experiment:
+	$(PY) python -m experiments.runner $(EXPERIMENT_ARGS)
