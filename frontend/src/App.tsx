@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import {
   Activity, ArrowRight, Check, ChevronDown, CircleDot, Clock3, GitBranch, MapPin,
   RotateCcw, TrainFront, TriangleAlert, Waypoints,
@@ -81,13 +81,18 @@ function PlanPanel({ label, title, network, run, offer, after }: {
 }
 
 function Timeline({ events, live }: { events: RunEvent[]; live: boolean }) {
+  const list = useRef<HTMLOListElement>(null)
+  useEffect(() => {
+    const timeline = list.current
+    if (timeline) timeline.scrollTop = timeline.scrollHeight
+  }, [events.length])
   return (
     <aside className="activity-panel" aria-label="Simulation activity">
       <header className="section-head">
         <div><Activity size={18} /><h2>Activity</h2></div>
         {live && <span className="live-indicator">Live</span>}
       </header>
-      {events.length ? <ol className="timeline" aria-live="polite">
+      {events.length ? <ol ref={list} className="timeline" aria-live="polite">
         {events.map(event => <li key={event.seq}>
           <span className={`event-dot event-dot--${event.role}`} />
           <div>
@@ -177,7 +182,10 @@ export function App() {
             </span>
             <span><Clock3 size={15} />{run.service_date} · İzmir time</span>
             <span><GitBranch size={15} />Revision {run.version}</span>
-            {connection === 'reconnecting' && <span className="reconnecting">Reconnecting…</span>}
+            {run.metrics.calls > 0 && <span><Activity size={15} />{run.metrics.calls} model calls
+              {run.metrics.output_tokens > 0 && ` · ${(run.metrics.input_tokens + run.metrics.output_tokens).toLocaleString()} tokens · ${(run.metrics.model_ms / 1000).toFixed(1)} s`}
+            </span>}
+            {connection === 'reconnecting'  && <span className="reconnecting">Reconnecting…</span>}
           </div>
           <div className="board">
             <div className="map-board">

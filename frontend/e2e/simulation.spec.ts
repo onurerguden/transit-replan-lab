@@ -39,3 +39,17 @@ test('explains a completed search with no feasible joint arrival', async ({ page
   await expect(page.getByRole('status')).toHaveText('No feasible meeting', { timeout: 20_000 })
   await expect(page.getByRole('region', { name: 'New plan' })).not.toContainText('Verified')
 })
+
+test('shows independent votes and a mediated replay on mobile', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 })
+  await page.goto('/')
+  await expect(page.getByRole('status')).toHaveText('Ready')
+  await page.getByLabel('Coordinator', { exact: true }).selectOption('five')
+  await page.getByRole('button', { name: 'Set up run', exact: true }).click()
+  await page.getByRole('button', { name: 'Apply disruption' }).click()
+  await expect(page.getByRole('status')).toHaveText('Verified', { timeout: 20_000 })
+  await expect(page.getByRole('complementary')).toContainText('Selected a compromise offer.')
+  await expect(page.locator('.timeline').getByText('Accepted the offer.')).toHaveCount(2)
+  await expect(page.getByText(/7 model calls/)).toBeVisible()
+  expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(390)
+})

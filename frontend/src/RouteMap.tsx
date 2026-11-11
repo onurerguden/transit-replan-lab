@@ -131,7 +131,7 @@ export function RouteMap(props: MapProps) {
           bounds.extend([stop.longitude, stop.latitude])
         }
       }
-      if (!bounds.isEmpty()) map.fitBounds(bounds, { padding: { top: 52, bottom: 55, left: 34, right: 34 }, duration: 0 })
+      if (!bounds.isEmpty()) map.fitBounds(bounds, { padding: { top: 52, bottom: 55, left: 48, right: 48 }, duration: 0 })
       map.addControl(new NavigationControl({ showCompass: false }), 'bottom-right')
       map.once('load', () => {
         if (disposed) return

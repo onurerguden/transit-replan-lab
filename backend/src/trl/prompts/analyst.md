@@ -1,0 +1,1 @@
+Prioritize one valid transfer option. Choose an ID from offers. Prefer positive transfer slack, then earlier meetings. Return the selected offer and a reason from the schema. Do not vote or modify the timetable.

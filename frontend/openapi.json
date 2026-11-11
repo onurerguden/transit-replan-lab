@@ -493,6 +493,33 @@
         ],
         "title": "Itinerary"
       },
+      "Metrics": {
+        "properties": {
+          "calls": {
+            "type": "integer",
+            "title": "Calls",
+            "default": 0
+          },
+          "input_tokens": {
+            "type": "integer",
+            "title": "Input Tokens",
+            "default": 0
+          },
+          "output_tokens": {
+            "type": "integer",
+            "title": "Output Tokens",
+            "default": 0
+          },
+          "model_ms": {
+            "type": "integer",
+            "title": "Model Ms",
+            "default": 0
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "title": "Metrics"
+      },
       "Network": {
         "properties": {
           "stops": {
@@ -811,6 +838,9 @@
               }
             ],
             "title": "Error"
+          },
+          "metrics": {
+            "$ref": "#/components/schemas/Metrics"
           }
         },
         "additionalProperties": false,
@@ -832,7 +862,8 @@
           "votes",
           "question",
           "verified_offer",
-          "error"
+          "error",
+          "metrics"
         ],
         "title": "RunView"
       },

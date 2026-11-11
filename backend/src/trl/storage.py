@@ -9,7 +9,18 @@ from uuid import uuid4
 
 from pydantic import TypeAdapter
 
-from trl.contracts import Clarify, CreateRun, Disrupt, Event, EventDraft, Receipt, RunBody, RunView
+from trl.contracts import (
+    Clarify,
+    CreateRun,
+    Disrupt,
+    Event,
+    EventDraft,
+    Metrics,
+    ModelCall,
+    Receipt,
+    RunBody,
+    RunView,
+)
 from trl.domain import Offer, Record, Scenario, Vote
 
 SCHEMA = """
@@ -40,7 +51,16 @@ CREATE TABLE IF NOT EXISTS votes (
   body TEXT NOT NULL, PRIMARY KEY (run_id, version, offer_id, rider),
   FOREIGN KEY (run_id, version, offer_id) REFERENCES offers(run_id, version, offer_id)
 );
-PRAGMA user_version = 1;
+CREATE TABLE IF NOT EXISTS model_calls (
+  id INTEGER PRIMARY KEY AUTOINCREMENT, run_id TEXT NOT NULL REFERENCES runs(id),
+  version INTEGER NOT NULL, step TEXT NOT NULL, model TEXT NOT NULL, digest TEXT NOT NULL,
+  context INTEGER NOT NULL, request_sha256 TEXT NOT NULL DEFAULT '',
+  state TEXT NOT NULL DEFAULT 'pending', content TEXT,
+  input_tokens INTEGER NOT NULL DEFAULT 0, output_tokens INTEGER NOT NULL DEFAULT 0,
+  duration_ms INTEGER NOT NULL DEFAULT 0
+);
+CREATE INDEX IF NOT EXISTS model_calls_run_version ON model_calls(run_id,version,id);
+PRAGMA user_version = 2;
 """
 EVENT_DRAFT = TypeAdapter(EventDraft)
 
@@ -60,6 +80,13 @@ class RunStore:
         with closing(self.connect()) as connection:
             connection.execute("PRAGMA journal_mode = WAL")
             connection.executescript(SCHEMA)
+            if not any(
+                row["name"] == "request_sha256"
+                for row in connection.execute("PRAGMA table_info(model_calls)")
+            ):
+                connection.execute(
+                    "ALTER TABLE model_calls ADD COLUMN request_sha256 TEXT NOT NULL DEFAULT ''"
+                )
 
     def connect(self) -> sqlite3.Connection:
         connection = sqlite3.connect(self.path, timeout=5)
@@ -113,6 +140,13 @@ class RunStore:
                     params,
                 )
             )
+            metrics = connection.execute(
+                """SELECT count(*) calls, coalesce(sum(input_tokens),0) input_tokens,
+                          coalesce(sum(output_tokens),0) output_tokens,
+                          coalesce(sum(duration_ms),0) model_ms
+                   FROM model_calls WHERE run_id=? AND version=?""",
+                params,
+            ).fetchone()
         return RunView(
             id=run.id,
             version=run.version,
@@ -131,6 +165,7 @@ class RunStore:
             question=run.question,
             verified_offer=run.verified_offer,
             error=run.error,
+            metrics=Metrics.model_validate(dict(metrics)),
         )
 
     def events(self, run_id: str, after: int, limit: int = 128) -> list[Event]:
@@ -328,3 +363,76 @@ class RunStore:
             if event:
                 self._event(connection, run, event)
             return True
+
+    def calls(self, run_id: str, version: int, step: str | None = None) -> list[ModelCall]:
+        with closing(self.connect()) as connection:
+            return [
+                ModelCall.model_validate(dict(row))
+                for row in connection.execute(
+                    """SELECT id, step, model, digest, context, request_sha256, state, content,
+                              input_tokens, output_tokens, duration_ms
+                       FROM model_calls WHERE run_id=? AND version=? AND (? IS NULL OR step=?)
+                       ORDER BY id""",
+                    (run_id, version, step, step),
+                )
+            ]
+
+    def reserve_call(
+        self,
+        run_id: str,
+        version: int,
+        step: str,
+        model: str,
+        digest: str,
+        context: int,
+        request_sha256: str = "",
+    ) -> int | None:
+        with self.write() as connection:
+            if self._read(connection, run_id).version != version:
+                return None
+            spent = connection.execute(
+                "SELECT count(*) FROM model_calls WHERE run_id=? AND version=?",
+                (run_id, version),
+            ).fetchone()[0]
+            if spent >= 10:
+                raise Conflict("Model call budget exhausted.")
+            slot = connection.execute(
+                """INSERT INTO model_calls (run_id,version,step,model,digest,context,request_sha256)
+                   VALUES (?,?,?,?,?,?,?)""",
+                (run_id, version, step, model, digest, context, request_sha256),
+            ).lastrowid
+            assert slot is not None
+            return slot
+
+    def finish_call(
+        self,
+        run_id: str,
+        version: int,
+        slot: int,
+        state: str,
+        content: str | None,
+        input_tokens: int,
+        output_tokens: int,
+        duration_ms: int,
+    ) -> bool:
+        with self.write() as connection:
+            if self._read(connection, run_id).version != version:
+                return False
+            return (
+                connection.execute(
+                    """UPDATE model_calls SET state=?,content=?,input_tokens=?,output_tokens=?,
+                          duration_ms=? WHERE id=? AND run_id=? AND version=?
+                          AND state='pending'""",
+                    (
+                        state,
+                        content,
+                        input_tokens,
+                        output_tokens,
+                        duration_ms,
+                        slot,
+                        run_id,
+                        version,
+                    ),
+                ).rowcount
+                == 1
+            )

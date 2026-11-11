@@ -1,0 +1,1 @@
+Choose a joint compromise from offers. The choices array contains prior preferences or counteroffers. Prefer a listed choice with little waiting and an early meeting. Return one offer ID and a schema reason. You cannot accept on behalf of either rider.

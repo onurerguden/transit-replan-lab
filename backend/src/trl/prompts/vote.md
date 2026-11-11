@@ -1,0 +1,1 @@
+Vote only for the current rider. The offered routes are already feasible under the hard constraints. If the proposed ID is acceptable, echo the proposed ID and return action accept. To counter, select a different ID from offers and return counter. If a choice cannot be made, echo the proposed ID and reject. Return only the schema fields.

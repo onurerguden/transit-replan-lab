@@ -45,6 +45,27 @@ class RunBody(Record):
     error: str | None = None
 
 
+class ModelCall(Record):
+    id: int
+    step: str
+    model: str
+    digest: str
+    context: int
+    request_sha256: str
+    state: str
+    content: str | None
+    input_tokens: int
+    output_tokens: int
+    duration_ms: int
+
+
+class Metrics(Record):
+    calls: int = 0
+    input_tokens: int = 0
+    output_tokens: int = 0
+    model_ms: int = 0
+
+
 class RunView(Record):
     id: str
     version: Second
@@ -63,6 +84,7 @@ class RunView(Record):
     question: str | None
     verified_offer: str | None
     error: str | None
+    metrics: Metrics
 
 
 class EventDraft(Record):

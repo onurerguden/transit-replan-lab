@@ -1,0 +1,51 @@
+{
+  "kind": "recorded_replay",
+  "notice": "Konak İskele tramvay durağı 08:24 ile 10:00 arasında kapalı.",
+  "operator": {
+    "kind": "stop_closure",
+    "stop": "tram:7",
+    "start": "08:24",
+    "end": "10:00",
+    "trip": null,
+    "minutes": null
+  },
+  "models": [
+    "d8b0f5e9760cd1682034f292d7ef72ec46f432149be0df7574bf2d6e92e38c04"
+  ],
+  "recorded": {
+    "58c9b60f7c2838476ef205774a0eec841923180b106a473677c4080208e94a0e": {
+      "kind": "stop_closure",
+      "stop": "tram:7",
+      "start": "08:24",
+      "end": "10:00",
+      "trip": null,
+      "minutes": null
+    },
+    "19367a280c495c3d5d0015fc62bd538de7f03cd0b8696bb4ec4caa705fea2e3d": {
+      "offer": "v1-6",
+      "reason": "valid"
+    },
+    "a5cbac3ae3ac53b7d23cdbb151c35d1fb6a963d0a8a6c5bf3b968b03a3b5ddc2": {
+      "offer": "v1-1",
+      "reason": "valid"
+    },
+    "8f51d8cd8b6bf3a5bf8e3de21783f03a906e8254f2545f5b8896140747e7980c": {
+      "offer": "v1-2",
+      "reason": "valid"
+    },
+    "7b3084902afeaffe4a07a5c8bb71fe8ab8be04ed7f581dc1782f35741579880d": {
+      "offer": "v1-2",
+      "reason": "valid"
+    },
+    "787598c7da5400ec29aad9851c9a6aec064ad2a8b4acff2698a8ecb89a3d2beb": {
+      "offer": "v1-2",
+      "action": "accept",
+      "reason": "fewer_transfers"
+    },
+    "b9f1ec6ea24174401c435900deb10f93f2af9d1b8a7b857810852dd4a107c8ce": {
+      "offer": "v1-2",
+      "action": "accept",
+      "reason": "valid"
+    }
+  }
+}

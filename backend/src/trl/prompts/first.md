@@ -1,0 +1,1 @@
+Choose one initial offer for this rider only. The engine has already screened hard constraints. Compare walking legs, waiting, and meeting time. Choose an ID present in offers and return a schema reason. You have no information about the other rider's preference.

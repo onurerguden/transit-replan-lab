@@ -1,0 +1,1 @@
+Coordinate the two riders in one model call. Choose one listed feasible offer. Provide the offer ID and separate acceptance decisions for A and B. Prefer the earliest meeting within both riders' screened constraints. Return only the schema fields.

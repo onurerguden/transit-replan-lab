@@ -199,3 +199,9 @@ textarea {
   .selectors { flex-wrap: wrap; }
   .top-meta { display: none; }
 }
+
+@media (max-width: 690px) {
+  .controls, .selectors { width: 100%; }
+  .selectors { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.16fr) 39px; }
+  .selectors label, .selectors select { min-width: 0; width: 100%; }
+}

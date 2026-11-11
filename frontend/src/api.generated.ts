@@ -187,6 +187,29 @@ export interface components {
             /** Legs */
             legs: (components["schemas"]["Ride"] | components["schemas"]["Walk"])[];
         };
+        /** Metrics */
+        Metrics: {
+            /**
+             * Calls
+             * @default 0
+             */
+            calls: number;
+            /**
+             * Input Tokens
+             * @default 0
+             */
+            input_tokens: number;
+            /**
+             * Output Tokens
+             * @default 0
+             */
+            output_tokens: number;
+            /**
+             * Model Ms
+             * @default 0
+             */
+            model_ms: number;
+        };
         /** Network */
         Network: {
             /** Stops */
@@ -292,6 +315,7 @@ export interface components {
             verified_offer: string | null;
             /** Error */
             error: string | null;
+            metrics: components["schemas"]["Metrics"];
         };
         /** Stop */
         Stop: {

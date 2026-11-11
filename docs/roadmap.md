@@ -1,6 +1,6 @@
 # Roadmap
 
-The current phase is **5 · Agent variants**. Run `make check` and review the checklist before each phase commit.
+The current phase is **6 · Reliability and observability**. Run `make check` and review the checklist before each phase commit.
 
 ## 0 · Foundation
 
@@ -41,9 +41,9 @@ The Phase 0 workflow passed on macOS and in an Ubuntu container via act. The mai
 
 ## 5 · Agent variants
 
-- [ ] Implement the Ollama and replay model ports, isolated role views, and structured role outputs.
-- [ ] Support rules-based, single-, three-, and five-agent graphs with a bounded offer and vote protocol.
-- [ ] Test role permissions, call and round limits, clarification, and real-model feasible and infeasible cases.
+- [x] Implement the Ollama and replay model ports, isolated role views, and structured role outputs.
+- [x] Support rules-based, single-, three-, and five-agent graphs with a bounded offer and vote protocol.
+- [x] Test role permissions, call and round limits, clarification, and real-model feasible and infeasible cases.
 
 ## 6 · Reliability and observability
 

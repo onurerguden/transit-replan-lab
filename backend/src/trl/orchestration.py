@@ -9,12 +9,14 @@ from typing import TypedDict
 from langchain_core.runnables import RunnableConfig
 from langgraph.checkpoint.sqlite.aio import AsyncSqliteSaver
 from langgraph.graph import END, START, StateGraph  # pyright: ignore[reportMissingTypeStubs]
-from langgraph.types import Command, interrupt
+from langgraph.types import Command, Send, interrupt
 
+from trl.agents import ModelError, ModelPort, configured_model
 from trl.contracts import CreateRun, EventDraft, Network, Receipt, RouteLine, RunBody
 from trl.disruptions import Overlay
-from trl.domain import Scenario, Vote
+from trl.domain import Architecture, Rider, Scenario, Vote
 from trl.gtfs import Schedule
+from trl.negotiation import Negotiator, StaleRun
 from trl.notice import rule_notice
 from trl.routing import SearchIncomplete, find_offers
 from trl.scenarios import load_scenario
@@ -29,10 +31,27 @@ class GraphState(TypedDict):
     version: int
 
 
+class RiderState(GraphState):
+    rider: Rider
+
+
+def first_riders(state: GraphState) -> list[Send]:
+    return [
+        Send("first", RiderState(run_id=state["run_id"], version=state["version"], rider=rider))
+        for rider in ("a", "b")
+    ]
+
+
 class RunService:
-    def __init__(self, store: RunStore, schedule: Schedule) -> None:
+    def __init__(
+        self,
+        store: RunStore,
+        schedule: Schedule,
+        model: ModelPort | None = None,
+    ) -> None:
         self.store = store
         self.schedule = schedule
+        self.negotiator = Negotiator(store, schedule, model or configured_model(schedule))
         self.tasks: dict[tuple[str, int], asyncio.Task[None]] = {}
 
     def new_run(self, request: CreateRun, key: str, scenario: Scenario | None = None) -> Receipt:
@@ -94,14 +113,7 @@ class RunService:
             "recursion_limit": 24,
         }
         try:
-            graph = StateGraph(GraphState)
-            graph.add_node("ingest", self.ingest)  # pyright: ignore[reportUnknownMemberType]
-            graph.add_node("search", self.search)  # pyright: ignore[reportUnknownMemberType]
-            graph.add_node("coordinate", self.coordinate)  # pyright: ignore[reportUnknownMemberType]
-            graph.add_edge(START, "ingest")
-            graph.add_edge("ingest", "search")
-            graph.add_edge("search", "coordinate")
-            graph.add_edge("coordinate", END)
+            graph = self.build_graph(current.architecture)
             async with AsyncSqliteSaver.from_conn_string(str(self.store.path)) as saver:
                 # Initialize checkpoint DDL before competing workers open the same database.
                 async with saver.conn.execute("PRAGMA busy_timeout=5000"):
@@ -116,6 +128,22 @@ class RunService:
                 else:
                     entry = state
                 await compiled.ainvoke(entry, config, durability="sync")  # pyright: ignore[reportUnknownMemberType]
+        except StaleRun:
+            return
+        except ModelError as exc:
+            await asyncio.to_thread(
+                self.store.step,
+                receipt.run_id,
+                receipt.version,
+                "model-error",
+                updates={"status": "model_error", "error": str(exc)},
+                event=EventDraft(
+                    kind="error",
+                    role="system",
+                    message="The local model could not decide.",
+                    details={"reason": str(exc)},
+                ),
+            )
         except Exception:
             logger.exception("run worker failed", extra={"run_id": receipt.run_id})
             await asyncio.to_thread(
@@ -127,31 +155,63 @@ class RunService:
                 event=EventDraft(kind="error", role="system", message="The run could not finish."),
             )
 
-    def ingest(self, state: GraphState) -> dict[str, object]:
+    def build_graph(
+        self,
+        architecture: Architecture,
+    ) -> StateGraph[GraphState, None, GraphState, GraphState]:
+        graph = StateGraph(GraphState)
+        graph.add_node("ingest", self.ingest)  # pyright: ignore[reportUnknownMemberType]
+        graph.add_node("search", self.search)  # pyright: ignore[reportUnknownMemberType]
+        graph.add_edge(START, "ingest")
+        graph.add_edge("ingest", "search")
+        if architecture in {"rules", "single"}:
+            coordinator = self.coordinate if architecture == "rules" else self.single
+            graph.add_node("coordinate", coordinator)  # pyright: ignore[reportUnknownMemberType]
+            graph.add_edge("search", "coordinate")
+            graph.add_edge("coordinate", END)
+        else:
+            graph.add_node("analyst", self.analyst)  # pyright: ignore[reportUnknownMemberType]
+            graph.add_node("first", self.first, input_schema=RiderState)  # pyright: ignore[reportUnknownMemberType]
+            graph.add_node("negotiate", self.negotiate)  # pyright: ignore[reportUnknownMemberType]
+            graph.add_edge("search", "analyst")
+            graph.add_conditional_edges("analyst", first_riders, ["first"])
+            graph.add_edge("first", "negotiate")
+            graph.add_edge("negotiate", END)
+        return graph
+
+    async def ingest(self, state: GraphState) -> dict[str, object]:
         run = self.active_run(state)
         if run is None or self.store.has_step(run.id, run.version, "ingest"):
             return {}
         text = run.notice or ""
         if run.clarification:
             text = f"{text}\n{run.clarification}"
-        incident = rule_notice(text, self.schedule, run.scenario.service_date)
-        if incident is None:
-            self.store.step(
+        incident = (
+            rule_notice(text, self.schedule, run.scenario.service_date)
+            if run.architecture == "rules"
+            else await self.negotiator.notice(run)
+        )
+        if incident is None and not run.clarification:
+            question = "Which stop or trip is affected, and when?"
+            await asyncio.to_thread(
+                self.store.step,
                 run.id,
                 run.version,
                 "clarification-request",
-                updates={"status": "clarification", "question": "Which stop or trip is affected?"},
+                updates={"status": "clarification", "question": question},
                 event=EventDraft(
-                    kind="clarification",
-                    role="operator",
-                    message="The report needs clarification.",
+                    kind="clarification", role="operator", message="The report needs clarification."
                 ),
             )
-            answer: object = interrupt("Which stop or trip is affected?")
+            answer: object = interrupt(question)
             if isinstance(answer, str):
-                incident = rule_notice(answer, self.schedule, run.scenario.service_date)
+                # The HTTP command is the authority for the current answer.
+                latest = self.active_run(state)
+                if latest and latest.clarification:
+                    return await self.ingest(state)
         if incident is None:
-            self.store.step(
+            await asyncio.to_thread(
+                self.store.step,
                 run.id,
                 run.version,
                 "ingest-invalid",
@@ -161,7 +221,8 @@ class RunService:
                 ),
             )
             return {}
-        self.store.step(
+        await asyncio.to_thread(
+            self.store.step,
             run.id,
             run.version,
             "ingest",
@@ -229,6 +290,70 @@ class RunService:
             )
         self.finalize(run, offer.id)
         return {}
+
+    async def analyst(self, state: GraphState) -> dict[str, object]:
+        run = self.active_run(state)
+        if not run or run.status != "planning" or run.architecture != "five" or not run.initial:
+            return {}
+        incident = run.incident
+        if incident is None:
+            return {}
+        routes = (run.initial.a, run.initial.b)
+        affected = any(
+            any(leg.kind == "walk" for leg in route.legs)
+            and any(
+                (
+                    incident.stop in {leg.origin, leg.destination}
+                    if incident.kind == "stop_closure"
+                    else leg.kind == "ride" and leg.trip == incident.trip
+                )
+                for leg in route.legs
+            )
+            for route in routes
+        )
+        offers = self.store.view(run.id).offers
+        if affected and offers:
+            await self.negotiator.pick(run, "analyst", "analyst:1", offers)
+        return {}
+
+    async def first(self, state: RiderState) -> dict[str, object]:
+        run = self.active_run(state)
+        if run and run.status == "planning":
+            rider = state["rider"]
+            offers = self.store.view(run.id).offers
+            if offers:
+                await self.negotiator.pick(run, "first", f"first:{rider}", offers, rider=rider)
+        return {}
+
+    async def negotiate(self, state: GraphState) -> dict[str, object]:
+        run = self.active_run(state)
+        if run and run.status == "planning":
+            offer_id = await self.negotiator.negotiate(run, self.store.view(run.id).offers)
+            await asyncio.to_thread(self.complete_negotiation, run, offer_id)
+        return {}
+
+    async def single(self, state: GraphState) -> dict[str, object]:
+        run = self.active_run(state)
+        if run and run.status == "planning":
+            offer_id = await self.negotiator.single(run, self.store.view(run.id).offers)
+            await asyncio.to_thread(self.complete_negotiation, run, offer_id)
+        return {}
+
+    def complete_negotiation(self, run: RunBody, offer_id: str | None) -> None:
+        if offer_id is not None:
+            self.finalize(run, offer_id)
+        else:
+            self.store.step(
+                run.id,
+                run.version,
+                "finalize",
+                updates={"status": "no_agreement"},
+                event=EventDraft(
+                    kind="no_agreement",
+                    role="system",
+                    message="The riders did not reach agreement.",
+                ),
+            )
 
     def finalize(self, run: RunBody, offer_id: str) -> None:
         view = self.store.view(run.id)
