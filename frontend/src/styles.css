@@ -1,0 +1,57 @@
+:root {
+  font-family: "Avenir Next", "Segoe UI", sans-serif;
+  color: #12283c;
+  background: #f3f7f8;
+  font-synthesis: none;
+}
+
+body {
+  min-inline-size: 16rem;
+  margin: 0;
+}
+
+.station {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: clamp(1rem, 4vw, 3rem);
+  align-items: stretch;
+  max-inline-size: 65rem;
+  margin-inline: auto;
+  padding: clamp(3rem, 12vh, 10rem) clamp(1.25rem, 6vw, 5rem);
+}
+
+.station__line {
+  inline-size: .5rem;
+  margin-block: .5rem;
+  border-radius: 1rem;
+  background: #00796d;
+}
+
+.station__location,
+.station__description {
+  margin: 0;
+}
+
+.station__location {
+  font-weight: 600;
+  color: #3b566b;
+}
+
+h1 {
+  margin: .3em 0 .25em;
+  font-size: clamp(2.1rem, 8vw, 5.5rem);
+  font-weight: 700;
+  letter-spacing: -.055em;
+  line-height: 1;
+}
+
+.station__description {
+  max-inline-size: 32rem;
+  font-size: clamp(1rem, 2.75vw, 1.4rem);
+}
+
+.station__status {
+  margin-block: 1.5rem 0;
+  color: #445b6a;
+  font-size: .875rem;
+}

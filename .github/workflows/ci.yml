@@ -1,0 +1,26 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .node-version
+      - uses: astral-sh/setup-uv@v10.3.3
+        with:
+          version: '0.11.7'
+          enable-cache: false
+      - run: npm install --global corepack@0.36.0
+      - run: make setup
+      - run: make check
+      - run: make build
