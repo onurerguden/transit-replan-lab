@@ -12,7 +12,9 @@ check:
 	$(PY) ruff check backend scripts
 	$(PY) ruff format --check backend scripts
 	$(PY) pyright --project backend/pyproject.toml
-	$(PY) pytest backend/tests -m "not ollama"
+	$(PY) pytest backend/tests -m "not ollama" \
+		--cov=trl.routing --cov=trl.verify --cov=trl.disruptions --cov=trl.storage \
+		--cov-report=term-missing --cov-fail-under=90
 	cd backend && uv run --locked lint-imports
 	$(WEB) run lint
 	$(WEB) run typecheck

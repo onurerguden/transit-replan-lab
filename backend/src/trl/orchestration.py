@@ -1,11 +1,11 @@
 """Durable run coordination over application-owned steps."""
 
 import asyncio
-import logging
 from collections.abc import AsyncGenerator
 from contextlib import asynccontextmanager
 from typing import TypedDict
 
+import structlog
 from langchain_core.runnables import RunnableConfig
 from langgraph.checkpoint.sqlite.aio import AsyncSqliteSaver
 from langgraph.graph import END, START, StateGraph  # pyright: ignore[reportMissingTypeStubs]
@@ -18,12 +18,13 @@ from trl.domain import Architecture, Rider, Scenario, Vote
 from trl.gtfs import Schedule
 from trl.negotiation import Negotiator, StaleRun
 from trl.notice import rule_notice
+from trl.observability import observe, observe_async, tracer
 from trl.routing import SearchIncomplete, find_offers
 from trl.scenarios import load_scenario
 from trl.storage import RunStore
 from trl.verify import verify_offer
 
-logger = logging.getLogger(__name__)
+logger = structlog.get_logger(__name__)
 
 
 class GraphState(TypedDict):
@@ -103,6 +104,17 @@ class RunService:
             await asyncio.gather(*tasks, return_exceptions=True)
 
     async def execute(self, receipt: Receipt) -> None:
+        attributes = {"trl.run_id": receipt.run_id, "trl.version": receipt.version}
+        with tracer().start_as_current_span("simulation.run", attributes=attributes) as span:
+            trace_id = f"{span.get_span_context().trace_id:032x}"
+            with structlog.contextvars.bound_contextvars(run_id=receipt.run_id, trace_id=trace_id):
+                await self._execute(receipt)
+                state = self.store.read(receipt.run_id)
+                if state.version == receipt.version:
+                    span.set_attribute("trl.outcome", state.status)
+                    logger.info("run_state", status=state.status, version=state.version)
+
+    async def _execute(self, receipt: Receipt) -> None:
         current = self.store.read(receipt.run_id)
         if current.version != receipt.version or current.status != "planning":
             return
@@ -179,6 +191,7 @@ class RunService:
             graph.add_edge("negotiate", END)
         return graph
 
+    @observe_async("ingest")
     async def ingest(self, state: GraphState) -> dict[str, object]:
         run = self.active_run(state)
         if run is None or self.store.has_step(run.id, run.version, "ingest"):
@@ -240,6 +253,7 @@ class RunService:
         )
         return {}
 
+    @observe("search")
     def search(self, state: GraphState) -> dict[str, object]:
         run = self.active_run(state)
         if run is None or run.status != "planning" or run.incident is None:
@@ -266,6 +280,7 @@ class RunService:
         self.store.step(run.id, run.version, "search", event=event, updates=updates, offers=offers)
         return {}
 
+    @observe("coordinate")
     def coordinate(self, state: GraphState) -> dict[str, object]:
         run = self.active_run(state)
         if run is None or run.status != "planning":
@@ -291,6 +306,7 @@ class RunService:
         self.finalize(run, offer.id)
         return {}
 
+    @observe_async("analyst")
     async def analyst(self, state: GraphState) -> dict[str, object]:
         run = self.active_run(state)
         if not run or run.status != "planning" or run.architecture != "five" or not run.initial:
@@ -316,6 +332,7 @@ class RunService:
             await self.negotiator.pick(run, "analyst", "analyst:1", offers)
         return {}
 
+    @observe_async("first")
     async def first(self, state: RiderState) -> dict[str, object]:
         run = self.active_run(state)
         if run and run.status == "planning":
@@ -325,6 +342,7 @@ class RunService:
                 await self.negotiator.pick(run, "first", f"first:{rider}", offers, rider=rider)
         return {}
 
+    @observe_async("negotiate")
     async def negotiate(self, state: GraphState) -> dict[str, object]:
         run = self.active_run(state)
         if run and run.status == "planning":
@@ -332,6 +350,7 @@ class RunService:
             await asyncio.to_thread(self.complete_negotiation, run, offer_id)
         return {}
 
+    @observe_async("single")
     async def single(self, state: GraphState) -> dict[str, object]:
         run = self.active_run(state)
         if run and run.status == "planning":
@@ -355,6 +374,7 @@ class RunService:
                 ),
             )
 
+    @observe("finalize")
     def finalize(self, run: RunBody, offer_id: str) -> None:
         view = self.store.view(run.id)
         if view.version != run.version:

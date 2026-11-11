@@ -9,7 +9,10 @@ dependencies = [
     "langchain-ollama>=1,<2",
     "langgraph>=1.0,<2",
     "langgraph-checkpoint-sqlite>=3,<4",
+    "opentelemetry-exporter-otlp-proto-http>=1.39,<2",
+    "opentelemetry-sdk>=1.39,<2",
     "pydantic>=2.12,<3",
+    "structlog>=25,<27",
     "uvicorn>=0.40,<1",
 ]
 

@@ -22,6 +22,7 @@ from trl.agents import (
 from trl.contracts import EventDraft, RunBody
 from trl.domain import Disruption, Offer, Record, Rider, Vote
 from trl.gtfs import Schedule
+from trl.observability import tracer
 from trl.storage import Conflict, RunStore
 
 
@@ -76,15 +77,27 @@ class Negotiator:
             content = None
             input_tokens = output_tokens = 0
             decision = None
-            try:
-                reply = await self.model.generate(stage, view, schema, repair=attempt > 0)
-                input_tokens, output_tokens = reply.input_tokens, reply.output_tokens
-                decision = schema.model_validate_json(reply.content)
-                content = decision.model_dump_json()
-            except ValidationError:
-                state = "invalid"
-            except Exception:
-                state = "error"
+            attrs = {
+                "gen_ai.operation.name": "chat",
+                "gen_ai.provider.name": "replay" if info.name == "replay" else "ollama",
+                "gen_ai.request.model": info.name,
+                "trl.model.digest": info.digest,
+                "trl.model.step": key,
+                "trl.model.context": info.context,
+            }
+            with tracer().start_as_current_span("model.call", attributes=attrs) as span:
+                try:
+                    reply = await self.model.generate(stage, view, schema, repair=attempt > 0)
+                    input_tokens, output_tokens = reply.input_tokens, reply.output_tokens
+                    decision = schema.model_validate_json(reply.content)
+                    content = decision.model_dump_json()
+                except ValidationError:
+                    state = "invalid"
+                except Exception:
+                    state = "error"
+                span.set_attribute("gen_ai.usage.input_tokens", input_tokens)
+                span.set_attribute("gen_ai.usage.output_tokens", output_tokens)
+                span.set_attribute("trl.model.result", state)
             saved = await asyncio.to_thread(
                 self.store.finish_call,
                 run.id,

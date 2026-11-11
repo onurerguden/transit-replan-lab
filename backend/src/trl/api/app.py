@@ -15,6 +15,7 @@ from pydantic import BaseModel
 
 from trl.contracts import Clarify, CreateRun, Disrupt, Network, Receipt, RunView
 from trl.gtfs import load_schedule
+from trl.observability import configure_observability
 from trl.orchestration import RunService
 from trl.storage import Conflict, NotFound, RunStore
 
@@ -59,6 +60,7 @@ def create_app(path: Path | None = None) -> FastAPI:
 
     @asynccontextmanager
     async def lifespan(app: FastAPI) -> AsyncGenerator[None]:
+        configure_observability()
         runs = RunService(RunStore(database), load_schedule())
         app.state.service = runs
         async with runs.workers():

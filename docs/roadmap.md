@@ -1,6 +1,6 @@
 # Roadmap
 
-The current phase is **6 · Reliability and observability**. Run `make check` and review the checklist before each phase commit.
+The current phase is **7 · Comparative experiment**. Run `make check` and review the checklist before each phase commit.
 
 ## 0 · Foundation
 
@@ -47,9 +47,9 @@ The Phase 0 workflow passed on macOS and in an Ubuntu container via act. The mai
 
 ## 6 · Reliability and observability
 
-- [ ] Exercise process interruption, late responses, duplicate incidents, and obsolete votes.
-- [ ] Add trace hierarchy, JSON logs, per-call measurements, and an optional local trace viewer.
-- [ ] Validate that an invalid plan can never receive a verified state.
+- [x] Exercise process interruption, late responses, duplicate incidents, and obsolete votes.
+- [x] Add trace hierarchy, JSON logs, per-call measurements, and an optional local trace viewer.
+- [x] Validate that an invalid plan can never receive a verified state.
 
 ## 7 · Comparative experiment
 

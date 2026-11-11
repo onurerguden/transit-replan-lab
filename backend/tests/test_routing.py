@@ -185,3 +185,52 @@ def test_demo_changes_interchange_and_rejects_forged_evidence() -> None:
         verify_offer(schedule, constrained, offer, votes(offer), 1, overlay)
         == "unknown_stop_accessibility"
     )
+
+
+def test_verifier_rejects_broken_legs_limits_and_meeting() -> None:
+    schedule = load_schedule()
+    scenario = load_scenario()
+    offer = find_offers(schedule, scenario, limit=1)[0]
+    walk = offer.a.legs[1]
+    ride = offer.a.legs[0]
+
+    def edit_leg(index: int, **changes: object) -> Offer:
+        legs = list(offer.a.legs)
+        legs[index] = legs[index].model_copy(update=changes)
+        return offer.model_copy(update={"a": offer.a.model_copy(update={"legs": tuple(legs)})})
+
+    assert (
+        verify_offer(schedule, scenario, edit_leg(0, origin="missing"), votes(offer), 0, EMPTY)
+        == "discontinuous_legs"
+    )
+    assert (
+        verify_offer(schedule, scenario, edit_leg(0, board_index=999), votes(offer), 0, EMPTY)
+        == "invalid_call_indices"
+    )
+    assert (
+        verify_offer(
+            schedule, scenario, edit_leg(1, arrival=walk.arrival - 1), votes(offer), 0, EMPTY
+        )
+        == "invalid_transfer"
+    )
+    closed = Overlay.compile(
+        (StopClosure(stop=ride.origin, start=ride.departure, end=ride.departure + 1),)
+    )
+    assert verify_offer(schedule, scenario, offer, votes(offer), 0, closed) == "closed_platform"
+    restricted = scenario.model_copy(
+        update={
+            "a": scenario.a.model_copy(update={"walk_limit": 0}),
+        }
+    )
+    assert verify_offer(schedule, restricted, offer, votes(offer), 0, EMPTY) == "rider_limit"
+    early = offer.model_copy(update={"meeting": 0})
+    assert (
+        verify_offer(schedule, scenario, early, votes(offer), 0, EMPTY) == "invalid_joint_arrival"
+    )
+    closed_destination = Overlay.compile(
+        (StopClosure(stop=offer.a.destination, start=offer.b.arrival + 1, end=offer.meeting + 1),)
+    )
+    assert (
+        verify_offer(schedule, scenario, offer, votes(offer), 0, closed_destination)
+        == "closed_platform"
+    )
