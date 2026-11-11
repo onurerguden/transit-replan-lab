@@ -1,6 +1,6 @@
 # Roadmap
 
-The current phase is **8 · Operator LoRA**. Run `make check` and review the checklist before each phase commit.
+The current phase is **9 · Packaging and release**. Run `make check` and review the checklist before each phase commit.
 
 ## 0 · Foundation
 
@@ -59,10 +59,10 @@ The Phase 0 workflow passed on macOS and in an Ubuntu container via act. The mai
 
 ## 8 · Operator LoRA
 
-- [ ] Generate split-isolated bilingual data and document the data card.
-- [ ] Run an Apple silicon MLX pilot and training, then compare base and adapter in the same runtime.
-- [ ] Apply the development adoption threshold, evaluate the held-out split, and rerun the relevant routing experiment slice.
-- [ ] Verify the Ollama deployment path and document the adoption decision.
+- [x] Generate split-isolated bilingual data and document the data card.
+- [x] Run an Apple silicon MLX pilot and training, then compare base and adapter in the same runtime.
+- [x] Apply the development adoption threshold, evaluate the held-out split, and rerun the relevant routing experiment slice.
+- [x] Verify the Ollama deployment path and document the adoption decision.
 
 ## 9 · Packaging and release
 

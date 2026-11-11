@@ -79,9 +79,6 @@ def main() -> None:
         env={**os.environ, "PYTHONPATH": str(converter / "gguf-py")},
         check=True,
     )
-    (target / "Modelfile").write_text(
-        f"FROM qwen3.5:4b-q4_K_M\nADAPTER {gguf}\nPARAMETER num_ctx 4096\n"
-    )
 
 
 if __name__ == "__main__":

@@ -28,7 +28,7 @@ make finetune-eval FINETUNE_SPLIT=test
 
 ## Export for a local Ollama test
 
-The exporter transposes MLX LoRA tensors to PEFT layout and writes a GGUF adapter using llama.cpp. The base-model metadata is needed for conversion, while the original Ollama model supplies the quantized inference weights.
+The exporter transposes MLX LoRA tensors to PEFT layout and writes a GGUF adapter using llama.cpp. The base-model metadata is needed for conversion. Ollama 0.40.16 rejects standalone adapters, so fuse the exported tensors into the pinned Ollama text model before creating the local tag.
 
 ```sh
 git clone https://github.com/ggml-org/llama.cpp.git .local/mlx/llama.cpp
@@ -39,7 +39,14 @@ curl -fsSL \
   -o .local/mlx/qwen35-hf-config/config.json
 .local/mlx/venv/bin/python -m finetune.export_adapter \
   --base-config .local/mlx/qwen35-hf-config --llama-cpp .local/mlx/llama.cpp
+cmake -S .local/mlx/llama.cpp -B .local/mlx/llama-build \
+  -DGGML_METAL=OFF -DGGML_BLAS=OFF -DLLAMA_CURL=OFF \
+  -DLLAMA_BUILD_TESTS=OFF -DLLAMA_BUILD_SERVER=OFF -DLLAMA_BUILD_EXAMPLES=OFF \
+  -DLLAMA_BUILD_TOOLS=ON -DCMAKE_BUILD_TYPE=Release
+cmake --build .local/mlx/llama-build --target llama-export-lora --parallel
 ollama pull qwen3.5:4b-q4_K_M
+python3.12 -m finetune.fuse --models "${OLLAMA_MODELS:-$HOME/.ollama/models}" \
+  --fuser .local/mlx/llama-build/bin/llama-export-lora
 ollama create trl-operator:adapter -f .local/finetune/export/Modelfile
 uv run --locked --project backend python -m finetune.routes --adapter trl-operator:adapter
 ```
@@ -47,3 +54,9 @@ uv run --locked --project backend python -m finetune.routes --adapter trl-operat
 The route runner checks the four declared cases against the reference incident and independent timetable verifier. Ollama must be running for the import and route run. A transportable adapter can still miss the adoption threshold.
 
 References [MLX-LM fine-tuning](https://github.com/ml-explore/mlx-lm/blob/main/mlx_lm/LORA.md) · [MLX base snapshot](https://huggingface.co/mlx-community/Qwen3.5-4B-4bit) · [Original Qwen weights and license](https://huggingface.co/Qwen/Qwen3.5-4B) · [llama.cpp adapter converter](https://github.com/ggml-org/llama.cpp/blob/master/convert_lora_to_gguf.py).
+
+The MLX comparison tests strict JSON schema compliance with unconstrained generation. In one development example, the base model correctly asked for the closure times in prose under a `clarify` key, which failed the required schema. The result combines extraction and formatting behavior. The main experiment uses Ollama structured outputs and measures a different condition.
+
+## Measured outcome
+
+The [results](results/REPORT.md) report both MLX evaluation partitions and the Ollama route slice. The initial fused import lacked Qwen's renderer and parser and returned clarification for all four cases. The final recipe preserves these settings. It matched two of four reference outcomes, so the candidate was not adopted for the simulator. The unadapted local Ollama Operator remains the inference default.

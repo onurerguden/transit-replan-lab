@@ -1,0 +1,46 @@
+[
+  {
+    "case": "locked-interchange-00",
+    "baseline_status": "verified",
+    "baseline_correct": true,
+    "status": "clarification",
+    "incident_correct": false,
+    "hard_violation": false,
+    "error": null,
+    "calls": 1,
+    "operator_digest": "51286ff67ab12f9077cb59bef649481947122d87edb031d07d126a7f89383807"
+  },
+  {
+    "case": "locked-interchange-01",
+    "baseline_status": "verified",
+    "baseline_correct": true,
+    "status": "clarification",
+    "incident_correct": false,
+    "hard_violation": false,
+    "error": null,
+    "calls": 1,
+    "operator_digest": "51286ff67ab12f9077cb59bef649481947122d87edb031d07d126a7f89383807"
+  },
+  {
+    "case": "locked-platform-00",
+    "baseline_status": "infeasible",
+    "baseline_correct": true,
+    "status": "clarification",
+    "incident_correct": false,
+    "hard_violation": false,
+    "error": null,
+    "calls": 1,
+    "operator_digest": "51286ff67ab12f9077cb59bef649481947122d87edb031d07d126a7f89383807"
+  },
+  {
+    "case": "locked-platform-01",
+    "baseline_status": "infeasible",
+    "baseline_correct": true,
+    "status": "clarification",
+    "incident_correct": false,
+    "hard_violation": false,
+    "error": null,
+    "calls": 1,
+    "operator_digest": "51286ff67ab12f9077cb59bef649481947122d87edb031d07d126a7f89383807"
+  }
+]

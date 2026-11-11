@@ -1,0 +1,8 @@
+{
+  "device": "Apple M1 Pro, 16 GB",
+  "mlx_lm": "0.32.0",
+  "pilot_steps": 25,
+  "steps": 360,
+  "elapsed_seconds": 915.65,
+  "gguf_sha256": "c460c37eea5deb18bf90ece593aa94174b136df2870be30288113752f6f88f5f"
+}

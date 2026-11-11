@@ -1,0 +1,46 @@
+[
+  {
+    "case": "locked-interchange-00",
+    "baseline_status": "verified",
+    "baseline_correct": true,
+    "status": "verified",
+    "incident_correct": true,
+    "hard_violation": false,
+    "error": null,
+    "calls": 7,
+    "operator_digest": "26b80aba40fef4a048b5d555c3c08949b2b78027a5dbf59a89745d1cea478f32"
+  },
+  {
+    "case": "locked-interchange-01",
+    "baseline_status": "verified",
+    "baseline_correct": true,
+    "status": "clarification",
+    "incident_correct": false,
+    "hard_violation": false,
+    "error": null,
+    "calls": 1,
+    "operator_digest": "26b80aba40fef4a048b5d555c3c08949b2b78027a5dbf59a89745d1cea478f32"
+  },
+  {
+    "case": "locked-platform-00",
+    "baseline_status": "infeasible",
+    "baseline_correct": true,
+    "status": "infeasible",
+    "incident_correct": true,
+    "hard_violation": false,
+    "error": null,
+    "calls": 1,
+    "operator_digest": "26b80aba40fef4a048b5d555c3c08949b2b78027a5dbf59a89745d1cea478f32"
+  },
+  {
+    "case": "locked-platform-01",
+    "baseline_status": "infeasible",
+    "baseline_correct": true,
+    "status": "clarification",
+    "incident_correct": false,
+    "hard_violation": false,
+    "error": null,
+    "calls": 1,
+    "operator_digest": "26b80aba40fef4a048b5d555c3c08949b2b78027a5dbf59a89745d1cea478f32"
+  }
+]

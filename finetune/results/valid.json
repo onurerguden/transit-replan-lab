@@ -1,0 +1,1616 @@
+{
+  "split": "valid",
+  "sha256": "778e1b7ed62df13d3d5fcbf3d3e59124d3f2af8e02e35af2506d32befc981c1e",
+  "model_revision": "0e7ffd5c629ef7719d4cbc04069232580bfa9d9c",
+  "adapter_sha256": "884ba8c764f619b47ad2843543733395f6851e658e2d224c5bbbf88c5e6151c9",
+  "max_tokens": 100,
+  "scores": [
+    {
+      "model": "base",
+      "rows": [
+        {
+          "case": "valid-missing_time-00",
+          "family": "missing_time",
+          "language": "tr",
+          "expected": {
+            "kind": "clarify"
+          },
+          "prediction": null,
+          "schema_valid": false,
+          "exact": false
+        },
+        {
+          "case": "valid-unknown_stop-09",
+          "family": "unknown_stop",
+          "language": "en",
+          "expected": {
+            "kind": "clarify"
+          },
+          "prediction": null,
+          "schema_valid": false,
+          "exact": false
+        },
+        {
+          "case": "valid-unknown_stop-03",
+          "family": "unknown_stop",
+          "language": "en",
+          "expected": {
+            "kind": "clarify"
+          },
+          "prediction": null,
+          "schema_valid": false,
+          "exact": false
+        },
+        {
+          "case": "valid-cancellation-06",
+          "family": "cancellation",
+          "language": "tr",
+          "expected": {
+            "kind": "trip_cancellation",
+            "trip": "metro:WEEKDAY_1_0253"
+          },
+          "prediction": null,
+          "schema_valid": false,
+          "exact": false
+        },
+        {
+          "case": "valid-cancellation-05",
+          "family": "cancellation",
+          "language": "en",
+          "expected": {
+            "kind": "trip_cancellation",
+            "trip": "tram:1_WEEKDAY_0113"
+          },
+          "prediction": null,
+          "schema_valid": false,
+          "exact": false
+        },
+        {
+          "case": "valid-missing_time-06",
+          "family": "missing_time",
+          "language": "tr",
+          "expected": {
+            "kind": "clarify"
+          },
+          "prediction": null,
+          "schema_valid": false,
+          "exact": false
+        },
+        {
+          "case": "valid-delay-05",
+          "family": "delay",
+          "language": "en",
+          "expected": {
+            "kind": "trip_delay",
+            "minutes": 6,
+            "trip": "metro:WEEKDAY_0_0004"
+          },
+          "prediction": null,
+          "schema_valid": false,
+          "exact": false
+        },
+        {
+          "case": "valid-unknown_stop-00",
+          "family": "unknown_stop",
+          "language": "tr",
+          "expected": {
+            "kind": "clarify"
+          },
+          "prediction": null,
+          "schema_valid": false,
+          "exact": false
+        },
+        {
+          "case": "valid-cancellation-04",
+          "family": "cancellation",
+          "language": "tr",
+          "expected": {
+            "kind": "trip_cancellation",
+            "trip": "metro:WEEKDAY_1_0233"
+          },
+          "prediction": null,
+          "schema_valid": false,
+          "exact": false
+        },
+        {
+          "case": "valid-delay-06",
+          "family": "delay",
+          "language": "tr",
+          "expected": {
+            "kind": "trip_delay",
+            "minutes": 4,
+            "trip": "tram:1_WEEKDAY_0131"
+          },
+          "prediction": null,
+          "schema_valid": false,
+          "exact": false
+        },
+        {
+          "case": "valid-ambiguous-06",
+          "family": "ambiguous",
+          "language": "tr",
+          "expected": {
+            "kind": "clarify"
+          },
+          "prediction": null,
+          "schema_valid": false,
+          "exact": false
+        },
+        {
+          "case": "valid-unknown_stop-05",
+          "family": "unknown_stop",
+          "language": "en",
+          "expected": {
+            "kind": "clarify"
+          },
+          "prediction": null,
+          "schema_valid": false,
+          "exact": false
+        },
+        {
+          "case": "valid-unknown_stop-08",
+          "family": "unknown_stop",
+          "language": "tr",
+          "expected": {
+            "kind": "clarify"
+          },
+          "prediction": null,
+          "schema_valid": false,
+          "exact": false
+        },
+        {
+          "case": "valid-delay-08",
+          "family": "delay",
+          "language": "tr",
+          "expected": {
+            "kind": "trip_delay",
+            "minutes": 7,
+            "trip": "metro:WEEKDAY_1_0242"
+          },
+          "prediction": null,
+          "schema_valid": false,
+          "exact": false
+        },
+        {
+          "case": "valid-missing_time-07",
+          "family": "missing_time",
+          "language": "en",
+          "expected": {
+            "kind": "clarify"
+          },
+          "prediction": null,
+          "schema_valid": false,
+          "exact": false
+        },
+        {
+          "case": "valid-missing_time-09",
+          "family": "missing_time",
+          "language": "en",
+          "expected": {
+            "kind": "clarify"
+          },
+          "prediction": null,
+          "schema_valid": false,
+          "exact": false
+        },
+        {
+          "case": "valid-closure-04",
+          "family": "closure",
+          "language": "tr",
+          "expected": {
+            "kind": "stop_closure",
+            "end": "09:31",
+            "start": "09:19",
+            "stop": "metro:3"
+          },
+          "prediction": null,
+          "schema_valid": false,
+          "exact": false
+        },
+        {
+          "case": "valid-ambiguous-02",
+          "family": "ambiguous",
+          "language": "tr",
+          "expected": {
+            "kind": "clarify"
+          },
+          "prediction": null,
+          "schema_valid": false,
+          "exact": false
+        },
+        {
+          "case": "valid-closure-00",
+          "family": "closure",
+          "language": "tr",
+          "expected": {
+            "kind": "stop_closure",
+            "end": "09:09",
+            "start": "08:51",
+            "stop": "metro:2"
+          },
+          "prediction": null,
+          "schema_valid": false,
+          "exact": false
+        },
+        {
+          "case": "valid-unknown_stop-07",
+          "family": "unknown_stop",
+          "language": "en",
+          "expected": {
+            "kind": "clarify"
+          },
+          "prediction": null,
+          "schema_valid": false,
+          "exact": false
+        },
+        {
+          "case": "valid-cancellation-01",
+          "family": "cancellation",
+          "language": "en",
+          "expected": {
+            "kind": "trip_cancellation",
+            "trip": "tram:1_WEEKDAY_0075"
+          },
+          "prediction": null,
+          "schema_valid": false,
+          "exact": false
+        },
+        {
+          "case": "valid-missing_time-08",
+          "family": "missing_time",
+          "language": "tr",
+          "expected": {
+            "kind": "clarify"
+          },
+          "prediction": null,
+          "schema_valid": false,
+          "exact": false
+        },
+        {
+          "case": "valid-unknown_stop-06",
+          "family": "unknown_stop",
+          "language": "tr",
+          "expected": {
+            "kind": "clarify"
+          },
+          "prediction": null,
+          "schema_valid": false,
+          "exact": false
+        },
+        {
+          "case": "valid-closure-01",
+          "family": "closure",
+          "language": "en",
+          "expected": {
+            "kind": "stop_closure",
+            "end": "09:40",
+            "start": "08:58",
+            "stop": "tram:14"
+          },
+          "prediction": null,
+          "schema_valid": false,
+          "exact": false
+        },
+        {
+          "case": "valid-ambiguous-01",
+          "family": "ambiguous",
+          "language": "en",
+          "expected": {
+            "kind": "clarify"
+          },
+          "prediction": null,
+          "schema_valid": false,
+          "exact": false
+        },
+        {
+          "case": "valid-ambiguous-09",
+          "family": "ambiguous",
+          "language": "en",
+          "expected": {
+            "kind": "clarify"
+          },
+          "prediction": null,
+          "schema_valid": false,
+          "exact": false
+        },
+        {
+          "case": "valid-ambiguous-04",
+          "family": "ambiguous",
+          "language": "tr",
+          "expected": {
+            "kind": "clarify"
+          },
+          "prediction": null,
+          "schema_valid": false,
+          "exact": false
+        },
+        {
+          "case": "valid-missing_time-04",
+          "family": "missing_time",
+          "language": "tr",
+          "expected": {
+            "kind": "clarify"
+          },
+          "prediction": null,
+          "schema_valid": false,
+          "exact": false
+        },
+        {
+          "case": "valid-closure-05",
+          "family": "closure",
+          "language": "en",
+          "expected": {
+            "kind": "stop_closure",
+            "end": "10:08",
+            "start": "09:26",
+            "stop": "metro:6"
+          },
+          "prediction": null,
+          "schema_valid": false,
+          "exact": false
+        },
+        {
+          "case": "valid-missing_time-02",
+          "family": "missing_time",
+          "language": "tr",
+          "expected": {
+            "kind": "clarify"
+          },
+          "prediction": null,
+          "schema_valid": false,
+          "exact": false
+        },
+        {
+          "case": "valid-missing_time-03",
+          "family": "missing_time",
+          "language": "en",
+          "expected": {
+            "kind": "clarify"
+          },
+          "prediction": null,
+          "schema_valid": false,
+          "exact": false
+        },
+        {
+          "case": "valid-cancellation-07",
+          "family": "cancellation",
+          "language": "en",
+          "expected": {
+            "kind": "trip_cancellation",
+            "trip": "metro:WEEKDAY_1_0228"
+          },
+          "prediction": null,
+          "schema_valid": false,
+          "exact": false
+        },
+        {
+          "case": "valid-cancellation-03",
+          "family": "cancellation",
+          "language": "en",
+          "expected": {
+            "kind": "trip_cancellation",
+            "trip": "tram:1_WEEKDAY_0033"
+          },
+          "prediction": null,
+          "schema_valid": false,
+          "exact": false
+        },
+        {
+          "case": "valid-cancellation-00",
+          "family": "cancellation",
+          "language": "tr",
+          "expected": {
+            "kind": "trip_cancellation",
+            "trip": "tram:2_WEEKDAY_0036"
+          },
+          "prediction": null,
+          "schema_valid": false,
+          "exact": false
+        },
+        {
+          "case": "valid-ambiguous-05",
+          "family": "ambiguous",
+          "language": "en",
+          "expected": {
+            "kind": "clarify"
+          },
+          "prediction": null,
+          "schema_valid": false,
+          "exact": false
+        },
+        {
+          "case": "valid-unknown_stop-01",
+          "family": "unknown_stop",
+          "language": "en",
+          "expected": {
+            "kind": "clarify"
+          },
+          "prediction": null,
+          "schema_valid": false,
+          "exact": false
+        },
+        {
+          "case": "valid-closure-06",
+          "family": "closure",
+          "language": "tr",
+          "expected": {
+            "kind": "stop_closure",
+            "end": "10:15",
+            "start": "09:33",
+            "stop": "metro:20"
+          },
+          "prediction": null,
+          "schema_valid": false,
+          "exact": false
+        },
+        {
+          "case": "valid-ambiguous-03",
+          "family": "ambiguous",
+          "language": "en",
+          "expected": {
+            "kind": "clarify"
+          },
+          "prediction": null,
+          "schema_valid": false,
+          "exact": false
+        },
+        {
+          "case": "valid-closure-09",
+          "family": "closure",
+          "language": "en",
+          "expected": {
+            "kind": "stop_closure",
+            "end": "10:24",
+            "start": "09:54",
+            "stop": "tram:13"
+          },
+          "prediction": null,
+          "schema_valid": false,
+          "exact": false
+        },
+        {
+          "case": "valid-cancellation-02",
+          "family": "cancellation",
+          "language": "tr",
+          "expected": {
+            "kind": "trip_cancellation",
+            "trip": "tram:1_WEEKDAY_0108"
+          },
+          "prediction": null,
+          "schema_valid": false,
+          "exact": false
+        },
+        {
+          "case": "valid-cancellation-09",
+          "family": "cancellation",
+          "language": "en",
+          "expected": {
+            "kind": "trip_cancellation",
+            "trip": "tram:2_WEEKDAY_0035"
+          },
+          "prediction": null,
+          "schema_valid": false,
+          "exact": false
+        },
+        {
+          "case": "valid-delay-04",
+          "family": "delay",
+          "language": "tr",
+          "expected": {
+            "kind": "trip_delay",
+            "minutes": 7,
+            "trip": "tram:1_WEEKDAY_0086"
+          },
+          "prediction": null,
+          "schema_valid": false,
+          "exact": false
+        },
+        {
+          "case": "valid-unknown_stop-02",
+          "family": "unknown_stop",
+          "language": "tr",
+          "expected": {
+            "kind": "clarify"
+          },
+          "prediction": null,
+          "schema_valid": false,
+          "exact": false
+        },
+        {
+          "case": "valid-closure-07",
+          "family": "closure",
+          "language": "en",
+          "expected": {
+            "kind": "stop_closure",
+            "end": "09:58",
+            "start": "09:40",
+            "stop": "metro:7"
+          },
+          "prediction": null,
+          "schema_valid": false,
+          "exact": false
+        },
+        {
+          "case": "valid-delay-03",
+          "family": "delay",
+          "language": "en",
+          "expected": {
+            "kind": "trip_delay",
+            "minutes": 4,
+            "trip": "metro:WEEKDAY_0_0045"
+          },
+          "prediction": null,
+          "schema_valid": false,
+          "exact": false
+        },
+        {
+          "case": "valid-closure-02",
+          "family": "closure",
+          "language": "tr",
+          "expected": {
+            "kind": "stop_closure",
+            "end": "09:23",
+            "start": "09:05",
+            "stop": "tram:14"
+          },
+          "prediction": null,
+          "schema_valid": false,
+          "exact": false
+        },
+        {
+          "case": "valid-missing_time-05",
+          "family": "missing_time",
+          "language": "en",
+          "expected": {
+            "kind": "clarify"
+          },
+          "prediction": null,
+          "schema_valid": false,
+          "exact": false
+        },
+        {
+          "case": "valid-delay-00",
+          "family": "delay",
+          "language": "tr",
+          "expected": {
+            "kind": "trip_delay",
+            "minutes": 9,
+            "trip": "tram:1_WEEKDAY_0012"
+          },
+          "prediction": null,
+          "schema_valid": false,
+          "exact": false
+        },
+        {
+          "case": "valid-cancellation-08",
+          "family": "cancellation",
+          "language": "tr",
+          "expected": {
+            "kind": "trip_cancellation",
+            "trip": "metro:WEEKDAY_1_0278"
+          },
+          "prediction": null,
+          "schema_valid": false,
+          "exact": false
+        },
+        {
+          "case": "valid-ambiguous-00",
+          "family": "ambiguous",
+          "language": "tr",
+          "expected": {
+            "kind": "clarify"
+          },
+          "prediction": null,
+          "schema_valid": false,
+          "exact": false
+        },
+        {
+          "case": "valid-delay-07",
+          "family": "delay",
+          "language": "en",
+          "expected": {
+            "kind": "trip_delay",
+            "minutes": 5,
+            "trip": "metro:WEEKDAY_0_0149"
+          },
+          "prediction": null,
+          "schema_valid": false,
+          "exact": false
+        },
+        {
+          "case": "valid-closure-03",
+          "family": "closure",
+          "language": "en",
+          "expected": {
+            "kind": "stop_closure",
+            "end": "09:24",
+            "start": "09:12",
+            "stop": "metro:9"
+          },
+          "prediction": null,
+          "schema_valid": false,
+          "exact": false
+        },
+        {
+          "case": "valid-unknown_stop-04",
+          "family": "unknown_stop",
+          "language": "tr",
+          "expected": {
+            "kind": "clarify"
+          },
+          "prediction": null,
+          "schema_valid": false,
+          "exact": false
+        },
+        {
+          "case": "valid-delay-02",
+          "family": "delay",
+          "language": "tr",
+          "expected": {
+            "kind": "trip_delay",
+            "minutes": 19,
+            "trip": "metro:WEEKDAY_0_0100"
+          },
+          "prediction": null,
+          "schema_valid": false,
+          "exact": false
+        },
+        {
+          "case": "valid-delay-09",
+          "family": "delay",
+          "language": "en",
+          "expected": {
+            "kind": "trip_delay",
+            "minutes": 25,
+            "trip": "tram:2_WEEKDAY_0091"
+          },
+          "prediction": null,
+          "schema_valid": false,
+          "exact": false
+        },
+        {
+          "case": "valid-ambiguous-07",
+          "family": "ambiguous",
+          "language": "en",
+          "expected": {
+            "kind": "clarify"
+          },
+          "prediction": null,
+          "schema_valid": false,
+          "exact": false
+        },
+        {
+          "case": "valid-closure-08",
+          "family": "closure",
+          "language": "tr",
+          "expected": {
+            "kind": "stop_closure",
+            "end": "09:59",
+            "start": "09:47",
+            "stop": "tram:7"
+          },
+          "prediction": null,
+          "schema_valid": false,
+          "exact": false
+        },
+        {
+          "case": "valid-missing_time-01",
+          "family": "missing_time",
+          "language": "en",
+          "expected": {
+            "kind": "clarify"
+          },
+          "prediction": null,
+          "schema_valid": false,
+          "exact": false
+        },
+        {
+          "case": "valid-delay-01",
+          "family": "delay",
+          "language": "en",
+          "expected": {
+            "kind": "trip_delay",
+            "minutes": 23,
+            "trip": "metro:WEEKDAY_0_0155"
+          },
+          "prediction": null,
+          "schema_valid": false,
+          "exact": false
+        },
+        {
+          "case": "valid-ambiguous-08",
+          "family": "ambiguous",
+          "language": "tr",
+          "expected": {
+            "kind": "clarify"
+          },
+          "prediction": null,
+          "schema_valid": false,
+          "exact": false
+        }
+      ],
+      "seconds": 112.36,
+      "peak_gb": 3.081,
+      "exact": 0,
+      "clarified": 0,
+      "schema_valid": 0
+    },
+    {
+      "model": "adapter",
+      "rows": [
+        {
+          "case": "valid-missing_time-00",
+          "family": "missing_time",
+          "language": "tr",
+          "expected": {
+            "kind": "clarify"
+          },
+          "prediction": {
+            "kind": "clarify"
+          },
+          "schema_valid": true,
+          "exact": true
+        },
+        {
+          "case": "valid-unknown_stop-09",
+          "family": "unknown_stop",
+          "language": "en",
+          "expected": {
+            "kind": "clarify"
+          },
+          "prediction": {
+            "kind": "clarify"
+          },
+          "schema_valid": true,
+          "exact": true
+        },
+        {
+          "case": "valid-unknown_stop-03",
+          "family": "unknown_stop",
+          "language": "en",
+          "expected": {
+            "kind": "clarify"
+          },
+          "prediction": {
+            "kind": "clarify"
+          },
+          "schema_valid": true,
+          "exact": true
+        },
+        {
+          "case": "valid-cancellation-06",
+          "family": "cancellation",
+          "language": "tr",
+          "expected": {
+            "kind": "trip_cancellation",
+            "trip": "metro:WEEKDAY_1_0253"
+          },
+          "prediction": {
+            "kind": "clarify"
+          },
+          "schema_valid": true,
+          "exact": false
+        },
+        {
+          "case": "valid-cancellation-05",
+          "family": "cancellation",
+          "language": "en",
+          "expected": {
+            "kind": "trip_cancellation",
+            "trip": "tram:1_WEEKDAY_0113"
+          },
+          "prediction": {
+            "kind": "trip_cancellation",
+            "trip": "tram:1_WEEKDAY_0113"
+          },
+          "schema_valid": true,
+          "exact": true
+        },
+        {
+          "case": "valid-missing_time-06",
+          "family": "missing_time",
+          "language": "tr",
+          "expected": {
+            "kind": "clarify"
+          },
+          "prediction": {
+            "kind": "clarify"
+          },
+          "schema_valid": true,
+          "exact": true
+        },
+        {
+          "case": "valid-delay-05",
+          "family": "delay",
+          "language": "en",
+          "expected": {
+            "kind": "trip_delay",
+            "minutes": 6,
+            "trip": "metro:WEEKDAY_0_0004"
+          },
+          "prediction": {
+            "kind": "trip_delay",
+            "minutes": 6,
+            "trip": "metro:WEEKDAY_0_0004"
+          },
+          "schema_valid": true,
+          "exact": true
+        },
+        {
+          "case": "valid-unknown_stop-00",
+          "family": "unknown_stop",
+          "language": "tr",
+          "expected": {
+            "kind": "clarify"
+          },
+          "prediction": {
+            "kind": "clarify"
+          },
+          "schema_valid": true,
+          "exact": true
+        },
+        {
+          "case": "valid-cancellation-04",
+          "family": "cancellation",
+          "language": "tr",
+          "expected": {
+            "kind": "trip_cancellation",
+            "trip": "metro:WEEKDAY_1_0233"
+          },
+          "prediction": {
+            "kind": "clarify"
+          },
+          "schema_valid": true,
+          "exact": false
+        },
+        {
+          "case": "valid-delay-06",
+          "family": "delay",
+          "language": "tr",
+          "expected": {
+            "kind": "trip_delay",
+            "minutes": 4,
+            "trip": "tram:1_WEEKDAY_0131"
+          },
+          "prediction": {
+            "kind": "trip_delay",
+            "minutes": 4,
+            "trip": "tram:1_WEEKDAY_0131"
+          },
+          "schema_valid": true,
+          "exact": true
+        },
+        {
+          "case": "valid-ambiguous-06",
+          "family": "ambiguous",
+          "language": "tr",
+          "expected": {
+            "kind": "clarify"
+          },
+          "prediction": {
+            "kind": "clarify"
+          },
+          "schema_valid": true,
+          "exact": true
+        },
+        {
+          "case": "valid-unknown_stop-05",
+          "family": "unknown_stop",
+          "language": "en",
+          "expected": {
+            "kind": "clarify"
+          },
+          "prediction": {
+            "kind": "clarify"
+          },
+          "schema_valid": true,
+          "exact": true
+        },
+        {
+          "case": "valid-unknown_stop-08",
+          "family": "unknown_stop",
+          "language": "tr",
+          "expected": {
+            "kind": "clarify"
+          },
+          "prediction": {
+            "kind": "clarify"
+          },
+          "schema_valid": true,
+          "exact": true
+        },
+        {
+          "case": "valid-delay-08",
+          "family": "delay",
+          "language": "tr",
+          "expected": {
+            "kind": "trip_delay",
+            "minutes": 7,
+            "trip": "metro:WEEKDAY_1_0242"
+          },
+          "prediction": {
+            "kind": "trip_delay",
+            "minutes": 7,
+            "trip": "metro:WEEKDAY_1_0242"
+          },
+          "schema_valid": true,
+          "exact": true
+        },
+        {
+          "case": "valid-missing_time-07",
+          "family": "missing_time",
+          "language": "en",
+          "expected": {
+            "kind": "clarify"
+          },
+          "prediction": {
+            "kind": "clarify"
+          },
+          "schema_valid": true,
+          "exact": true
+        },
+        {
+          "case": "valid-missing_time-09",
+          "family": "missing_time",
+          "language": "en",
+          "expected": {
+            "kind": "clarify"
+          },
+          "prediction": {
+            "kind": "clarify"
+          },
+          "schema_valid": true,
+          "exact": true
+        },
+        {
+          "case": "valid-closure-04",
+          "family": "closure",
+          "language": "tr",
+          "expected": {
+            "kind": "stop_closure",
+            "end": "09:31",
+            "start": "09:19",
+            "stop": "metro:3"
+          },
+          "prediction": {
+            "kind": "clarify"
+          },
+          "schema_valid": true,
+          "exact": false
+        },
+        {
+          "case": "valid-ambiguous-02",
+          "family": "ambiguous",
+          "language": "tr",
+          "expected": {
+            "kind": "clarify"
+          },
+          "prediction": {
+            "kind": "clarify"
+          },
+          "schema_valid": true,
+          "exact": true
+        },
+        {
+          "case": "valid-closure-00",
+          "family": "closure",
+          "language": "tr",
+          "expected": {
+            "kind": "stop_closure",
+            "end": "09:09",
+            "start": "08:51",
+            "stop": "metro:2"
+          },
+          "prediction": {
+            "kind": "clarify"
+          },
+          "schema_valid": true,
+          "exact": false
+        },
+        {
+          "case": "valid-unknown_stop-07",
+          "family": "unknown_stop",
+          "language": "en",
+          "expected": {
+            "kind": "clarify"
+          },
+          "prediction": {
+            "kind": "clarify"
+          },
+          "schema_valid": true,
+          "exact": true
+        },
+        {
+          "case": "valid-cancellation-01",
+          "family": "cancellation",
+          "language": "en",
+          "expected": {
+            "kind": "trip_cancellation",
+            "trip": "tram:1_WEEKDAY_0075"
+          },
+          "prediction": {
+            "kind": "trip_cancellation",
+            "trip": "tram:1_WEEKDAY_0075"
+          },
+          "schema_valid": true,
+          "exact": true
+        },
+        {
+          "case": "valid-missing_time-08",
+          "family": "missing_time",
+          "language": "tr",
+          "expected": {
+            "kind": "clarify"
+          },
+          "prediction": {
+            "kind": "clarify"
+          },
+          "schema_valid": true,
+          "exact": true
+        },
+        {
+          "case": "valid-unknown_stop-06",
+          "family": "unknown_stop",
+          "language": "tr",
+          "expected": {
+            "kind": "clarify"
+          },
+          "prediction": {
+            "kind": "clarify"
+          },
+          "schema_valid": true,
+          "exact": true
+        },
+        {
+          "case": "valid-closure-01",
+          "family": "closure",
+          "language": "en",
+          "expected": {
+            "kind": "stop_closure",
+            "end": "09:40",
+            "start": "08:58",
+            "stop": "tram:14"
+          },
+          "prediction": {
+            "kind": "clarify"
+          },
+          "schema_valid": true,
+          "exact": false
+        },
+        {
+          "case": "valid-ambiguous-01",
+          "family": "ambiguous",
+          "language": "en",
+          "expected": {
+            "kind": "clarify"
+          },
+          "prediction": {
+            "kind": "clarify"
+          },
+          "schema_valid": true,
+          "exact": true
+        },
+        {
+          "case": "valid-ambiguous-09",
+          "family": "ambiguous",
+          "language": "en",
+          "expected": {
+            "kind": "clarify"
+          },
+          "prediction": {
+            "kind": "clarify"
+          },
+          "schema_valid": true,
+          "exact": true
+        },
+        {
+          "case": "valid-ambiguous-04",
+          "family": "ambiguous",
+          "language": "tr",
+          "expected": {
+            "kind": "clarify"
+          },
+          "prediction": {
+            "kind": "clarify"
+          },
+          "schema_valid": true,
+          "exact": true
+        },
+        {
+          "case": "valid-missing_time-04",
+          "family": "missing_time",
+          "language": "tr",
+          "expected": {
+            "kind": "clarify"
+          },
+          "prediction": {
+            "kind": "clarify"
+          },
+          "schema_valid": true,
+          "exact": true
+        },
+        {
+          "case": "valid-closure-05",
+          "family": "closure",
+          "language": "en",
+          "expected": {
+            "kind": "stop_closure",
+            "end": "10:08",
+            "start": "09:26",
+            "stop": "metro:6"
+          },
+          "prediction": {
+            "kind": "clarify"
+          },
+          "schema_valid": true,
+          "exact": false
+        },
+        {
+          "case": "valid-missing_time-02",
+          "family": "missing_time",
+          "language": "tr",
+          "expected": {
+            "kind": "clarify"
+          },
+          "prediction": {
+            "kind": "clarify"
+          },
+          "schema_valid": true,
+          "exact": true
+        },
+        {
+          "case": "valid-missing_time-03",
+          "family": "missing_time",
+          "language": "en",
+          "expected": {
+            "kind": "clarify"
+          },
+          "prediction": {
+            "kind": "clarify"
+          },
+          "schema_valid": true,
+          "exact": true
+        },
+        {
+          "case": "valid-cancellation-07",
+          "family": "cancellation",
+          "language": "en",
+          "expected": {
+            "kind": "trip_cancellation",
+            "trip": "metro:WEEKDAY_1_0228"
+          },
+          "prediction": {
+            "kind": "trip_cancellation",
+            "trip": "metro:WEEKDAY_1_0228"
+          },
+          "schema_valid": true,
+          "exact": true
+        },
+        {
+          "case": "valid-cancellation-03",
+          "family": "cancellation",
+          "language": "en",
+          "expected": {
+            "kind": "trip_cancellation",
+            "trip": "tram:1_WEEKDAY_0033"
+          },
+          "prediction": {
+            "kind": "trip_cancellation",
+            "trip": "tram:1_WEEKDAY_0033"
+          },
+          "schema_valid": true,
+          "exact": true
+        },
+        {
+          "case": "valid-cancellation-00",
+          "family": "cancellation",
+          "language": "tr",
+          "expected": {
+            "kind": "trip_cancellation",
+            "trip": "tram:2_WEEKDAY_0036"
+          },
+          "prediction": {
+            "kind": "trip_cancellation",
+            "trip": "tram:2_WEEKDAY_0036"
+          },
+          "schema_valid": true,
+          "exact": true
+        },
+        {
+          "case": "valid-ambiguous-05",
+          "family": "ambiguous",
+          "language": "en",
+          "expected": {
+            "kind": "clarify"
+          },
+          "prediction": {
+            "kind": "clarify"
+          },
+          "schema_valid": true,
+          "exact": true
+        },
+        {
+          "case": "valid-unknown_stop-01",
+          "family": "unknown_stop",
+          "language": "en",
+          "expected": {
+            "kind": "clarify"
+          },
+          "prediction": {
+            "kind": "clarify"
+          },
+          "schema_valid": true,
+          "exact": true
+        },
+        {
+          "case": "valid-closure-06",
+          "family": "closure",
+          "language": "tr",
+          "expected": {
+            "kind": "stop_closure",
+            "end": "10:15",
+            "start": "09:33",
+            "stop": "metro:20"
+          },
+          "prediction": {
+            "kind": "clarify"
+          },
+          "schema_valid": true,
+          "exact": false
+        },
+        {
+          "case": "valid-ambiguous-03",
+          "family": "ambiguous",
+          "language": "en",
+          "expected": {
+            "kind": "clarify"
+          },
+          "prediction": {
+            "kind": "clarify"
+          },
+          "schema_valid": true,
+          "exact": true
+        },
+        {
+          "case": "valid-closure-09",
+          "family": "closure",
+          "language": "en",
+          "expected": {
+            "kind": "stop_closure",
+            "end": "10:24",
+            "start": "09:54",
+            "stop": "tram:13"
+          },
+          "prediction": {
+            "kind": "clarify"
+          },
+          "schema_valid": true,
+          "exact": false
+        },
+        {
+          "case": "valid-cancellation-02",
+          "family": "cancellation",
+          "language": "tr",
+          "expected": {
+            "kind": "trip_cancellation",
+            "trip": "tram:1_WEEKDAY_0108"
+          },
+          "prediction": {
+            "kind": "trip_cancellation",
+            "trip": "tram:1_WEEKDAY_0108"
+          },
+          "schema_valid": true,
+          "exact": true
+        },
+        {
+          "case": "valid-cancellation-09",
+          "family": "cancellation",
+          "language": "en",
+          "expected": {
+            "kind": "trip_cancellation",
+            "trip": "tram:2_WEEKDAY_0035"
+          },
+          "prediction": {
+            "kind": "trip_cancellation",
+            "trip": "tram:2_WEEKDAY_0035"
+          },
+          "schema_valid": true,
+          "exact": true
+        },
+        {
+          "case": "valid-delay-04",
+          "family": "delay",
+          "language": "tr",
+          "expected": {
+            "kind": "trip_delay",
+            "minutes": 7,
+            "trip": "tram:1_WEEKDAY_0086"
+          },
+          "prediction": {
+            "kind": "trip_delay",
+            "minutes": 7,
+            "trip": "tram:1_WEEKDAY_0086"
+          },
+          "schema_valid": true,
+          "exact": true
+        },
+        {
+          "case": "valid-unknown_stop-02",
+          "family": "unknown_stop",
+          "language": "tr",
+          "expected": {
+            "kind": "clarify"
+          },
+          "prediction": {
+            "kind": "clarify"
+          },
+          "schema_valid": true,
+          "exact": true
+        },
+        {
+          "case": "valid-closure-07",
+          "family": "closure",
+          "language": "en",
+          "expected": {
+            "kind": "stop_closure",
+            "end": "09:58",
+            "start": "09:40",
+            "stop": "metro:7"
+          },
+          "prediction": {
+            "kind": "clarify"
+          },
+          "schema_valid": true,
+          "exact": false
+        },
+        {
+          "case": "valid-delay-03",
+          "family": "delay",
+          "language": "en",
+          "expected": {
+            "kind": "trip_delay",
+            "minutes": 4,
+            "trip": "metro:WEEKDAY_0_0045"
+          },
+          "prediction": {
+            "kind": "trip_delay",
+            "minutes": 4,
+            "trip": "metro:WEEKDAY_0_0045"
+          },
+          "schema_valid": true,
+          "exact": true
+        },
+        {
+          "case": "valid-closure-02",
+          "family": "closure",
+          "language": "tr",
+          "expected": {
+            "kind": "stop_closure",
+            "end": "09:23",
+            "start": "09:05",
+            "stop": "tram:14"
+          },
+          "prediction": {
+            "kind": "clarify"
+          },
+          "schema_valid": true,
+          "exact": false
+        },
+        {
+          "case": "valid-missing_time-05",
+          "family": "missing_time",
+          "language": "en",
+          "expected": {
+            "kind": "clarify"
+          },
+          "prediction": {
+            "kind": "clarify"
+          },
+          "schema_valid": true,
+          "exact": true
+        },
+        {
+          "case": "valid-delay-00",
+          "family": "delay",
+          "language": "tr",
+          "expected": {
+            "kind": "trip_delay",
+            "minutes": 9,
+            "trip": "tram:1_WEEKDAY_0012"
+          },
+          "prediction": {
+            "kind": "trip_delay",
+            "minutes": 9,
+            "trip": "tram:1_WEEKDAY_0012"
+          },
+          "schema_valid": true,
+          "exact": true
+        },
+        {
+          "case": "valid-cancellation-08",
+          "family": "cancellation",
+          "language": "tr",
+          "expected": {
+            "kind": "trip_cancellation",
+            "trip": "metro:WEEKDAY_1_0278"
+          },
+          "prediction": {
+            "kind": "clarify"
+          },
+          "schema_valid": true,
+          "exact": false
+        },
+        {
+          "case": "valid-ambiguous-00",
+          "family": "ambiguous",
+          "language": "tr",
+          "expected": {
+            "kind": "clarify"
+          },
+          "prediction": {
+            "kind": "clarify"
+          },
+          "schema_valid": true,
+          "exact": true
+        },
+        {
+          "case": "valid-delay-07",
+          "family": "delay",
+          "language": "en",
+          "expected": {
+            "kind": "trip_delay",
+            "minutes": 5,
+            "trip": "metro:WEEKDAY_0_0149"
+          },
+          "prediction": {
+            "kind": "trip_delay",
+            "minutes": 5,
+            "trip": "metro:WEEKDAY_0_0149"
+          },
+          "schema_valid": true,
+          "exact": true
+        },
+        {
+          "case": "valid-closure-03",
+          "family": "closure",
+          "language": "en",
+          "expected": {
+            "kind": "stop_closure",
+            "end": "09:24",
+            "start": "09:12",
+            "stop": "metro:9"
+          },
+          "prediction": {
+            "kind": "clarify"
+          },
+          "schema_valid": true,
+          "exact": false
+        },
+        {
+          "case": "valid-unknown_stop-04",
+          "family": "unknown_stop",
+          "language": "tr",
+          "expected": {
+            "kind": "clarify"
+          },
+          "prediction": {
+            "kind": "clarify"
+          },
+          "schema_valid": true,
+          "exact": true
+        },
+        {
+          "case": "valid-delay-02",
+          "family": "delay",
+          "language": "tr",
+          "expected": {
+            "kind": "trip_delay",
+            "minutes": 19,
+            "trip": "metro:WEEKDAY_0_0100"
+          },
+          "prediction": {
+            "kind": "trip_delay",
+            "minutes": 19,
+            "trip": "metro:WEEKDAY_0_0100"
+          },
+          "schema_valid": true,
+          "exact": true
+        },
+        {
+          "case": "valid-delay-09",
+          "family": "delay",
+          "language": "en",
+          "expected": {
+            "kind": "trip_delay",
+            "minutes": 25,
+            "trip": "tram:2_WEEKDAY_0091"
+          },
+          "prediction": {
+            "kind": "trip_delay",
+            "minutes": 25,
+            "trip": "tram:2_WEEKDAY_0091"
+          },
+          "schema_valid": true,
+          "exact": true
+        },
+        {
+          "case": "valid-ambiguous-07",
+          "family": "ambiguous",
+          "language": "en",
+          "expected": {
+            "kind": "clarify"
+          },
+          "prediction": {
+            "kind": "clarify"
+          },
+          "schema_valid": true,
+          "exact": true
+        },
+        {
+          "case": "valid-closure-08",
+          "family": "closure",
+          "language": "tr",
+          "expected": {
+            "kind": "stop_closure",
+            "end": "09:59",
+            "start": "09:47",
+            "stop": "tram:7"
+          },
+          "prediction": {
+            "kind": "clarify"
+          },
+          "schema_valid": true,
+          "exact": false
+        },
+        {
+          "case": "valid-missing_time-01",
+          "family": "missing_time",
+          "language": "en",
+          "expected": {
+            "kind": "clarify"
+          },
+          "prediction": {
+            "kind": "clarify"
+          },
+          "schema_valid": true,
+          "exact": true
+        },
+        {
+          "case": "valid-delay-01",
+          "family": "delay",
+          "language": "en",
+          "expected": {
+            "kind": "trip_delay",
+            "minutes": 23,
+            "trip": "metro:WEEKDAY_0_0155"
+          },
+          "prediction": {
+            "kind": "trip_delay",
+            "minutes": 23,
+            "trip": "metro:WEEKDAY_0_0155"
+          },
+          "schema_valid": true,
+          "exact": true
+        },
+        {
+          "case": "valid-ambiguous-08",
+          "family": "ambiguous",
+          "language": "tr",
+          "expected": {
+            "kind": "clarify"
+          },
+          "prediction": {
+            "kind": "clarify"
+          },
+          "schema_valid": true,
+          "exact": true
+        }
+      ],
+      "seconds": 63.48,
+      "peak_gb": 3.086,
+      "exact": 47,
+      "clarified": 30,
+      "schema_valid": 60
+    }
+  ]
+}

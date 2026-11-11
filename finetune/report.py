@@ -12,15 +12,11 @@ def report(source: Path) -> str:
     held = json.loads((source / "test.json").read_text())
     decision = json.loads((source / "decision.json").read_text())
     routes = json.loads((source / "routes.json").read_text())
-    text = re.sub(r"\x1b\[[0-9;]*m", "", (source / "train.log").read_text())
-    duration = next(
-        (line.split()[1] for line in text.splitlines() if line.startswith("real ")), "?"
-    )
-    if "360/360" not in text or len(routes) != 4:
+    training = json.loads((source / "training.json").read_text())
+    if training["steps"] != 360 or len(routes) != 4:
         raise ValueError("The full training run and all route checks must be complete.")
-    checksum = hashlib.sha256(
-        (source / "export" / "operator.gguf").read_bytes()
-    ).hexdigest()
+    duration = training["elapsed_seconds"]
+    checksum = training["gguf_sha256"]
     rows = [
         "# Operator LoRA results",
         "",
@@ -86,11 +82,37 @@ def report(source: Path) -> str:
     return "\n".join(rows) + "\n"
 
 
+def capture_training(source: Path) -> None:
+    pattern = r"\x1b\[[0-9;]*m"
+    pilot = re.sub(pattern, "", (source / "pilot.log").read_text())
+    text = re.sub(pattern, "", (source / "train.log").read_text())
+    if "25/25" not in pilot or "360/360" not in text:
+        raise ValueError("Expected completed pilot and training logs.")
+    duration = next(
+        float(line.split()[1]) for line in text.splitlines() if line.startswith("real ")
+    )
+    checksum = hashlib.sha256(
+        (source / "export" / "operator.gguf").read_bytes()
+    ).hexdigest()
+    result = {
+        "device": "Apple M1 Pro, 16 GB",
+        "mlx_lm": "0.32.0",
+        "pilot_steps": 25,
+        "steps": 360,
+        "elapsed_seconds": duration,
+        "gguf_sha256": checksum,
+    }
+    (source / "training.json").write_text(json.dumps(result, indent=2) + "\n")
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("source", type=Path)
     parser.add_argument("target", type=Path)
+    parser.add_argument("--capture-training", action="store_true")
     args = parser.parse_args()
+    if args.capture_training:
+        capture_training(args.source)
     args.target.write_text(report(args.source))
 
 
