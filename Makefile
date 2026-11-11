@@ -9,8 +9,8 @@ setup:
 	$(WEB) install --frozen-lockfile
 
 check:
-	$(PY) ruff check backend scripts experiments
-	$(PY) ruff format --check backend scripts experiments
+	$(PY) ruff check backend scripts experiments finetune
+	$(PY) ruff format --check backend scripts experiments finetune
 	$(PY) pyright --project backend/pyproject.toml
 	$(PY) pytest backend/tests -m "not ollama" \
 		--cov=trl.routing --cov=trl.verify --cov=trl.disruptions --cov=trl.storage \
@@ -56,6 +56,10 @@ FINETUNE_SPLIT ?= valid
 .PHONY: finetune-data finetune-pilot finetune finetune-eval
 finetune-data:
 	$(PY) python -m finetune.data
+	cmp finetune/manifest.json .local/finetune/data/manifest.json
+	mkdir -p .local/finetune/training
+	cp .local/finetune/data/train.jsonl .local/finetune/data/valid.jsonl .local/finetune/training/
+	test ! -e .local/finetune/training/test.jsonl
 
 finetune-pilot: finetune-data
 	$(FT_PY) -m mlx_lm lora --config finetune/pilot.yml --model "$(FT_MODEL)"

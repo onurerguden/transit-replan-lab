@@ -1,6 +1,6 @@
 train: true
 fine_tune_type: lora
-data: .local/finetune/data
+data: .local/finetune/training
 adapter_path: .local/finetune/adapter
 seed: 42
 batch_size: 1

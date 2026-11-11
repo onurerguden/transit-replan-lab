@@ -29,9 +29,18 @@ def canonical(text: str) -> dict[str, object] | None:
     kind = value.get("kind")
     if not isinstance(kind, str) or kind not in fields:
         return None
+    allowed = {"kind", "stop", "start", "end", "trip", "minutes"}
+    if not set(value) <= allowed:
+        return None
     keys = {key for key, item in value.items() if item is not None}
     if keys != {"kind", *fields[kind]}:
         return None
+    for field in fields[kind]:
+        if field == "minutes":
+            if type(value[field]) is not int:
+                return None
+        elif not isinstance(value[field], str):
+            return None
     return {key: value[key] for key in ("kind", *sorted(fields[kind]))}
 
 

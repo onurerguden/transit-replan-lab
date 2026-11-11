@@ -48,9 +48,10 @@ extend-include = ["../scripts/*.py"]
 select = ["E", "F", "I", "UP", "B", "RUF"]
 
 [tool.pyright]
-include = ["src", "tests", "../scripts", "../experiments"]
+include = ["src", "tests", "../scripts", "../experiments", "../finetune/data.py", "../finetune/routes.py"]
 pythonVersion = "3.12"
 typeCheckingMode = "strict"
+extraPaths = ["src", ".."]
 venvPath = "."
 venv = ".venv"
 
