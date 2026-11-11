@@ -1,6 +1,6 @@
 # Roadmap
 
-The current phase is **2 · Routing and verification**. Run `make check` and review the checklist before each phase commit.
+The current phase is **3 · Service and persistence**. Run `make check` and review the checklist before each phase commit.
 
 ## 0 · Foundation
 
@@ -22,10 +22,10 @@ The Phase 0 workflow passed on macOS and in an Ubuntu container via act. The mai
 
 ## 2 · Routing and verification
 
-- [ ] Implement connection scanning with multiple arrival labels, joint arrival ranking, and versioned incident overlays.
-- [ ] Verify itinerary legs and hard constraints independently, and prohibit imports from the router.
-- [ ] Compare random small networks against exhaustive enumeration. Reject mutated journeys and cover midnight, later arrivals, closures, and accessibility.
-- [ ] Freeze and run the real timetable demo through the CLI.
+- [x] Implement connection scanning with multiple arrival labels, joint arrival ranking, and versioned incident overlays.
+- [x] Verify itinerary legs and hard constraints independently, and prohibit imports from the router.
+- [x] Compare random small networks against exhaustive enumeration. Reject mutated journeys and cover midnight, later arrivals, closures, and accessibility.
+- [x] Freeze and run the real timetable demo through the CLI.
 
 ## 3 · Service and persistence
 

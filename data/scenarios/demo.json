@@ -1,0 +1,11 @@
+{
+  "id": "demo",
+  "service_date": "2026-10-21",
+  "a": {"stop": "metro:4", "ready": 30240, "wait_limit": 600},
+  "b": {"stop": "tram:8", "ready": 30540, "wait_limit": 600},
+  "destinations": ["tram:3"],
+  "meeting_start": 30600,
+  "meeting_end": 36000,
+  "incident": {"kind": "stop_closure", "stop": "tram:7", "start": 30240, "end": 36000},
+  "notice": "Konak İskele tramvay durağı 08:24 ile 10:00 arasında kapalı."
+}
