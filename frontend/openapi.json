@@ -703,6 +703,10 @@
             "type": "string",
             "title": "Service Date"
           },
+          "scenario": {
+            "type": "string",
+            "title": "Scenario"
+          },
           "notice": {
             "type": "string",
             "title": "Notice"
@@ -817,6 +821,7 @@
           "status",
           "architecture",
           "service_date",
+          "scenario",
           "notice",
           "origin_a",
           "origin_b",

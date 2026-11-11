@@ -2,7 +2,7 @@ SHELL := /bin/sh
 PY := uv run --locked --project backend
 WEB := cd frontend && corepack pnpm
 
-.PHONY: setup check test build dev dev-api dev-web hooks verify-public
+.PHONY: setup check test build e2e dev dev-api dev-web hooks verify-public
 
 setup:
 	uv sync --locked --project backend
@@ -39,3 +39,6 @@ hooks:
 
 verify-public:
 	$(PY) python scripts/check_public_boundary.py --staged --history --require-denylist
+
+e2e:
+	$(WEB) run e2e

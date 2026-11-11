@@ -118,7 +118,8 @@ class RunService:
                 await compiled.ainvoke(entry, config, durability="sync")  # pyright: ignore[reportUnknownMemberType]
         except Exception:
             logger.exception("run worker failed", extra={"run_id": receipt.run_id})
-            self.store.step(
+            await asyncio.to_thread(
+                self.store.step,
                 receipt.run_id,
                 receipt.version,
                 "worker-error",

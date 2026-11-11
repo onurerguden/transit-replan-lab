@@ -101,7 +101,7 @@ def create_app(path: Path | None = None) -> FastAPI:
         key: IdempotencyKey,
         runs: Service,
     ) -> Receipt:
-        receipt = runs.store.command(run_id, key, body)
+        receipt = await asyncio.to_thread(runs.store.command, run_id, key, body)
         runs.enqueue(receipt)
         return receipt
 
@@ -112,7 +112,7 @@ def create_app(path: Path | None = None) -> FastAPI:
         key: IdempotencyKey,
         runs: Service,
     ) -> Receipt:
-        receipt = runs.store.command(run_id, key, body)
+        receipt = await asyncio.to_thread(runs.store.command, run_id, key, body)
         runs.enqueue(receipt)
         return receipt
 

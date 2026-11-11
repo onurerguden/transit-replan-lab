@@ -119,6 +119,7 @@ class RunStore:
             status=run.status,
             architecture=run.architecture,
             service_date=run.scenario.service_date.isoformat(),
+            scenario=run.scenario.id,
             notice=run.scenario.notice,
             origin_a=run.scenario.a.stop,
             origin_b=run.scenario.b.stop,

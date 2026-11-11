@@ -51,6 +51,7 @@ class RunView(Record):
     status: Status
     architecture: Architecture
     service_date: str
+    scenario: str
     notice: str
     origin_a: str
     origin_b: str

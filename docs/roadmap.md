@@ -1,6 +1,6 @@
 # Roadmap
 
-The current phase is **4 · Simulation interface**. Run `make check` and review the checklist before each phase commit.
+The current phase is **5 · Agent variants**. Run `make check` and review the checklist before each phase commit.
 
 ## 0 · Foundation
 
@@ -35,9 +35,9 @@ The Phase 0 workflow passed on macOS and in an Ubuntu container via act. The mai
 
 ## 4 · Simulation interface
 
-- [ ] Show offline before and after maps, closure markers, offer focus, role actions, and an accessible timeline.
-- [ ] Generate client types from OpenAPI and keep proposals visually distinct from verified plans.
-- [ ] Verify keyboard navigation, reconnect consistency, and the model-free browser path.
+- [x] Show offline before and after maps, closure markers, offer focus, role actions, and an accessible timeline.
+- [x] Generate client types from OpenAPI and keep proposals visually distinct from verified plans.
+- [x] Verify keyboard navigation, reconnect consistency, and the model-free browser path.
 
 ## 5 · Agent variants
 
