@@ -1,6 +1,6 @@
 # Roadmap
 
-The current phase is **9 · Packaging and release**. Run `make check` and review the checklist before each phase commit.
+The v1 implementation and verification checklist is complete. See the [v1.0.0 release](https://github.com/onurerguden/transit-replan-lab/releases/tag/v1.0.0) for the tagged snapshot.
 
 ## 0 · Foundation
 
@@ -69,4 +69,4 @@ The Phase 0 workflow passed on macOS and in an Ubuntu container via act. The mai
 - [x] Validate Docker and local setup from a clean checkout and run model-free browser CI.
 - [x] Publish a project README with screenshots, reproduction commands, outcomes, attribution, and limitations.
 - [x] Review candidate files, complete history, prompts, data, and secret scans with the maintainer.
-- [ ] Create and push the public repository after approval and tag v1.0.0.
+- [x] Publish the public repository and tag the release after CI.

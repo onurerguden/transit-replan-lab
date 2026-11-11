@@ -13,3 +13,5 @@ Reproduce with `OLLAMA_BASE_URL=http://127.0.0.1:11434 uv run --locked --project
 ## v1 release candidate
 
 On 2026-11-12, a clean local clone passed locked dependency installation, lint, strict type checking, 25 backend tests, the frontend test, the production build, and four Playwright tests. The same clone built and started with Docker Compose. Its Nginx deployment passed the reconnection and route verification browser test. The production containers also reached local Ollama on the host and returned verified and infeasible outcomes for the two bundled scenarios. The verified real-model run used seven calls and 158 generated tokens.
+
+The first [hosted Ubuntu CI run](https://github.com/onurerguden/transit-replan-lab/actions/runs/43115185956) passed the full workflow, including all four browser tests.
