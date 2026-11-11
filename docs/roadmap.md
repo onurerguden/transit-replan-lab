@@ -1,6 +1,6 @@
 # Roadmap
 
-The current phase is **7 · Comparative experiment**. Run `make check` and review the checklist before each phase commit.
+The current phase is **8 · Operator LoRA**. Run `make check` and review the checklist before each phase commit.
 
 ## 0 · Foundation
 
@@ -53,9 +53,9 @@ The Phase 0 workflow passed on macOS and in an Ubuntu container via act. The mai
 
 ## 7 · Comparative experiment
 
-- [ ] Commit the protocol before results, with 24 development and 60 locked scenarios and a counteroffer ablation.
-- [ ] Run a resumable benchmark with fixed inputs, per-row provenance, and paired bootstrap intervals.
-- [ ] Use development evidence for the default, evaluate the locked partition, and publish measured metrics.
+- [x] Commit the protocol before results, with 24 development and 60 locked scenarios and a counteroffer ablation.
+- [x] Run a resumable benchmark with fixed inputs, per-row provenance, and paired bootstrap intervals.
+- [x] Use development evidence for the default, evaluate the locked partition, and publish measured metrics.
 
 ## 8 · Operator LoRA
 

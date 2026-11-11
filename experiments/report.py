@@ -68,7 +68,8 @@ def table(data: list[Row], split: str) -> str:
     baseline = {row.case: row for row in selected if row.arm == "rules"}
     head = (
         "| Coordinator | N | Verified and correct | Outcome correct | Clarification | "
-        "Hard violations | Median gap | Median recovery delay | Mean calls | Mean tokens | p95 | Δ vs rules, 95% CI |"
+        "Hard violations | Median gap | Median recovery delay | Mean calls | Mean tokens | "
+        "p95 | Δ vs rules, 95% CI |"
     )
     lines = [head, "|" + "|".join([" --- "] * 12) + "|"]
     for name in ("rules", "single", "three", "five", "five-no-counter"):
@@ -77,8 +78,10 @@ def table(data: list[Row], split: str) -> str:
             continue
         eligible = [row for row in arm if row.oracle == "feasible"]
         clarify = [row for row in arm if row.oracle == "clarification"]
-        late = [row.late_s for row in arm if row.late_s is not None]
-        recovery = [row.delay_s for row in arm if row.delay_s is not None]
+        late = [row.late_s for row in arm if row.success and row.late_s is not None]
+        recovery = [
+            row.delay_s for row in arm if row.success and row.delay_s is not None
+        ]
         low, high = paired_ci(arm, baseline)
         lateness = f"{median(late):.0f} s" if late else "—"
         delay = f"{median(recovery):.0f} s" if recovery else "—"
@@ -96,13 +99,40 @@ def table(data: list[Row], split: str) -> str:
 
 
 def report(data: list[Row]) -> str:
-    sections = ["# Comparative evaluation", ""]
+    sections = [
+        "# Comparative evaluation",
+        "",
+        (
+            "Verified and correct is evaluated on reference-feasible cases. Gap and delay use "
+            "successful cases with a reference meeting time."
+        ),
+        "",
+    ]
     for split in ("dev", "locked"):
         if not any(row.split == split for row in data):
             continue
         sections += [f"## {split.title()}", "", table(data, split), ""]
     locked = [row for row in data if row.split == "locked"]
     if locked:
+        sections += [
+            "## Correct intake by language",
+            "",
+            "| Coordinator | Turkish | English |",
+            "| --- | ---: | ---: |",
+        ]
+        for name in ("rules", "single", "three", "five"):
+            cells: list[str] = []
+            for language in ("tr", "en"):
+                subset = [
+                    row
+                    for row in locked
+                    if row.arm == name and row.language == language
+                ]
+                cells.append(
+                    f"{sum(row.incident_correct for row in subset)}/{len(subset)}"
+                )
+            sections.append(f"| {name} | {' | '.join(cells)} |")
+        sections.append("")
         matched = {row.case: row for row in locked if row.arm == "five"}
         ablation = [row for row in locked if row.arm == "five-no-counter"]
         if ablation:
@@ -126,6 +156,7 @@ def report(data: list[Row]) -> str:
                 f"- `{row.case}` / {row.arm} ended with `{row.status}` "
                 f"against expected `{row.oracle}`. Incident exact match was "
                 f"{'true' if row.incident_correct else 'false'}."
+                + (f" The error code was `{row.error}`." if row.error else "")
             )
     return "\n".join(sections).rstrip() + "\n"
 
