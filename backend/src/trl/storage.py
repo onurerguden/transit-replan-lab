@@ -141,7 +141,10 @@ class RunStore:
                 )
             )
             metrics = connection.execute(
-                """SELECT count(*) calls, coalesce(sum(input_tokens),0) input_tokens,
+                """SELECT CASE WHEN count(*) = 0 THEN 'none'
+                               WHEN min(model) = 'replay' THEN 'replay' ELSE 'ollama'
+                          END backend,
+                          count(*) calls, coalesce(sum(input_tokens),0) input_tokens,
                           coalesce(sum(output_tokens),0) output_tokens,
                           coalesce(sum(duration_ms),0) model_ms
                    FROM model_calls WHERE run_id=? AND version=?""",

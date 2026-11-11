@@ -1,6 +1,6 @@
 [project]
 name = "transit-replan-lab"
-version = "0.1.0"
+version = "1.0.0"
 description = "A timetable-backed simulator for coordinating two riders during transit disruptions."
 requires-python = ">=3.12,<3.13"
 dependencies = [

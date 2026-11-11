@@ -53,3 +53,26 @@ test('shows independent votes and a mediated replay on mobile', async ({ page })
   await expect(page.getByText(/7 model calls/)).toBeVisible()
   expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(390)
 })
+
+test('withdraws the old verified plan while a new revision is pending', async ({ page }) => {
+  await page.goto('/')
+  await expect(page.getByRole('status')).toHaveText('Ready')
+  await page.getByRole('button', { name: 'Apply disruption' }).click()
+  await expect(page.getByRole('status')).toHaveText('Verified')
+  let release = () => {}
+  const gate = new Promise<void>(resolve => { release = resolve })
+  await page.route('**/events?*', async route => {
+    await gate
+    await route.continue()
+  })
+  try {
+    await page.getByRole('button', { name: 'Apply disruption' }).click()
+    await expect(page.getByText('Revision 2')).toBeVisible()
+    await expect(page.getByRole('status')).toHaveText('Replanning')
+    await expect(page.getByRole('region', { name: 'New plan' })).not.toContainText('Verified')
+    await expect(page.getByRole('region', { name: 'Joint offers' })).toHaveCount(0)
+  } finally {
+    release()
+  }
+  await expect(page.getByRole('status')).toHaveText('Verified')
+})

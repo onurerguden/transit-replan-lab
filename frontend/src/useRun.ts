@@ -67,9 +67,19 @@ export function useRun() {
       const body = kind === 'disruptions'
         ? { version: run.version, notice: text }
         : { version: run.version, answer: text }
-      await command<Receipt>(`${path}/${kind}`, body)
+      const receipt = await command<Receipt>(`${path}/${kind}`, body)
       if (generation !== epoch.current) return
-      setRun(current => current?.id === id ? { ...current, status: 'planning' } : current)
+      setRun(current => current?.id === id ? {
+        ...current,
+        version: receipt.version,
+        status: 'planning',
+        offers: [],
+        votes: [],
+        verified_offer: null,
+        incident: kind === 'disruptions' ? null : current.incident,
+        question: null,
+        error: null,
+      } : current)
       stream.current?.close()
       const source = new EventSource(`${path}/events?after=${cursor.current}`)
       stream.current = source
@@ -81,7 +91,7 @@ export function useRun() {
         if (event.seq <= cursor.current) return
         cursor.current = event.seq
         setEvents(current => [...current, event])
-        const final = finalEvents.has(event.kind)
+        const final = event.version === receipt.version && finalEvents.has(event.kind)
         if (final) {
           source.close()
           setConnection('idle')

@@ -1,7 +1,35 @@
 services:
+  api:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    environment:
+      TRL_MODEL: ${TRL_MODEL:-replay}
+      TRL_OLLAMA_MODEL: ${TRL_OLLAMA_MODEL:-qwen3.5:4b-q4_K_M}
+      OLLAMA_BASE_URL: ${OLLAMA_BASE_URL:-http://host.docker.internal:11434}
+      OTEL_EXPORTER_OTLP_ENDPOINT: ${OTEL_EXPORTER_OTLP_ENDPOINT:-}
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    volumes:
+      - run-state:/var/lib/trl
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/healthz', timeout=2).close()"]
+      interval: 4s
+      timeout: 3s
+      retries: 12
+  web:
+    build: ./frontend
+    depends_on:
+      api:
+        condition: service_healthy
+    ports:
+      - "127.0.0.1:${TRL_PORT:-8080}:8080"
   jaeger:
     image: jaegertracing/jaeger:2.23.0@sha256:3823829974ccfc2485d2e48b165579091f32295022ae80ca49704e2f4834116e
     profiles: [obs]
     ports:
       - "127.0.0.1:16686:16686"
       - "127.0.0.1:4318:4318"
+
+volumes:
+  run-state:

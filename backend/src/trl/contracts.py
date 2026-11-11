@@ -60,6 +60,7 @@ class ModelCall(Record):
 
 
 class Metrics(Record):
+    backend: Literal["none", "replay", "ollama"] = "none"
     calls: int = 0
     input_tokens: int = 0
     output_tokens: int = 0

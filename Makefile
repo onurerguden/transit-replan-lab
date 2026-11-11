@@ -28,7 +28,8 @@ test:
 build:
 	$(WEB) run build
 
-dev: dev-api
+dev:
+	$(MAKE) -j2 dev-api dev-web
 
 dev-api:
 	$(PY) uvicorn trl.api.app:app --host 127.0.0.1 --port 8000 --reload --reload-dir backend/src

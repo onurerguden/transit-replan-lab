@@ -190,6 +190,12 @@ export interface components {
         /** Metrics */
         Metrics: {
             /**
+             * Backend
+             * @default none
+             * @enum {string}
+             */
+            backend: "none" | "replay" | "ollama";
+            /**
              * Calls
              * @default 0
              */

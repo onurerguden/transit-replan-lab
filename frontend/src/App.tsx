@@ -161,7 +161,7 @@ export function App() {
                 <RotateCcw size={17} />
               </button>
             </div>
-            <button className="primary" type="button" disabled={active || !run || !text.trim()}
+            <button className="primary" type="button" disabled={active || !run || (!settingsChanged && !text.trim())}
               onClick={() => {
                 if (settingsChanged) {
                   void start(scenario, architecture)
@@ -183,6 +183,7 @@ export function App() {
             <span><Clock3 size={15} />{run.service_date} · İzmir time</span>
             <span><GitBranch size={15} />Revision {run.version}</span>
             {run.metrics.calls > 0 && <span><Activity size={15} />{run.metrics.calls} model calls
+              {run.metrics.backend === 'replay' && ' · Recorded replay'}
               {run.metrics.output_tokens > 0 && ` · ${(run.metrics.input_tokens + run.metrics.output_tokens).toLocaleString()} tokens · ${(run.metrics.model_ms / 1000).toFixed(1)} s`}
             </span>}
             {connection === 'reconnecting'  && <span className="reconnecting">Reconnecting…</span>}

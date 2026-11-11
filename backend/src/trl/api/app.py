@@ -66,7 +66,7 @@ def create_app(path: Path | None = None) -> FastAPI:
         async with runs.workers():
             yield
 
-    app = FastAPI(title="Transit Replan Lab", version="0.1.0", lifespan=lifespan)
+    app = FastAPI(title="Transit Replan Lab", version="1.0.0", lifespan=lifespan)
 
     @app.exception_handler(NotFound)
     async def missing(_request: Request, exc: NotFound) -> JSONResponse:
