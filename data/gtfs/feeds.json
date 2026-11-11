@@ -1,0 +1,18 @@
+[
+  {
+    "id": "metro",
+    "url": "https://www.izmirmetro.com.tr/gtfs/rail-metro-gtfs.zip",
+    "sha256": "c1a86738dac8de3749aff96f0ce92f432be6a4e9ce67769c2854a530f92ce5fd",
+    "routes": ["1", "2"],
+    "start": "2026-07-09",
+    "end": "2027-07-09"
+  },
+  {
+    "id": "tram",
+    "url": "https://www.tramizmir.com/gtfs/rail-tramizmir-gtfs.zip",
+    "sha256": "9af3877eb5d567ebe54a634f2f7188e66c8192fcbea96a89ca0496bf11a214fe",
+    "routes": ["KONAK"],
+    "start": "2026-07-16",
+    "end": "2027-07-16"
+  }
+]

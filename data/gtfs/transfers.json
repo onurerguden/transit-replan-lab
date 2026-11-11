@@ -1,0 +1,6 @@
+[
+  {"origin": "metro:2", "destination": "tram:7", "duration": 480},
+  {"origin": "tram:7", "destination": "metro:2", "duration": 480},
+  {"origin": "metro:17", "destination": "tram:21", "duration": 480},
+  {"origin": "tram:21", "destination": "metro:17", "duration": 480}
+]

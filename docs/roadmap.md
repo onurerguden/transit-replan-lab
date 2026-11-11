@@ -1,6 +1,6 @@
 # Roadmap
 
-The current phase is **1 · Domain and schedule**. Run `make check` and review the checklist before each phase commit.
+The current phase is **2 · Routing and verification**. Run `make check` and review the checklist before each phase commit.
 
 ## 0 · Foundation
 
@@ -15,10 +15,10 @@ The Phase 0 workflow passed on macOS and in an Ubuntu container via act. The mai
 
 ## 1 · Domain and schedule
 
-- [ ] Add domain types, fetch and checksum verification, and pinned feed provenance.
-- [ ] Load Metro M1 and Konak Tram including service calendars, exceptions, 24+ hour times, and pickup/drop-off.
-- [ ] Document two interchange links, walking assumptions, and a fixed service date.
-- [ ] Test genuine feeds and checksum mismatch.
+- [x] Add domain types, fetch and checksum verification, and pinned feed provenance.
+- [x] Load Metro M1 and Konak Tram including service calendars, exceptions, 24+ hour times, and pickup/drop-off.
+- [x] Document two interchange links, walking assumptions, and a fixed service date.
+- [x] Test genuine feeds and checksum mismatch.
 
 ## 2 · Routing and verification
 

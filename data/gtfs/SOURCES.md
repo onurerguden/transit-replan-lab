@@ -8,3 +8,7 @@ Schedule archives are published by İzmir Metropolitan Municipality and its tran
 | İzmir Tram | [rail-tramizmir-gtfs.zip](https://www.tramizmir.com/gtfs/rail-tramizmir-gtfs.zip) | `9af3877eb5d567ebe54a634f2f7188e66c8192fcbea96a89ca0496bf11a214fe` | 2026-07-16 through 2027-07-16 |
 
 Attribution for reuse is **İzmir Metropolitan Municipality · Public Transportation GTFS Data · CC BY 4.0**. Transit Replan Lab will extract Metro M1 and Konak Tram and apply synthetic disruptions without modifying the archived data.
+
+The demo service date is 2026-10-21 in Europe/Istanbul. Both feeds schedule weekday service that day. The archived feeds do not provide shapes or stop-level wheelchair fields. Map geometry uses stop sequences and straight segments. The two documented interchanges use an assumed eight-minute walk in each direction, with unknown accessibility.
+
+Run `uv run --locked --project backend python scripts/fetch_gtfs.py` to verify the pinned archives or recover missing copies from upstream if those exact bytes remain available.
