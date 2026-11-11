@@ -15,8 +15,8 @@ def normalize(text: str) -> str:
 
 def rule_notice(text: str, schedule: Schedule, day: date) -> Disruption | None:
     value = normalize(text)
-    trip_ids = re.findall(r"\b(?:metro|tram):[a-zA-Z0-9_-]+", text)
-    if len(trip_ids) == 1 and trip_ids[0] in schedule.trips:
+    trip_ids = trip_candidates(text, schedule)
+    if len(trip_ids) == 1:
         trip = trip_ids[0]
         if re.search(r"cancel|iptal", value):
             return TripCancellation(trip=trip, service_date=day)
@@ -31,19 +31,43 @@ def rule_notice(text: str, schedule: Schedule, day: date) -> Disruption | None:
     start, end = (int(hour) * 3600 + int(minute) * 60 for hour, minute in stamps)
     if end <= start:
         return None
-    explicit = [key for key in schedule.stops if re.search(rf"\b{re.escape(key)}\b", value)]
-    named = [
-        (len(name), stop.id)
-        for stop in schedule.stops.values()
-        if re.search(rf"(?<!\w){re.escape(name := normalize(stop.name))}(?!\w)", value)
-    ]
-    longest = max((length for length, _ in named), default=0)
-    stops = explicit or [key for length, key in named if length == longest]
-    if len(stops) > 1:
-        for mode in ("metro", "tram"):
-            if mode in value:
-                stops = [key for key in stops if key.startswith(f"{mode}:")]
-                break
-    if len(stops) != 1 or (stops[0] == "metro:2" and "metro" not in value):
+    stops = stop_candidates(text, schedule)
+    if len(stops) != 1:
         return None
     return StopClosure(stop=stops[0], start=start, end=end)
+
+
+def stop_candidates(text: str, schedule: Schedule) -> tuple[str, ...]:
+    value = normalize(text)
+    explicit = tuple(key for key in schedule.stops if re.search(rf"\b{re.escape(key)}\b", value))
+    if explicit:
+        return explicit
+    modes = {
+        mode
+        for mode, pattern in (("metro", r"\bmetro\b"), ("tram", r"\btram(?:way|vay)?\b"))
+        if re.search(pattern, value)
+    }
+    names = {stop.id: normalize(stop.name) for stop in schedule.stops.values()}
+    matches = [
+        (name, stop)
+        for stop, name in names.items()
+        if re.search(rf"(?<!\w){re.escape(name)}(?!\w)", value)
+    ]
+    if not matches:
+        return ()
+    longest = max(len(name) for name, _ in matches)
+    matched_names = {name for name, _ in matches if len(name) == longest}
+    return tuple(
+        stop
+        for stop, name in names.items()
+        if (not modes or stop.partition(":")[0] in modes)
+        and any(name == match or name.startswith(match + " ") for match in matched_names)
+    )
+
+
+def trip_candidates(text: str, schedule: Schedule) -> tuple[str, ...]:
+    return tuple(
+        trip
+        for trip in re.findall(r"\b(?:metro|tram):[a-zA-Z0-9_-]+", text)
+        if trip in schedule.trips
+    )

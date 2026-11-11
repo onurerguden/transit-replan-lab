@@ -4,8 +4,9 @@ from pathlib import Path
 
 import pytest
 
-from trl.agents import OllamaModel, ReplayModel, view_for
+from trl.agents import ModelReply, OllamaModel, ReplayModel, RoleView, Stage, view_for
 from trl.contracts import CreateRun, Disrupt, RunBody
+from trl.domain import Record
 from trl.gtfs import load_schedule
 from trl.orchestration import RunService
 from trl.scenarios import load_scenario
@@ -104,5 +105,40 @@ def test_real_ollama_feasible_and_infeasible(tmp_path: Path) -> None:
             )
             print(key, view.status, view.metrics.model_dump_json())
         print("fixed-seed event order matched:", signatures[0] == signatures[1])
+
+    asyncio.run(exercise())
+
+
+def test_operator_cannot_guess_between_named_platforms(tmp_path: Path) -> None:
+    async def exercise() -> None:
+        schedule = load_schedule()
+
+        class Overconfident(ReplayModel):
+            async def generate(
+                self,
+                stage: Stage,
+                view: RoleView,
+                schema: type[Record],
+                repair: bool,
+            ) -> ModelReply:
+                return ModelReply(
+                    '{"kind":"stop_closure","stop":"tram:7","start":"08:24","end":"10:00"}',
+                    5,
+                    4,
+                )
+
+        store = RunStore(tmp_path / "ambiguous.sqlite")
+        service = RunService(store, schedule, Overconfident(schedule))
+        run = service.new_run(CreateRun(architecture="five"), "start")
+        receipt = store.command(
+            run.run_id,
+            "notice",
+            Disrupt(version=0, notice="Konak is closed from 08:24 to 10:00."),
+        )
+        await service.execute(receipt)
+        view = store.view(run.run_id)
+        assert view.status == "clarification"
+        assert view.incident is None and view.verified_offer is None
+        assert not view.votes and view.metrics.calls == 1
 
     asyncio.run(exercise())

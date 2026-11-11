@@ -22,6 +22,7 @@ from trl.agents import (
 from trl.contracts import EventDraft, RunBody
 from trl.domain import Disruption, Offer, Record, Rider, Vote
 from trl.gtfs import Schedule
+from trl.notice import stop_candidates, trip_candidates
 from trl.observability import tracer
 from trl.storage import Conflict, RunStore
 
@@ -119,14 +120,15 @@ class Negotiator:
 
     async def notice(self, run: RunBody) -> Disruption | None:
         step = "operator:clarified" if run.clarification else "operator:ingest"
-        result = await self.ask(
-            run,
-            "operator",
-            step,
-            view_for("operator", run, self.schedule),
-            NoticeDecision,
-        )
-        return parse_decision(result, self.schedule, run.scenario.service_date)
+        view = view_for("operator", run, self.schedule)
+        result = await self.ask(run, "operator", step, view, NoticeDecision)
+        event = parse_decision(result, self.schedule, run.scenario.service_date)
+        text = str(view["notice"])
+        if event is None:
+            return None
+        if event.kind == "stop_closure":
+            return event if stop_candidates(text, self.schedule) == (event.stop,) else None
+        return event if trip_candidates(text, self.schedule) == (event.trip,) else None
 
     def stored_choice(self, run: RunBody, key: str) -> Choice | None:
         for call in self.store.calls(run.id, run.version, key):
