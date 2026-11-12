@@ -57,6 +57,7 @@ venv = ".venv"
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+pythonpath = [".."]
 addopts = "--strict-config --strict-markers -ra"
 markers = ["ollama: requires a running local Ollama instance"]
 

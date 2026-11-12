@@ -348,19 +348,93 @@
             "title": "Version"
           },
           "answer": {
-            "type": "string",
-            "maxLength": 400,
-            "minLength": 1,
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 400,
+                "minLength": 1
+              },
+              {
+                "type": "null"
+              }
+            ],
             "title": "Answer"
+          },
+          "question_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 64,
+                "minLength": 1
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Question Id"
+          },
+          "option_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 32,
+                "minLength": 1
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Option Id"
           }
         },
         "additionalProperties": false,
         "type": "object",
         "required": [
-          "version",
-          "answer"
+          "version"
         ],
         "title": "Clarify"
+      },
+      "Counterfactual": {
+        "properties": {
+          "trip": {
+            "type": "string",
+            "title": "Trip"
+          },
+          "extra_seconds": {
+            "type": "integer",
+            "title": "Extra Seconds",
+            "default": 120
+          },
+          "meeting": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 0.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Meeting"
+          },
+          "failure": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Failure"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "trip"
+        ],
+        "title": "Counterfactual"
       },
       "CreateRun": {
         "properties": {
@@ -368,7 +442,8 @@
             "type": "string",
             "enum": [
               "demo",
-              "infeasible"
+              "infeasible",
+              "resilience"
             ],
             "title": "Scenario",
             "default": "demo"
@@ -388,6 +463,74 @@
             "type": "boolean",
             "title": "Counteroffers",
             "default": true
+          },
+          "workflow": {
+            "type": "string",
+            "enum": [
+              "legacy",
+              "vnext"
+            ],
+            "title": "Workflow",
+            "default": "legacy"
+          },
+          "operator_mode": {
+            "anyOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "rules",
+                  "hybrid"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Operator Mode"
+          },
+          "route_policy": {
+            "type": "string",
+            "enum": [
+              "earliest",
+              "robust",
+              "balanced"
+            ],
+            "title": "Route Policy",
+            "default": "earliest"
+          },
+          "preference_a": {
+            "anyOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "fewer_transfers",
+                  "less_wait",
+                  "less_walking",
+                  "earlier_arrival"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Preference A"
+          },
+          "preference_b": {
+            "anyOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "fewer_transfers",
+                  "less_wait",
+                  "less_walking",
+                  "earlier_arrival"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Preference B"
           }
         },
         "additionalProperties": false,
@@ -416,6 +559,49 @@
         ],
         "title": "Disrupt"
       },
+      "Fact": {
+        "properties": {
+          "slot": {
+            "type": "string",
+            "enum": [
+              "target",
+              "kind",
+              "start",
+              "end",
+              "delay"
+            ],
+            "title": "Slot"
+          },
+          "value": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "integer"
+              }
+            ],
+            "title": "Value"
+          },
+          "span": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Span"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "slot",
+          "value"
+        ],
+        "title": "Fact"
+      },
       "HTTPValidationError": {
         "properties": {
           "detail": {
@@ -439,6 +625,147 @@
         },
         "type": "object",
         "title": "Health"
+      },
+      "Hypothesis": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "incident": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/StopClosure"
+              },
+              {
+                "$ref": "#/components/schemas/TripCancellation"
+              },
+              {
+                "$ref": "#/components/schemas/TripDelay"
+              }
+            ],
+            "title": "Incident",
+            "discriminator": {
+              "propertyName": "kind",
+              "mapping": {
+                "stop_closure": "#/components/schemas/StopClosure",
+                "trip_cancellation": "#/components/schemas/TripCancellation",
+                "trip_delay": "#/components/schemas/TripDelay"
+              }
+            }
+          },
+          "facts": {
+            "items": {
+              "$ref": "#/components/schemas/Fact"
+            },
+            "type": "array",
+            "title": "Facts"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "id",
+          "incident",
+          "facts"
+        ],
+        "title": "Hypothesis"
+      },
+      "Impact": {
+        "properties": {
+          "hypothesis": {
+            "$ref": "#/components/schemas/Hypothesis"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "feasible",
+              "infeasible",
+              "search_incomplete"
+            ],
+            "title": "Status"
+          },
+          "preview": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Offer"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "hypothesis",
+          "status"
+        ],
+        "title": "Impact"
+      },
+      "Intake": {
+        "properties": {
+          "action": {
+            "type": "string",
+            "enum": [
+              "apply",
+              "ask",
+              "abstain"
+            ],
+            "title": "Action"
+          },
+          "facts": {
+            "items": {
+              "$ref": "#/components/schemas/Fact"
+            },
+            "type": "array",
+            "title": "Facts"
+          },
+          "reasons": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Reasons",
+            "default": []
+          },
+          "selected": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Hypothesis"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "impacts": {
+            "items": {
+              "$ref": "#/components/schemas/Impact"
+            },
+            "type": "array",
+            "title": "Impacts",
+            "default": []
+          },
+          "question": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Question"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "action",
+          "facts"
+        ],
+        "title": "Intake"
       },
       "Itinerary": {
         "properties": {
@@ -589,6 +916,162 @@
         ],
         "title": "Offer"
       },
+      "OfferEvidence": {
+        "properties": {
+          "offer_id": {
+            "type": "string",
+            "title": "Offer Id"
+          },
+          "policies": {
+            "items": {
+              "type": "string",
+              "enum": [
+                "earliest",
+                "robust",
+                "balanced"
+              ]
+            },
+            "type": "array",
+            "title": "Policies"
+          },
+          "successful": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Successful"
+          },
+          "total": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Total"
+          },
+          "transfer_slack": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Transfer Slack"
+          },
+          "extra_seconds_a": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Extra Seconds A"
+          },
+          "extra_seconds_b": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Extra Seconds B"
+          },
+          "counterfactual": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Counterfactual"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "offer_id",
+          "policies",
+          "successful",
+          "total",
+          "transfer_slack",
+          "extra_seconds_a",
+          "extra_seconds_b",
+          "counterfactual"
+        ],
+        "title": "OfferEvidence"
+      },
+      "Option": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "value": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "integer"
+              }
+            ],
+            "title": "Value"
+          },
+          "label": {
+            "type": "string",
+            "title": "Label"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "id",
+          "value",
+          "label"
+        ],
+        "title": "Option"
+      },
+      "Question": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "slot": {
+            "type": "string",
+            "enum": [
+              "target",
+              "kind",
+              "start",
+              "end",
+              "delay"
+            ],
+            "title": "Slot"
+          },
+          "prompt": {
+            "type": "string",
+            "title": "Prompt"
+          },
+          "options": {
+            "items": {
+              "$ref": "#/components/schemas/Option"
+            },
+            "type": "array",
+            "title": "Options",
+            "default": []
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "id",
+          "slot",
+          "prompt"
+        ],
+        "title": "Question"
+      },
       "Receipt": {
         "properties": {
           "run_id": {
@@ -700,6 +1183,74 @@
         ],
         "title": "RouteLine"
       },
+      "RunEvidence": {
+        "properties": {
+          "snapshot": {
+            "type": "string",
+            "title": "Snapshot"
+          },
+          "scenario_profile": {
+            "type": "string",
+            "title": "Scenario Profile"
+          },
+          "operator_mode": {
+            "type": "string",
+            "enum": [
+              "rules",
+              "hybrid"
+            ],
+            "title": "Operator Mode",
+            "default": "rules"
+          },
+          "intake": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Intake"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "offers": {
+            "items": {
+              "$ref": "#/components/schemas/OfferEvidence"
+            },
+            "type": "array",
+            "title": "Offers",
+            "default": []
+          },
+          "notice_text": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Notice Text"
+          },
+          "answer_text": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Answer Text"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "snapshot",
+          "scenario_profile"
+        ],
+        "title": "RunEvidence"
+      },
       "RunView": {
         "properties": {
           "id": {
@@ -717,6 +1268,7 @@
               "ready",
               "planning",
               "clarification",
+              "abstained",
               "verified",
               "no_agreement",
               "infeasible",
@@ -851,6 +1403,16 @@
           },
           "metrics": {
             "$ref": "#/components/schemas/Metrics"
+          },
+          "evidence": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/RunEvidence"
+              },
+              {
+                "type": "null"
+              }
+            ]
           }
         },
         "additionalProperties": false,
@@ -876,6 +1438,36 @@
           "metrics"
         ],
         "title": "RunView"
+      },
+      "Span": {
+        "properties": {
+          "source": {
+            "type": "string",
+            "enum": [
+              "notice",
+              "answer"
+            ],
+            "title": "Source"
+          },
+          "start": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Start"
+          },
+          "end": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "End"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "source",
+          "start",
+          "end"
+        ],
+        "title": "Span"
       },
       "Stop": {
         "properties": {

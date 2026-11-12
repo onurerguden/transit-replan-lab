@@ -25,17 +25,23 @@ from trl.domain import (
 )
 from trl.gtfs import DATA_ROOT, Schedule, service_second
 from trl.notice import rule_notice
+from trl.vnext import Extraction, preference_cost
 
 PROMPT_VERSION = "1"
 PROMPT_DIR = Path(__file__).with_name("prompts")
 RoleView = dict[str, JsonValue]
-Stage = Literal["operator", "analyst", "first", "mediator", "vote", "single"]
+Stage = Literal["operator_vnext", "operator", "analyst", "first", "mediator", "vote", "single"]
 MODEL = "qwen3.5:4b-q4_K_M"
 
 
 def view_digest(stage: Stage, view: RoleView) -> str:
+    revision = "2" if stage == "operator_vnext" or "vnext_preferences" in view else PROMPT_VERSION
     return hashlib.sha256(
-        json.dumps([PROMPT_VERSION, stage, view], ensure_ascii=False, sort_keys=True).encode()
+        json.dumps(
+            [revision, stage, view],
+            ensure_ascii=False,
+            sort_keys=True,
+        ).encode()
     ).hexdigest()
 
 
@@ -119,7 +125,7 @@ class OllamaModel:
         return await self.model_info(self.model)
 
     async def stage_info(self, stage: Stage) -> ModelInfo:
-        name = self.operator_model if stage == "operator" else None
+        name = self.operator_model if stage in {"operator", "operator_vnext"} else None
         return await self.model_info(name or self.model)
 
     async def generate(
@@ -130,6 +136,11 @@ class OllamaModel:
         repair: bool,
     ) -> ModelReply:
         prompt = (PROMPT_DIR / f"{stage}.md").read_text()
+        if "vnext_preferences" in view:
+            prompt += (
+                "\nUse the supplied preference_cost values. Lower values are better. "
+                "Keep votes independent and use only the offer IDs provided."
+            )
         if repair:
             prompt += "\nThe previous reply failed validation. Use only the output schema."
         info = await self.stage_info(stage)
@@ -139,7 +150,7 @@ class OllamaModel:
             temperature=0,
             seed=42,
             num_ctx=info.context,
-            num_predict=130,
+            num_predict=260 if stage == "operator_vnext" else 130,
             reasoning=False,
             keep_alive="15m",
             client_kwargs={"timeout": 120, "trust_env": False},
@@ -178,6 +189,8 @@ class ReplayModel:
         frame = self.frames.get("recorded", {}).get(view_digest(stage, view))
         if frame is not None:
             return ModelReply(schema.model_validate(frame).model_dump_json(), 0, 0)
+        if stage == "operator_vnext":
+            return ModelReply(Extraction().model_dump_json(), 0, 0)
         if stage == "operator":
             notice = str(view["notice"])
             day = date.fromisoformat(str(view["day"]))
@@ -228,21 +241,32 @@ def parse_decision(decision: NoticeDecision, schedule: Schedule, day: date) -> D
         return None
     try:
         if decision.kind == "stop_closure":
-            if decision.stop not in schedule.stops or not decision.start or not decision.end:
+            if (
+                decision.stop not in schedule.stops
+                or not decision.start
+                or not decision.end
+                or decision.trip is not None
+                or decision.minutes is not None
+            ):
                 return None
             start = service_second(decision.start + ":00")
             end = service_second(decision.end + ":00")
             if end > 172800:
                 return None
             return StopClosure(stop=decision.stop, start=start, end=end)
-        if decision.trip not in schedule.trips:
+        if (
+            decision.trip not in schedule.trips
+            or decision.stop is not None
+            or decision.start is not None
+            or decision.end is not None
+        ):
             return None
         trip = schedule.trips[decision.trip]
         if not schedule.runs(trip.service, day):
             return None
-        if decision.kind == "trip_cancellation":
+        if decision.kind == "trip_cancellation" and decision.minutes is None:
             return TripCancellation(trip=trip.id, service_date=day)
-        if decision.minutes is not None:
+        if decision.kind == "trip_delay" and decision.minutes is not None:
             return TripDelay(trip=trip.id, service_date=day, seconds=decision.minutes * 60)
     except ValueError:
         return None
@@ -275,6 +299,7 @@ def view_for(
             raise ValueError("A rider role requires a rider identity.")
         routes: list[JsonValue] = []
         constraint = run.scenario.a if rider == "a" else run.scenario.b
+        preference = run.preference_a if rider == "a" else run.preference_b
         for offer in offers:
             route = offer.a if rider == "a" else offer.b
             routes.append(
@@ -285,6 +310,11 @@ def view_for(
                     "wait": offer.meeting - route.arrival,
                     "legs": len(route.legs),
                     "stop": route.destination,
+                    **(
+                        {"preference_cost": preference_cost(offer, rider, preference)}
+                        if run.workflow == "vnext" and preference
+                        else {}
+                    ),
                 }
             )
         result: RoleView = {
@@ -292,6 +322,9 @@ def view_for(
             "constraints": constraint.model_dump(mode="json"),
             "offers": routes,
         }
+        if run.workflow == "vnext" and preference:
+            result["preference"] = preference
+            result["vnext_preferences"] = True
         if stage == "vote":
             result["proposed"] = proposed
         return result
@@ -320,10 +353,21 @@ def view_for(
                     "b_wait": offer.meeting - offer.b.arrival,
                     "a_legs": len(offer.a.legs),
                     "b_legs": len(offer.b.legs),
+                    **(
+                        {
+                            "a_preference_cost": preference_cost(offer, "a", run.preference_a),
+                            "b_preference_cost": preference_cost(offer, "b", run.preference_b),
+                        }
+                        if run.workflow == "vnext" and stage == "single"
+                        else {}
+                    ),
                 }
             )
     observed_choices: list[JsonValue] = [choice for choice in choices]
-    return {"offers": pool, "choices": observed_choices}
+    result: RoleView = {"offers": pool, "choices": observed_choices}
+    if run.workflow == "vnext" and stage == "single":
+        result["vnext_preferences"] = True
+    return result
 
 
 def configured_model(schedule: Schedule) -> ModelPort:

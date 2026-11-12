@@ -132,7 +132,25 @@ export interface components {
             /** Version */
             version: number;
             /** Answer */
-            answer: string;
+            answer?: string | null;
+            /** Question Id */
+            question_id?: string | null;
+            /** Option Id */
+            option_id?: string | null;
+        };
+        /** Counterfactual */
+        Counterfactual: {
+            /** Trip */
+            trip: string;
+            /**
+             * Extra Seconds
+             * @default 120
+             */
+            extra_seconds: number;
+            /** Meeting */
+            meeting?: number | null;
+            /** Failure */
+            failure?: string | null;
         };
         /** CreateRun */
         CreateRun: {
@@ -141,7 +159,7 @@ export interface components {
              * @default demo
              * @enum {string}
              */
-            scenario: "demo" | "infeasible";
+            scenario: "demo" | "infeasible" | "resilience";
             /**
              * Architecture
              * @default rules
@@ -153,6 +171,24 @@ export interface components {
              * @default true
              */
             counteroffers: boolean;
+            /**
+             * Workflow
+             * @default legacy
+             * @enum {string}
+             */
+            workflow: "legacy" | "vnext";
+            /** Operator Mode */
+            operator_mode?: ("rules" | "hybrid") | null;
+            /**
+             * Route Policy
+             * @default earliest
+             * @enum {string}
+             */
+            route_policy: "earliest" | "robust" | "balanced";
+            /** Preference A */
+            preference_a?: ("fewer_transfers" | "less_wait" | "less_walking" | "earlier_arrival") | null;
+            /** Preference B */
+            preference_b?: ("fewer_transfers" | "less_wait" | "less_walking" | "earlier_arrival") | null;
         };
         /** Disrupt */
         Disrupt: {
@@ -160,6 +196,17 @@ export interface components {
             version: number;
             /** Notice */
             notice: string;
+        };
+        /** Fact */
+        Fact: {
+            /**
+             * Slot
+             * @enum {string}
+             */
+            slot: "target" | "kind" | "start" | "end" | "delay";
+            /** Value */
+            value: string | number;
+            span?: components["schemas"]["Span"] | null;
         };
         /** HTTPValidationError */
         HTTPValidationError: {
@@ -173,6 +220,47 @@ export interface components {
              * @default ok
              */
             status: string;
+        };
+        /** Hypothesis */
+        Hypothesis: {
+            /** Id */
+            id: string;
+            /** Incident */
+            incident: components["schemas"]["StopClosure"] | components["schemas"]["TripCancellation"] | components["schemas"]["TripDelay"];
+            /** Facts */
+            facts: components["schemas"]["Fact"][];
+        };
+        /** Impact */
+        Impact: {
+            hypothesis: components["schemas"]["Hypothesis"];
+            /**
+             * Status
+             * @enum {string}
+             */
+            status: "feasible" | "infeasible" | "search_incomplete";
+            preview?: components["schemas"]["Offer"] | null;
+        };
+        /** Intake */
+        Intake: {
+            /**
+             * Action
+             * @enum {string}
+             */
+            action: "apply" | "ask" | "abstain";
+            /** Facts */
+            facts: components["schemas"]["Fact"][];
+            /**
+             * Reasons
+             * @default []
+             */
+            reasons: string[];
+            selected?: components["schemas"]["Hypothesis"] | null;
+            /**
+             * Impacts
+             * @default []
+             */
+            impacts: components["schemas"]["Impact"][];
+            question?: components["schemas"]["Question"] | null;
         };
         /** Itinerary */
         Itinerary: {
@@ -234,6 +322,50 @@ export interface components {
             /** Meeting */
             meeting: number;
         };
+        /** OfferEvidence */
+        OfferEvidence: {
+            /** Offer Id */
+            offer_id: string;
+            /** Policies */
+            policies: ("earliest" | "robust" | "balanced")[];
+            /** Successful */
+            successful: number;
+            /** Total */
+            total: number;
+            /** Transfer Slack */
+            transfer_slack: number | null;
+            /** Extra Seconds A */
+            extra_seconds_a: number | null;
+            /** Extra Seconds B */
+            extra_seconds_b: number | null;
+            counterfactual: components["schemas"]["Counterfactual"] | null;
+        };
+        /** Option */
+        Option: {
+            /** Id */
+            id: string;
+            /** Value */
+            value: string | number;
+            /** Label */
+            label: string;
+        };
+        /** Question */
+        Question: {
+            /** Id */
+            id: string;
+            /**
+             * Slot
+             * @enum {string}
+             */
+            slot: "target" | "kind" | "start" | "end" | "delay";
+            /** Prompt */
+            prompt: string;
+            /**
+             * Options
+             * @default []
+             */
+            options: components["schemas"]["Option"][];
+        };
         /** Receipt */
         Receipt: {
             /** Run Id */
@@ -280,6 +412,29 @@ export interface components {
             /** Stops */
             stops: string[];
         };
+        /** RunEvidence */
+        RunEvidence: {
+            /** Snapshot */
+            snapshot: string;
+            /** Scenario Profile */
+            scenario_profile: string;
+            /**
+             * Operator Mode
+             * @default rules
+             * @enum {string}
+             */
+            operator_mode: "rules" | "hybrid";
+            intake?: components["schemas"]["Intake"] | null;
+            /**
+             * Offers
+             * @default []
+             */
+            offers: components["schemas"]["OfferEvidence"][];
+            /** Notice Text */
+            notice_text?: string | null;
+            /** Answer Text */
+            answer_text?: string | null;
+        };
         /** RunView */
         RunView: {
             /** Id */
@@ -290,7 +445,7 @@ export interface components {
              * Status
              * @enum {string}
              */
-            status: "ready" | "planning" | "clarification" | "verified" | "no_agreement" | "infeasible" | "search_incomplete" | "model_error" | "verification_failed";
+            status: "ready" | "planning" | "clarification" | "abstained" | "verified" | "no_agreement" | "infeasible" | "search_incomplete" | "model_error" | "verification_failed";
             /**
              * Architecture
              * @enum {string}
@@ -322,6 +477,19 @@ export interface components {
             /** Error */
             error: string | null;
             metrics: components["schemas"]["Metrics"];
+            evidence?: components["schemas"]["RunEvidence"] | null;
+        };
+        /** Span */
+        Span: {
+            /**
+             * Source
+             * @enum {string}
+             */
+            source: "notice" | "answer";
+            /** Start */
+            start: number;
+            /** End */
+            end: number;
         };
         /** Stop */
         Stop: {

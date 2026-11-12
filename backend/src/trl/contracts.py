@@ -2,15 +2,21 @@
 
 from typing import Annotated, Literal
 
-from pydantic import Field, JsonValue
+from pydantic import Field, JsonValue, model_validator
 
 from trl.domain import Architecture, Disruption, Offer, Record, Scenario, Second, Status, Stop, Vote
+from trl.vnext import OperatorMode, Preference, RoutePolicy, RunEvidence, Workflow
 
 
 class CreateRun(Record):
-    scenario: Literal["demo", "infeasible"] = "demo"
+    scenario: Literal["demo", "infeasible", "resilience"] = "demo"
     architecture: Architecture = "rules"
     counteroffers: bool = True
+    workflow: Workflow = "legacy"
+    operator_mode: OperatorMode | None = None
+    route_policy: RoutePolicy = "earliest"
+    preference_a: Preference | None = None
+    preference_b: Preference | None = None
 
 
 class Disrupt(Record):
@@ -20,7 +26,15 @@ class Disrupt(Record):
 
 class Clarify(Record):
     version: Second
-    answer: Annotated[str, Field(min_length=1, max_length=400)]
+    answer: Annotated[str, Field(min_length=1, max_length=400)] | None = None
+    question_id: Annotated[str, Field(min_length=1, max_length=64)] | None = None
+    option_id: Annotated[str, Field(min_length=1, max_length=32)] | None = None
+
+    @model_validator(mode="after")
+    def answer_or_option(self) -> "Clarify":
+        if (self.answer is None) == (self.option_id is None):
+            raise ValueError("Provide exactly one answer or option.")
+        return self
 
 
 class Receipt(Record):
@@ -38,6 +52,13 @@ class RunBody(Record):
     initial: Offer | None
     incident: Disruption | None = None
     overlays: tuple[Disruption, ...] = ()
+    workflow: Workflow = "legacy"
+    operator_mode: OperatorMode = "rules"
+    route_policy: RoutePolicy = "earliest"
+    preference_a: Preference | None = None
+    preference_b: Preference | None = None
+    evidence: RunEvidence | None = None
+    clarification_option: str | None = None
     notice: str | None = None
     clarification: str | None = None
     question: str | None = None
@@ -86,6 +107,7 @@ class RunView(Record):
     verified_offer: str | None
     error: str | None
     metrics: Metrics
+    evidence: RunEvidence | None = None
 
 
 class EventDraft(Record):

@@ -1,28 +1,33 @@
 """Durable run coordination over application-owned steps."""
 
 import asyncio
+import json
 from collections.abc import AsyncGenerator
 from contextlib import asynccontextmanager
-from typing import TypedDict
+from typing import Literal, TypedDict
 
+import httpx
 import structlog
 from langchain_core.runnables import RunnableConfig
 from langgraph.checkpoint.sqlite.aio import AsyncSqliteSaver
 from langgraph.graph import END, START, StateGraph  # pyright: ignore[reportMissingTypeStubs]
 from langgraph.types import Command, Send, interrupt
 
-from trl.agents import ModelError, ModelPort, configured_model
+from trl.agents import ModelError, ModelPort, OllamaModel, configured_model
 from trl.contracts import CreateRun, EventDraft, Network, Receipt, RouteLine, RunBody
 from trl.disruptions import Overlay
-from trl.domain import Architecture, Rider, Scenario, Vote
-from trl.gtfs import Schedule
+from trl.domain import Architecture, Disruption, Offer, Rider, Scenario, Vote
+from trl.gtfs import DATA_ROOT, Schedule
+from trl.intake import answer_facts, decide, extract, slot_facts
 from trl.negotiation import Negotiator, StaleRun
 from trl.notice import rule_notice
 from trl.observability import observe, observe_async, tracer
+from trl.robustness import compare
 from trl.routing import SearchIncomplete, find_offers
 from trl.scenarios import load_scenario
 from trl.storage import RunStore
 from trl.verify import verify_offer
+from trl.vnext import Extraction, OperatorMode, preferred_offer
 
 logger = structlog.get_logger(__name__)
 
@@ -53,12 +58,34 @@ class RunService:
         self.store = store
         self.schedule = schedule
         self.negotiator = Negotiator(store, schedule, model or configured_model(schedule))
+        self.default_operator: OperatorMode = "rules"
         self.tasks: dict[tuple[str, int], asyncio.Task[None]] = {}
+
+    async def configure_default_operator(self) -> None:
+        model = self.negotiator.model
+        decision_path = DATA_ROOT / "fixtures" / "vnext-decision.json"
+        if not isinstance(model, OllamaModel) or not decision_path.is_file():
+            return
+        try:
+            decision = json.loads(decision_path.read_text())
+            if decision.get("default_operator") != "hybrid" or model.operator_model:
+                return
+            installed = await asyncio.wait_for(model.info(), timeout=2)
+            if installed.digest == decision.get("model_digest"):
+                self.default_operator = "hybrid"
+        except (OSError, ValueError, AttributeError, TimeoutError, ModelError, httpx.HTTPError):
+            logger.info("operator_default_rules")
 
     def new_run(self, request: CreateRun, key: str, scenario: Scenario | None = None) -> Receipt:
         scenario = scenario or load_scenario(request.scenario)
         initial = find_offers(self.schedule, scenario, limit=1)
-        return self.store.create(request, key, scenario, initial[0] if initial else None)
+        return self.store.create(
+            request,
+            key,
+            scenario,
+            initial[0] if initial else None,
+            default_operator=self.default_operator if request.workflow == "vnext" else "rules",
+        )
 
     def network(self) -> Network:
         lines: dict[str, RouteLine] = {}
@@ -196,6 +223,9 @@ class RunService:
         run = self.active_run(state)
         if run is None or self.store.has_step(run.id, run.version, "ingest"):
             return {}
+        if run.workflow == "vnext":
+            await self.ingest_vnext(run)
+            return {}
         text = run.notice or ""
         if run.clarification:
             text = f"{text}\n{run.clarification}"
@@ -253,6 +283,117 @@ class RunService:
         )
         return {}
 
+    def preview_incident(
+        self, run: RunBody, incident: Disruption
+    ) -> tuple[Literal["feasible", "infeasible", "search_incomplete"], Offer | None]:
+        try:
+            offers = find_offers(
+                self.schedule,
+                run.scenario,
+                run.version,
+                Overlay.compile((*run.overlays, incident)),
+                limit=1,
+            )
+        except SearchIncomplete:
+            return "search_incomplete", None
+        return ("feasible", offers[0]) if offers else ("infeasible", None)
+
+    async def ingest_vnext(self, run: RunBody) -> None:
+        assert run.evidence is not None
+        date = run.scenario.service_date
+        reasons: tuple[str, ...] = ()
+        if run.clarification is not None and run.evidence.intake:
+            facts = answer_facts(
+                run.evidence.intake,
+                run.clarification,
+                run.clarification_option,
+                self.schedule,
+                date,
+            )
+        else:
+            notice = run.notice or ""
+            facts, reasons = extract(notice, self.schedule, date)
+            if run.operator_mode == "hybrid" and not slot_facts(facts, "kind") and not reasons:
+                proposal = await self.negotiator.ask(
+                    run,
+                    "operator_vnext",
+                    "operator:source",
+                    {"notice": notice},
+                    Extraction,
+                    attempts=1,
+                )
+                facts, reasons = extract(notice, self.schedule, date, proposal)
+
+        def evaluate(
+            incident: Disruption,
+        ) -> tuple[Literal["feasible", "infeasible", "search_incomplete"], Offer | None]:
+            return self.preview_incident(run, incident)
+
+        decision = await asyncio.to_thread(
+            decide,
+            facts,
+            reasons,
+            self.schedule,
+            date,
+            evaluate,
+            run.version,
+            answered=run.clarification is not None,
+        )
+        evidence = run.evidence.model_copy(update={"intake": decision})
+        if decision.question:
+            prompt = decision.question.prompt
+            persisted = await asyncio.to_thread(
+                self.store.step,
+                run.id,
+                run.version,
+                "clarification-request",
+                updates={"status": "clarification", "question": prompt, "evidence": evidence},
+                event=EventDraft(kind="clarification", role="operator", message=prompt),
+            )
+            if not persisted and not self.store.has_step(
+                run.id, run.version, "clarification-request"
+            ):
+                raise StaleRun()
+            answer: object = interrupt(prompt)
+            if isinstance(answer, str):
+                latest = self.store.read(run.id)
+                if latest.version == run.version and latest.clarification:
+                    await self.ingest_vnext(latest)
+            return
+        if decision.selected is None:
+            await asyncio.to_thread(
+                self.store.step,
+                run.id,
+                run.version,
+                "ingest-abstain",
+                updates={"status": "abstained", "evidence": evidence},
+                event=EventDraft(
+                    kind="abstained",
+                    role="operator",
+                    message="The report did not support a single disruption.",
+                ),
+            )
+            return
+        incident = decision.selected.incident
+        await asyncio.to_thread(
+            self.store.step,
+            run.id,
+            run.version,
+            "ingest",
+            updates={
+                "incident": incident,
+                "overlays": (*run.overlays, incident),
+                "evidence": evidence,
+                "status": "planning",
+            },
+            event=EventDraft(
+                kind="incident",
+                role="operator",
+                message="Disruption recorded from verified report fields.",
+                details={"kind": incident.kind},
+            ),
+        )
+
     @observe("search")
     def search(self, state: GraphState) -> dict[str, object]:
         run = self.active_run(state)
@@ -261,10 +402,30 @@ class RunService:
         if self.store.has_step(run.id, run.version, "search"):
             return {}
         try:
+            overlay = Overlay.compile(run.overlays)
             offers = tuple(
-                find_offers(self.schedule, run.scenario, run.version, Overlay.compile(run.overlays))
+                find_offers(
+                    self.schedule,
+                    run.scenario,
+                    run.version,
+                    overlay,
+                    diverse=run.workflow == "vnext",
+                    initial=run.initial,
+                )
             )
-            updates = {} if offers else {"status": "infeasible"}
+            updates: dict[str, object] = {}
+            if run.evidence and offers:
+                offers, evidence = compare(
+                    self.schedule,
+                    run.scenario,
+                    offers,
+                    overlay,
+                    run.initial,
+                    run.route_policy,
+                )
+                updates["evidence"] = run.evidence.model_copy(update={"offers": evidence})
+            if not offers:
+                updates["status"] = "infeasible"
             event = EventDraft(
                 kind="offers" if offers else "infeasible",
                 role="router",
@@ -275,7 +436,7 @@ class RunService:
             )
         except SearchIncomplete:
             offers = ()
-            updates = {"status": "search_incomplete", "error": "label_budget"}
+            updates = {"status": "search_incomplete", "error": "search_budget"}
             event = EventDraft(kind="error", role="router", message="The search budget ran out.")
         self.store.step(run.id, run.version, "search", event=event, updates=updates, offers=offers)
         return {}
@@ -288,7 +449,7 @@ class RunService:
         view = self.store.view(run.id)
         if not view.offers or view.version != run.version:
             return {}
-        offer = view.offers[0]
+        offer = preferred_offer(view.offers, run.preference_a, run.preference_b)
         for rider in ("a", "b"):
             vote = Vote(rider=rider, version=run.version, offer_id=offer.id, accepted=True)
             self.store.step(

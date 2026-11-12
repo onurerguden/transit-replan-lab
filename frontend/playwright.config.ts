@@ -6,6 +6,7 @@ const external = process.env.TRL_E2E_BASE
 
 export default defineConfig({
   testDir: 'e2e',
+  outputDir: external ? 'test-results/deployed' : 'test-results/local',
   timeout: 45_000,
   use: {
     baseURL: external ?? `http://127.0.0.1:${webPort}`,
@@ -14,6 +15,7 @@ export default defineConfig({
       args: ['--use-gl=angle', '--use-angle=swiftshader', '--enable-unsafe-swiftshader'],
     },
     trace: 'retain-on-failure',
+    video: process.env.TRL_VNEXT_VIDEO === '1' ? 'on' : 'off',
   },
   webServer: external ? undefined : [
     {

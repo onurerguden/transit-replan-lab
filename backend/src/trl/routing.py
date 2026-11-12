@@ -2,7 +2,8 @@
 
 from bisect import bisect_left
 from collections import defaultdict
-from dataclasses import dataclass
+from collections.abc import Callable, Iterator
+from dataclasses import dataclass, replace
 from datetime import date, timedelta
 from heapq import heappop, heappush, nsmallest
 from itertools import count
@@ -13,6 +14,7 @@ from trl.gtfs import Schedule
 
 DAY = 86400
 MAX_LABELS = 30_000
+MAX_PAIRS = 500_000
 
 
 class SearchIncomplete(RuntimeError):
@@ -39,6 +41,27 @@ class Label:
     @property
     def walked(self) -> bool:
         return bool(self.legs and self.legs[-1].kind == "walk")
+
+
+@dataclass(frozen=True)
+class ArrivalWindow:
+    first: Label
+    last: int
+    open_until: int
+
+    def meeting_deadline(self, wait_limit: int) -> int:
+        return min(self.last + wait_limit, self.open_until)
+
+    def at_meeting(self, meeting: int, wait_limit: int) -> Label:
+        arrival = max(self.first.arrival, meeting - wait_limit)
+        if arrival == self.first.arrival:
+            return self.first
+        walk = self.first.legs[-1]
+        assert walk.kind == "walk"
+        leg = walk.model_copy(
+            update={"departure": walk.departure + arrival - walk.arrival, "arrival": arrival}
+        )
+        return replace(self.first, arrival=arrival, legs=(*self.first.legs[:-1], leg))
 
 
 def connections(
@@ -74,7 +97,7 @@ def alternatives(
     destinations: tuple[str, ...],
     deadline: int,
     overlay: Overlay,
-) -> list[Label]:
+) -> list[ArrivalWindow]:
     earliest = constraint.ready
     latest = min(deadline, earliest + constraint.travel_limit)
     if earliest > latest or not accessible(schedule, constraint, constraint.stop):
@@ -85,8 +108,15 @@ def alternatives(
     transfers: dict[str, list[Transfer]] = defaultdict(list)
     for transfer in schedule.transfers:
         transfers[transfer.origin].append(transfer)
-    final: list[Label] = []
+    final: list[ArrivalWindow] = []
     accepted = 0
+
+    def finish(label: Label, last: int) -> None:
+        until = overlay.last_open_second(label.stop, label.arrival, deadline)
+        if until >= label.arrival:
+            final.append(ArrivalWindow(label, min(last, until), until))
+        if len(final) > MAX_LABELS:
+            raise SearchIncomplete("Arrival window budget exhausted.")
 
     def add(label: Label) -> None:
         nonlocal accepted
@@ -107,27 +137,41 @@ def alternatives(
         costs = frontier[current.stop, current.arrival, current.walked]
         if (current.rides, current.walking) not in costs:
             continue
-        if current.stop in destinations:
-            final.append(current)
+        if current.stop in destinations and not current.walked:
+            finish(current, current.arrival)
         for walk in transfers[current.stop] if not current.walked else ():
-            departure = overlay.first_open_walk(
-                walk.origin, walk.destination, current.arrival, walk.duration
-            )
-            arrival = departure + walk.duration
             walking = current.walking + walk.duration
             if (
-                arrival <= latest
-                and walking <= constraint.walk_limit
-                and (not constraint.accessible_only or walk.accessible is True)
-                and accessible(schedule, constraint, walk.destination)
+                walking > constraint.walk_limit
+                or (constraint.accessible_only and walk.accessible is not True)
+                or not accessible(schedule, constraint, walk.destination)
             ):
+                continue
+            windows = overlay.walk_windows(
+                walk.origin,
+                walk.destination,
+                current.arrival,
+                latest - walk.duration,
+                walk.duration,
+            )
+            for index_in_walk, (departure, end) in enumerate(windows):
+                arrival = departure + walk.duration
                 leg = Walk(
                     origin=walk.origin,
                     destination=walk.destination,
                     departure=departure,
                     arrival=arrival,
                 )
-                add(Label(walk.destination, arrival, current.rides, walking, (*current.legs, leg)))
+                label = Label(
+                    walk.destination, arrival, current.rides, walking, (*current.legs, leg)
+                )
+                if index_in_walk == 0:
+                    # Earlier arrival can board any onward connection a later walk can reach.
+                    add(label)
+                if walk.destination in destinations:
+                    finish(label, end + walk.duration)
+                else:
+                    break
         if current.rides >= constraint.transfer_limit + 1:
             continue
         departures = index.get(current.stop, [])
@@ -204,6 +248,9 @@ def find_offers(
     version: int = 0,
     overlay: Overlay | None = None,
     limit: int = 6,
+    *,
+    diverse: bool = False,
+    initial: Offer | None = None,
 ) -> list[Offer]:
     overlay = overlay or Overlay.compile(())
     index = connections(
@@ -225,9 +272,9 @@ def find_offers(
     b = alternatives(
         schedule, index, scenario.b, scenario.destinations, scenario.meeting_end, overlay
     )
-    b_by_stop: dict[str, list[Label]] = defaultdict(list)
-    for label in b:
-        b_by_stop[label.stop].append(label)
+    b_by_stop: dict[str, list[ArrivalWindow]] = defaultdict(list)
+    for window in sorted(b, key=lambda item: item.first.arrival):
+        b_by_stop[window.first.stop].append(window)
 
     def rank(pair: tuple[Label, Label, int]) -> tuple[object, ...]:
         left, right, meeting = pair
@@ -241,18 +288,28 @@ def find_offers(
             leg_key(right.legs),
         )
 
-    pairs = (
-        (left, right, meeting)
-        for left in a
-        for right in b_by_stop[left.stop]
-        if (meeting := max(left.arrival, right.arrival, scenario.meeting_start))
-        <= min(
-            scenario.meeting_end,
-            left.arrival + scenario.a.wait_limit,
-            right.arrival + scenario.b.wait_limit,
-        )
-        and not overlay.closed(left.stop, min(left.arrival, right.arrival), meeting)
-    )
+    def pairs() -> Iterator[tuple[Label, Label, int]]:
+        examined = 0
+        for left in a:
+            deadline = left.meeting_deadline(scenario.a.wait_limit)
+            for right in b_by_stop[left.first.stop]:
+                if right.first.arrival > deadline:
+                    break
+                examined += 1
+                if examined > MAX_PAIRS:
+                    raise SearchIncomplete("Joint arrival pair budget exhausted.")
+                meeting = max(left.first.arrival, right.first.arrival, scenario.meeting_start)
+                if meeting <= min(deadline, right.meeting_deadline(scenario.b.wait_limit)):
+                    yield (
+                        left.at_meeting(meeting, scenario.a.wait_limit),
+                        right.at_meeting(meeting, scenario.b.wait_limit),
+                        meeting,
+                    )
+
+    if diverse:
+        selected = diverse_pairs(pairs(), rank, initial, scenario)
+    else:
+        selected = nsmallest(limit, pairs(), key=rank)
     return [
         Offer(
             id=f"v{version}-{number}",
@@ -261,5 +318,72 @@ def find_offers(
             b=itinerary(right, scenario.b),
             meeting=meeting,
         )
-        for number, (left, right, meeting) in enumerate(nsmallest(limit, pairs, key=rank), start=1)
+        for number, (left, right, meeting) in enumerate(selected, start=1)
     ]
+
+
+Pair = tuple[Label, Label, int]
+
+
+def trip_chain(legs: tuple[Leg, ...]) -> tuple[tuple[str, str, str, str], ...]:
+    return tuple(
+        (
+            leg.kind,
+            leg.origin,
+            leg.destination,
+            f"{leg.trip}:{leg.service_date}" if leg.kind == "ride" else "",
+        )
+        for leg in legs
+    )
+
+
+def transfer_margin(legs: tuple[Leg, ...]) -> tuple[int, Ride] | None:
+    previous: Ride | None = None
+    walking = 0
+    tightest: tuple[int, Ride] | None = None
+    for leg in legs:
+        if leg.kind == "walk":
+            walking += leg.arrival - leg.departure
+            continue
+        if previous:
+            slack = leg.departure - previous.arrival - walking
+            if tightest is None or slack < tightest[0]:
+                tightest = slack, previous
+        previous, walking = leg, 0
+    return tightest
+
+
+def diverse_pairs(
+    candidates: Iterator[Pair],
+    rank: Callable[[Pair], tuple[object, ...]],
+    initial: Offer | None,
+    scenario: Scenario,
+) -> list[Pair]:
+    pools: list[dict[object, tuple[tuple[object, ...], Pair]]] = [{}, {}, {}]
+    for pair in candidates:
+        a, b, _ = pair
+        base = rank(pair)
+        margins = [item[0] for route in (a, b) if (item := transfer_margin(route.legs))]
+        robustness = -min(margins) if margins else -86400
+        if initial is None:
+            burden = max(a.arrival - scenario.a.ready, b.arrival - scenario.b.ready)
+        else:
+            burden = max(a.arrival - initial.a.arrival, b.arrival - initial.b.arrival)
+        signature = trip_chain(a.legs), trip_chain(b.legs)
+        for pool, order in zip(pools, (base, (robustness, *base), (burden, *base)), strict=True):
+            current = pool.get(signature)
+            if current is not None:
+                if order < current[0]:  # pyright: ignore[reportOperatorIssue]
+                    pool[signature] = order, pair
+                continue
+            if len(pool) == 8:
+                worst = max(pool, key=lambda key: pool[key][0])
+                if order >= pool[worst][0]:  # pyright: ignore[reportOperatorIssue]
+                    continue
+                del pool[worst]
+            pool[signature] = order, pair
+    selected: dict[object, Pair] = {}
+    for pool in pools:
+        for signature, (_, pair) in sorted(pool.items(), key=lambda row: row[1][0]):
+            selected.setdefault(signature, pair)
+    return list(selected.values())

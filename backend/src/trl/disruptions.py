@@ -1,7 +1,7 @@
 """Compile immutable disruption overlays for a timetable query."""
 
 from collections import defaultdict
-from collections.abc import Iterable
+from collections.abc import Iterable, Iterator
 from dataclasses import dataclass
 from datetime import date
 
@@ -34,9 +34,28 @@ class Overlay:
         last = start if end is None else end
         return any(start < until and last >= since for since, until in self.closures.get(stop, ()))
 
-    def first_open_walk(self, origin: str, destination: str, at: int, duration: int) -> int:
+    def walk_windows(
+        self, origin: str, destination: str, start: int, latest: int, duration: int
+    ) -> Iterator[tuple[int, int]]:
+        """Yield inclusive departure ranges whose full walks avoid closed endpoints."""
         intervals = self.closures.get(origin, []) + self.closures.get(destination, [])
-        for start, end in sorted(intervals):
-            if at < end and at + duration >= start:
-                at = end
-        return at
+        at = start
+        for closed_at, reopened_at in sorted(intervals):
+            if at >= reopened_at:
+                continue
+            end = min(latest, closed_at - duration - 1)
+            if at <= end:
+                yield at, end
+            at = max(at, reopened_at)
+            if at > latest:
+                return
+        if at <= latest:
+            yield at, latest
+
+    def last_open_second(self, stop: str, at: int, deadline: int) -> int:
+        for start, end in self.closures.get(stop, ()):
+            if start <= at < end:
+                return at - 1
+            if at < start:
+                deadline = min(deadline, start - 1)
+        return deadline

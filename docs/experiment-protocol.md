@@ -8,7 +8,9 @@ Does explicit separation of rider preferences and mediation improve joint arriva
 
 There are 24 development cases and 60 locked cases, balanced between Turkish and English within each partition. Six families cover interchanges, other platforms, cancellation, delay, ambiguity, and a tight window. The generator seeds and SHA-256 manifest are committed with this protocol. The 12 premarked locked cases from the interchange and platform strata receive a second five-role run with counteroffers disabled.
 
-The locked partition is evaluated after the development decision. The runner verifies each checksum, serializes runs, and resumes from completed JSONL rows. It records the actual Git revision, prompt version, model digest, seed, and timetable hashes. Use a fresh output directory when changing any condition. Replay is a development smoke mode and produces no model-quality claim.
+The locked partition is evaluated after the development decision. The runner verifies each checksum, serializes runs, and resumes from completed JSONL rows. Current runs record the Git revision, any development worktree diff digest, prompt version, inference mode, base and optional Operator model digests, seed, and timetable hashes. Use a fresh output directory when changing any condition. Run the locked evaluation from a clean checkout. Replay is a development smoke mode.
+
+The output directory admits one writer per split. Completed rows end in a newline and are flushed to disk. Resume truncates a torn final record, retains completed pairs, and starts a fresh run for each missing pair so its wall-clock measurement reflects actual execution.
 
 ## Metrics and decision rule
 

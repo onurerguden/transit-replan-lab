@@ -62,6 +62,7 @@ def create_app(path: Path | None = None) -> FastAPI:
     async def lifespan(app: FastAPI) -> AsyncGenerator[None]:
         configure_observability()
         runs = RunService(RunStore(database), load_schedule())
+        await runs.configure_default_operator()
         app.state.service = runs
         async with runs.workers():
             yield
@@ -92,7 +93,7 @@ def create_app(path: Path | None = None) -> FastAPI:
     def new_run(body: CreateRun, key: IdempotencyKey, runs: Service) -> Receipt:
         return runs.new_run(body, key)
 
-    @app.get("/v1/runs/{run_id}")
+    @app.get("/v1/runs/{run_id}", response_model_exclude_unset=True)
     def run(view: CurrentRun) -> RunView:
         return view
 
@@ -128,12 +129,14 @@ def create_app(path: Path | None = None) -> FastAPI:
     ) -> AsyncIterator[ServerSentEvent]:
         cursor = max(last, after)
         while True:
-            batch = runs.store.events(view.id, cursor)
-            if not batch and follow and runs.store.read(view.id).status != "planning":
-                # A terminal update and its event commit together.
-                batch = runs.store.events(view.id, cursor)
-                if not batch:
-                    break
+            batch = await asyncio.to_thread(runs.store.events, view.id, cursor)
+            if not batch and follow:
+                state = await asyncio.to_thread(runs.store.read, view.id)
+                if state.status != "planning":
+                    # A terminal update and its event commit together.
+                    batch = await asyncio.to_thread(runs.store.events, view.id, cursor)
+                    if not batch:
+                        break
             for event in batch:
                 cursor = event.seq
                 yield ServerSentEvent(id=str(event.seq), data=event)

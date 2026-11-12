@@ -1,0 +1,26 @@
+{
+  "source": "2dc308f905c2e14d7c0e541ad4ff16e5560d1985bdff5f8be56fb12b827bff37",
+  "corpus_manifest_sha256": "9a84b3e5f4f74f1007c131430a3ae14a84e984fcf4e8138330d8de70cd3dc648",
+  "locked_sha256": "cdd6d8c9354dcb1e5029dbe2734c6e78b2b741f08e03e0b6478fd446668e0415",
+  "models": {
+    "hybrid": "d8b0f5e9760cd1682034f292d7ef72ec46f432149be0df7574bf2d6e92e38c04",
+    "adapter": "21e43df537058680585c62a710650f3333387964121c8cdd39930e861c073a5b"
+  },
+  "primary_arms": [
+    "legacy",
+    "rules",
+    "generic",
+    "fixed",
+    "hybrid",
+    "adapter"
+  ],
+  "gates": {
+    "hybrid_gain_pp": 10,
+    "adapter_gain_pp": 5,
+    "unsupported": 0,
+    "hard_violations": 0
+  },
+  "hybrid_candidate": true,
+  "adapter_candidate": false,
+  "coordinator_default": "rules"
+}

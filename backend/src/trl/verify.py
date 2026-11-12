@@ -14,7 +14,9 @@ def check_itinerary(
 ) -> str | None:
     if plan.origin != constraint.stop or plan.start != constraint.ready:
         return "origin_mismatch"
-    if plan.destination not in scenario.destinations:
+    if plan.origin not in schedule.stops:
+        return "unknown_origin"
+    if plan.destination not in scenario.destinations or plan.destination not in schedule.stops:
         return "unknown_destination"
     stop, at = constraint.stop, constraint.ready
     rides = walking = 0
@@ -81,9 +83,7 @@ def check_itinerary(
             rides += 1
         last_walk = leg.kind == "walk"
         stop, at = leg.destination, leg.arrival
-    if constraint.accessible_only and (
-        stop not in schedule.stops or schedule.stops[stop].accessible is not True
-    ):
+    if constraint.accessible_only and schedule.stops[stop].accessible is not True:
         return "unknown_stop_accessibility"
     if stop != plan.destination or at != plan.arrival:
         return "arrival_mismatch"
@@ -110,6 +110,12 @@ def verify_offer(
         not vote.accepted or vote.offer_id != offer.id or vote.version != version for vote in votes
     ):
         return "missing_current_acceptances"
+    return check_plan(schedule, scenario, offer, overlay)
+
+
+def check_plan(
+    schedule: Schedule, scenario: Scenario, offer: Offer, overlay: Overlay
+) -> str | None:
     for constraint, route in ((scenario.a, offer.a), (scenario.b, offer.b)):
         if error := check_itinerary(schedule, scenario, constraint, route, overlay):
             return error

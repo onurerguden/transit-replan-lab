@@ -13,6 +13,7 @@ Status = Literal[
     "ready",
     "planning",
     "clarification",
+    "abstained",
     "verified",
     "no_agreement",
     "infeasible",

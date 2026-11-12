@@ -6,6 +6,12 @@ export type Run = Schemas['RunView']
 export type Offer = Schemas['Offer']
 export type Itinerary = Schemas['Itinerary']
 export type Receipt = Schemas['Receipt']
+export type RunSetup = Partial<Schemas['CreateRun']>
+export type RoutePolicy = NonNullable<RunSetup['route_policy']>
+export type OperatorMode = NonNullable<RunSetup['operator_mode']>
+export type Preference = NonNullable<RunSetup['preference_a']>
+export type Intake = Schemas['Intake']
+export type OfferAnalysis = Schemas['OfferEvidence']
 export type Architecture = Schemas['CreateRun']['architecture']
 export type ScenarioId = NonNullable<Schemas['CreateRun']['scenario']>
 export type Stop = Schemas['Stop']
@@ -21,11 +27,17 @@ export interface RunEvent {
   details: Record<string, unknown>
 }
 
+export class HttpError extends Error {
+  constructor(readonly status: number, message: string) {
+    super(message)
+  }
+}
+
 export async function get<T>(path: string, init?: RequestInit): Promise<T> {
   const response = await fetch(path, init)
   if (!response.ok) {
     const detail = await response.json().catch(() => ({})) as { detail?: string }
-    throw new Error(detail.detail ?? 'The simulation service is unavailable.')
+    throw new HttpError(response.status, detail.detail ?? 'The simulation service is unavailable.')
   }
   return await response.json() as T
 }
@@ -45,6 +57,7 @@ export function time(seconds: number) {
 }
 
 export function elapsed(seconds: number) {
+  if (seconds > 0 && seconds < 60) return `${seconds} s`
   const minutes = Math.round(seconds / 60)
   return minutes >= 60 ? `${Math.floor(minutes / 60)}h ${minutes % 60}m` : `${minutes} min`
 }
