@@ -1,0 +1,19 @@
+{
+  "split": "dev",
+  "arms": [
+    "legacy",
+    "rules",
+    "generic",
+    "fixed",
+    "hybrid",
+    "adapter"
+  ],
+  "snapshot": "11686b1c28f8b1a9f146de261347967973b8c1e3544fd5d0b40a5d41f67d62fc",
+  "data": "449fc821ee5d1e9ab2df609c8059d607e4746864ac243eee43adec93ace10b85",
+  "git": "cf6414d4ffbf19a4da7a824b0371e1be6596b658",
+  "source": "2dc308f905c2e14d7c0e541ad4ff16e5560d1985bdff5f8be56fb12b827bff37",
+  "models": {
+    "hybrid": "d8b0f5e9760cd1682034f292d7ef72ec46f432149be0df7574bf2d6e92e38c04",
+    "adapter": "21e43df537058680585c62a710650f3333387964121c8cdd39930e861c073a5b"
+  }
+}

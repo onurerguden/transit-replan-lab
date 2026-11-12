@@ -1,0 +1,17 @@
+{
+  "method": "Operator-only QLoRA",
+  "runtime": "MLX-LM 0.32.0 and Ollama 0.40.16",
+  "hardware": "Apple M1 Pro, 16 GB",
+  "base": "Qwen3.5 4B 4-bit",
+  "seed": 42,
+  "training_examples": 360,
+  "validation_examples": 60,
+  "pilot_steps": 25,
+  "training_steps": 360,
+  "train_sha256": "18665acaec534c95469eb2eaa2c92816262411e683927c88bd88bce081aa4bd5",
+  "validation_sha256": "78cdaa0634eb77efdf99e32c75da630137f61786501a29d8a4b3a504940ae70d",
+  "adapter_gguf_sha256": "759ee5b25d997c84ecabd45ee3d8615e3087177afab5592f1a66be5defddfd1e",
+  "fused_gguf_sha256": "69784c7db2902df267cc86f5d021164f45cc0134fbf0f54bf91de82562e6334f",
+  "adapter_ollama_digest": "21e43df537058680585c62a710650f3333387964121c8cdd39930e861c073a5b",
+  "adoption": "retain_base"
+}

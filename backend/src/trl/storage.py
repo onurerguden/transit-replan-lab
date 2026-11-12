@@ -22,6 +22,18 @@ from trl.contracts import (
     RunView,
 )
 from trl.domain import Offer, Record, Scenario, Vote
+from trl.robustness import PROFILE, snapshot_id
+from trl.vnext import OperatorMode, RunEvidence
+
+VNEXT_FIELDS = {
+    "workflow",
+    "operator_mode",
+    "route_policy",
+    "preference_a",
+    "preference_b",
+    "evidence",
+    "clarification_option",
+}
 
 SCHEMA = """
 CREATE TABLE IF NOT EXISTS runs (
@@ -169,6 +181,20 @@ class RunStore:
             verified_offer=run.verified_offer,
             error=run.error,
             metrics=Metrics.model_validate(dict(metrics)),
+            **(
+                {
+                    "evidence": run.evidence.model_copy(
+                        update={
+                            "notice_text": run.notice,
+                            "answer_text": run.clarification
+                            if run.clarification_option is None
+                            else None,
+                        }
+                    )
+                }
+                if run.evidence is not None
+                else {}
+            ),
         )
 
     def events(self, run_id: str, after: int, limit: int = 128) -> list[Event]:
@@ -194,7 +220,12 @@ class RunStore:
         key: str,
         request: Record,
     ) -> tuple[str, Receipt | None]:
-        digest = hashlib.sha256(request.model_dump_json().encode()).hexdigest()
+        excluded: set[str] = set()
+        if isinstance(request, CreateRun) and request.workflow == "legacy":
+            excluded = VNEXT_FIELDS
+        elif isinstance(request, Clarify) and request.question_id is None:
+            excluded = {"question_id", "option_id"}
+        digest = hashlib.sha256(request.model_dump_json(exclude=excluded).encode()).hexdigest()
         row = connection.execute(
             "SELECT fingerprint, response FROM commands WHERE scope=? AND key=?",
             (scope, key),
@@ -229,8 +260,12 @@ class RunStore:
     def _update(connection: sqlite3.Connection, run: RunBody) -> None:
         connection.execute(
             "UPDATE runs SET version=?, status=?, body=? WHERE id=?",
-            (run.version, run.status, run.model_dump_json(), run.id),
+            (run.version, run.status, RunStore.encode_run(run), run.id),
         )
+
+    @staticmethod
+    def encode_run(run: RunBody) -> str:
+        return run.model_dump_json(exclude=VNEXT_FIELDS if run.workflow == "legacy" else set())
 
     def create(
         self,
@@ -238,21 +273,36 @@ class RunStore:
         key: str,
         scenario: Scenario,
         initial: Offer | None,
+        *,
+        default_operator: OperatorMode = "rules",
     ) -> Receipt:
         with self.write() as connection:
             digest, previous = self._get_command(connection, "create", key, request)
             if previous:
                 return previous
+            operator_mode = request.operator_mode or default_operator
             run = RunBody(
                 id=uuid4().hex,
                 architecture=request.architecture,
                 counteroffers=request.counteroffers,
                 scenario=scenario,
                 initial=initial,
+                workflow=request.workflow,
+                operator_mode=operator_mode,
+                route_policy=request.route_policy,
+                preference_a=request.preference_a,
+                preference_b=request.preference_b,
+                evidence=RunEvidence(
+                    snapshot=snapshot_id(scenario),
+                    scenario_profile=PROFILE,
+                    operator_mode=operator_mode,
+                )
+                if request.workflow == "vnext"
+                else None,
             )
             connection.execute(
                 "INSERT INTO runs VALUES (?,?,?,?)",
-                (run.id, run.version, run.status, run.model_dump_json()),
+                (run.id, run.version, run.status, self.encode_run(run)),
             )
             self._event(
                 connection,
@@ -283,6 +333,10 @@ class RunStore:
                         "status": "planning",
                         "notice": request.notice,
                         "clarification": None,
+                        "clarification_option": None,
+                        "evidence": run.evidence.model_copy(update={"intake": None, "offers": ()})
+                        if run.evidence
+                        else None,
                         "question": None,
                         "incident": None,
                         "verified_offer": None,
@@ -297,10 +351,26 @@ class RunStore:
             else:
                 if run.status != "clarification":
                     raise Conflict("This run is not waiting for clarification.")
+                if run.workflow == "vnext":
+                    question = (
+                        run.evidence.intake.question
+                        if run.evidence and run.evidence.intake
+                        else None
+                    )
+                    if not question or request.question_id != question.id:
+                        raise Conflict("This question belongs to a different revision.")
+                    if request.option_id and request.option_id not in {
+                        "unknown",
+                        *(item.id for item in question.options),
+                    }:
+                        raise Conflict("The option is absent from the current question.")
+                elif request.answer is None or request.question_id is not None:
+                    raise Conflict("Legacy runs require a text answer.")
                 run = run.model_copy(
                     update={
                         "status": "planning",
-                        "clarification": request.answer,
+                        "clarification": request.answer or request.option_id,
+                        "clarification_option": request.option_id,
                         "question": None,
                     }
                 )

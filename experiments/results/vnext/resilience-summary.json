@@ -1,0 +1,8 @@
+{
+  "groups": 33,
+  "simulated_worlds": 4224,
+  "earliest_joint_successes": 3891,
+  "robust_joint_successes": 4166,
+  "groups_improved": 18,
+  "median_extra_meeting_seconds_when_improved": 450.0
+}

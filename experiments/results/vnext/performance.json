@@ -1,0 +1,96 @@
+{
+  "serial": {
+    "p50_ms": 23.41337499092333,
+    "p95_ms": 25.482208002358675,
+    "evaluations_per_second": 71070.48858377246,
+    "peak_process_rss": 136036352,
+    "offers": [
+      {
+        "offer_id": "v1-8",
+        "policies": [
+          "robust"
+        ],
+        "successful": 128,
+        "total": 128,
+        "transfer_slack": 540,
+        "extra_seconds_a": 2700,
+        "extra_seconds_b": 2755,
+        "counterfactual": {
+          "trip": "metro:WEEKDAY_0_0025",
+          "extra_seconds": 120,
+          "meeting": 35148,
+          "failure": null
+        }
+      },
+      {
+        "offer_id": "v1-1",
+        "policies": [
+          "earliest",
+          "balanced"
+        ],
+        "successful": 109,
+        "total": 128,
+        "transfer_slack": 90,
+        "extra_seconds_a": 2250,
+        "extra_seconds_b": 2250,
+        "counterfactual": {
+          "trip": "metro:WEEKDAY_0_0025",
+          "extra_seconds": 120,
+          "meeting": null,
+          "failure": "missed_connection:tram:21"
+        }
+      }
+    ],
+    "meetings": [
+      35148,
+      34698
+    ]
+  },
+  "shared_results": {
+    "p50_ms": 5.424750008387491,
+    "p95_ms": 5.6937920016935095,
+    "evaluations_per_second": 306742.2457121899,
+    "peak_process_rss": 136036352,
+    "offers": [
+      {
+        "offer_id": "v1-8",
+        "policies": [
+          "robust"
+        ],
+        "successful": 128,
+        "total": 128,
+        "transfer_slack": 540,
+        "extra_seconds_a": 2700,
+        "extra_seconds_b": 2755,
+        "counterfactual": {
+          "trip": "metro:WEEKDAY_0_0025",
+          "extra_seconds": 120,
+          "meeting": 35148,
+          "failure": null
+        }
+      },
+      {
+        "offer_id": "v1-1",
+        "policies": [
+          "earliest",
+          "balanced"
+        ],
+        "successful": 109,
+        "total": 128,
+        "transfer_slack": 90,
+        "extra_seconds_a": 2250,
+        "extra_seconds_b": 2250,
+        "counterfactual": {
+          "trip": "metro:WEEKDAY_0_0025",
+          "extra_seconds": 120,
+          "meeting": null,
+          "failure": "missed_connection:tram:21"
+        }
+      }
+    ],
+    "meetings": [
+      35148,
+      34698
+    ]
+  }
+}

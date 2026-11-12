@@ -22,7 +22,7 @@ from trl.agents import (
 from trl.contracts import EventDraft, RunBody
 from trl.domain import Disruption, Offer, Record, Rider, Vote
 from trl.gtfs import Schedule
-from trl.notice import stop_candidates, trip_candidates
+from trl.notice import rule_notice
 from trl.observability import tracer
 from trl.storage import Conflict, RunStore
 
@@ -44,12 +44,16 @@ class Negotiator:
         key: str,
         view: RoleView,
         schema: type[T],
+        *,
+        attempts: int = 2,
     ) -> T:
         calls = self.store.calls(run.id, run.version, key)
         for call in calls:
             if call.state == "valid" and call.content is not None:
                 return schema.model_validate_json(call.content)
-        for attempt in range(len(calls), 2):
+        if len(calls) >= attempts and any(call.state == "pending" for call in calls):
+            raise ModelError("model_interrupted")
+        for attempt in range(len(calls), attempts):
             try:
                 info = (
                     await self.model.stage_info(stage)
@@ -123,12 +127,8 @@ class Negotiator:
         view = view_for("operator", run, self.schedule)
         result = await self.ask(run, "operator", step, view, NoticeDecision)
         event = parse_decision(result, self.schedule, run.scenario.service_date)
-        text = str(view["notice"])
-        if event is None:
-            return None
-        if event.kind == "stop_closure":
-            return event if stop_candidates(text, self.schedule) == (event.stop,) else None
-        return event if trip_candidates(text, self.schedule) == (event.trip,) else None
+        evidence = rule_notice(str(view["notice"]), self.schedule, run.scenario.service_date)
+        return event if event == evidence else None
 
     def stored_choice(self, run: RunBody, key: str) -> Choice | None:
         for call in self.store.calls(run.id, run.version, key):

@@ -9,7 +9,7 @@ interface MapProps {
   network: Network
   offer: Offer | null | undefined
   incident?: Incident | null
-  origins: string[]
+  origins: readonly [string, string]
   destination?: string
   label: string
 }
@@ -63,7 +63,7 @@ function features(network: Network, offer: Offer | null | undefined): MapData {
   return { type: 'FeatureCollection', features: paths }
 }
 
-function labels(props: MapProps) {
+function labels(props: Omit<MapProps, 'label'>) {
   const { network, offer, origins, destination, incident } = props
   const routePoints = [offer?.a, offer?.b].flatMap(route =>
     route?.legs.filter(leg => leg.kind === 'walk').map(leg => leg.origin) ?? [],
@@ -94,7 +94,8 @@ function markerElement(stop: Stop, role: string) {
 }
 
 export function RouteMap(props: MapProps) {
-  const { network, offer, label } = props
+  const { network, offer, incident, origins, destination, label } = props
+  const [a, b] = origins
   const host = useRef<HTMLDivElement>(null)
   const mapRef = useRef<LibreMap | undefined>(undefined)
   const [markers, setMarkers] = useState<typeof Marker>()
@@ -172,7 +173,9 @@ export function RouteMap(props: MapProps) {
     if (markers) (mapRef.current?.getSource('timetable') as GeoJSONSource | undefined)?.setData(data)
   }, [data, markers])
 
-  const annotated = useMemo(() => labels(props), [props])
+  const annotated = useMemo(() => labels({
+    network, offer, incident, origins: [a, b], destination,
+  }), [network, offer, incident, a, b, destination])
   useEffect(() => {
     const map = mapRef.current
     if (!map || !markers) return
