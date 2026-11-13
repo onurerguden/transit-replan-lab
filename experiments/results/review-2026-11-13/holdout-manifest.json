@@ -1,0 +1,8 @@
+{
+  "cases": 24,
+  "sha256": {
+    "holdout.md": "28a716ea32a0dd78dc52d67be955485c08efbfcae3a3d2587270d805f9586687",
+    "holdout.jsonl": "1c8744f5b1d23f1d81c0f2f988ad01c2acb5ecc03c5b1fd8abf245e3d9c7ab38",
+    "holdout-conditions.json": "bcf49e7b7f97b8341e6308f771e2a1fc92cd4d5699feaa23e41a942818ad83a8"
+  }
+}

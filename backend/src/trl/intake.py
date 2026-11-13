@@ -10,7 +10,18 @@ from typing import Literal
 from trl.domain import Disruption, Offer, StopClosure, TripCancellation, TripDelay
 from trl.gtfs import Schedule
 from trl.notice import ACTIONS, IDENTIFIER, normalize, stop_candidates
-from trl.vnext import Extraction, Fact, Hypothesis, Impact, Intake, Option, Question, Slot, Span
+from trl.vnext import (
+    Extraction,
+    ExtractionQuote,
+    Fact,
+    Hypothesis,
+    Impact,
+    Intake,
+    Option,
+    Question,
+    Slot,
+    Span,
+)
 
 ORDER: tuple[Slot, ...] = ("target", "kind", "start", "end", "delay")
 MAX_HYPOTHESES = 4
@@ -44,6 +55,16 @@ Source = Literal["notice", "answer"]
 Evaluate = Callable[
     [Disruption], tuple[Literal["feasible", "infeasible", "search_incomplete"], Offer | None]
 ]
+
+
+def unsupported_context(text: str, day: date) -> tuple[str, ...]:
+    value, _ = folded(text)
+    if re.search(r"\b(?:utc|gmt|zulu)\b", value):
+        return ("unsupported_timezone",)
+    dates = set(re.findall(r"\b\d{4}-\d{2}-\d{2}\b", value))
+    if UNCERTAIN.search(value) or dates - {day.isoformat()}:
+        return ("uncertain_or_wrong_service_date",)
+    return ()
 
 
 def fact(slot: Slot, value: str | int, text: str, start: int, end: int, source: Source) -> Fact:
@@ -173,6 +194,21 @@ def unique(facts: Iterable[Fact]) -> tuple[Fact, ...]:
     return tuple({(item.slot, item.value): item for item in facts}.values())
 
 
+def lexicon_proposal(notice: str) -> Extraction:
+    """Extract evidence from the same indirect phrases supported by the hybrid operator."""
+    value, offsets = folded(notice)
+    return Extraction(
+        quotes=tuple(
+            ExtractionQuote(
+                slot="kind",
+                quote=notice[offsets[match.start()] : offsets[match.end() - 1] + 1],
+            )
+            for pattern in INDIRECT.values()
+            for match in pattern.finditer(value)
+        )[:6]
+    )
+
+
 def extract(
     text: str,
     schedule: Schedule,
@@ -180,11 +216,8 @@ def extract(
     proposal: Extraction | None = None,
 ) -> tuple[tuple[Fact, ...], tuple[str, ...]]:
     value, offsets = folded(text)
-    if re.search(r"\b(?:utc|gmt|zulu)\b", value):
-        return (), ("unsupported_timezone",)
-    dates = set(re.findall(r"\b\d{4}-\d{2}-\d{2}\b", value))
-    if UNCERTAIN.search(value) or dates - {day.isoformat()}:
-        return (), ("uncertain_or_wrong_service_date",)
+    if reasons := unsupported_context(text, day):
+        return (), reasons
     kinds = [
         fact("kind", kind, text, match.start(), match.end(), "notice")
         for kind, pattern in ACTIONS.items()
@@ -397,7 +430,11 @@ def answer_facts(
         )
         return resolved(choice)
     value, _ = folded(answer)
-    if UNCERTAIN.search(value) or normalize(answer.strip()) in {"bilmiyorum", "unknown", "idk"}:
+    if unsupported_context(answer, day) or normalize(answer.strip()) in {
+        "bilmiyorum",
+        "unknown",
+        "idk",
+    }:
         return ()
     if slot == "target":
         choices = unique(

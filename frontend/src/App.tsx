@@ -7,7 +7,7 @@ import type { Architecture, Itinerary, Network, Offer, OperatorMode, Preference,
 import { elapsed, time } from './api'
 import { RouteMap } from './RouteMap'
 import { useRun } from './useRun'
-import { ImpactComparison, Resilience, ReportEvidence, policyLabels } from './DecisionEvidence'
+import { DecisionSummary, ImpactComparison, Resilience, ReportEvidence, policyLabels } from './DecisionEvidence'
 
 const statusLabels: Record<Run['status'], string> = {
   ready: 'Ready',
@@ -23,7 +23,7 @@ const statusLabels: Record<Run['status'], string> = {
 }
 
 const roleLabels: Record<string, string> = {
-  operator: 'Operator', router: 'Route engine', rider_a: 'Rider A', rider_b: 'Rider B',
+  operator: 'Operator', router: 'Route engine', rider_a: 'Rider 1', rider_b: 'Rider 2',
   analyst: 'Transfer analyst', mediator: 'Mediator', verifier: 'Verifier', system: 'System',
 }
 
@@ -45,7 +45,7 @@ function Journey({ route, rider, network }: { route: Itinerary; rider: 'A' | 'B'
   else if (ride) summary = route.legs.length > 1 ? 'Scheduled connections' : `Direct ${mode(ride.trip).toLowerCase()}`
   return (
     <div className="journey">
-      <span className={`rider-key rider-key--${rider.toLowerCase()}`}>{rider}</span>
+      <span className={`rider-key rider-key--${rider.toLowerCase()}`} aria-label={`Rider ${rider === 'A' ? '1' : '2'}`}>{rider === 'A' ? '1' : '2'}</span>
       <div>
         <strong>{name(network, route.origin)}</strong>
         <span>{summary}</span>
@@ -90,9 +90,9 @@ function OfferEvidence({ offer, run, network, failedOffer }: {
           const route = offer[rider]
           const vote = selectedVotes.find(item => item.rider === rider)
           const waiting = offer.meeting - route.arrival
-          return <section className="evidence-rider" key={rider} aria-label={`Rider ${rider.toUpperCase()} evidence`}>
+          return <section className="evidence-rider" key={rider} aria-label={`Rider ${rider === 'a' ? '1' : '2'} evidence`}>
             <div className="evidence-rider-heading">
-              <strong>Rider {rider.toUpperCase()}</strong>
+              <strong>Rider {rider === 'a' ? '1' : '2'}</strong>
               <span>{vote ? vote.accepted ? 'Accepted' : 'Rejected' : 'No vote'}</span>
             </div>
             <p>Arrives {time(route.arrival)} · {waiting ? `waits ${elapsed(waiting)}` : 'no wait'}</p>
@@ -225,7 +225,7 @@ export function App() {
     operatorMode !== (settings?.operator_mode ?? 'default') ||
     preferenceA !== (settings?.preference_a ?? '') || preferenceB !== (settings?.preference_b ?? '')
   ))
-  const question = run?.evidence?.intake?.question
+  const question = run?.status === 'clarification' ? run.evidence?.intake?.question : undefined
   const analysis = run?.evidence?.offers?.find(item => item.offer_id === offer?.id)
 
   function setup() {
@@ -239,13 +239,14 @@ export function App() {
 
   return (
     <>
+      <a className="skip-link" href="#main">Skip to replanning</a>
       <header className="topbar">
         <div className="brand"><span className="brand-symbol"><TrainFront size={20} /></span>
           <span>Transit Replan Lab</span>
         </div>
         <div className="top-meta"><span className="connection-dot" />Local simulator <span className="top-location">İzmir, Türkiye</span></div>
       </header>
-      <main className="workspace">
+      <main className="workspace" id="main" tabIndex={-1}>
         <section className="overview">
           <div>
             <p className="location"><MapPin size={15} /> İzmir Metro M1 &amp; Konak Tram</p>
@@ -277,9 +278,10 @@ export function App() {
                   {Object.entries(policyLabels).map(([key, label]) => <option value={key} key={key}>{label}</option>)}
                 </select></label>
                 <label>Operator<select aria-label="Operator" value={operatorMode} onChange={event => setOperatorMode(event.target.value as OperatorMode | 'default')}>
-                  <option value="default">Release default</option><option value="rules">Rules</option><option value="hybrid">Hybrid experiment</option>
+                  <option value="default">Release default</option><option value="rules">Rules</option>
+                  <option value="lexicon">Lexicon · no model</option><option value="hybrid">Hybrid experiment</option>
                 </select></label>
-                {([['Rider A', preferenceA, setPreferenceA], ['Rider B', preferenceB, setPreferenceB]] as const)
+                {([['Rider 1', preferenceA, setPreferenceA], ['Rider 2', preferenceB, setPreferenceB]] as const)
                   .map(([rider, preference, update]) => <label key={rider}>{rider} preference
                     <select value={preference} onChange={event => update(event.target.value as Preference | '')}>
                       <option value="">None</option><option value="earlier_arrival">Earlier arrival</option><option value="fewer_transfers">Fewer transfers</option>
@@ -322,7 +324,27 @@ export function App() {
             </span>}
             {connection === 'reconnecting'  && <span className="reconnecting">Reconnecting…</span>}
           </div>
+          <DecisionSummary run={run} offer={offer} event={run.incident
+            ? disruptionSummary(run.incident, network)
+            : run.status === 'ready' ? text : run.evidence?.notice_text ?? text} />
           <ImpactComparison intake={run.evidence?.intake} network={network} />
+          {(question || run.question) && <section className="clarification-panel" aria-label="Clarify disruption">
+            {question && <div className="question-options" aria-label="Clarification options">
+              {question.options?.map(option => <button key={option.id} type="button"
+                disabled={active || Boolean(retry)}
+                onClick={() => void send('clarifications', '', option.id)}>{option.label}</button>)}
+              <button type="button" disabled={active || Boolean(retry)}
+                onClick={() => void send('clarifications', '', 'unknown')}>I don’t know</button>
+            </div>}
+            {run.question && <form className="clarify" onSubmit={event => {
+              event.preventDefault()
+              if (answer.trim()) void send('clarifications', answer)
+            }}>
+              <label>{run.question}<input required maxLength={400} value={answer}
+                onChange={event => setAnswer(event.target.value)} /></label>
+              <button type="submit" disabled={active || Boolean(retry)}>Send clarification</button>
+            </form>}
+          </section>}
           <div className="board">
             <div className="map-board">
               <div className="plans">
@@ -330,9 +352,9 @@ export function App() {
                 <PlanPanel label="After disruption" title="New plan" network={network} run={run} offer={offer} after />
               </div>
               <div className="legend" aria-label="Map legend">
-                <span><i className="line-a" />Rider A</span><span><i className="line-b" />Rider B</span>
-                <span><i className="line-walk" />Walking transfer</span>
-                <span><TriangleAlert size={13} />Closure</span>
+                <span><i className="line-a" />Rider 1 · solid</span><span><i className="line-b" />Rider 2 · long dashes</span>
+                <span><i className="line-walk" />Walk · short dashes</span>
+                <span className="closure-key"><TriangleAlert size={13} aria-hidden="true" />× Closure</span>
                 <span className="attribution">GTFS · İzmir Metropolitan Municipality · CC BY 4.0</span>
               </div>
               {run.offers.length > 0 && <section className="offers" aria-label="Joint offers">
@@ -357,24 +379,6 @@ export function App() {
                 <div className="section-head"><div><TriangleAlert size={17} /><h2>Disruption notice</h2></div></div>
                 <textarea aria-label="Disruption notice text" maxLength={600} value={text}
                   disabled={active || Boolean(retry)} onChange={event => setNotice({ run: run.id, text: event.target.value })} />
-                {run.incident && <p className="applied-incident">
-                  <strong>Applied disruption</strong>{disruptionSummary(run.incident, network)}
-                </p>}
-                {question && <div className="question-options" aria-label="Clarification options">
-                  {question.options?.map(option => <button key={option.id} type="button"
-                    disabled={active || Boolean(retry)}
-                    onClick={() => void send('clarifications', '', option.id)}>{option.label}</button>)}
-                  <button type="button" disabled={active || Boolean(retry)}
-                    onClick={() => void send('clarifications', '', 'unknown')}>I don’t know</button>
-                </div>}
-                {run.question && <form className="clarify" onSubmit={event => {
-                  event.preventDefault()
-                  if (answer.trim()) void send('clarifications', answer)
-                }}>
-                  <label>{run.question}<input required maxLength={400} value={answer}
-                    onChange={event => setAnswer(event.target.value)} /></label>
-                  <button type="submit" disabled={active || Boolean(retry)}>Send clarification</button>
-                </form>}
               </section>
               <Timeline events={revisionEvents} live={connection === 'live'} />
             </div>

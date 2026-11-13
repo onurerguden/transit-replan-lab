@@ -1,0 +1,29 @@
+{
+  "version": 2,
+  "training_status": "not_trained",
+  "split_policy": "Disjoint closure windows and trip IDs; shared language templates are intentional, not a linguistic holdout.",
+  "exact_overlap": 0,
+  "event_overlap": 0,
+  "family_language_counts": {
+    "train": {
+      "stop_closure/en": 60,
+      "stop_closure/tr": 60,
+      "trip_cancellation/en": 60,
+      "trip_cancellation/tr": 60,
+      "trip_delay/en": 60,
+      "trip_delay/tr": 60
+    },
+    "valid": {
+      "stop_closure/en": 10,
+      "stop_closure/tr": 10,
+      "trip_cancellation/en": 10,
+      "trip_cancellation/tr": 10,
+      "trip_delay/en": 10,
+      "trip_delay/tr": 10
+    }
+  },
+  "sha256": {
+    "train": "4cd9576cd6326286454bf7a86c5e29e2f4d50e8598cf32c957a257c7fad6f958",
+    "valid": "a10cc1ac74e11a85dd097fd94e35853ff4b2edbf4062c7067a3df77fc63732e3"
+  }
+}

@@ -2,6 +2,16 @@
 
 The adaptation changes only incident extraction. The deterministic route engine, two-vote requirement, and timetable verifier stay in the application. Review the [data card](DATA_CARD.md) before interpreting exact-match results.
 
+The revised vNext corpus can be generated and audited without training.
+The audit script also checks the older artifacts against their published hashes.
+
+```sh
+uv run --locked --project backend python -m finetune.vnext_data
+uv run --locked --project backend python -m scripts.audit_training \
+  --corpus .local/vnext-training --export .local/vnext-export \
+  --config .local/vnext-adapter/adapter_config.json
+```
+
 ## Apple silicon setup
 
 The run used MLX-LM 0.32.0 and the community 4-bit Qwen3.5 4B snapshot. Stop the local Ollama process before training or running MLX evaluation.

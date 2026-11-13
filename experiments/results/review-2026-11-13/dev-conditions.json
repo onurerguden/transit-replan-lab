@@ -1,0 +1,54 @@
+{
+  "format_version": 2,
+  "argv": [
+    "python",
+    "-m",
+    "experiments.vnext_runner",
+    "--split",
+    "dev",
+    "--arms",
+    "rules",
+    "lexicon",
+    "hybrid",
+    "adapter",
+    "--adapter",
+    "trl-review-adapter:qlora",
+    "--output",
+    ".local/review/lexicon-release-evidence"
+  ],
+  "system": "macOS-27.0.1-arm64-arm-64bit",
+  "machine": "arm64",
+  "python": "3.12.0",
+  "ollama_version": "0.40.16",
+  "dirty_source_tree": true,
+  "operator_prompt_sha256": "e33663798e6e8d950436eb3f2e0f0d049ed8f81a3d2ca9caa994966ede43ce35",
+  "extraction_schema_sha256": "269b6f71a6cf72d6dc3dacadc4319dbfaacabcbfb659620d9e52f1e09a370042",
+  "split": "dev",
+  "arms": [
+    "rules",
+    "lexicon",
+    "hybrid",
+    "adapter"
+  ],
+  "snapshot": "11686b1c28f8b1a9f146de261347967973b8c1e3544fd5d0b40a5d41f67d62fc",
+  "data": "449fc821ee5d1e9ab2df609c8059d607e4746864ac243eee43adec93ace10b85",
+  "git": "4ca9c06217b5e0a72bc774611df6b64cfa8e709e",
+  "source": "559631831fef35c7eb76429c5513cf11091b9c4c0d84dc5deab5344b32941939",
+  "evaluation": "development",
+  "runtime": "Ollama constrained JSON; temperature=0; seed=42; num_ctx=4096; num_predict=260",
+  "latency_scope": "seeded arm order; isolated route caches; warm local model; excludes API overhead",
+  "models": {
+    "hybrid": "c2b626cf44dd0760ec533ab4c95adb4876c26e7b9ee3d90c0e59990aa1317341",
+    "adapter": "84ce43f954d9631d564b8a5340dc866ee49c04b39e804a6727570793060fb76c"
+  },
+  "model_tags": {
+    "hybrid": "trl-review-base:qwen35",
+    "adapter": "trl-review-adapter:qlora"
+  },
+  "arm_order": [
+    "hybrid",
+    "lexicon",
+    "adapter",
+    "rules"
+  ]
+}

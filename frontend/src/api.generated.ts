@@ -178,7 +178,7 @@ export interface components {
              */
             workflow: "legacy" | "vnext";
             /** Operator Mode */
-            operator_mode?: ("rules" | "hybrid") | null;
+            operator_mode?: ("rules" | "lexicon" | "hybrid") | null;
             /**
              * Route Policy
              * @default earliest
@@ -423,7 +423,7 @@ export interface components {
              * @default rules
              * @enum {string}
              */
-            operator_mode: "rules" | "hybrid";
+            operator_mode: "rules" | "lexicon" | "hybrid";
             intake?: components["schemas"]["Intake"] | null;
             /**
              * Offers

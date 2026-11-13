@@ -1,8 +1,10 @@
+import asyncio
 from pathlib import Path
 
 import pytest
 from experiments.report import Row
 from experiments.runner import Condition, lock_results, recover_rows
+from experiments.vnext_runner import run
 from pydantic import ValidationError
 
 from trl.agents import PROMPT_VERSION
@@ -81,3 +83,22 @@ def test_resume_validates_both_digests_and_source_identity() -> None:
     ):
         assert not condition.accepts(result.model_copy(update={field: value}), "dev")
     assert not condition.accepts(result, "locked")
+
+
+@pytest.mark.parametrize("existing", ["dev.jsonl", "dev-conditions.json", "performance.json"])
+def test_vnext_partial_output_is_never_overwritten(tmp_path: Path, existing: str) -> None:
+    artifact = tmp_path / existing
+    artifact.write_bytes(b"preserve prior evidence\n")
+    with pytest.raises(FileExistsError, match=existing):
+        asyncio.run(run("dev", ("rules",), tmp_path, None))
+    assert artifact.read_bytes() == b"preserve prior evidence\n"
+    assert {path.name for path in tmp_path.iterdir()} == {existing, ".evaluation.lock"}
+
+
+def test_vnext_run_rejects_a_second_writer(tmp_path: Path) -> None:
+    with (
+        lock_results(tmp_path / ".evaluation.lock"),
+        pytest.raises(SystemExit, match="already writing"),
+    ):
+        asyncio.run(run("dev", ("rules",), tmp_path, None))
+    assert list(tmp_path.iterdir()) == [tmp_path / ".evaluation.lock"]

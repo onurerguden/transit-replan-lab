@@ -1,0 +1,14 @@
+[
+  ["r01", "closure", "Karataş tramvay durağı 08:33–09:51 kapalı.", "Karataş tram stop closed 08:33–09:51.", "tram:8", 30780, 35460],
+  ["r02", "closure", "08:11 ile 09:54 arasında Alsancak Gar tramvay durağı kapalı.", "Between 08:11 and 09:54, Alsancak Gar tram stop is closed.", "tram:3", 29460, 35640],
+  ["r03", "paraphrase", "Konak İskele tramvay durağı: 08:43–09:49, giriş çıkış yok.", "Konak İskele tram stop: 08:43–09:49, out of service.", "tram:7", 31380, 35340],
+  ["r04", "paraphrase", "Karataş tramvay durağında erişime ara verildi: 08:27–09:34.", "Out of service between 08:27 and 09:34: Karataş tram stop.", "tram:8", 30420, 34440],
+  ["r05", "unsupported_phrase", "Konak İskele tramvay durağında 08:22–09:39 arasında yolcu alımı ve indirmesi durduruldu.", "Passenger boarding and alighting are suspended at Konak İskele tram stop, 08:22–09:39.", "tram:7", 30120, 34740],
+  ["r06", "unsupported_phrase", "Karataş tramvay durağı 08:35–09:56 arasında yolcu kullanımına devre dışı.", "Karataş tram stop is unavailable to passengers between 08:35 and 09:56.", "tram:8", 30900, 35760],
+  ["r07", "delay", "metro:WEEKDAY_0_0001 seferi 13 dakika gecikmeli.", "Trip metro:WEEKDAY_0_0001 is delayed by 13 minutes.", "metro:WEEKDAY_0_0001", 780],
+  ["r08", "cancellation", "metro:WEEKDAY_0_0002 seferi iptal.", "Trip metro:WEEKDAY_0_0002 has been cancelled.", "metro:WEEKDAY_0_0002"],
+  ["r09", "negation", "08:26–09:43 arasında Konak İskele tramvay durağı kapalı değil.", "Konak İskele tram stop is not closed from 08:26 to 09:43."],
+  ["r10", "timezone", "Karataş tramvay durağı 08:29–09:41 UTC kapalı.", "Karataş tram stop closed 08:29–09:41 UTC."],
+  ["r11", "wrong_date", "2030-01-01 tarihinde Konak İskele tramvay durağı 08:24–09:58 kapalı.", "Konak İskele tram stop closed 08:24–09:58 on 2030-01-01."],
+  ["r12", "delay", "metro:WEEKDAY_0_0003 seferi 17 dakika gecikmeli.", "A delay of 17 minutes affects trip metro:WEEKDAY_0_0003.", "metro:WEEKDAY_0_0003", 1020]
+]

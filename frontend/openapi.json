@@ -479,6 +479,7 @@
                 "type": "string",
                 "enum": [
                   "rules",
+                  "lexicon",
                   "hybrid"
                 ]
               },
@@ -1197,6 +1198,7 @@
             "type": "string",
             "enum": [
               "rules",
+              "lexicon",
               "hybrid"
             ],
             "title": "Operator Mode",

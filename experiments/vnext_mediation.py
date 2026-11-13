@@ -1,15 +1,16 @@
 """Compare real local coordination on fixed preference conflicts with identical offers."""
 
+import argparse
 import asyncio
 import hashlib
 import os
 from pathlib import Path
 from time import perf_counter
 
-from trl.agents import OllamaModel
+from trl.agents import MODEL, OllamaModel
 from trl.contracts import CreateRun, Disrupt
 from trl.disruptions import Overlay
-from trl.domain import Architecture, Record
+from trl.domain import Architecture, Offer, Record
 from trl.gtfs import load_schedule
 from trl.orchestration import RunService
 from trl.robustness import compare
@@ -36,14 +37,19 @@ ARMS: tuple[tuple[str, Architecture, bool], ...] = (
     ("five", "five", True),
     ("five-no-counter", "five", False),
 )
-A: Preference = "earlier_arrival"
-B: Preference = "less_wait"
+PREFERENCES: tuple[tuple[Preference, Preference], ...] = (
+    ("earlier_arrival", "less_wait"),
+    ("fewer_transfers", "earlier_arrival"),
+    ("less_walking", "earlier_arrival"),
+)
 OUTPUT = Path(".local/vnext-mediation")
 
 
 class Measurement(Record):
     case: str
     arm: str
+    preference_a: Preference
+    preference_b: Preference
     pool_sha256: str
     status: str
     agreement: bool
@@ -52,30 +58,51 @@ class Measurement(Record):
     b_extra: int | None
     a_regret: int | None
     b_regret: int | None
+    worst_rank_regret: int | None
     calls: int
     tokens: int
     ms: float
 
 
-async def run() -> None:
-    OUTPUT.mkdir(parents=True, exist_ok=True)
+async def run(output: Path, expanded: bool) -> None:
+    output.mkdir(parents=True)
     schedule = load_schedule()
     baseline = load_scenario()
-    model = OllamaModel(os.environ.get("OLLAMA_BASE_URL", "http://127.0.0.1:11434"))
+    model = OllamaModel(
+        os.environ.get("OLLAMA_BASE_URL", "http://127.0.0.1:11434"),
+        model=os.environ.get("TRL_OLLAMA_MODEL", MODEL),
+    )
     info = await model.info()
-    store = RunStore(OUTPUT / "runs.sqlite")
+    store = RunStore(output / "runs.sqlite")
     service = RunService(store, schedule, model)
     overlay = Overlay.compile((baseline.incident,))
     rows: list[Measurement] = []
-    with (OUTPUT / "raw.jsonl").open("x", encoding="utf-8") as raw:
-        for number, (a, b) in enumerate(ORIGINS, start=1):
+    with (output / "raw.jsonl").open("x", encoding="utf-8") as raw:
+        scenarios = [(a, b, baseline.destinations, PREFERENCES[0]) for a, b in ORIGINS]
+        if expanded:
+            scenarios.extend(
+                (
+                    ("metro:3", "tram:8", ("tram:3", "tram:10"), PREFERENCES[1]),
+                    ("metro:1", "tram:8", ("tram:3", "metro:8"), PREFERENCES[2]),
+                )
+            )
+        for number, (a, b, destinations, preferences) in enumerate(scenarios, start=1):
             scenario = baseline.model_copy(
                 update={
                     "id": f"preference-conflict-{number}",
                     "a": baseline.a.model_copy(update={"stop": a}),
                     "b": baseline.b.model_copy(update={"stop": b}),
+                    "destinations": destinations,
                 }
             )
+            if preferences[0] == "less_walking":
+                scenario = scenario.model_copy(
+                    update={
+                        "meeting_end": 37800,
+                        "a": scenario.a.model_copy(update={"wait_limit": 1200}),
+                        "b": scenario.b.model_copy(update={"wait_limit": 1200}),
+                    }
+                )
             before = next(iter(find_offers(schedule, scenario, limit=1)), None)
             candidates = tuple(
                 find_offers(
@@ -86,15 +113,12 @@ async def run() -> None:
                 schedule, scenario, candidates, overlay, before, "earliest"
             )
             if len(offers) < 2:
-                continue
-            best_a = min(preference_cost(offer, "a", A) for offer in offers)
-            best_b = min(preference_cost(offer, "b", B) for offer in offers)
-            if any(
-                preference_cost(offer, "a", A) == best_a
-                and preference_cost(offer, "b", B) == best_b
-                for offer in offers
-            ):
-                continue
+                raise ValueError(f"{scenario.id} does not have two offers.")
+            if not has_conflict(offers, *preferences):
+                raise ValueError(f"{scenario.id} has no preference conflict.")
+            pa, pb = preferences
+            costs_a = sorted({preference_cost(offer, "a", pa) for offer in offers})
+            costs_b = sorted({preference_cost(offer, "b", pb) for offer in offers})
             expected = hashlib.sha256(
                 "".join(offer.model_dump_json() for offer in offers).encode()
             ).hexdigest()
@@ -104,8 +128,8 @@ async def run() -> None:
                         workflow="vnext",
                         architecture=architecture,
                         counteroffers=counteroffers,
-                        preference_a=A,
-                        preference_b=B,
+                        preference_a=pa,
+                        preference_b=pb,
                     ),
                     f"{scenario.id}:{arm}",
                     scenario,
@@ -152,16 +176,24 @@ async def run() -> None:
                 measured = Measurement(
                     case=scenario.id,
                     arm=arm,
+                    preference_a=pa,
+                    preference_b=pb,
                     pool_sha256=digest,
                     status=view.status,
                     agreement=selected is not None and not invalid,
                     hard_violation=invalid,
                     a_extra=row.extra_seconds_a if row else None,
                     b_extra=row.extra_seconds_b if row else None,
-                    a_regret=preference_cost(selected, "a", A) - best_a
+                    a_regret=preference_cost(selected, "a", pa) - costs_a[0]
                     if selected
                     else None,
-                    b_regret=preference_cost(selected, "b", B) - best_b
+                    b_regret=preference_cost(selected, "b", pb) - costs_b[0]
+                    if selected
+                    else None,
+                    worst_rank_regret=max(
+                        costs_a.index(preference_cost(selected, "a", pa)),
+                        costs_b.index(preference_cost(selected, "b", pb)),
+                    )
                     if selected
                     else None,
                     calls=view.metrics.calls,
@@ -181,32 +213,39 @@ async def run() -> None:
         f"Model digest `{info.digest}`.",
         f"Source digest `{code_digest()}`.",
         "",
-        "Rider A prefers earlier arrival. Rider B prefers less waiting at the meeting stop.",
-        "Preference regret is measured in seconds above each rider’s best displayed option.",
+        "Preference pairs and raw regret appear in JSONL. Raw units follow each preference.",
+        "Rank regret counts distinct cost levels above each rider’s best displayed option.",
         "",
-        "| Arm | Agreement | A mean regret (s) | B mean regret (s) | Calls | p95 (s) | Hard violations |",
-        "| --- | ---: | ---: | ---: | ---: | ---: | ---: |",
+        "| Arm | Agreement | Mean worst rider rank regret | Calls | p95 (s) | Hard violations |",
+        "| --- | ---: | ---: | ---: | ---: | ---: |",
     ]
     for arm, _, _ in ARMS:
         results = [item for item in rows if item.arm == arm]
         accepted = [item for item in results if item.agreement]
-        a_regret = (
-            sum(item.a_regret or 0 for item in accepted) / len(accepted)
+        regret = (
+            f"{sum(item.worst_rank_regret or 0 for item in accepted) / len(accepted):.2f}"
             if accepted
-            else 0
-        )
-        b_regret = (
-            sum(item.b_regret or 0 for item in accepted) / len(accepted)
-            if accepted
-            else 0
+            else "—"
         )
         report.append(
-            f"| {arm} | {len(accepted)}/{len(results)} | {a_regret:.1f} | {b_regret:.1f} | "
+            f"| {arm} | {len(accepted)}/{len(results)} | {regret} | "
             f"{sum(item.calls for item in results)} | {percentile([item.ms for item in results], 0.95) / 1000:.2f} "
             f"| {sum(item.hard_violation for item in results)} |"
         )
-    (OUTPUT / "report.md").write_text("\n".join(report) + "\n")
+    (output / "report.md").write_text("\n".join(report) + "\n")
+
+
+def has_conflict(offers: tuple[Offer, ...], pa: Preference, pb: Preference) -> bool:
+    costs = [
+        (preference_cost(offer, "a", pa), preference_cost(offer, "b", pb))
+        for offer in offers
+    ]
+    return (min(a for a, _ in costs), min(b for _, b in costs)) not in costs
 
 
 if __name__ == "__main__":
-    asyncio.run(run())
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--output", type=Path, default=OUTPUT)
+    parser.add_argument("--expanded", action="store_true")
+    args = parser.parse_args()
+    asyncio.run(run(args.output, args.expanded))

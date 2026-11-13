@@ -4,7 +4,7 @@ from pathlib import Path
 
 import pytest
 
-from trl.agents import ModelReply, OllamaModel, ReplayModel, RoleView, Stage, view_for
+from trl.agents import MODEL, ModelReply, OllamaModel, ReplayModel, RoleView, Stage, view_for
 from trl.contracts import CreateRun, Disrupt, RunBody
 from trl.domain import Record
 from trl.gtfs import load_schedule
@@ -79,7 +79,10 @@ def test_real_ollama_feasible_and_infeasible(tmp_path: Path) -> None:
     async def exercise() -> None:
         schedule = load_schedule()
         store = RunStore(tmp_path / "real.sqlite")
-        model = OllamaModel(os.environ.get("OLLAMA_BASE_URL", "http://127.0.0.1:11434"))
+        model = OllamaModel(
+            os.environ.get("OLLAMA_BASE_URL", "http://127.0.0.1:11434"),
+            model=os.environ.get("TRL_OLLAMA_MODEL", MODEL),
+        )
         service = RunService(store, schedule, model)
         signatures: list[list[tuple[str, str, str]]] = []
         for key, scenario, expected in (

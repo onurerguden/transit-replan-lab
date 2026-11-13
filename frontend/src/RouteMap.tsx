@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
-import type { Feature, FeatureCollection, Geometry, Position } from 'geojson'
+import type { FeatureCollection, Geometry, Position } from 'geojson'
 import type { GeoJSONSource, Map as LibreMap, Marker } from 'maplibre-gl'
 import type { Incident, Itinerary, Network, Offer, Stop } from './api'
 import 'maplibre-gl/dist/maplibre-gl.css'
@@ -16,7 +16,7 @@ interface MapProps {
 
 type MapData = FeatureCollection<Geometry, { kind: string; rider?: string }>
 
-function features(network: Network, offer: Offer | null | undefined): MapData {
+export function routeFeatures(network: Network, offer: Offer | null | undefined): MapData {
   const stops = new Map(network.stops.map(stop => [stop.id, stop]))
   const coordinates = (ids: readonly string[]): Position[] => ids.flatMap(id => {
     const stop = stops.get(id)
@@ -43,17 +43,24 @@ function features(network: Network, offer: Offer | null | undefined): MapData {
           const from = line.stops.indexOf(leg.origin)
           const to = line.stops.indexOf(leg.destination)
           if (line.mode !== mode || from === -1 || to === -1) return []
+          // Anchor direction to the full line so overlapping subsections use
+          // the same coordinate order even when riders travel in reverse.
           const section = line.stops.slice(Math.min(from, to), Math.max(from, to) + 1)
-          return [from < to ? section : section.reverse()]
+          return [line.stops[0]! < line.stops[line.stops.length - 1]!
+            ? section : section.reverse()]
         })
         sections.sort((left, right) => left.length - right.length)
         ids = sections[0] ?? ids
+        if (!sections.length && leg.origin > leg.destination) ids.reverse()
+      } else if (leg.origin > leg.destination) {
+        ids.reverse()
       }
-      const segment: Feature<Geometry, { kind: string; rider: string }> = {
-        type: 'Feature', geometry: { type: 'LineString', coordinates: coordinates(ids) },
+      const points = coordinates(ids)
+      if (points.length < 2) continue
+      paths.push({
+        type: 'Feature', geometry: { type: 'LineString', coordinates: points },
         properties: { kind: leg.kind, rider },
-      }
-      paths.push(segment)
+      })
     }
   }
   if (offer) {
@@ -85,7 +92,7 @@ function markerElement(stop: Stop, role: string) {
   root.className = `station-marker station-marker--${role}`
   const symbol = document.createElement('span')
   symbol.className = 'station-symbol'
-  symbol.textContent = { a: 'A', b: 'B', closed: '×', target: '◎', transfer: '↔' }[role] ?? '•'
+  symbol.textContent = { a: '1', b: '2', closed: '×', target: '◎', transfer: '↔' }[role] ?? '•'
   const name = document.createElement('span')
   name.className = 'station-name'
   name.textContent = stop.name
@@ -100,7 +107,7 @@ export function RouteMap(props: MapProps) {
   const mapRef = useRef<LibreMap | undefined>(undefined)
   const [markers, setMarkers] = useState<typeof Marker>()
   const [failure, setFailure] = useState(false)
-  const data = useMemo(() => features(network, offer), [network, offer])
+  const data = useMemo(() => routeFeatures(network, offer), [network, offer])
 
   useEffect(() => {
     let disposed = false
@@ -112,7 +119,7 @@ export function RouteMap(props: MapProps) {
       const map = new Map({
         container: node,
         style: { version: 8, sources: {}, layers: [
-          { id: 'paper', type: 'background', paint: { 'background-color': '#e9eef2' } },
+          { id: 'paper', type: 'background', paint: { 'background-color': '#070a08' } },
         ] },
         attributionControl: false,
         dragRotate: false,
@@ -136,27 +143,31 @@ export function RouteMap(props: MapProps) {
       map.addControl(new NavigationControl({ showCompass: false }), 'bottom-right')
       map.once('load', () => {
         if (disposed) return
-        map.addSource('timetable', { type: 'geojson', data: features(network, undefined) })
+        map.addSource('timetable', { type: 'geojson', data: routeFeatures(network, undefined) })
         map.addLayer({ id: 'network', source: 'timetable', type: 'line',
           filter: ['in', ['get', 'kind'], ['literal', ['metro', 'tram']]],
           layout: { 'line-cap': 'round', 'line-join': 'round' },
-          paint: { 'line-width': 3, 'line-color': ['match', ['get', 'kind'], 'metro', '#a5b8ca', '#bbaab4'] },
+          paint: { 'line-width': 3, 'line-color': ['match', ['get', 'kind'], 'metro', '#44584c', '#605d47'] },
         })
         map.addLayer({ id: 'stops', source: 'timetable', type: 'circle',
           filter: ['==', ['get', 'kind'], 'station'],
-          paint: { 'circle-radius': 3, 'circle-color': '#f8fafc', 'circle-stroke-width': 1,
-            'circle-stroke-color': '#9aacbc' },
+          paint: { 'circle-radius': 3, 'circle-color': '#c2ccc5', 'circle-stroke-width': 1,
+            'circle-stroke-color': '#34453a' },
         })
-        map.addLayer({ id: 'rides', source: 'timetable', type: 'line',
-          filter: ['==', ['get', 'kind'], 'ride'],
-          layout: { 'line-cap': 'round', 'line-join': 'round' },
-          paint: { 'line-width': 5, 'line-color': ['match', ['get', 'rider'], 'a', '#1b69bd', '#117c6f'],
-            'line-offset': ['match', ['get', 'rider'], 'a', -1.5, 1.5] },
-        })
-        map.addLayer({ id: 'walks', source: 'timetable', type: 'line',
-          filter: ['==', ['get', 'kind'], 'walk'],
-          paint: { 'line-width': 4, 'line-dasharray': [1, 1], 'line-color': '#263e57' },
-        })
+        for (const rider of ['a', 'b']) {
+          map.addLayer({ id: `rides-${rider}`, source: 'timetable', type: 'line',
+            filter: ['all', ['==', ['get', 'kind'], 'ride'], ['==', ['get', 'rider'], rider]],
+            layout: { 'line-cap': 'butt', 'line-join': 'round' },
+            paint: { 'line-width': 5, 'line-color': rider === 'a' ? '#61e6a5' : '#f2d35f',
+              'line-offset': rider === 'a' ? -3 : 3,
+              ...(rider === 'b' ? { 'line-dasharray': [4, 2] } : {}) },
+          })
+          map.addLayer({ id: `walks-${rider}`, source: 'timetable', type: 'line',
+            filter: ['all', ['==', ['get', 'kind'], 'walk'], ['==', ['get', 'rider'], rider]],
+            paint: { 'line-width': 4, 'line-dasharray': [1, 2],
+              'line-color': rider === 'a' ? '#61e6a5' : '#f2d35f', 'line-offset': rider === 'a' ? -3 : 3 },
+          })
+        }
         setMarkers(() => Marker)
       })
     }).catch(() => {

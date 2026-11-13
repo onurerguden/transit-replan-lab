@@ -23,6 +23,12 @@ jobs:
       - run: npm install --global corepack@0.36.0
       - run: make setup
       - run: make check
+      - name: Verify frozen corpus and published holdout evidence
+        run: |
+          uv run --locked --project backend python -m experiments.review_holdout --output "$RUNNER_TEMP/holdout"
+          cmp data/scenarios/review-v2/manifest.json "$RUNNER_TEMP/holdout/manifest.json"
+          uv run --locked --project backend python -m scripts.audit_experiment_bundle \
+            experiments/results/review-2026-11-13 --split holdout --benchmark data/scenarios/review-v2
       - run: make build
       - name: Install Chromium for the simulation tests
         working-directory: frontend
@@ -30,3 +36,15 @@ jobs:
       - run: make e2e
         env:
           TRL_MODEL: replay
+      - name: Build and start the Docker demo
+        run: docker compose up --build --wait
+      - name: Run the browser suite against Docker
+        run: make e2e
+        env:
+          TRL_E2E_BASE: http://127.0.0.1:8080
+      - name: Capture Docker logs on failure
+        if: failure()
+        run: docker compose logs --no-color
+      - name: Stop the Docker demo
+        if: always()
+        run: docker compose down --volumes
