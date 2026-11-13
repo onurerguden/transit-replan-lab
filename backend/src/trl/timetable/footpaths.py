@@ -119,3 +119,8 @@ def generate(
         seconds=np.asarray([seconds for _, seconds in ordered], dtype=np.int32),
         params=params,
     )
+
+
+def from_transfers(ids: Sequence[str], transfers: Mapping[tuple[str, str], int]) -> Footpaths:
+    """Footpaths made only of documented links, for the core network."""
+    return generate(ids, [0.0] * len(ids), [0.0] * len(ids), FootpathParams(max_s=0), transfers)

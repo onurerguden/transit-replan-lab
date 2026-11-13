@@ -371,6 +371,9 @@ def decide(
     answered: bool = False,
     strategy: str = "impact",
 ) -> Intake:
+    if not reasons and not slot_facts(facts, "kind") and not slot_facts(facts, "target"):
+        # Nothing in the report names an event or a place, so there is nothing to ask about.
+        return Intake(action="abstain", facts=facts, reasons=("no_event",))
     complete, overflow = hypotheses(facts, schedule, day)
     if overflow or reasons:
         return Intake(action="abstain", facts=facts, reasons=reasons or ("too_many_hypotheses",))

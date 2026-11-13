@@ -78,3 +78,19 @@ Each entry records completed acceptance checks and concrete blockers.
 - Changed behavior: `10:00 pm` after an unmarked start carries to the start, fractional and mixed
   duration units are read, `GMT+3` counts as local time.
 - Cut: natural-language trip references.
+
+## F6 · Routing on the full network (partial)
+
+- Compact timetable, bounded query, work budget and meeting-horizon deepening; ADR 0014 records
+  the measurements. Differential tests against the full search pass. The p95 target and the
+  incomplete rate were not met, and the API stays on the core network.
+- Not done: segment-scoped RAPTOR with arrival profiles, the independent SQLite reference for
+  the verifier, a process pool and the margin-aware bags.
+
+## F4 and F7 · TRL-Bench v3
+
+- A procedural generator with split-owned phrase parts, Turkish morphology, stop partitions,
+  an audit that proves disjointness and a freeze manifest. Cluster bootstrap, exact McNemar,
+  Holm and Clopper–Pearson statistics, and a runner that writes each split once.
+- The dev run found four reader defects that are fixed with regressions.
+- Not done: external-family paraphrases and a judge model, plan labels from two routers.

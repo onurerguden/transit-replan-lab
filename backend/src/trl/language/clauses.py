@@ -5,7 +5,7 @@ from collections.abc import Iterator
 
 BOUNDARY = re.compile(r"[.;!\n()]|\b(?:but|however|ama|ancak|fakat|whereas)\b")
 HEDGE = re.compile(
-    r"\b(?:no|not|never|maybe|might|possibly|possible|expected|if|degil|belki|"
+    r"\b(?:no|not|never|maybe|might|possibly|possible|expected|if|degil\w*|belki|"
     r"muhtemel\w*|olabilir|bekleniyor|edilmedi|kapatilmadi|gecikmiyor)\b|n['’]t\b|\?"
 )
 # A clause that says service is normal or restored is evidence against a disruption.

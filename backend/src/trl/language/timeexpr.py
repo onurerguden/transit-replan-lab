@@ -12,7 +12,12 @@ from typing import Literal
 DAY = 86400
 Role = Literal["from", "until", "bare"]
 LOCAL_ZONE = r"(?:[+-]0?3(?::?00)?|trt|tsi|utc\s*\+\s*0?3(?::?00)?|gmt\s*\+\s*0?3(?::?00)?)"
-OTHER_ZONE = re.compile(r"(?<![\w])(?:utc|gmt|zulu|z)(?![\w])|(?<=\d)\s*[+-]\d{2}:?\d{2}(?!\d)")
+OTHER_ZONE = re.compile(
+    r"(?<![\w])(?:utc|gmt|zulu|z)(?![\w])"
+    r"|(?<=\d)\s*\+\d{2}:?\d{2}(?!\d)"  # a plus sign is always an offset
+    r"|(?<=\d{2}:\d{2}:\d{2})-\d{2}:?\d{2}(?!\d)"  # a minus sign after seconds is an offset
+    r"|(?<=\d)\s+-\d{2}:?\d{2}(?!\d)"  # so is a detached minus; `12:00-13:00` is a range
+)
 MONTHS = {
     "ocak": 1, "subat": 2, "mart": 3, "nisan": 4, "mayis": 5, "haziran": 6, "temmuz": 7,
     "agustos": 8, "eylul": 9, "ekim": 10, "kasim": 11, "aralik": 12,
@@ -32,7 +37,7 @@ RELATIVE = re.compile(
     r"last\s+\w+day|gecen)\b"
 )
 CLOCK = re.compile(
-    r"(?<![\w:.,+-])(\d{1,2})[:.]([0-5]\d)(?::[0-5]\d)?(?:\s*([ap])\.?m\.?)?(?![\w:]|[.,]\d)"
+    r"(?<![\w:.,+])(\d{1,2})[:.]([0-5]\d)(?::[0-5]\d)?(?:\s*([ap])\.?m\.?)?(?![\w:]|[.,]\d)"
 )
 SAAT_HOUR = re.compile(r"\bsaat\s+(\d{1,2})(?![\d:.,])")
 DURATION = re.compile(

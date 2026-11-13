@@ -3,10 +3,11 @@
 from bisect import bisect_left
 from collections import defaultdict
 from collections.abc import Callable, Iterator
-from dataclasses import dataclass, replace
+from dataclasses import dataclass, field, replace
 from datetime import date, timedelta
 from heapq import heappop, heappush, nsmallest
 from itertools import count
+from time import perf_counter
 
 from trl.disruptions import Overlay
 from trl.domain import Constraint, Itinerary, Leg, Offer, Ride, Scenario, Transfer, Trip, Walk
@@ -21,10 +22,36 @@ class SearchIncomplete(RuntimeError):
     """A bounded search exhausted its resource budget."""
 
 
+DEFAULT_WORK = 2_000_000
+
+
+@dataclass
+class Budget:
+    """A deterministic work counter with an optional wall-clock deadline.
+
+    `work` counts every candidate label and every examined pair, so it does not depend on the
+    machine. The deadline is a safety net and is checked every 1,024 units.
+    """
+
+    max_work: int = DEFAULT_WORK
+    deadline_s: float | None = None
+    work: int = 0
+    started: float = field(default_factory=perf_counter)
+
+    def charge(self, units: int = 1) -> None:
+        self.work += units
+        if self.work > self.max_work:
+            raise SearchIncomplete("Work budget exhausted.")
+        if self.deadline_s is not None and self.work % 1024 < units:
+            if perf_counter() - self.started > self.deadline_s:
+                raise SearchIncomplete("Search deadline exceeded.")
+
+
 @dataclass
 class SearchStats:
     labels: int = 0
     pairs: int = 0
+    work: int = 0
 
 
 @dataclass(frozen=True)
@@ -107,6 +134,7 @@ def alternatives(
     *,
     margin_aware: bool = False,
     stats: SearchStats | None = None,
+    budget: Budget | None = None,
 ) -> list[ArrivalWindow]:
     earliest = constraint.ready
     latest = min(deadline, earliest + constraint.travel_limit)
@@ -139,6 +167,8 @@ def alternatives(
 
     def add(label: Label) -> None:
         nonlocal accepted
+        if budget is not None:
+            budget.charge()
         key = (label.stop, label.arrival, label.walked)
         costs = frontier[key]
         candidate = cost(label)
@@ -280,8 +310,10 @@ def find_offers(
     initial: Offer | None = None,
     margin_aware: bool = False,
     stats: SearchStats | None = None,
+    budget: Budget | None = None,
 ) -> list[Offer]:
     overlay = overlay or Overlay.compile(())
+    budget = budget or Budget()
     index = connections(
         schedule,
         scenario.service_date,
@@ -304,6 +336,7 @@ def find_offers(
         overlay,
         margin_aware=margin_aware,
         stats=stats,
+        budget=budget,
     )
     b = alternatives(
         schedule,
@@ -314,6 +347,7 @@ def find_offers(
         overlay,
         margin_aware=margin_aware,
         stats=stats,
+        budget=budget,
     )
     b_by_stop: dict[str, list[ArrivalWindow]] = defaultdict(list)
     for window in sorted(b, key=lambda item: item.first.arrival):
@@ -339,6 +373,7 @@ def find_offers(
                 if right.first.arrival > deadline:
                     break
                 examined += 1
+                budget.charge()
                 if stats is not None:
                     stats.pairs += 1
                 if examined > MAX_PAIRS:
@@ -355,6 +390,8 @@ def find_offers(
         selected = diverse_pairs(pairs(), rank, initial, scenario)
     else:
         selected = nsmallest(limit, pairs(), key=rank)
+    if stats is not None:
+        stats.work = budget.work
     return [
         Offer(
             id=f"v{version}-{number}",

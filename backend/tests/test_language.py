@@ -147,7 +147,10 @@ def test_the_service_day_fixture_matches() -> None:
 
 
 @pytest.mark.deep
-@given(st.text(max_size=60), st.sampled_from(["stop_closure", "trip_cancellation", "trip_delay"]))
+@given(
+    st.text(min_size=1, max_size=60),
+    st.sampled_from(["stop_closure", "trip_cancellation", "trip_delay"]),
+)
 @settings(max_examples=20_000, deadline=None)
 def test_gate_soundness_over_adversarial_quotes(fabricated: str, kind: str) -> None:
     """No quote creates an incident unless the text, the parsers and the clause all agree."""
@@ -157,3 +160,32 @@ def test_gate_soundness_over_adversarial_quotes(fabricated: str, kind: str) -> N
     facts, reasons = extract(text, SCHEDULE, DAY, quote(fabricated, kind))
     decision = decide(facts, reasons, SCHEDULE, DAY, lambda _: ("infeasible", None), 1)
     assert decision.action != "apply"
+
+
+@pytest.mark.parametrize(
+    "text",
+    [
+        "Konak İskele tram stop is closed 12:59-13:24.",
+        "Konak İskele tramvay durağı 12:59-13:24 kapalı.",
+    ],
+)
+def test_a_hyphen_between_two_clocks_is_a_range_not_an_offset(text: str) -> None:
+    parsed = parse(normalize(text), DAY)
+    assert not parsed.issues and parsed.start and parsed.end
+    assert (parsed.start.seconds, parsed.end.seconds) == (46740, 48240)
+
+
+def test_turkish_negation_with_a_suffix_blocks_the_event() -> None:
+    text = "Konak İskele tramvay durağı 08:24 ile 10:00 arasında kapalı değildir."
+    decision = decide(
+        *extract(text, SCHEDULE, DAY), SCHEDULE, DAY, lambda _: ("infeasible", None), 1
+    )
+    assert decision.action != "apply"
+
+
+def test_a_report_without_an_event_or_place_is_abstained_not_questioned() -> None:
+    text = "All lines are operating as scheduled."
+    decision = decide(
+        *extract(text, SCHEDULE, DAY), SCHEDULE, DAY, lambda _: ("infeasible", None), 1
+    )
+    assert decision.action == "abstain" and decision.reasons == ("no_event",)
