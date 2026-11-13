@@ -1,8 +1,10 @@
 SHELL := /bin/sh
+# Branch coverage across trl. Ratchets to 90 by the v2 release.
+COVERAGE_FLOOR ?= 86
 PY := uv run --locked --project backend
 WEB := cd frontend && corepack pnpm
 
-.PHONY: setup check test build e2e dev dev-api dev-web hooks verify-public
+.PHONY: setup check test test-ollama test-deep api-types api-drift build e2e dev dev-api dev-web hooks verify-public
 
 setup:
 	uv sync --locked --project backend
@@ -12,9 +14,8 @@ check:
 	$(PY) ruff check backend scripts experiments finetune
 	$(PY) ruff format --check backend scripts experiments finetune
 	$(PY) pyright --project backend/pyproject.toml
-	$(PY) pytest backend/tests -m "not ollama" \
-		--cov=trl.routing --cov=trl.verify --cov=trl.disruptions --cov=trl.storage \
-		--cov-report=term-missing --cov-fail-under=90
+	$(PY) pytest backend/tests -m "not ollama and not deep" \
+		--cov --cov-config=backend/pyproject.toml --cov-report=term --cov-fail-under=$(COVERAGE_FLOOR)
 	cd backend && uv run --locked lint-imports
 	$(WEB) run lint
 	$(WEB) run typecheck
@@ -22,8 +23,24 @@ check:
 	$(PY) python scripts/check_public_boundary.py
 
 test:
-	$(PY) pytest backend/tests
+	$(PY) pytest backend/tests -m "not ollama and not deep"
 	$(WEB) run test
+
+# Real-model tests need a running Ollama instance with the pinned tag.
+test-ollama:
+	$(PY) pytest backend/tests -m ollama
+
+# Long property, differential and state-machine suites. CI runs them nightly.
+test-deep:
+	TRL_DEEP=1 $(PY) pytest backend/tests -m deep
+
+api-types:
+	$(PY) python scripts/export_openapi.py
+	$(WEB) run api:types
+
+# Fail when the checked schema or generated client types drift from the backend.
+api-drift: api-types
+	git diff --exit-code -- frontend/openapi.json frontend/src/api.generated.ts
 
 build:
 	$(WEB) run build
@@ -32,7 +49,7 @@ dev:
 	$(MAKE) -j2 dev-api dev-web
 
 dev-api:
-	$(PY) uvicorn trl.api.app:app --host 127.0.0.1 --port 8000 --reload --reload-dir backend/src
+	$(PY) uvicorn --factory trl.api.app:create_app --host 127.0.0.1 --port 8000 --reload --reload-dir backend/src
 
 dev-web:
 	$(WEB) run dev

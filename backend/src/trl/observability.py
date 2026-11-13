@@ -1,6 +1,5 @@
 """Trace execution and model metadata without emitting notice or prompt text."""
 
-import os
 from collections.abc import Awaitable, Callable
 from functools import wraps
 
@@ -10,6 +9,8 @@ from opentelemetry.exporter.otlp.proto.http.trace_exporter import OTLPSpanExport
 from opentelemetry.sdk.resources import Resource
 from opentelemetry.sdk.trace import TracerProvider
 from opentelemetry.sdk.trace.export import BatchSpanProcessor
+
+from trl.settings import get_settings
 
 _provider: TracerProvider | None = None
 
@@ -26,7 +27,7 @@ def configure_observability() -> None:
         ],
         logger_factory=structlog.PrintLoggerFactory(),
     )
-    endpoint = os.environ.get("OTEL_EXPORTER_OTLP_ENDPOINT")
+    endpoint = get_settings().otel_endpoint
     if endpoint and _provider is None:
         provider = TracerProvider(
             resource=Resource.create(

@@ -3,7 +3,6 @@
 import csv
 import hashlib
 import io
-import os
 from dataclasses import dataclass
 from datetime import date, datetime
 from pathlib import Path
@@ -12,8 +11,9 @@ from zipfile import ZipFile
 from pydantic import TypeAdapter
 
 from trl.domain import Record, Stop, StopTime, Transfer, Trip
+from trl.settings import get_settings
 
-DATA_ROOT = Path(os.environ.get("TRL_DATA", str(Path(__file__).resolve().parents[3] / "data")))
+DATA_ROOT: Path = get_settings().data
 
 
 class Feed(Record):

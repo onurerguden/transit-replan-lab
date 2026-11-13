@@ -63,7 +63,8 @@ class ArrivalWindow:
         if arrival == self.first.arrival:
             return self.first
         walk = self.first.legs[-1]
-        assert walk.kind == "walk"
+        if walk.kind != "walk":
+            raise ValueError("A shifted meeting arrival requires a final walk.")
         leg = walk.model_copy(
             update={"departure": walk.departure + arrival - walk.arrival, "arrival": arrival}
         )

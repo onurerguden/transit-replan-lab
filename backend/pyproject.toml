@@ -1,6 +1,6 @@
 [project]
 name = "transit-replan-lab"
-version = "1.0.0"
+version = "2.0.0.dev0"
 description = "A timetable-backed simulator for coordinating two riders during transit disruptions."
 requires-python = ">=3.12,<3.13"
 dependencies = [
@@ -12,6 +12,7 @@ dependencies = [
     "opentelemetry-exporter-otlp-proto-http>=1.39,<2",
     "opentelemetry-sdk>=1.39,<2",
     "pydantic>=2.12,<3",
+    "pydantic-settings>=2.11,<3",
     "structlog>=25,<27",
     "uvicorn>=0.40,<1",
 ]
@@ -45,7 +46,36 @@ line-length = 100
 extend-include = ["../scripts/*.py"]
 
 [tool.ruff.lint]
-select = ["E", "F", "I", "UP", "B", "RUF"]
+select = ["E", "F", "I", "UP", "B", "RUF", "C90", "BLE", "ASYNC", "S", "PLR0913", "PLR0915", "TRY", "PT"]
+# TRY003 and PT018 are stylistic; S311 flags the seeded simulation randomness.
+ignore = ["TRY003", "PT018", "S311"]
+# Turkish notices use the dotless i as a distinct letter.
+allowed-confusables = ["ı"]
+
+[tool.ruff.lint.mccabe]
+max-complexity = 12
+
+[tool.ruff.lint.pylint]
+max-args = 8
+
+[tool.ruff.lint.per-file-ignores]
+# Tests, tooling and experiments assert freely and call git and local model tools.
+"tests/**" = ["S101", "S603", "S607"]
+"../scripts/**" = ["S101", "S603", "S607"]
+"../experiments/**" = ["S101", "S603", "S607"]
+"../finetune/**" = ["S101", "S603", "S607"]
+# Ratchet: each entry names the v2 phase that rewrites the function and removes the ignore.
+"src/trl/verify.py" = ["C901"]                    # F1 verifier package
+"src/trl/api/app.py" = ["C901"]                   # F2 route modules
+"src/trl/negotiation.py" = ["C901", "BLE001"]     # F2 error taxonomy
+"src/trl/intake.py" = ["C901"]                    # F5 language package
+"src/trl/routing.py" = ["C901", "PLR0913", "PLR0915"]  # F6 routing v2
+"../experiments/runner.py" = ["ASYNC240", "PLR0915"]      # F7 bench v3 runner
+"../experiments/vnext_cases.py" = ["C901", "PLR0915"]     # F7 bench v3 generator
+"../experiments/vnext_mediation.py" = ["ASYNC240", "PLR0915"]
+"../experiments/vnext_runner.py" = ["ASYNC240", "PLR0913"]
+"../finetune/data.py" = ["PLR0913"]                       # F8 training data v2
+"../finetune/routes.py" = ["ASYNC240"]
 
 [tool.pyright]
 include = ["src", "tests", "../scripts", "../experiments", "../finetune/data.py", "../finetune/routes.py"]
@@ -59,7 +89,19 @@ venv = ".venv"
 testpaths = ["tests"]
 pythonpath = [".."]
 addopts = "--strict-config --strict-markers -ra"
-markers = ["ollama: requires a running local Ollama instance"]
+markers = [
+    "ollama: requires a running local Ollama instance",
+    "deep: long property and differential suites for the nightly job",
+]
+
+[tool.coverage.run]
+branch = true
+source = ["trl"]
+omit = ["*/trl/cli.py"]
+
+[tool.coverage.report]
+show_missing = true
+skip_covered = true
 
 [tool.importlinter]
 root_package = "trl"

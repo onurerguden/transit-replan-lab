@@ -1,6 +1,6 @@
 {
   "name": "transit-replan-lab-web",
-  "version": "1.0.0",
+  "version": "2.0.0-dev.0",
   "private": true,
   "type": "module",
   "packageManager": "pnpm@10.34.9",

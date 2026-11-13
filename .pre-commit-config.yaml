@@ -3,15 +3,27 @@ repos:
     hooks:
       - id: ruff-check
         name: Ruff lint
-        entry: uv run --locked --project backend ruff check backend scripts
+        entry: uv run --locked --project backend ruff check backend scripts experiments finetune
         language: system
         types: [python]
         pass_filenames: false
       - id: ruff-format
         name: Ruff format
-        entry: uv run --locked --project backend ruff format --check backend scripts
+        entry: uv run --locked --project backend ruff format --check backend scripts experiments finetune
         language: system
         types: [python]
+        pass_filenames: false
+      - id: pyright
+        name: Pyright strict
+        entry: uv run --locked --project backend pyright --project backend/pyproject.toml
+        language: system
+        types: [python]
+        pass_filenames: false
+      - id: web-lint
+        name: Frontend lint
+        entry: sh -c 'cd frontend && corepack pnpm run lint'
+        language: system
+        files: ^frontend/
         pass_filenames: false
       - id: public-files
         name: Public boundary for staged files

@@ -498,7 +498,8 @@ class RunStore:
                    VALUES (?,?,?,?,?,?,?)""",
                 (run_id, version, step, model, digest, context, request_sha256),
             ).lastrowid
-            assert slot is not None
+            if slot is None:
+                raise sqlite3.DatabaseError("The model call reservation has no row ID.")
             return slot
 
     def finish_call(

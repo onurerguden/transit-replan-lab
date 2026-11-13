@@ -311,7 +311,8 @@ class RunService:
         return ("feasible", offers[0]) if offers else ("infeasible", None)
 
     async def ingest_vnext(self, run: RunBody) -> None:
-        assert run.evidence is not None
+        if run.evidence is None:
+            raise ValueError("A vNext run requires evidence.")
         date = run.scenario.service_date
         reasons: tuple[str, ...] = ()
         if run.clarification is not None and run.evidence.intake:

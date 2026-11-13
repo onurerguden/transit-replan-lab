@@ -1,7 +1,6 @@
 """Local simulation HTTP API and replayable event stream."""
 
 import asyncio
-import os
 from collections.abc import AsyncGenerator, AsyncIterator
 from contextlib import asynccontextmanager
 from pathlib import Path
@@ -13,10 +12,12 @@ from fastapi.responses import JSONResponse
 from fastapi.sse import EventSourceResponse, ServerSentEvent
 from pydantic import BaseModel
 
+from trl import __version__
 from trl.contracts import Clarify, CreateRun, Disrupt, Network, Receipt, RunView
 from trl.gtfs import load_schedule
 from trl.observability import configure_observability
 from trl.orchestration import RunService
+from trl.settings import get_settings
 from trl.storage import Conflict, NotFound, RunStore
 
 IdempotencyKey = Annotated[str, Header(alias="Idempotency-Key", min_length=1, max_length=128)]
@@ -56,7 +57,8 @@ CurrentRun = Annotated[RunView, Depends(current_run)]
 
 
 def create_app(path: Path | None = None) -> FastAPI:
-    database = path or Path(os.environ.get("TRL_DB", ".local/state/transit.sqlite"))
+    """Build the application. Run it with `uvicorn --factory trl.api.app:create_app`."""
+    database = path or get_settings().database
 
     @asynccontextmanager
     async def lifespan(app: FastAPI) -> AsyncGenerator[None]:
@@ -67,7 +69,7 @@ def create_app(path: Path | None = None) -> FastAPI:
         async with runs.workers():
             yield
 
-    app = FastAPI(title="Transit Replan Lab", version="1.0.0", lifespan=lifespan)
+    app = FastAPI(title="Transit Replan Lab", version=__version__, lifespan=lifespan)
 
     @app.exception_handler(NotFound)
     async def missing(_request: Request, exc: NotFound) -> JSONResponse:
@@ -146,6 +148,3 @@ def create_app(path: Path | None = None) -> FastAPI:
                 await asyncio.sleep(0.15)
 
     return app
-
-
-app = create_app()
