@@ -94,3 +94,15 @@ Each entry records completed acceptance checks and concrete blockers.
   Holm and Clopper–Pearson statistics, and a runner that writes each split once.
 - The dev run found four reader defects that are fixed with regressions.
 - Not done: external-family paraphrases and a judge model, plan labels from two routers.
+
+## F9 · Frontend
+
+- Runs open from their link, active disruptions can be retracted, retryable failures show a retry button, the page copies its link, and Turkish and dark themes work. The language switch covers status labels and the new controls.
+- Unit tests (jsdom) cover the incident list, translations and links. Three browser tests were added (retract and reopen, language, accessibility with axe in both themes). The axe check found two defects that are fixed: a label that did not contain its visible text and a scrollable region without keyboard focus.
+- All 15 browser tests pass against the dev stack and against the Docker image.
+- Not done: splitting `App.tsx`, a benchmark explorer page, map clustering for the full network and additional browsers.
+
+## F10 · Operations
+
+- Global tracing, Prometheus metrics, `/readyz`, rate limiting, security headers, a Grafana dashboard and Prometheus job in the `obs` profile, CodeQL, dependency and Trivy workflows. Prometheus scraped the running stack and Grafana started healthy.
+- The Docker stack was built and the browser suite passed against it with the content security policy active.

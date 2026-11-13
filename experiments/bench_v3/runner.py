@@ -46,7 +46,35 @@ def key(incident: Disruption | dict[str, object]) -> Incident:
     return (kind, data["trip"])
 
 
+REPLIES: dict[str, dict[str, str]] = {}
+
+
+def replies(arm: str) -> dict[str, str]:
+    """Raw model replies for an arm named `label=path`, loaded once."""
+    if arm not in REPLIES:
+        path = Path(arm.partition("=")[2])
+        REPLIES[arm] = {
+            row["id"]: row["reply"]
+            for row in (json.loads(line) for line in path.read_text().splitlines())
+        }
+    return REPLIES[arm]
+
+
+def parsed(reply: str) -> Extraction:
+    """A reply that is not a valid extraction counts as no quote."""
+    try:
+        return Extraction.model_validate_json(reply.strip())
+    except ValueError:
+        return Extraction()
+
+
 def proposal(arm: str, report: Report, rng: random.Random) -> Extraction | None:
+    if "=" in arm:
+        return (
+            parsed(replies(arm).get(report.id, ""))
+            if report.id in replies(arm)
+            else None
+        )
     if arm == "rules":
         return None
     if arm == "lexicon":
@@ -86,7 +114,9 @@ def read(report: Report, schedule: Schedule, day: date, arm: str) -> Outcome:
         variants = conjoined_variants(report.text, schedule, day)
         found: list[Disruption] = []
         for variant in variants:
-            part = decide(*extract(variant, schedule, day), schedule, day, idle, 1)
+            part = decide(
+                *extract(variant, schedule, day, guide), schedule, day, idle, 1
+            )
             if part.action == "apply" and part.selected:
                 found.append(part.selected.incident)
         if variants and len(found) == len(variants):

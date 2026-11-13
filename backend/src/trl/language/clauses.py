@@ -3,7 +3,7 @@
 import re
 from collections.abc import Iterator
 
-BOUNDARY = re.compile(r"[.;!\n()]|\b(?:but|however|ama|ancak|fakat|whereas)\b")
+BOUNDARY = re.compile(r"[.;!\n()]|:\s|\b(?:but|however|ama|ancak|fakat|whereas)\b")
 HEDGE = re.compile(
     r"\b(?:no|not|never|maybe|might|possibly|possible|expected|if|degil\w*|belki|"
     r"muhtemel\w*|olabilir|bekleniyor|edilmedi|kapatilmadi|gecikmiyor)\b|n['’]t\b|\?"

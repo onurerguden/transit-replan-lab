@@ -12,6 +12,7 @@ from uuid import uuid4
 
 from pydantic import TypeAdapter
 
+from trl import metrics
 from trl.contracts import (
     Clarify,
     CreateRun,
@@ -149,6 +150,7 @@ class RunStore:
             return
         row = connection.execute("SELECT token FROM leases WHERE run_id=?", (run_id,)).fetchone()
         if row is None or row["token"] != fence.token:
+            metrics.FENCED.inc()
             raise Fenced("The execution lease was revoked.")
 
     @staticmethod

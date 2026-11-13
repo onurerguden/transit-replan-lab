@@ -1,27 +1,17 @@
 import { useEffect, useRef, useState } from 'react'
 import {
   Activity, ArrowRight, Check, ChevronDown, CircleDot, Clock3, GitBranch, MapPin,
-  RotateCcw, TrainFront, TriangleAlert, Waypoints,
+  Link2, Languages, Moon, RotateCcw, TrainFront, TriangleAlert, Waypoints,
 } from 'lucide-react'
 import type { Architecture, Itinerary, Network, Offer, OperatorMode, Preference, RoutePolicy, Run, RunEvent, ScenarioId } from './api'
 import { elapsed, time } from './api'
 import { RouteMap } from './RouteMap'
-import { useRun } from './useRun'
+import { runLink, useRun } from './useRun'
+import { Incidents } from './Incidents'
+import { useLanguage } from './i18n'
+import type { Key } from './i18n'
 import { DecisionSummary, ImpactComparison, Resilience, ReportEvidence, policyLabels } from './DecisionEvidence'
 
-const statusLabels: Record<Run['status'], string> = {
-  ready: 'Ready',
-  planning: 'Replanning',
-  clarification: 'Clarification needed',
-  abstained: 'Disruption unresolved',
-  verified: 'Verified',
-  no_agreement: 'No agreement',
-  infeasible: 'No feasible meeting',
-  search_incomplete: 'Search incomplete',
-  model_error: 'Model error',
-  system_error: 'Internal error',
-  verification_failed: 'Verification failed',
-}
 
 const roleLabels: Record<string, string> = {
   operator: 'Operator', router: 'Route engine', rider_a: 'Rider 1', rider_b: 'Rider 2',
@@ -177,7 +167,7 @@ function Timeline({ events, live }: { events: RunEvent[]; live: boolean }) {
         <div><Activity size={18} /><h2>Activity</h2></div>
         {live && <span className="live-indicator">Live</span>}
       </header>
-      {events.length ? <ol ref={list} className="timeline" aria-live="polite">
+      {events.length ? <ol ref={list} className="timeline" aria-live="polite" tabIndex={0}>
         {events.map(event => <li key={event.seq}>
           <span className={`event-dot event-dot--${event.role}`} />
           <div>
@@ -202,6 +192,24 @@ function Timeline({ events, live }: { events: RunEvent[]; live: boolean }) {
 
 export function App() {
   const { network, run, settings, events, connection, busy, error, retry, start, send, recover } = useRun()
+  const { language, toggle, t } = useLanguage()
+  const [copied, setCopied] = useState(false)
+  const [dark, setDark] = useState(() => {
+    try { return window.localStorage.getItem('trl-theme') === 'dark' } catch { return false }
+  })
+  useEffect(() => {
+    document.documentElement.dataset.theme = dark ? 'dark' : 'light'
+    document.documentElement.lang = language
+    try { window.localStorage.setItem('trl-theme', dark ? 'dark' : 'light') } catch { /* ignore */ }
+  }, [dark, language])
+  async function copyLink() {
+    if (!run) return
+    try {
+      await navigator.clipboard.writeText(`${window.location.origin}${runLink(run.id)}`)
+      setCopied(true)
+      window.setTimeout(() => setCopied(false), 2000)
+    } catch { /* clipboard can be blocked */ }
+  }
   const [architecture, setArchitecture] = useState<Architecture>('rules')
   const [legacy] = useState(() => typeof window !== 'undefined' &&
     new URLSearchParams(window.location.search).get('workflow') === 'legacy')
@@ -245,7 +253,10 @@ export function App() {
         <div className="brand"><span className="brand-symbol"><TrainFront size={20} /></span>
           <span>Transit Replan Lab</span>
         </div>
-        <div className="top-meta"><span className="connection-dot" />Local simulator <span className="top-location">İzmir, Türkiye</span></div>
+        <div className="top-meta"><span className="connection-dot" />Local simulator <span className="top-location">İzmir, Türkiye</span>
+          <button className="icon-button" type="button" aria-label={t('language')} onClick={toggle}><Languages size={16} />{t('language')}</button>
+          <button className="icon-button" type="button" aria-label={t('theme')} aria-pressed={dark} onClick={() => setDark(value => !value)}><Moon size={16} /></button>
+        </div>
       </header>
       <main className="workspace" id="main" tabIndex={-1}>
         <section className="overview">
@@ -314,7 +325,7 @@ export function App() {
         {run && network && <>
           <div className="run-bar">
             <span className={`run-status run-status--${run.status}`} role="status">
-              {run.status === 'verified' ? <Check size={15} /> : <CircleDot size={14} />}{statusLabels[run.status]}
+              {run.status === 'verified' ? <Check size={15} /> : <CircleDot size={14} />}{t(`status.${run.status}` as Key)}
             </span>
             <span><Clock3 size={15} />{run.service_date} · İzmir time</span>
             <span><GitBranch size={15} />Revision {run.version}</span>
@@ -324,6 +335,10 @@ export function App() {
               {run.metrics.output_tokens > 0 && ` · ${(run.metrics.input_tokens + run.metrics.output_tokens).toLocaleString()} tokens · ${(run.metrics.model_ms / 1000).toFixed(1)} s`}
             </span>}
             {connection === 'reconnecting'  && <span className="reconnecting">Reconnecting…</span>}
+            {run.evidence && run.evidence.rounds > 0 && <span>{t('round')} {run.evidence.rounds}</span>}
+            <button type="button" className="link-button" onClick={() => void copyLink()}><Link2 size={14} />{copied ? t('copied') : t('share')}</button>
+            {run.retryable && <button type="button" className="link-button" disabled={active}
+              onClick={() => void send('retries', '')}>{t('retry')}</button>}
           </div>
           <DecisionSummary run={run} offer={offer} event={run.incident
             ? disruptionSummary(run.incident, network)
@@ -376,6 +391,9 @@ export function App() {
               </section>}
             </div>
             <div className="right-column">
+              <Incidents incidents={run.incidents} busy={active || Boolean(retry)} t={t}
+                describe={incident => disruptionSummary(incident, network)}
+                onRetract={id => void send('retractions', '', undefined, [id])} />
               <section className="incident-panel" aria-label="Disruption notice">
                 <div className="section-head"><div><TriangleAlert size={17} /><h2>Disruption notice</h2></div></div>
                 <textarea aria-label="Disruption notice text" maxLength={600} value={text}

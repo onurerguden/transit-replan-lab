@@ -77,7 +77,7 @@ def write_row(handle: TextIO, row: dict[str, object]) -> None:
     handle.write(json.dumps(row, ensure_ascii=False) + "\n")
 
 
-def run(split: str, arms: tuple[str, ...]) -> None:
+def run(split: str, arms: tuple[str, ...], only: set[str] | None = None) -> None:
     require_frozen(split)
     from trl.gtfs import load_schedule
 
@@ -89,7 +89,7 @@ def run(split: str, arms: tuple[str, ...]) -> None:
         raise SystemExit(f"{target} exists. Results are written once per split.")
     with target.open("x") as handle:
         runner.run(
-            generate.read(dataset(split)),
+            [r for r in generate.read(dataset(split)) if only is None or r.id in only],
             schedule,
             day,
             arms,
@@ -173,13 +173,25 @@ def main() -> None:
     parser.add_argument("command", choices=("build", "audit", "run", "report"))
     parser.add_argument("--split", choices=SPLITS, default="dev")
     parser.add_argument("--arms", nargs="*", default=list(runner.ARMS))
+    parser.add_argument(
+        "--only-ids-from", type=Path, default=None, help="score only ids in this JSONL"
+    )
+    parser.add_argument("--results", type=Path, default=None, help="results directory")
     args = parser.parse_args()
     if args.command == "build":
         build()
     elif args.command == "audit":
         sys.exit(check())
     elif args.command == "run":
-        run(args.split, tuple(args.arms))
+        only = (
+            {
+                json.loads(line)["id"]
+                for line in args.only_ids_from.read_text().splitlines()
+            }
+            if args.only_ids_from
+            else None
+        )
+        run(args.split, tuple(args.arms), only)
     else:
         report(args.split)
 

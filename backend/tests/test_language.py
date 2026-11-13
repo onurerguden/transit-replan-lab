@@ -189,3 +189,20 @@ def test_a_report_without_an_event_or_place_is_abstained_not_questioned() -> Non
         *extract(text, SCHEDULE, DAY), SCHEDULE, DAY, lambda _: ("infeasible", None), 1
     )
     assert decision.action == "abstain" and decision.reasons == ("no_event",)
+
+
+def test_a_turkish_note_label_is_not_an_english_negation() -> None:
+    text = "Not: tram:1_WEEKDAY_0113 seferi 33 dakika gecikmeli."
+    trip = "tram:1_WEEKDAY_0113"
+    if trip not in SCHEDULE.trips:
+        trip = next(item for item in SCHEDULE.trips if item.startswith("tram:"))
+        text = f"Not: {trip} seferi 33 dakika gecikmeli."
+    facts, reasons = extract(text, SCHEDULE, DAY)
+    assert not reasons and {item.slot for item in facts} >= {"kind", "target", "delay"}
+
+
+def test_a_colon_followed_by_a_space_ends_a_clause_but_not_an_identifier() -> None:
+    from trl.language.clauses import clauses
+
+    value = "note: tram:7 is closed"
+    assert [value[a:b] for a, b in clauses(value)] == ["note", "tram:7 is closed"]

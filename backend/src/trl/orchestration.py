@@ -15,6 +15,7 @@ from langgraph.checkpoint.sqlite.aio import AsyncSqliteSaver
 from langgraph.graph import END, START, StateGraph  # pyright: ignore[reportMissingTypeStubs]
 from langgraph.types import Command, Send, interrupt
 
+from trl import metrics
 from trl.agents import ModelError, ModelPort, OllamaModel, configured_model
 from trl.contracts import CreateRun, EventDraft, Network, Receipt, RouteLine, RunBody
 from trl.disruptions import Overlay
@@ -35,7 +36,7 @@ from trl.negotiation import Negotiator, StaleRun
 from trl.notice import rule_notice
 from trl.observability import observe, observe_async, tracer
 from trl.robustness import compare
-from trl.routing import SearchIncomplete, find_offers
+from trl.routing import SearchIncomplete, SearchStats, find_offers
 from trl.scenarios import load_scenario
 from trl.storage import Fence, Fenced, NotFound, RunStore, current_fence
 from trl.verify import verify_offer
@@ -184,6 +185,8 @@ class RunService:
                 await self._execute(receipt)
                 state = await asyncio.to_thread(self.store.read, receipt.run_id)
                 if state.version == receipt.version:
+                    if state.status in SETTLED:
+                        metrics.RUNS_SETTLED.labels(state.status).inc()
                     span.set_attribute("trl.outcome", state.status)
                     logger.info("run_state", status=state.status, version=state.version)
 
@@ -439,6 +442,7 @@ class RunService:
                 limit=1,
             )
         except SearchIncomplete:
+            metrics.SEARCH_INCOMPLETE.inc()
             return "search_incomplete", None
         return ("feasible", offers[0]) if offers else ("infeasible", None)
 
@@ -449,6 +453,7 @@ class RunService:
         reasons: tuple[str, ...] = ()
         rounds = run.evidence.rounds
         declined = False
+        proposal: Extraction | None = None
         if run.clarification is not None and run.evidence.intake:
             rounds += 1
             facts = answer_facts(
@@ -485,7 +490,7 @@ class RunService:
             return self.preview_incident(run, incident)
 
         if reasons == ("conflicting_targets",):
-            group = await asyncio.to_thread(self.conjoined, run, evaluate)
+            group = await asyncio.to_thread(self.conjoined, run, evaluate, proposal)
             if group is not None:
                 await self.record_group(run, *group)
                 return
@@ -562,12 +567,13 @@ class RunService:
             [Disruption],
             tuple[Literal["feasible", "infeasible", "search_incomplete"], Offer | None],
         ],
+        proposal: Extraction | None = None,
     ) -> tuple[Intake, tuple[Disruption, ...]] | None:
         """Read `A and B closed` as separate incidents when each part reads on its own."""
         date = run.scenario.service_date
         decisions: list[Intake] = []
         for variant in conjoined_variants(run.notice or "", self.schedule, date):
-            facts, reasons = extract(variant, self.schedule, date)
+            facts, reasons = extract(variant, self.schedule, date, proposal)
             decision = decide(facts, reasons, self.schedule, date, evaluate, run.version)
             if decision.action != "apply" or decision.selected is None:
                 return None
@@ -611,6 +617,7 @@ class RunService:
             return {}
         try:
             overlay = Overlay.compile(run.overlays)
+            work = SearchStats()
             offers = tuple(
                 find_offers(
                     self.schedule,
@@ -619,8 +626,10 @@ class RunService:
                     overlay,
                     diverse=run.workflow == "vnext",
                     initial=run.initial,
+                    stats=work,
                 )
             )
+            metrics.SEARCH_WORK.observe(work.work)
             updates: dict[str, object] = {}
             if run.evidence and offers:
                 offers, evidence = compare(

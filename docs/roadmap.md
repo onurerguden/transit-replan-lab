@@ -93,6 +93,6 @@ The [baseline](v2/baseline.md) lists the reproduced defects, and the
 - [x] F6 · Ship the compact timetable and McRAPTOR with differential tests, budgets and load measurements.
 - [x] F7 · Sample scenarios, require two-router label agreement, and build the resumable evaluation harness and preregistration.
 - [ ] F8 · Train Operator LoRA v2 and run the single final evaluation.
-- [ ] F9 · Deliver addressable runs, the incident and clarification interface, bilingual UI and accessibility tests.
-- [ ] F10 · Add metrics, tracing, readiness, security headers, rate limiting and supply-chain scanning.
+- [x] F9 · Deliver addressable runs, the incident and clarification interface, bilingual UI and accessibility tests.
+- [x] F10 · Add metrics, tracing, readiness, security headers, rate limiting and supply-chain scanning.
 - [ ] F11 · Publish documentation and prepare the signed release workflow.

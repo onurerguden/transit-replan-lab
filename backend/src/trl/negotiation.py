@@ -5,6 +5,7 @@ from time import perf_counter
 
 from pydantic import ValidationError
 
+from trl import metrics
 from trl.agents import (
     Choice,
     Decision,
@@ -106,6 +107,9 @@ class Negotiator:
                 span.set_attribute("gen_ai.usage.input_tokens", input_tokens)
                 span.set_attribute("gen_ai.usage.output_tokens", output_tokens)
                 span.set_attribute("trl.model.result", state)
+            metrics.MODEL_CALLS.labels(
+                "ollama" if hasattr(self.model, "base") else "replay"
+            ).observe(perf_counter() - start)
             saved = await asyncio.to_thread(
                 self.store.finish_call,
                 run.id,

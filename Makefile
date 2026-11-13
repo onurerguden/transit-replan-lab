@@ -1,6 +1,6 @@
 SHELL := /bin/sh
 # Branch coverage across trl. Ratchets to 90 by the v2 release.
-COVERAGE_FLOOR ?= 88
+COVERAGE_FLOOR ?= 89
 PY := uv run --locked --project backend
 WEB := cd frontend && corepack pnpm
 
@@ -40,7 +40,7 @@ api-types:
 
 # Fail when the checked schema or generated client types drift from the backend.
 api-drift: api-types
-	git diff --exit-code -- frontend/openapi.json frontend/src/api.generated.ts
+	/usr/bin/git diff --exit-code -- frontend/openapi.json frontend/src/api.generated.ts
 
 build:
 	$(WEB) run build
