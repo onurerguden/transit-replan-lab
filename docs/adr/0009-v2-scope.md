@@ -14,7 +14,7 @@ and the small, co-designed benchmarks limit what the measurements can support.
 - v2 loads all five official İzmir GTFS feeds through a feed-agnostic loader: Metro, every tram line, İZBAN, İzdeniz and ESHOT.
 - The `core` profile keeps the v1 network and remains the demo default.
 - A feed that is unavailable or has a calendar that does not cover the service date gets an explicit status and a labelled policy instead of failing the load.
-- A model-free hosted demo is in scope. Deployment requires maintainer approval.
+- The demo runs locally through Docker. Work that needs an external account or API key, such as a hosted deployment or licensed real alert feeds, is out of scope.
 - Live transit data, rider accounts and travel advice remain out of scope.
 - The release is 2.0.0 because commands, statuses and the stored schema change. A numbered migration upgrades v1.2.0 databases.
 

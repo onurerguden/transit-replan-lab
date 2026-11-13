@@ -2,7 +2,7 @@
 
 ## Mission
 
-Build a local, timetable-backed simulator that coordinates two riders after a transit disruption in İzmir. v1 covered Metro M1 and Konak Tram, four coordination variants, independent route verification, local inference, an Operator adaptation experiment, and a reproducible release. v2 extends the network to all five official İzmir GTFS feeds, keeps Metro M1 and Konak Tram as the `core` demo profile, and adds a model-free hosted demo. Live transit data, rider accounts, and travel advice remain out of scope. The [v2 plan](docs/v2/engineering-plan.md) and the [roadmap](docs/roadmap.md) track the work.
+Build a local, timetable-backed simulator that coordinates two riders after a transit disruption in İzmir. v1 covered Metro M1 and Konak Tram, four coordination variants, independent route verification, local inference, an Operator adaptation experiment, and a reproducible release. v2 extends the network to all five official İzmir GTFS feeds and keeps Metro M1 and Konak Tram as the `core` demo profile. Live transit data, hosted deployments, steps that need external accounts or API keys, rider accounts, and travel advice remain out of scope. The [v2 plan](docs/v2/engineering-plan.md) and the [roadmap](docs/roadmap.md) track the work.
 
 ## System invariants
 
