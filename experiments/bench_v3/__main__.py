@@ -169,6 +169,7 @@ def report(split: str) -> None:
 
 
 def main() -> None:
+    global RESULTS
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("command", choices=("build", "audit", "run", "report"))
     parser.add_argument("--split", choices=SPLITS, default="dev")
@@ -178,6 +179,8 @@ def main() -> None:
     )
     parser.add_argument("--results", type=Path, default=None, help="results directory")
     args = parser.parse_args()
+    if args.results:
+        RESULTS = args.results
     if args.command == "build":
         build()
     elif args.command == "audit":

@@ -106,3 +106,22 @@ Each entry records completed acceptance checks and concrete blockers.
 
 - Global tracing, Prometheus metrics, `/readyz`, rate limiting, security headers, a Grafana dashboard and Prometheus job in the `obs` profile, CodeQL, dependency and Trivy workflows. Prometheus scraped the running stack and Grafana started healthy.
 - The Docker stack was built and the browser suite passed against it with the content security policy active.
+
+## F8 · Operator adapter v2
+
+- Trained one LoRA seed on 1,800 train-split rows (loss 0.03, validation 0.05, not zero). Registered the model arms before they ran, scored 200 dev reports for adoption and a 600-report test subset once.
+- Result: adapter 59.5% against 53.7% for rules and the base arm, no unsupported incident, not adopted by the registered rule. The base arm gave no schema-valid reply under free decoding (ADR 0016).
+- Cut: three seeds, a GGUF export to Ollama, a full 2,000-report test run and the second-family paraphrase bank.
+
+## F11 · Documentation and release
+
+- Version 2.0.0 in the package, the schema and the frontend, a changelog, a rewritten README, a technical report, ADRs 0009 to 0016, and a release workflow that builds multi-architecture images with SBOM and provenance, signs them with cosign and publishes notes from the changelog. The workflow runs on a version tag or manually as a dry run.
+- Cut: a hosted demo, which needs an external account. The demo runs locally through Docker.
+
+## What was not done
+
+- Segment-scoped RAPTOR with arrival profiles, so full-network meetings on dense bus areas can end as incomplete.
+- An independent SQLite reference for the verifier on the full network, and serving the full network through the API.
+- A second-family paraphrase bank, independent annotation, two-router plan labels and natural-language trip references.
+- Three-seed adapter training and a full-size test run for the model arms.
+- A single dispatcher for workers and a split of `App.tsx`.

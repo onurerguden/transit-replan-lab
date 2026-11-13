@@ -1,0 +1,30 @@
+{
+  "dev-adapter": {
+    "n": 200,
+    "valid_schema": 200,
+    "with_quote": 46,
+    "p50_s": 0.89,
+    "p95_s": 1.11
+  },
+  "dev-base": {
+    "n": 200,
+    "valid_schema": 0,
+    "with_quote": 0,
+    "p50_s": 1.43,
+    "p95_s": 1.66
+  },
+  "test-adapter": {
+    "n": 600,
+    "valid_schema": 600,
+    "with_quote": 124,
+    "p50_s": 0.93,
+    "p95_s": 1.11
+  },
+  "test-base": {
+    "n": 600,
+    "valid_schema": 0,
+    "with_quote": 0,
+    "p50_s": 1.5,
+    "p95_s": 1.91
+  }
+}

@@ -1,0 +1,600 @@
+{"id": "test-00000-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"shuttered\", \"target\": \"Sadıkbey (Kara) tram stop\", \"start\": \"09:49\", \"end\": \"11:44\"}", "seconds": 2.224}
+{"id": "test-00000-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"yolcu alımına durdurulmuştur\", \"target\": \"Sadıkbey (Kara) tramvay durağı\", \"start\": \"11:44'e kadar\", \"end\": \"09:49'dan itibaren\"}", "seconds": 2.062}
+{"id": "test-00001-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"suspended\", \"target\": \"Alsancak Stadyumu tram stop\", \"start\": \"until 17:50\"}", "seconds": 1.459}
+{"id": "test-00001-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"yolcu alımına durdurulmuştur\", \"target\": \"Alsancak Stadyumu tramvay durağı\", \"start\": \"17:50\"}", "seconds": 1.75}
+{"id": "test-00002-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"shuttered\", \"target\": \"Alsancak Gar tram stop\", \"start\": \"19:31\"}", "seconds": 1.41}
+{"id": "test-00002-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"hizmet dışıdır\", \"target\": \"Alsancak Gar tramvay durağı\", \"start\": \"19:31'den itibaren\"}", "seconds": 1.57}
+{"id": "test-00003-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"shuttered\", \"target\": \"Sadıkbey (Kara) tram stop\", \"start\": \"16:29\", \"end\": \"19:54\"}", "seconds": 1.747}
+{"id": "test-00003-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"hizmet sunamamaktadır\", \"target\": \"Sadıkbey (Kara) tramvay durağı\", \"start\": \"16:29'dan itibaren\", \"end\": \"19:54'e kadar\"}", "seconds": 1.97}
+{"id": "test-00004-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Bölge and Üçyol stops are off limits to passengers\", \"start\": \"15:44\", \"end\": \"19:04\"}", "seconds": 1.683}
+{"id": "test-00004-tr", "reply": "{\"kind\": \"stop_closure\", \"stop\": \"Bölge ve Üçyol\", \"start\": \"15:44\", \"end\": \"19:04\"}", "seconds": 1.574}
+{"id": "test-00005-en", "reply": "{\"kind\": \"trip_delay\", \"quote\": \"33 minutes late\"}", "seconds": 1.057}
+{"id": "test-00005-tr", "reply": "{\"kind\": \"trip_delay\", \"quote\": \"33 dakika gecikmeli\"}", "seconds": 1.088}
+{"id": "test-00006-en", "reply": "{\"kind\": \"trip_cancellation\", \"quote\": \"Trip metro:WEEKDAY_0_0116 is cancelled.\"}", "seconds": 1.281}
+{"id": "test-00006-tr", "reply": "{\"kind\": \"trip_cancellation\", \"quote\": \"metro:WEEKDAY_0_0116 seferi iptal edilmiştir\"}", "seconds": 1.335}
+{"id": "test-00007-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"shuttered\", \"target\": \"Konak\", \"start\": \"12:22\", \"end\": \"14:12\"}", "seconds": 1.517}
+{"id": "test-00007-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"14:12'ye kadar\", \"target\": \"Konak hizmet sunamamaktadır\", \"start\": \"12:22'den itibaren\"}", "seconds": 1.656}
+{"id": "test-00008-en", "reply": "[]", "seconds": 0.778}
+{"id": "test-00008-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Bölge metro istasyonu 10:00'dan 12:25'e dek kapalı değildir.\"}", "seconds": 1.534}
+{"id": "test-00009-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Üçyol metro station might be closed\", \"start\": \"15:46\", \"end\": \"16:46\"}", "seconds": 1.589}
+{"id": "test-00009-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Üçyol metro istasyonu 15:46'dan 16:46'ya kadar kapalı olabilir\"}", "seconds": 1.554}
+{"id": "test-00010-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"suspended\", \"target\": \"Kaymakamlık metro station\", \"start\": \"12:20\", \"end\": \"13:55\"}", "seconds": 1.666}
+{"id": "test-00010-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"hizmet sunamamaktadır\", \"target\": \"Kaymakamlık metro istasyonu\", \"start\": \"13:55'e kadar\", \"end\": \"12:20'den itibaren\"}", "seconds": 1.861}
+{"id": "test-00011-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Havagazı tram stop is suspended\", \"start\": \"06:03 UTC\", \"end\": \"08:08 UTC\"}", "seconds": 1.532}
+{"id": "test-00011-tr", "reply": "{\"kind\": \"stop_closure\", \"target\": \"Havagazı tramvay durağı\", \"start\": \"06:03 UTC\", \"end\": \"08:08 UTC\"}", "seconds": 1.643}
+{"id": "test-00012-en", "reply": "[]", "seconds": 0.783}
+{"id": "test-00012-tr", "reply": "[]", "seconds": 0.783}
+{"id": "test-00013-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Havagazı tram stop is off limits to passengers\", \"start\": \"08:54\", \"end\": \"11:44\"}", "seconds": 1.545}
+{"id": "test-00013-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Havagazı tramvay durağı hizmet dışıdır\", \"start\": \"11:44'e kadar\", \"end\": \"08:54'ten itibaren\"}", "seconds": 1.767}
+{"id": "test-00014-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Sadıkbey (Kara) tram stop is off limits to passengers until 17:15.\"}", "seconds": 1.391}
+{"id": "test-00014-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"17:15'e kadar yolcu alımına durdurulmuştur\", \"target\": \"Sadıkbey (Kara) tramvay durağı\"}", "seconds": 1.712}
+{"id": "test-00015-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Havagazı tram stop is unavailable to riders from 18:11.\"}", "seconds": 1.314}
+{"id": "test-00015-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Havagazı tramvay durağı 18:11'den itibaren hizmet dışıdır.\"}", "seconds": 1.504}
+{"id": "test-00016-en", "reply": "[]", "seconds": 0.875}
+{"id": "test-00016-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"hizmet dışıdır\", \"target\": \"Alsancak Gar tramvay durağı\", \"start\": \"18:17'den itibaren\", \"end\": \"20:17'ye kadar\"}", "seconds": 1.895}
+{"id": "test-00017-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"unavailable to riders\", \"target\": \"Sadıkbey (Kara) and Kaymakamlık\", \"start\": \"12:57\", \"end\": \"15:07\"}", "seconds": 1.822}
+{"id": "test-00017-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"hizmet vermeyecektir\", \"target\": \"Sadıkbey (Kara) ve Kaymakamlık\", \"start\": \"15:07\", \"end\": \"12:57\"}", "seconds": 1.894}
+{"id": "test-00018-en", "reply": "{\"kind\": \"trip_delay\", \"quote\": \"27 minutes late\"}", "seconds": 1.049}
+{"id": "test-00018-tr", "reply": "{\"kind\": \"trip_delay\", \"quote\": \"27 dakika gecikmeli\"}", "seconds": 1.178}
+{"id": "test-00019-en", "reply": "{\"kind\": \"trip_cancellation\", \"quote\": \"Trip tram:1_WEEKDAY_0054 is cancelled.\"}", "seconds": 1.246}
+{"id": "test-00019-tr", "reply": "{\"kind\": \"trip_cancellation\", \"quote\": \"tram:1_WEEKDAY_0054 seferi iptal edilmiştir\"}", "seconds": 1.299}
+{"id": "test-00020-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Konak is shuttered\", \"start\": \"12:21\", \"end\": \"15:41\"}", "seconds": 1.43}
+{"id": "test-00020-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Konak yolcu alımına durdurulmuştur\", \"start\": \"12:21'den\", \"end\": \"15:41'e\"}", "seconds": 1.711}
+{"id": "test-00021-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Üçyol metro station is not closed\", \"start\": \"10:24\", \"end\": \"12:29\"}", "seconds": 1.485}
+{"id": "test-00021-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Üçyol metro istasyonu 10:24'ten 12:29'a kadar kapalı değildir.\"}", "seconds": 1.553}
+{"id": "test-00022-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Üçyol metro station might be closed\", \"start\": \"19:36\", \"end\": \"22:21\"}", "seconds": 1.494}
+{"id": "test-00022-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Üçyol metro istasyonu 19:36'dan 22:21'e dek kapalı olabilir\"}", "seconds": 1.538}
+{"id": "test-00023-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"shuttered\", \"target\": \"Havagazı tram stop\", \"start\": \"07:50\", \"end\": \"08:35\"}", "seconds": 1.697}
+{"id": "test-00023-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Havagazı tramvay durağı hizmet vermeyecektir\", \"start\": \"07:50'den\", \"end\": \"08:35'e\"}", "seconds": 1.767}
+{"id": "test-00024-en", "reply": "[]", "seconds": 0.776}
+{"id": "test-00024-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"hizmet dışıdır\", \"target\": \"Poligon metro istasyonu\", \"start\": \"19:21 UTC\", \"end\": \"19:56 UTC\"}", "seconds": 1.747}
+{"id": "test-00025-en", "reply": "[]", "seconds": 0.78}
+{"id": "test-00025-tr", "reply": "[]", "seconds": 0.781}
+{"id": "test-00026-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Poligon metro station is suspended\", \"start\": \"10:27\", \"end\": \"12:22\"}", "seconds": 1.444}
+{"id": "test-00026-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Poligon metro istasyonu hizmet sunamamaktadır\", \"start\": \"10:27'den\", \"end\": \"12:22'ye kadar\"}", "seconds": 1.696}
+{"id": "test-00027-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"unavailable to riders\", \"target\": \"Alsancak Stadyumu tram stop\", \"start\": \"11:09\"}", "seconds": 1.46}
+{"id": "test-00027-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"yolcu alımına durdurulmuştur\", \"target\": \"Alsancak Stadyumu tramvay durağı\", \"start\": \"11:09'a kadar\"}", "seconds": 1.779}
+{"id": "test-00028-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Kaymakamlık metro station is unavailable to riders\", \"start\": \"17:58\"}", "seconds": 1.332}
+{"id": "test-00028-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"yolcu alımına durdurulmuştur\", \"target\": \"Kaymakamlık metro istasyonu\", \"start\": \"17:58\"}", "seconds": 1.675}
+{"id": "test-00029-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Havagazı tram stop is shuttered\", \"start\": \"07:07\", \"end\": \"07:47\"}", "seconds": 1.605}
+{"id": "test-00029-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Havagazı tramvay durağı hizmet dışıdır\", \"start\": \"07:07\", \"end\": \"07:47\"}", "seconds": 1.685}
+{"id": "test-00030-en", "reply": "[]", "seconds": 0.879}
+{"id": "test-00030-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"hizmet vermeyecektir\", \"target\": \"Sadıkbey (Kara) ve Alsancak Stadyumu tramvay durakları\", \"start\": \"19:20'den\", \"end\": \"22:00'ye dek\"}", "seconds": 2.127}
+{"id": "test-00031-en", "reply": "{\"kind\": \"trip_delay\", \"quote\": \"11 minutes late\"}", "seconds": 1.05}
+{"id": "test-00031-tr", "reply": "{\"kind\": \"trip_delay\", \"quote\": \"11 dakika gecikmeli\"}", "seconds": 1.08}
+{"id": "test-00032-en", "reply": "{\"kind\": \"trip_cancellation\", \"quote\": \"Trip tram:2_WEEKDAY_0041 is cancelled\"}", "seconds": 1.229}
+{"id": "test-00032-tr", "reply": "{\"kind\": \"trip_cancellation\", \"quote\": \"seferi iptal edilmiştir\"}", "seconds": 1.119}
+{"id": "test-00033-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Konak is off limits to passengers\", \"target\": \"Konak\", \"start\": \"10:46\", \"end\": \"11:06\"}", "seconds": 1.586}
+{"id": "test-00033-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"11:06'ya kadar\", \"target\": \"Konak\", \"start\": \"10:46'dan itibaren\"}", "seconds": 1.568}
+{"id": "test-00034-en", "reply": "[]", "seconds": 0.876}
+{"id": "test-00034-tr", "reply": "[]", "seconds": 0.875}
+{"id": "test-00035-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Üçyol metro station might be closed\", \"start\": \"09:19\", \"end\": \"12:29\"}", "seconds": 1.496}
+{"id": "test-00035-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Üçyol metro istasyonu 09:19'dan 12:29'a kadar kapalı olabilir.\"}", "seconds": 1.45}
+{"id": "test-00036-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Sadıkbey (Kara) tram stop is unavailable to riders\", \"start\": \"17:48\", \"end\": \"19:53\"}", "seconds": 1.68}
+{"id": "test-00036-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"durdurulmuştur\", \"target\": \"Sadıkbey (Kara) tramvay durağı\", \"start\": \"17:48'den\", \"end\": \"19:53'e dek\"}", "seconds": 1.924}
+{"id": "test-00037-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"suspended\", \"target\": \"Poligon metro station\", \"start\": \"13:50 UTC\", \"end\": \"15:35 UTC\"}", "seconds": 1.567}
+{"id": "test-00037-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"hizmet dışıdır\", \"target\": \"Poligon metro istasyonu\", \"start\": \"13:50 UTC\", \"end\": \"15:35 UTC\"}", "seconds": 1.664}
+{"id": "test-00038-en", "reply": "[]", "seconds": 0.782}
+{"id": "test-00038-tr", "reply": "[]", "seconds": 0.783}
+{"id": "test-00039-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"shuttered\", \"target\": \"Sadıkbey (Kara) tram stop\", \"start\": \"17:41\", \"end\": \"19:46\"}", "seconds": 1.746}
+{"id": "test-00039-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"hizmet vermeyecektir\", \"target\": \"Sadıkbey (Kara) tramvay durağı\", \"start\": \"17:41'den\", \"end\": \"19:46'ya kadar.\"}", "seconds": 2.0}
+{"id": "test-00040-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"shuttered\", \"target\": \"Alsancak Gar tram stop\", \"start\": \"18:24\"}", "seconds": 1.405}
+{"id": "test-00040-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Alsancak Gar tramvay durağı 18:24'e kadar hizmet vermeyecektir.\"}", "seconds": 1.403}
+{"id": "test-00041-en", "reply": "[]", "seconds": 0.784}
+{"id": "test-00041-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Alsancak Gar tramvay durağı 18:12'den itibaren hizmet sunamamaktadır.\"}", "seconds": 1.498}
+{"id": "test-00042-en", "reply": "[]", "seconds": 0.874}
+{"id": "test-00042-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Poligon metro istasyonu hizmet vermeyecektir\", \"start\": \"18:26'dan\", \"end\": \"22:11'e dek\"}", "seconds": 1.694}
+{"id": "test-00043-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"suspended\", \"target\": \"Üçyol and Bölge stops\", \"start\": \"17:08\", \"end\": \"19:23\"}", "seconds": 1.693}
+{"id": "test-00043-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Üçyol ve Bölge durakları yolcu alımına durdurulmuştur\", \"start\": \"17:08\", \"end\": \"19:23\"}", "seconds": 1.807}
+{"id": "test-00044-en", "reply": "{\"kind\": \"trip_delay\", \"quote\": \"7 minutes late\"}", "seconds": 1.032}
+{"id": "test-00044-tr", "reply": "{\"kind\": \"trip_delay\", \"quote\": \"7 dakika gecikmeli\"}", "seconds": 1.07}
+{"id": "test-00045-en", "reply": "{\"kind\": \"trip_cancellation\", \"quote\": \"Trip metro:WEEKDAY_0_0022 is cancelled\"}", "seconds": 1.263}
+{"id": "test-00045-tr", "reply": "{\"kind\": \"trip_cancellation\", \"quote\": \"seferi iptal edilmiştir\"}", "seconds": 1.122}
+{"id": "test-00046-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Konak is suspended\", \"start\": \"08:54\", \"end\": \"11:39\"}", "seconds": 1.405}
+{"id": "test-00046-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Konak yolcu alımına durdurulmuştur\", \"start\": \"08:54\", \"end\": \"11:39\"}", "seconds": 1.661}
+{"id": "test-00047-en", "reply": "[]", "seconds": 0.776}
+{"id": "test-00047-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Havagazı tramvay durağı 07:50'den 08:35'e dek kapalı değildir.\"}", "seconds": 1.605}
+{"id": "test-00048-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Sadıkbey (Kara) tram stop might be closed\", \"start\": \"13:04\", \"end\": \"14:19\"}", "seconds": 1.656}
+{"id": "test-00048-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"kapalı olabilir\", \"target\": \"Sadıkbey (Kara) tramvay durağı\", \"start\": \"13:04\", \"end\": \"14:19\"}", "seconds": 1.807}
+{"id": "test-00049-en", "reply": "[]", "seconds": 0.882}
+{"id": "test-00049-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"durdurulmuştur\", \"target\": \"Sadıkbey (Kara) tramvay durağı\", \"start\": \"14:54\", \"end\": \"17:24\"}", "seconds": 1.863}
+{"id": "test-00050-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"suspended\", \"target\": \"Bölge metro station\", \"start\": \"09:33 UTC\", \"end\": \"13:13 UTC\"}", "seconds": 1.585}
+{"id": "test-00050-tr", "reply": "{\"kind\": \"stop_closure\", \"target\": \"Bölge metro istasyonu\", \"start\": \"09:33 UTC\", \"end\": \"13:13 UTC\"}", "seconds": 1.571}
+{"id": "test-00051-en", "reply": "[]", "seconds": 0.783}
+{"id": "test-00051-tr", "reply": "[]", "seconds": 0.782}
+{"id": "test-00052-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"shuttered\", \"target\": \"Sadıkbey (Kara) tram stop\", \"start\": \"06:58\", \"end\": \"08:48\"}", "seconds": 1.746}
+{"id": "test-00052-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"hizmet dışıdır\", \"target\": \"Sadıkbey (Kara) tramvay durağı\", \"start\": \"06:58'den\", \"end\": \"08:48'e dek.\"}", "seconds": 1.946}
+{"id": "test-00053-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"shuttered\", \"target\": \"Üçyol metro station\", \"start\": \"10:20\"}", "seconds": 1.404}
+{"id": "test-00053-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Üçyol metro istasyonu 10:20'ye kadar hizmet dışıdır.\"}", "seconds": 1.353}
+{"id": "test-00054-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"shuttered\", \"target\": \"Havagazı tram stop\", \"start\": \"11:11\"}", "seconds": 1.424}
+{"id": "test-00054-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Havagazı tramvay durağı 11:11'den itibaren hizmet sunamamaktadır.\"}", "seconds": 1.413}
+{"id": "test-00055-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Sadıkbey (Kara) tram stop is unavailable to riders\", \"start\": \"14:02\", \"end\": \"16:27\"}", "seconds": 1.678}
+{"id": "test-00055-tr", "reply": "{\"kind\": \"stop_closure\", \"target\": \"Sadıkbey (Kara) tramvay durağı\", \"start\": \"14:02'den itibaren\", \"end\": \"16:27'ye kadar\"}", "seconds": 1.782}
+{"id": "test-00056-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"suspended\", \"target\": \"Sadıkbey (Kara) and Üçyol\", \"start\": \"11:12\", \"end\": \"13:52\"}", "seconds": 1.782}
+{"id": "test-00056-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"yolcu alımına durdurulmuştur\", \"target\": \"Sadıkbey (Kara) ve Üçyol\", \"start\": \"11:12'den\", \"end\": \"13:52'ye\"}", "seconds": 2.04}
+{"id": "test-00057-en", "reply": "{\"kind\": \"trip_delay\", \"quote\": \"27 minutes late\"}", "seconds": 1.05}
+{"id": "test-00057-tr", "reply": "{\"kind\": \"trip_delay\", \"quote\": \"27 dakika gecikmeli\"}", "seconds": 1.086}
+{"id": "test-00058-en", "reply": "{\"kind\": \"trip_cancellation\", \"quote\": \"Trip tram:1_WEEKDAY_0127 is cancelled.\"}", "seconds": 1.247}
+{"id": "test-00058-tr", "reply": "{\"kind\": \"trip_cancellation\", \"quote\": \"tram:1_WEEKDAY_0127 seferi iptal edilmiştir\"}", "seconds": 1.301}
+{"id": "test-00059-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Konak is off limits to passengers\"}", "seconds": 1.105}
+{"id": "test-00059-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Konak hizmet dışıdır\", \"start\": \"18:21'den\", \"end\": \"20:21'e\"}", "seconds": 1.586}
+{"id": "test-00060-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"not closed\", \"target\": \"Alsancak Stadyumu tram stop\", \"start\": \"14:24\", \"end\": \"17:59\"}", "seconds": 1.595}
+{"id": "test-00060-tr", "reply": "[]", "seconds": 0.876}
+{"id": "test-00061-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Sadıkbey (Kara) tram stop might be closed until 16:11, from 12:26.\"}", "seconds": 1.587}
+{"id": "test-00061-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Sadıkbey (Kara) tramvay durağı 12:26'dan 16:11'e dek kapalı olabilir\"}", "seconds": 1.643}
+{"id": "test-00062-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Bölge metro station is off limits to passengers\", \"start\": \"08:57\", \"end\": \"11:47\"}", "seconds": 1.609}
+{"id": "test-00062-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Bölge metro istasyonu hizmet sunamamaktadır\", \"start\": \"11:47'e kadar\", \"end\": \"08:57'den itibaren\"}", "seconds": 1.723}
+{"id": "test-00063-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Havagazı tram stop is off limits to passengers\", \"start\": \"19:31 UTC\", \"end\": \"20:36 UTC\"}", "seconds": 1.673}
+{"id": "test-00063-tr", "reply": "{\"kind\": \"stop_closure\", \"target\": \"Havagazı tramvay durağı\", \"start\": \"19:31 UTC\", \"end\": \"20:36 UTC\"}", "seconds": 1.647}
+{"id": "test-00064-en", "reply": "[]", "seconds": 0.782}
+{"id": "test-00064-tr", "reply": "[]", "seconds": 0.779}
+{"id": "test-00065-en", "reply": "[]", "seconds": 0.873}
+{"id": "test-00065-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Bölge metro istasyonu yolcu alımına durdurulmuştur\", \"start\": \"15:49'a kadar\", \"end\": \"14:04'ten itibaren\"}", "seconds": 1.828}
+{"id": "test-00066-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Üçyol metro station is off limits to passengers until 18:47.\"}", "seconds": 1.319}
+{"id": "test-00066-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Üçyol metro istasyonu 18:47'ye kadar hizmet vermeyecektir.\"}", "seconds": 1.388}
+{"id": "test-00067-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"shuttered\", \"target\": \"Poligon metro station\", \"start\": \"13:35\"}", "seconds": 1.366}
+{"id": "test-00067-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"durdurulmuştur\", \"target\": \"Poligon metro istasyonu\", \"start\": \"13:35\"}", "seconds": 1.536}
+{"id": "test-00068-en", "reply": "[]", "seconds": 0.881}
+{"id": "test-00068-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"durdurulmuştur\", \"target\": \"Alsancak Stadyumu tramvay durağı\", \"start\": \"08:06'dan\", \"end\": \"09:36'ya dek\"}", "seconds": 1.911}
+{"id": "test-00069-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"shuttered\", \"target\": \"Üçyol and Alsancak Gar stops\", \"start\": \"19:17\", \"end\": \"22:37\"}", "seconds": 1.753}
+{"id": "test-00069-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Üçyol ve Alsancak Gar durakları hizmet dışıdır\"}", "seconds": 1.358}
+{"id": "test-00070-en", "reply": "{\"kind\": \"trip_delay\", \"quote\": \"45 minutes late\"}", "seconds": 1.048}
+{"id": "test-00070-tr", "reply": "[]", "seconds": 0.784}
+{"id": "test-00071-en", "reply": "{\"kind\": \"trip_cancellation\", \"quote\": \"Trip tram:1_WEEKDAY_0100 is cancelled.\"}", "seconds": 1.241}
+{"id": "test-00071-tr", "reply": "{\"kind\": \"trip_cancellation\", \"quote\": \"tram:1_WEEKDAY_0100 seferi iptal edilmiştir\"}", "seconds": 1.3}
+{"id": "test-00072-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Konak is shuttered\", \"start\": \"11:51\", \"end\": \"15:16\"}", "seconds": 1.423}
+{"id": "test-00072-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Konak hizmet vermeyecektir\", \"target\": \"11:51'den 15:16'ya dek\"}", "seconds": 1.586}
+{"id": "test-00073-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"not closed\", \"target\": \"Alsancak Stadyumu tram stop\", \"start\": \"19:31\", \"end\": \"19:56\"}", "seconds": 1.694}
+{"id": "test-00073-tr", "reply": "[]", "seconds": 0.875}
+{"id": "test-00074-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Havagazı tram stop might be closed\", \"start\": \"09:02\", \"end\": \"11:12\"}", "seconds": 1.505}
+{"id": "test-00074-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Havagazı tramvay durağı 09:02'den 11:12'ye dek kapalı olabilir\"}", "seconds": 1.604}
+{"id": "test-00075-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"shuttered\", \"target\": \"Poligon metro station\", \"start\": \"12:00\", \"end\": \"13:10\"}", "seconds": 1.644}
+{"id": "test-00075-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"hizmet sunamamaktadır\", \"target\": \"Poligon metro istasyonu\", \"start\": \"12:00\", \"end\": \"13:10\"}", "seconds": 1.731}
+{"id": "test-00076-en", "reply": "[]", "seconds": 0.876}
+{"id": "test-00076-tr", "reply": "[]", "seconds": 0.875}
+{"id": "test-00077-en", "reply": "[]", "seconds": 0.784}
+{"id": "test-00077-tr", "reply": "[]", "seconds": 0.782}
+{"id": "test-00078-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Sadıkbey (Kara) tram stop is unavailable to riders\", \"start\": \"13:14\", \"end\": \"16:59\"}", "seconds": 1.679}
+{"id": "test-00078-tr", "reply": "{\"kind\": \"stop_closure\", \"stop\": \"Sadıkbey (Kara) tramvay durağı\", \"start\": \"13:14\", \"end\": \"16:59\"}", "seconds": 1.66}
+{"id": "test-00079-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"suspended\", \"target\": \"Alsancak Stadyumu tram stop\", \"start\": \"10:53\"}", "seconds": 1.422}
+{"id": "test-00079-tr", "reply": "{\"kind\": \"stop_closure\", \"target\": \"Alsancak Stadyumu tramvay durağı\", \"start\": \"10:53\"}", "seconds": 1.442}
+{"id": "test-00080-en", "reply": "[]", "seconds": 0.784}
+{"id": "test-00080-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"yolcu alımına durdurulmuştur\", \"target\": \"Poligon metro istasyonu\", \"start\": \"11:46\"}", "seconds": 1.641}
+{"id": "test-00081-en", "reply": "[]", "seconds": 0.88}
+{"id": "test-00081-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Sadıkbey (Kara) tramvay durağı hizmet vermeyecektir\", \"start\": \"11:49'a kadar\", \"end\": \"08:59'dan itibaren\"}", "seconds": 1.867}
+{"id": "test-00082-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"shuttered\", \"target\": \"Alsancak Gar and Sadıkbey (Kara) tram stops\", \"start\": \"14:56\", \"end\": \"16:26\"}", "seconds": 1.837}
+{"id": "test-00082-tr", "reply": "{\"kind\": \"stop_closure\", \"target\": \"Alsancak Gar ve Sadıkbey (Kara) tramvay durakları\", \"start\": \"14:56'dan\", \"end\": \"16:26'ya kadar\"}", "seconds": 1.863}
+{"id": "test-00083-en", "reply": "{\"kind\": \"trip_delay\", \"quote\": \"52 minutes late\"}", "seconds": 1.048}
+{"id": "test-00083-tr", "reply": "{\"kind\": \"trip_delay\", \"quote\": \"52 dakika gecikmeli\"}", "seconds": 1.088}
+{"id": "test-00084-en", "reply": "{\"kind\": \"trip_cancellation\", \"quote\": \"Trip tram:2_WEEKDAY_0040 is cancelled.\"}", "seconds": 1.244}
+{"id": "test-00084-tr", "reply": "{\"kind\": \"trip_cancellation\", \"quote\": \"tram:2_WEEKDAY_0040 seferi iptal edilmiştir\"}", "seconds": 1.301}
+{"id": "test-00085-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Konak is off limits to passengers\", \"target\": \"Konak\", \"start\": \"19:26\", \"end\": \"22:51\"}", "seconds": 1.585}
+{"id": "test-00085-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Konak hizmet dışıdır\", \"start\": \"19:26'dan\", \"end\": \"22:51'e dek\"}", "seconds": 1.604}
+{"id": "test-00086-en", "reply": "[]", "seconds": 0.782}
+{"id": "test-00086-tr", "reply": "[]", "seconds": 0.876}
+{"id": "test-00087-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Poligon metro station might be closed\", \"start\": \"07:54\", \"end\": \"08:54\"}", "seconds": 1.459}
+{"id": "test-00087-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Poligon metro istasyonu 07:54'ten 08:54'e kadar kapalı olabilir\"}", "seconds": 1.501}
+{"id": "test-00088-en", "reply": "[]", "seconds": 0.88}
+{"id": "test-00088-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"14.11.2026 tarihinde Poligon metro istasyonu yolcu alımına durdurulmuştur\", \"start\": \"09:18'e kadar\", \"end\": \"08:18'den itibaren\"}", "seconds": 2.005}
+{"id": "test-00089-en", "reply": "{\"kind\": \"stop_closure\", \"target\": \"Üçyol metro station\", \"start\": \"11:28 UTC\", \"end\": \"14:13 UTC\"}", "seconds": 1.571}
+{"id": "test-00089-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Üçyol metro istasyonu 11:28 UTC ile 14:13 UTC arasında hizmet vermeyecektir.\"}", "seconds": 1.605}
+{"id": "test-00090-en", "reply": "[]", "seconds": 0.783}
+{"id": "test-00090-tr", "reply": "[]", "seconds": 0.781}
+{"id": "test-00091-en", "reply": "{\"kind\": \"stop_closure\", \"target\": \"Üçyol metro station\", \"start\": \"14:15\", \"end\": \"14:35\"}", "seconds": 1.529}
+{"id": "test-00091-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Üçyol metro istasyonu hizmet dışıdır\", \"start\": \"14:15\", \"end\": \"14:35\"}", "seconds": 1.628}
+{"id": "test-00092-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Havagazı tram stop is suspended\", \"start\": \"16:29\"}", "seconds": 1.316}
+{"id": "test-00092-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Havagazı tramvay durağı 16:29'a kadar hizmet dışıdır.\"}", "seconds": 1.478}
+{"id": "test-00093-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"shuttered\", \"target\": \"Üçyol metro station\", \"start\": \"18:44\"}", "seconds": 1.405}
+{"id": "test-00093-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Üçyol metro istasyonu 18:44'ten itibaren yolcu alımına durdurulmuştur.\"}", "seconds": 1.572}
+{"id": "test-00094-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"shuttered\", \"target\": \"Poligon metro station\", \"start\": \"16:04\", \"end\": \"19:29\"}", "seconds": 1.639}
+{"id": "test-00094-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Poligon metro istasyonu yolcu alımına durdurulmuştur\", \"start\": \"16:04\", \"end\": \"19:29\"}", "seconds": 1.716}
+{"id": "test-00095-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"off limits to passengers\"}", "seconds": 1.144}
+{"id": "test-00095-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"hizmet dışıdır\", \"target\": \"Sadıkbey (Kara) ve Üçyol\", \"start\": \"10:11'den\", \"end\": \"13:01'e dek\"}", "seconds": 1.932}
+{"id": "test-00096-en", "reply": "{\"kind\": \"trip_delay\", \"quote\": \"53 minutes late\"}", "seconds": 1.049}
+{"id": "test-00096-tr", "reply": "{\"kind\": \"trip_delay\", \"quote\": \"53 dakika gecikmeli\"}", "seconds": 1.087}
+{"id": "test-00097-en", "reply": "{\"kind\": \"trip_cancellation\", \"quote\": \"Trip metro:WEEKDAY_0_0087 is cancelled.\"}", "seconds": 1.281}
+{"id": "test-00097-tr", "reply": "{\"kind\": \"trip_cancellation\", \"quote\": \"metro:WEEKDAY_0_0087 seferi iptal edilmiştir\"}", "seconds": 1.335}
+{"id": "test-00098-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Konak is suspended\", \"start\": \"07:12\", \"end\": \"10:27\"}", "seconds": 1.408}
+{"id": "test-00098-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Konak hizmet dışıdır\", \"start\": \"07:12'den\", \"end\": \"10:27'ye dek\"}", "seconds": 1.528}
+{"id": "test-00099-en", "reply": "[]", "seconds": 0.785}
+{"id": "test-00099-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Poligon metro istasyonu 17:19'dan 18:59'a kadar kapalı değildir.\"}", "seconds": 1.526}
+{"id": "test-00100-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"closed\", \"target\": \"Alsancak Stadyumu tram stop\", \"start\": \"14:52\", \"end\": \"18:47\"}", "seconds": 1.675}
+{"id": "test-00100-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"kapalı olabilir\", \"target\": \"Alsancak Stadyumu tramvay durağı\", \"start\": \"14:52'den itibaren\", \"end\": \"18:47'ye kadar\"}", "seconds": 1.872}
+{"id": "test-00101-en", "reply": "{\"kind\": \"stop_closure\", \"stop\": \"Üçyol metro station\", \"start\": \"08:28\", \"end\": \"09:48\"}", "seconds": 1.536}
+{"id": "test-00101-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Üçyol metro istasyonu hizmet vermeyecektir\", \"start\": \"09:48'e kadar\", \"end\": \"08:28'den itibaren\"}", "seconds": 1.755}
+{"id": "test-00102-en", "reply": "[]", "seconds": 0.787}
+{"id": "test-00102-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"hizmet dışıdır\", \"target\": \"Poligon metro istasyonu\", \"start\": \"13:10 UTC\", \"end\": \"15:50 UTC\"}", "seconds": 1.655}
+{"id": "test-00103-en", "reply": "[]", "seconds": 0.78}
+{"id": "test-00103-tr", "reply": "[]", "seconds": 0.781}
+{"id": "test-00104-en", "reply": "[]", "seconds": 0.777}
+{"id": "test-00104-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Poligon metro istasyonu hizmet dışıdır\", \"start\": \"10:20'ye kadar\", \"end\": \"06:35'ten itibaren\"}", "seconds": 1.693}
+{"id": "test-00105-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"unavailable to riders\", \"target\": \"Kaymakamlık metro station\", \"start\": \"until 20:04\"}", "seconds": 1.458}
+{"id": "test-00105-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"yolcu alımına durdurulmuştur\", \"target\": \"Kaymakamlık metro istasyonu\", \"start\": \"20:04\"}", "seconds": 1.578}
+{"id": "test-00106-en", "reply": "[]", "seconds": 0.786}
+{"id": "test-00106-tr", "reply": "{\"kind\": \"stop_closure\", \"target\": \"Havagazı tramvay durağı\", \"start\": \"10:39'dan itibaren\"}", "seconds": 1.482}
+{"id": "test-00107-en", "reply": "[]", "seconds": 0.875}
+{"id": "test-00107-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"hizmet dışıdır\", \"target\": \"Poligon metro istasyonu\", \"start\": \"15:27'den\", \"end\": \"16:52'ye dek\"}", "seconds": 1.806}
+{"id": "test-00108-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Üçyol and Havagazı stops are off limits to passengers\", \"start\": \"11:02\", \"end\": \"14:32\"}", "seconds": 1.693}
+{"id": "test-00108-tr", "reply": "{\"kind\": \"stop_closure\", \"stop\": \"Üçyol ve Havagazı\", \"start\": \"11:02'den\", \"end\": \"14:32'ye dek\"}", "seconds": 1.682}
+{"id": "test-00109-en", "reply": "{\"kind\": \"trip_delay\", \"quote\": \"8 minutes late\"}", "seconds": 1.032}
+{"id": "test-00109-tr", "reply": "[]", "seconds": 0.786}
+{"id": "test-00110-en", "reply": "{\"kind\": \"trip_cancellation\", \"quote\": \"Trip metro:WEEKDAY_1_0300 is cancelled\"}", "seconds": 1.266}
+{"id": "test-00110-tr", "reply": "{\"kind\": \"trip_cancellation\", \"quote\": \"metro:WEEKDAY_1_0300 seferi iptal edilmiştir\"}", "seconds": 1.341}
+{"id": "test-00111-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Konak is suspended\", \"start\": \"07:22\", \"end\": \"07:52\"}", "seconds": 1.407}
+{"id": "test-00111-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Konak hizmet sunamamaktadır\", \"start\": \"07:22'den\", \"end\": \"07:52'ye dek\"}", "seconds": 1.64}
+{"id": "test-00112-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Bölge metro station is not closed from 06:14 through 07:09.\"}", "seconds": 1.392}
+{"id": "test-00112-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Bölge metro istasyonu 06:14'ten 07:09'a dek kapalı değildir.\"}", "seconds": 1.534}
+{"id": "test-00113-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Sadıkbey (Kara) tram stop might be closed until 18:27, from 17:37.\"}", "seconds": 1.585}
+{"id": "test-00113-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"kapalı olabilir\", \"target\": \"Sadıkbey (Kara) tramvay durağı\", \"start\": \"17:37'den\", \"end\": \"18:27'ye kadar\"}", "seconds": 1.887}
+{"id": "test-00114-en", "reply": "[]", "seconds": 0.879}
+{"id": "test-00114-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"durdurulmuştur\", \"target\": \"Alsancak Gar tramvay durağı\", \"start\": \"09:24\", \"end\": \"10:44\"}", "seconds": 1.793}
+{"id": "test-00115-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"shuttered\", \"target\": \"Üçyol metro station\", \"start\": \"07:08 UTC\", \"end\": \"08:53 UTC\"}", "seconds": 1.61}
+{"id": "test-00115-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Üçyol metro istasyonu 07:08 UTC ile 08:53 UTC arasında hizmet dışıdır\"}", "seconds": 1.548}
+{"id": "test-00116-en", "reply": "[]", "seconds": 0.782}
+{"id": "test-00116-tr", "reply": "[]", "seconds": 0.781}
+{"id": "test-00117-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"shuttered\", \"target\": \"Alsancak Stadyumu tram stop\", \"start\": \"06:57\", \"end\": \"09:57\"}", "seconds": 1.717}
+{"id": "test-00117-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"hizmet sunamamaktadır\", \"target\": \"Alsancak Stadyumu tramvay durağı\", \"start\": \"06:57'den\", \"end\": \"09:57'ye kadar\"}", "seconds": 1.931}
+{"id": "test-00118-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Sadıkbey (Kara) tram stop is off limits to passengers until 21:15.\"}", "seconds": 1.388}
+{"id": "test-00118-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"yolcu alımına durdurulmuştur\", \"target\": \"Sadıkbey (Kara) tramvay durağı\", \"start\": \"21:15\"}", "seconds": 1.784}
+{"id": "test-00119-en", "reply": "[]", "seconds": 0.786}
+{"id": "test-00119-tr", "reply": "{\"kind\": \"stop_closure\", \"target\": \"Kaymakamlık metro istasyonu\", \"start\": \"14:56'dan itibaren\"}", "seconds": 1.425}
+{"id": "test-00120-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Havagazı tram stop is shuttered\", \"start\": \"18:05\", \"end\": \"19:30\"}", "seconds": 1.604}
+{"id": "test-00120-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Havagazı tramvay durağı hizmet sunamamaktadır 18:05'ten 19:30'a kadar\"}", "seconds": 1.635}
+{"id": "test-00121-en", "reply": "[]", "seconds": 0.878}
+{"id": "test-00121-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Poligon ve Alsancak Stadyumu durakları hizmet sunamamaktadır\", \"start\": \"17:17'ye kadar\", \"end\": \"15:12'den itibaren\"}", "seconds": 1.836}
+{"id": "test-00122-en", "reply": "{\"kind\": \"trip_delay\", \"quote\": \"33 minutes late\"}", "seconds": 1.051}
+{"id": "test-00122-tr", "reply": "{\"kind\": \"trip_delay\", \"quote\": \"33 dakika gecikmeli\"}", "seconds": 1.076}
+{"id": "test-00123-en", "reply": "{\"kind\": \"trip_cancellation\", \"quote\": \"Trip metro:WEEKDAY_1_0274 is cancelled\"}", "seconds": 1.264}
+{"id": "test-00123-tr", "reply": "{\"kind\": \"trip_cancellation\", \"quote\": \"seferi iptal edilmiştir\"}", "seconds": 1.122}
+{"id": "test-00124-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Konak is suspended\", \"target\": \"Konak\", \"start\": \"07:43\", \"end\": \"10:43\"}", "seconds": 1.529}
+{"id": "test-00124-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Konak hizmet sunamamaktadır\", \"start\": \"10:43'e kadar\", \"end\": \"07:43'ten itibaren\"}", "seconds": 1.552}
+{"id": "test-00125-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Havagazı tram stop is not closed\", \"start\": \"11:56\", \"end\": \"15:41\"}", "seconds": 1.507}
+{"id": "test-00125-tr", "reply": "[]", "seconds": 0.875}
+{"id": "test-00126-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"closed\", \"target\": \"Kaymakamlık metro station\", \"start\": \"14:41\", \"end\": \"18:11\"}", "seconds": 1.55}
+{"id": "test-00126-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"kapalı olabilir\", \"target\": \"Kaymakamlık metro istasyonu\", \"start\": \"14:41'den\", \"end\": \"18:11'e\"}", "seconds": 1.746}
+{"id": "test-00127-en", "reply": "[]", "seconds": 0.881}
+{"id": "test-00127-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Bölge metro istasyonu hizmet dışıdır\", \"start\": \"19:51'den\", \"end\": \"20:11'e dek\"}", "seconds": 1.681}
+{"id": "test-00128-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Havagazı tram stop is unavailable to riders\", \"start\": \"18:03 UTC\", \"end\": \"19:13 UTC\"}", "seconds": 1.659}
+{"id": "test-00128-tr", "reply": "{\"kind\": \"stop_closure\", \"target\": \"Havagazı tramvay durağı\", \"start\": \"18:03 UTC\", \"end\": \"19:13 UTC\"}", "seconds": 1.642}
+{"id": "test-00129-en", "reply": "[]", "seconds": 0.78}
+{"id": "test-00129-tr", "reply": "[]", "seconds": 0.779}
+{"id": "test-00130-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"suspended\", \"target\": \"Alsancak Stadyumu tram stop\", \"start\": \"10:38\", \"end\": \"14:18\"}", "seconds": 1.606}
+{"id": "test-00130-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Alsancak Stadyumu tramvay durağı yolcu alımına durdurulmuştur\", \"start\": \"10:38'den\", \"end\": \"14:18'e dek\"}", "seconds": 1.9}
+{"id": "test-00131-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"suspended\", \"target\": \"Üçyol metro station\", \"start\": \"08:14\"}", "seconds": 1.386}
+{"id": "test-00131-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Üçyol metro istasyonu 08:14'e kadar yolcu alımına durdurulmuştur.\"}", "seconds": 1.554}
+{"id": "test-00132-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Üçyol metro station is unavailable to riders from 12:19.\"}", "seconds": 1.299}
+{"id": "test-00132-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Üçyol metro istasyonu 12:19'dan itibaren hizmet vermeyecektir.\"}", "seconds": 1.392}
+{"id": "test-00133-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Havagazı tram stop is unavailable to riders from 07:52 through 09:17\"}", "seconds": 1.513}
+{"id": "test-00133-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Havagazı tramvay durağı hizmet vermeyecektir\", \"start\": \"07:52'den\", \"end\": \"09:17'ye dek\"}", "seconds": 1.804}
+{"id": "test-00134-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"shuttered\", \"target\": \"Poligon and Bölge stops\", \"start\": \"16:12\", \"end\": \"17:02\"}", "seconds": 1.576}
+{"id": "test-00134-tr", "reply": "{\"kind\": \"stop_closure\", \"target\": \"Poligon ve Bölge durakları\", \"start\": \"16:12'den\", \"end\": \"17:02'ye kadar\"}", "seconds": 1.657}
+{"id": "test-00135-en", "reply": "{\"kind\": \"trip_delay\", \"quote\": \"38 minutes late\"}", "seconds": 1.05}
+{"id": "test-00135-tr", "reply": "{\"kind\": \"trip_delay\", \"quote\": \"38 dakika gecikmeli\"}", "seconds": 1.086}
+{"id": "test-00136-en", "reply": "{\"kind\": \"trip_cancellation\", \"quote\": \"Trip tram:1_WEEKDAY_0033 is cancelled.\"}", "seconds": 1.242}
+{"id": "test-00136-tr", "reply": "{\"kind\": \"trip_cancellation\", \"quote\": \"seferi iptal edilmiştir\"}", "seconds": 1.118}
+{"id": "test-00137-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Konak is unavailable to riders\", \"start\": \"14:03\", \"end\": \"15:33\"}", "seconds": 1.443}
+{"id": "test-00137-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Konak hizmet dışıdır\", \"start\": \"14:03'ten\", \"end\": \"15:33'e\"}", "seconds": 1.492}
+{"id": "test-00138-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"not closed from 18:02 through 19:52\"}", "seconds": 1.263}
+{"id": "test-00138-tr", "reply": "[]", "seconds": 0.876}
+{"id": "test-00139-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Poligon metro station might be closed\", \"target\": \"Poligon metro station\", \"start\": \"08:36\", \"end\": \"11:26\"}", "seconds": 1.619}
+{"id": "test-00139-tr", "reply": "```json\n{\n  \"kind\": \"stop_closure\",\n  \"target\": \"Poligon metro istasyonu\",\n  \"start\": \"08:36'dan itibaren\",\n  \"end\": \"11:26'ya kadar\"\n}\n```", "seconds": 1.907}
+{"id": "test-00140-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Sadıkbey (Kara) tram stop is unavailable to riders\", \"start\": \"11:49\", \"end\": \"13:34\"}", "seconds": 1.685}
+{"id": "test-00140-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"durdurulmuştur\", \"target\": \"Sadıkbey (Kara) tramvay durağı\", \"start\": \"13:34'e kadar\", \"end\": \"11:49'dan itibaren\"}", "seconds": 2.045}
+{"id": "test-00141-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"shuttered\", \"target\": \"Havagazı tram stop\", \"start\": \"07:28 UTC\", \"end\": \"07:58 UTC\"}", "seconds": 1.631}
+{"id": "test-00141-tr", "reply": "{\"kind\": \"stop_closure\", \"target\": \"Havagazı tramvay durağı\", \"start\": \"07:28 UTC\", \"end\": \"07:58 UTC\"}", "seconds": 1.645}
+{"id": "test-00142-en", "reply": "[]", "seconds": 0.779}
+{"id": "test-00142-tr", "reply": "[]", "seconds": 0.783}
+{"id": "test-00143-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Havagazı tram stop is suspended\", \"target\": \"Havagazı tram stop\", \"start\": \"08:26\", \"end\": \"09:26\"}", "seconds": 1.711}
+{"id": "test-00143-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Havagazı tramvay durağı yolcu alımına durdurulmuştur\", \"start\": \"08:26'dan\", \"end\": \"09:26'ya kadar.\"}", "seconds": 1.911}
+{"id": "test-00144-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"suspended\", \"target\": \"Alsancak Gar tram stop\", \"start\": \"13:27\"}", "seconds": 1.391}
+{"id": "test-00144-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Alsancak Gar tramvay durağı 13:27'ye kadar hizmet dışıdır.\"}", "seconds": 1.477}
+{"id": "test-00145-en", "reply": "[]", "seconds": 0.786}
+{"id": "test-00145-tr", "reply": "[]", "seconds": 0.774}
+{"id": "test-00146-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Havagazı tram stop is shuttered\", \"target\": \"Havagazı tram stop\", \"start\": \"15:03\", \"end\": \"15:48\"}", "seconds": 1.818}
+{"id": "test-00146-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Havagazı tramvay durağı yolcu alımına durdurulmuştur\", \"start\": \"15:48'e kadar\", \"end\": \"15:03'ten itibaren\"}", "seconds": 1.896}
+{"id": "test-00147-en", "reply": "[]", "seconds": 0.878}
+{"id": "test-00147-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Kaymakamlık ve Sadıkbey (Kara) durakları hizmet vermeyecektir\", \"start\": \"11:46'a kadar\", \"end\": \"08:11'den itibaren\"}", "seconds": 1.909}
+{"id": "test-00148-en", "reply": "{\"kind\": \"trip_delay\", \"quote\": \"43 minutes late\"}", "seconds": 1.052}
+{"id": "test-00148-tr", "reply": "[]", "seconds": 0.783}
+{"id": "test-00149-en", "reply": "{\"kind\": \"trip_cancellation\", \"quote\": \"Trip tram:1_WEEKDAY_0120 is cancelled.\"}", "seconds": 1.245}
+{"id": "test-00149-tr", "reply": "{\"kind\": \"trip_cancellation\", \"quote\": \"seferi iptal edilmiştir\"}", "seconds": 1.125}
+{"id": "test-00150-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"shuttered\", \"target\": \"Konak\", \"start\": \"17:27\", \"end\": \"20:32\"}", "seconds": 1.512}
+{"id": "test-00150-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Konak hizmet vermeyecektir\", \"target\": \"17:27'den 20:32'ye dek\"}", "seconds": 1.589}
+{"id": "test-00151-en", "reply": "[]", "seconds": 0.877}
+{"id": "test-00151-tr", "reply": "[]", "seconds": 0.876}
+{"id": "test-00152-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Poligon metro station might be closed\", \"target\": \"Poligon metro station\", \"start\": \"06:34\", \"end\": \"08:49\"}", "seconds": 1.622}
+{"id": "test-00152-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Poligon metro istasyonu 06:34'ten 08:49'a dek kapalı olabilir\"}", "seconds": 1.497}
+{"id": "test-00153-en", "reply": "[]", "seconds": 0.879}
+{"id": "test-00153-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"durdurulmuştur\", \"target\": \"Sadıkbey (Kara) tramvay durağı\", \"start\": \"13:47'den\", \"end\": \"14:42'ye kadar\"}", "seconds": 1.954}
+{"id": "test-00154-en", "reply": "{\"kind\": \"stop_closure\", \"stop\": \"Sadıkbey (Kara) tram stop\", \"start\": \"11:52 UTC\", \"end\": \"14:37 UTC\"}", "seconds": 1.64}
+{"id": "test-00154-tr", "reply": "{\"kind\": \"stop_closure\", \"target\": \"Sadıkbey (Kara) tramvay durağı\", \"start\": \"11:52 UTC\", \"end\": \"14:37 UTC\"}", "seconds": 1.697}
+{"id": "test-00155-en", "reply": "[]", "seconds": 0.781}
+{"id": "test-00155-tr", "reply": "[]", "seconds": 0.78}
+{"id": "test-00156-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Üçyol metro station is unavailable to riders\", \"start\": \"06:19\", \"end\": \"06:39\"}", "seconds": 1.602}
+{"id": "test-00156-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Üçyol metro istasyonu yolcu alımına durdurulmuştur\", \"target\": \"Üçyol metro istasyonu\", \"start\": \"06:19'dan itibaren\", \"end\": \"06:39'a kadar\"}", "seconds": 2.056}
+{"id": "test-00157-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Havagazı tram stop is shuttered until 11:19.\"}", "seconds": 1.296}
+{"id": "test-00157-tr", "reply": "{\"kind\": \"stop_closure\", \"target\": \"Havagazı tramvay durağı\", \"start\": \"11:19'a kadar\"}", "seconds": 1.465}
+{"id": "test-00158-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"shuttered\", \"target\": \"Poligon metro station\", \"start\": \"19:35\"}", "seconds": 1.373}
+{"id": "test-00158-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"hizmet sunamamaktadır\", \"target\": \"Poligon metro istasyonu\", \"start\": \"19:35\"}", "seconds": 1.461}
+{"id": "test-00159-en", "reply": "[]", "seconds": 0.876}
+{"id": "test-00159-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Bölge metro istasyonu hizmet sunamamaktadır\", \"start\": \"07:19'dan\", \"end\": \"10:34'e dek\"}", "seconds": 1.694}
+{"id": "test-00160-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"suspended\", \"target\": \"Kaymakamlık and Sadıkbey (Kara)\", \"start\": \"12:01\", \"end\": \"12:31\"}", "seconds": 1.765}
+{"id": "test-00160-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"hizmet dışıdır\", \"target\": \"Kaymakamlık ve Sadıkbey (Kara) durakları\", \"start\": \"12:01'den itibaren\", \"end\": \"12:31'e kadar\"}", "seconds": 2.003}
+{"id": "test-00161-en", "reply": "{\"kind\": \"trip_delay\", \"quote\": \"51 minutes late\"}", "seconds": 1.049}
+{"id": "test-00161-tr", "reply": "{\"kind\": \"trip_delay\", \"quote\": \"51 dakika gecikmeli\"}", "seconds": 1.077}
+{"id": "test-00162-en", "reply": "{\"kind\": \"trip_cancellation\", \"quote\": \"Trip metro:WEEKDAY_0_0101 is cancelled.\"}", "seconds": 1.281}
+{"id": "test-00162-tr", "reply": "{\"kind\": \"trip_cancellation\", \"quote\": \"seferi iptal edilmiştir\"}", "seconds": 1.12}
+{"id": "test-00163-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Konak is unavailable to riders for the period 17:45 to 20:45.\"}", "seconds": 1.391}
+{"id": "test-00163-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"20:45'e kadar\", \"target\": \"Konak hizmet\", \"start\": \"17:45'ten itibaren\"}", "seconds": 1.567}
+{"id": "test-00164-en", "reply": "[]", "seconds": 0.876}
+{"id": "test-00164-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"kapalı değildir\", \"target\": \"Sadıkbey (Kara) tramvay durağı\", \"start\": \"08:46'dan\", \"end\": \"10:31'e\"}", "seconds": 1.856}
+{"id": "test-00165-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Sadıkbey (Kara) tram stop might be closed\", \"start\": \"19:22\", \"end\": \"22:37\"}", "seconds": 1.657}
+{"id": "test-00165-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"kapalı olabilir\", \"target\": \"Sadıkbey (Kara) tramvay durağı\", \"start\": \"19:22'den\", \"end\": \"22:37'ye kadar\"}", "seconds": 1.897}
+{"id": "test-00166-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"shuttered\", \"target\": \"Üçyol metro station\", \"start\": \"15:47\", \"end\": \"18:52\"}", "seconds": 1.677}
+{"id": "test-00166-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"durdurulmuştur\", \"target\": \"Üçyol metro istasyonu\", \"start\": \"15:47'den\", \"end\": \"18:52'ye kadar\"}", "seconds": 1.848}
+{"id": "test-00167-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"shuttered\", \"target\": \"Alsancak Stadyumu tram stop\", \"start\": \"15:28 UTC\", \"end\": \"18:03 UTC\"}", "seconds": 1.752}
+{"id": "test-00167-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"durdurulmuştur\", \"target\": \"Alsancak Stadyumu tramvay durağı\", \"start\": \"15:28 UTC\", \"end\": \"18:03 UTC\"}", "seconds": 1.858}
+{"id": "test-00168-en", "reply": "[]", "seconds": 0.78}
+{"id": "test-00168-tr", "reply": "[]", "seconds": 0.783}
+{"id": "test-00169-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"suspended\", \"target\": \"Üçyol metro station\", \"start\": \"19:34\", \"end\": \"23:04\"}", "seconds": 1.568}
+{"id": "test-00169-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Üçyol metro istasyonu hizmet sunamamaktadır\", \"start\": \"19:34\", \"end\": \"23:04\"}", "seconds": 1.645}
+{"id": "test-00170-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"suspended\", \"target\": \"Kaymakamlık metro station\", \"start\": \"13:21\"}", "seconds": 1.39}
+{"id": "test-00170-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"hizmet sunamamaktadır\", \"target\": \"Kaymakamlık metro istasyonu\", \"start\": \"13:21\"}", "seconds": 1.502}
+{"id": "test-00171-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"shuttered\", \"target\": \"Alsancak Stadyumu tram stop\", \"start\": \"14:04\"}", "seconds": 1.442}
+{"id": "test-00171-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"hizmet vermeyecektir\", \"target\": \"Alsancak Stadyumu tramvay durağı\", \"start\": \"14:04\"}", "seconds": 1.575}
+{"id": "test-00172-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Alsancak Stadyumu tram stop is unavailable to riders\", \"start\": \"13:13\", \"end\": \"16:08\"}", "seconds": 1.644}
+{"id": "test-00172-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"hizmet vermeyecektir\", \"target\": \"Alsancak Stadyumu tramvay durağı\", \"start\": \"13:13'ten\", \"end\": \"16:08'e dek\"}", "seconds": 1.931}
+{"id": "test-00173-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"off limits to passengers\", \"target\": \"Sadıkbey (Kara) and Alsancak Gar tram stops\", \"start\": \"06:09\", \"end\": \"08:19\"}", "seconds": 1.856}
+{"id": "test-00173-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"hizmet dışıdır\", \"target\": \"Sadıkbey (Kara) ve Alsancak Gar tramvay durakları\", \"start\": \"06:09'dan\", \"end\": \"08:19'a dek\"}", "seconds": 2.046}
+{"id": "test-00174-en", "reply": "{\"kind\": \"trip_delay\", \"quote\": \"49 minutes late\"}", "seconds": 1.05}
+{"id": "test-00174-tr", "reply": "{\"kind\": \"trip_delay\", \"quote\": \"49 dakika gecikmeli\"}", "seconds": 1.09}
+{"id": "test-00175-en", "reply": "{\"kind\": \"trip_cancellation\", \"quote\": \"Trip metro:WEEKDAY_0_0003 is cancelled\"}", "seconds": 1.263}
+{"id": "test-00175-tr", "reply": "{\"kind\": \"trip_cancellation\", \"quote\": \"metro:WEEKDAY_0_0003 seferi iptal edilmiştir\"}", "seconds": 1.338}
+{"id": "test-00176-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Konak is unavailable to riders\", \"start\": \"10:09\", \"end\": \"13:29\"}", "seconds": 1.442}
+{"id": "test-00176-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Konak yolcu alımına durdurulmuştur\", \"start\": \"10:09'dan\", \"end\": \"13:29'a dek\"}", "seconds": 1.732}
+{"id": "test-00177-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"not closed\", \"target\": \"Sadıkbey (Kara) tram stop\", \"start\": \"11:48\", \"end\": \"13:53\"}", "seconds": 1.735}
+{"id": "test-00177-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"kapalı değildir\", \"target\": \"Sadıkbey (Kara) tramvay durağı\", \"start\": \"11:48'den\", \"end\": \"13:53'e dek\"}", "seconds": 1.887}
+{"id": "test-00178-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Poligon metro station might be closed\", \"start\": \"09:02\", \"end\": \"11:07\"}", "seconds": 1.458}
+{"id": "test-00178-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Poligon metro istasyonu 09:02'den 11:07'ye dek kapalı olabilir\"}", "seconds": 1.521}
+{"id": "test-00179-en", "reply": "[]", "seconds": 0.88}
+{"id": "test-00179-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Alsancak Gar tramvay durağı\", \"start\": \"18:59'a kadar\", \"end\": \"15:39'dan itibaren\"}", "seconds": 1.682}
+{"id": "test-00180-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Havagazı tram stop is off limits to passengers\", \"start\": \"19:33 UTC\", \"end\": \"20:58 UTC\"}", "seconds": 1.673}
+{"id": "test-00180-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Havagazı tramvay durağı 19:33 UTC ile 20:58 UTC arasında hizmet vermeyecektir.\"}", "seconds": 1.657}
+{"id": "test-00181-en", "reply": "[]", "seconds": 0.781}
+{"id": "test-00181-tr", "reply": "[]", "seconds": 0.78}
+{"id": "test-00182-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Bölge metro station is unavailable to riders\", \"start\": \"15:53\", \"end\": \"19:28\"}", "seconds": 1.573}
+{"id": "test-00182-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Bölge metro istasyonu hizmet dışıdır\", \"start\": \"15:53\", \"end\": \"19:28\"}", "seconds": 1.613}
+{"id": "test-00183-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Üçyol metro station is suspended\", \"start\": \"12:37\"}", "seconds": 1.297}
+{"id": "test-00183-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Üçyol metro istasyonu 12:37'ye kadar hizmet dışıdır.\"}", "seconds": 1.351}
+{"id": "test-00184-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Üçyol metro station is off limits to passengers\"}", "seconds": 1.177}
+{"id": "test-00184-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Üçyol metro istasyonu 12:37'den itibaren yolcu alımına durdurulmuştur.\"}", "seconds": 1.567}
+{"id": "test-00185-en", "reply": "[]", "seconds": 0.895}
+{"id": "test-00185-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"hizmet dışıdır\", \"target\": \"Kaymakamlık metro istasyonu\", \"start\": \"17:46'dan\", \"end\": \"21:11'e\"}", "seconds": 1.804}
+{"id": "test-00186-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"shuttered\", \"target\": \"Bölge and Alsancak Gar stops\", \"start\": \"07:51\", \"end\": \"10:06\"}", "seconds": 1.732}
+{"id": "test-00186-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Bölge ve Alsancak Gar durakları hizmet dışıdır\", \"start\": \"07:51'den\", \"end\": \"10:06'ya kadar\"}", "seconds": 1.786}
+{"id": "test-00187-en", "reply": "{\"kind\": \"trip_delay\", \"quote\": \"18 minutes late\"}", "seconds": 1.049}
+{"id": "test-00187-tr", "reply": "{\"kind\": \"trip_delay\", \"quote\": \"18 dakika gecikmeli\"}", "seconds": 1.177}
+{"id": "test-00188-en", "reply": "{\"kind\": \"trip_cancellation\", \"quote\": \"Trip metro:WEEKDAY_1_0202 is cancelled.\"}", "seconds": 1.281}
+{"id": "test-00188-tr", "reply": "{\"kind\": \"trip_cancellation\", \"quote\": \"metro:WEEKDAY_1_0202 seferi iptal edilmiştir\"}", "seconds": 1.34}
+{"id": "test-00189-en", "reply": "{\"kind\": \"stop_closure\", \"target\": \"Konak\", \"start\": \"10:24\", \"end\": \"14:09\"}", "seconds": 1.37}
+{"id": "test-00189-tr", "reply": "[]", "seconds": 0.789}
+{"id": "test-00190-en", "reply": "[]", "seconds": 0.874}
+{"id": "test-00190-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Kaymakamlık metro istasyonu 08:58'den 11:03'e kadar kapalı değildir.\"}", "seconds": 1.551}
+{"id": "test-00191-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Poligon metro station might be closed\", \"start\": \"15:03\", \"end\": \"17:33\"}", "seconds": 1.454}
+{"id": "test-00191-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Poligon metro istasyonu 17:33'e kadar, 15:03'ten itibaren kapalı olabilir.\"}", "seconds": 1.552}
+{"id": "test-00192-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"suspended\", \"target\": \"Alsancak Gar tram stop\", \"start\": \"07:53\", \"end\": \"10:43\"}", "seconds": 1.662}
+{"id": "test-00192-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Alsancak Gar tramvay durağı hizmet sunamamaktadır\", \"start\": \"10:43'e kadar\", \"end\": \"07:53'ten itibaren\"}", "seconds": 1.769}
+{"id": "test-00193-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"suspended\", \"target\": \"Poligon metro station\", \"start\": \"08:54 UTC\", \"end\": \"12:14 UTC\"}", "seconds": 1.57}
+{"id": "test-00193-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"hizmet vermeyecektir\", \"target\": \"Poligon metro istasyonu\", \"start\": \"08:54 UTC\", \"end\": \"12:14 UTC\"}", "seconds": 1.783}
+{"id": "test-00194-en", "reply": "[]", "seconds": 0.783}
+{"id": "test-00194-tr", "reply": "[]", "seconds": 0.78}
+{"id": "test-00195-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"suspended\", \"target\": \"Kaymakamlık metro station\", \"start\": \"15:04\", \"end\": \"15:49\"}", "seconds": 1.565}
+{"id": "test-00195-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"hizmet sunamamaktadır\", \"target\": \"Kaymakamlık metro istasyonu\", \"start\": \"15:04\", \"end\": \"15:49\"}", "seconds": 1.764}
+{"id": "test-00196-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Havagazı tram stop is off limits to passengers until 09:53.\"}", "seconds": 1.335}
+{"id": "test-00196-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Havagazı tramvay durağı 09:53'e kadar hizmet vermeyecektir.\"}", "seconds": 1.531}
+{"id": "test-00197-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"shuttered\", \"target\": \"Poligon metro station\", \"start\": \"09:52\"}", "seconds": 1.372}
+{"id": "test-00197-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"hizmet vermeyecektir\", \"target\": \"Poligon metro istasyonu\", \"start\": \"09:52'den itibaren\"}", "seconds": 1.53}
+{"id": "test-00198-en", "reply": "[]", "seconds": 0.877}
+{"id": "test-00198-tr", "reply": "```json\n{\n  \"kind\": \"stop_closure\",\n  \"target\": \"Poligon metro istasyonu\",\n  \"start\": \"12:29'dan itibaren\",\n  \"end\": \"14:49'a kadar\"\n}\n```", "seconds": 1.899}
+{"id": "test-00199-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"shuttered\", \"target\": \"Poligon and Alsancak Stadyumu stops\", \"start\": \"14:38\", \"end\": \"17:43\"}", "seconds": 1.747}
+{"id": "test-00199-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"hizmet sunamamaktadır\", \"target\": \"Poligon ve Alsancak Stadyumu\", \"start\": \"14:38'den\", \"end\": \"17:43'e\"}", "seconds": 1.859}
+{"id": "test-00200-en", "reply": "{\"kind\": \"trip_delay\", \"quote\": \"34 minutes late\"}", "seconds": 1.051}
+{"id": "test-00200-tr", "reply": "[]", "seconds": 0.784}
+{"id": "test-00201-en", "reply": "{\"kind\": \"trip_cancellation\", \"quote\": \"Trip tram:2_WEEKDAY_0074 is cancelled\"}", "seconds": 1.226}
+{"id": "test-00201-tr", "reply": "{\"kind\": \"trip_cancellation\", \"quote\": \"tram:2_WEEKDAY_0074 seferi iptal edilmiştir\"}", "seconds": 1.298}
+{"id": "test-00202-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"shuttered\", \"target\": \"Konak\", \"start\": \"12:33\", \"end\": \"14:08\"}", "seconds": 1.513}
+{"id": "test-00202-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Konak hizmet vermeyecektir\", \"target\": \"12:33'ten 14:08'e dek\"}", "seconds": 1.572}
+{"id": "test-00203-en", "reply": "[]", "seconds": 0.876}
+{"id": "test-00203-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Havagazı tramvay durağı 10:55'ten 14:45'e kadar kapalı değildir.\"}", "seconds": 1.605}
+{"id": "test-00204-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Sadıkbey (Kara) tram stop might be closed\", \"start\": \"08:58\", \"end\": \"11:13\"}", "seconds": 1.66}
+{"id": "test-00204-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"kapalı olabilir\", \"target\": \"Sadıkbey (Kara) tramvay durağı\", \"start\": \"08:58'den itibaren\", \"end\": \"11:13'e kadar\"}", "seconds": 1.896}
+{"id": "test-00205-en", "reply": "[]", "seconds": 0.878}
+{"id": "test-00205-tr", "reply": "{\"kind\": \"stop_closure\", \"target\": \"Bölge metro istasyonu\", \"start\": \"08.11.2026\", \"end\": \"12:48'den 14:18'e dek\"}", "seconds": 1.805}
+{"id": "test-00206-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"shuttered\", \"target\": \"Bölge metro station\", \"start\": \"10:49 UTC\", \"end\": \"14:14 UTC\"}", "seconds": 1.61}
+{"id": "test-00206-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"hizmet dışıdır\", \"target\": \"Bölge metro istasyonu\", \"start\": \"10:49 UTC\", \"end\": \"14:14 UTC\"}", "seconds": 1.675}
+{"id": "test-00207-en", "reply": "[]", "seconds": 0.781}
+{"id": "test-00207-tr", "reply": "[]", "seconds": 0.781}
+{"id": "test-00208-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Bölge metro station is unavailable to riders for the period 15:34 to 18:59.\"}", "seconds": 1.442}
+{"id": "test-00208-tr", "reply": "{\"kind\": \"stop_closure\", \"target\": \"Bölge metro istasyonu\", \"start\": \"15:34\", \"end\": \"18:59\"}", "seconds": 1.534}
+{"id": "test-00209-en", "reply": "[]", "seconds": 0.784}
+{"id": "test-00209-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Havagazı tramvay durağı 19:08'e kadar hizmet sunamamaktadır.\"}", "seconds": 1.409}
+{"id": "test-00210-en", "reply": "[]", "seconds": 0.786}
+{"id": "test-00210-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Alsancak Gar tramvay durağı 13:57'den itibaren hizmet dışıdır.\"}", "seconds": 1.482}
+{"id": "test-00211-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"shuttered\", \"target\": \"Üçyol metro station\", \"start\": \"10:38\", \"end\": \"12:03\"}", "seconds": 1.679}
+{"id": "test-00211-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Üçyol metro istasyonu hizmet sunamamaktadır\", \"start\": \"10:38'den\", \"end\": \"12:03'e\"}", "seconds": 1.695}
+{"id": "test-00212-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Sadıkbey (Kara) and Havagazı tram stops are off limits to passengers\"}", "seconds": 1.427}
+{"id": "test-00212-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"hizmet dışıdır\", \"target\": \"Sadıkbey (Kara) ve Havagazı tramvay durakları\", \"start\": \"17:03'ten itibaren\", \"end\": \"19:33'e kadar\"}", "seconds": 2.054}
+{"id": "test-00213-en", "reply": "{\"kind\": \"trip_delay\", \"quote\": \"29 minutes late\"}", "seconds": 1.057}
+{"id": "test-00213-tr", "reply": "{\"kind\": \"trip_delay\", \"quote\": \"29 dakika gecikmeli\"}", "seconds": 1.177}
+{"id": "test-00214-en", "reply": "{\"kind\": \"trip_cancellation\", \"quote\": \"Trip metro:WEEKDAY_0_0155 is cancelled\"}", "seconds": 1.262}
+{"id": "test-00214-tr", "reply": "{\"kind\": \"trip_cancellation\", \"quote\": \"metro:WEEKDAY_0_0155 seferi iptal edilmiştir\"}", "seconds": 1.337}
+{"id": "test-00215-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"shuttered\", \"target\": \"Konak\", \"start\": \"12:34\", \"end\": \"14:44\"}", "seconds": 1.512}
+{"id": "test-00215-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Konak hizmet sunamamaktadır\", \"start\": \"12:34\", \"end\": \"14:44\"}", "seconds": 1.459}
+{"id": "test-00216-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Havagazı tram stop is not closed for the period 15:35 to 16:30.\"}", "seconds": 1.452}
+{"id": "test-00216-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Havagazı tramvay durağı 15:35'ten 16:30'a dek kapalı değildir.\"}", "seconds": 1.605}
+{"id": "test-00217-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"closed\", \"target\": \"Alsancak Stadyumu tram stop\", \"start\": \"17:37\", \"end\": \"19:07\"}", "seconds": 1.578}
+{"id": "test-00217-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"kapalı olabilir\", \"target\": \"Alsancak Stadyumu tramvay durağı\", \"start\": \"17:37'den\", \"end\": \"19:07'ye\"}", "seconds": 1.836}
+{"id": "test-00218-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"shuttered\", \"target\": \"Poligon metro station\", \"start\": \"10:00\", \"end\": \"13:55\"}", "seconds": 1.641}
+{"id": "test-00218-tr", "reply": "{\"kind\": \"stop_closure\", \"target\": \"Poligon metro istasyonu\", \"start\": \"10:00\", \"end\": \"13:55\"}", "seconds": 1.522}
+{"id": "test-00219-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"off limits to passengers\", \"start\": \"16:32 UTC\", \"end\": \"17:52 UTC\"}", "seconds": 1.436}
+{"id": "test-00219-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Bölge metro istasyonu 16:32 UTC ile 17:52 UTC arasında yolcu alımına durdurulmuştur.\"}", "seconds": 1.679}
+{"id": "test-00220-en", "reply": "[]", "seconds": 0.781}
+{"id": "test-00220-tr", "reply": "[]", "seconds": 0.78}
+{"id": "test-00221-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Bölge metro station is off limits to passengers\", \"start\": \"11:07\", \"end\": \"14:07\"}", "seconds": 1.511}
+{"id": "test-00221-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Bölge metro istasyonu hizmet vermeyecektir\", \"start\": \"11:07'den\", \"end\": \"14:07'ye dek\"}", "seconds": 1.729}
+{"id": "test-00222-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"shuttered\", \"target\": \"Kaymakamlık metro station\", \"start\": \"18:42\"}", "seconds": 1.405}
+{"id": "test-00222-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"yolcu alımına durdurulmuştur\"}", "seconds": 1.286}
+{"id": "test-00223-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"suspended\", \"target\": \"Sadıkbey (Kara) tram stop\", \"start\": \"10:23\"}", "seconds": 1.456}
+{"id": "test-00223-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"hizmet dışıdır\", \"target\": \"Sadıkbey (Kara) tramvay durağı\", \"start\": \"10:23\"}", "seconds": 1.58}
+{"id": "test-00224-en", "reply": "[]", "seconds": 0.876}
+{"id": "test-00224-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Poligon metro istasyonu hizmet dışıdır\", \"start\": \"14:15\", \"end\": \"16:10\"}", "seconds": 1.592}
+{"id": "test-00225-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"suspended\", \"target\": \"Alsancak Gar and Kaymakamlık stops\", \"start\": \"12:33\", \"end\": \"14:43\"}", "seconds": 1.728}
+{"id": "test-00225-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Alsancak Gar ve Kaymakamlık durakları hizmet dışıdır\", \"start\": \"12:33\", \"end\": \"14:43\"}", "seconds": 1.711}
+{"id": "test-00226-en", "reply": "{\"kind\": \"trip_delay\", \"quote\": \"13 minutes late\"}", "seconds": 1.051}
+{"id": "test-00226-tr", "reply": "{\"kind\": \"trip_delay\", \"quote\": \"13 dakika gecikmeli\"}", "seconds": 1.086}
+{"id": "test-00227-en", "reply": "{\"kind\": \"trip_cancellation\", \"quote\": \"Trip tram:1_WEEKDAY_0068 is cancelled\"}", "seconds": 1.228}
+{"id": "test-00227-tr", "reply": "{\"kind\": \"trip_cancellation\", \"quote\": \"seferi iptal edilmiştir\"}", "seconds": 1.124}
+{"id": "test-00228-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Konak is suspended\", \"start\": \"12:31\", \"end\": \"16:21\"}", "seconds": 1.406}
+{"id": "test-00228-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Konak hizmet vermeyecektir\", \"start\": \"16:21'e kadar\", \"end\": \"12:31'den itibaren\"}", "seconds": 1.56}
+{"id": "test-00229-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Havagazı tram stop is not closed until 14:05\", \"start\": \"11:25\"}", "seconds": 1.461}
+{"id": "test-00229-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Havagazı tramvay durağı 11:25'ten 14:05'e kadar kapalı değildir.\"}", "seconds": 1.605}
+{"id": "test-00230-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Üçyol metro station might be closed\", \"start\": \"07:51\", \"end\": \"11:26\"}", "seconds": 1.496}
+{"id": "test-00230-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Üçyol metro istasyonu 11:26'ya kadar, 07:51'den itibaren kapalı olabilir.\"}", "seconds": 1.606}
+{"id": "test-00231-en", "reply": "[]", "seconds": 0.877}
+{"id": "test-00231-tr", "reply": "{\"kind\": \"stop_closure\", \"target\": \"Bölge metro istasyonu\", \"start\": \"13:00\", \"end\": \"16:40\"}", "seconds": 1.538}
+{"id": "test-00232-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"suspended\", \"target\": \"Bölge metro station\", \"start\": \"07:30 UTC\", \"end\": \"10:15 UTC\"}", "seconds": 1.587}
+{"id": "test-00232-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"hizmet dışıdır\", \"target\": \"Bölge metro istasyonu\", \"start\": \"07:30 UTC\", \"end\": \"10:15 UTC\"}", "seconds": 1.764}
+{"id": "test-00233-en", "reply": "[]", "seconds": 0.778}
+{"id": "test-00233-tr", "reply": "[]", "seconds": 0.784}
+{"id": "test-00234-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Sadıkbey (Kara) tram stop is unavailable to riders from 12:37 through 13:27.\"}", "seconds": 1.585}
+{"id": "test-00234-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"hizmet vermeyecektir\", \"target\": \"Sadıkbey (Kara) tramvay durağı\", \"start\": \"12:37'den\", \"end\": \"13:27'ye kadar\"}", "seconds": 1.991}
+{"id": "test-00235-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"suspended\", \"target\": \"Sadıkbey (Kara) tram stop\", \"start\": \"until 13:08\"}", "seconds": 1.499}
+{"id": "test-00235-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"13:08'e kadar hizmet sunamamaktadır\", \"target\": \"Sadıkbey (Kara) tramvay durağı\"}", "seconds": 1.606}
+{"id": "test-00236-en", "reply": "[]", "seconds": 0.785}
+{"id": "test-00236-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"hizmet vermeyecektir\", \"target\": \"Alsancak Gar tramvay durağı\", \"start\": \"10:23\"}", "seconds": 1.64}
+{"id": "test-00237-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"off limits to passengers\", \"target\": \"Sadıkbey (Kara) tram stop\", \"start\": \"14:14\", \"end\": \"15:39\"}", "seconds": 1.771}
+{"id": "test-00237-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"hizmet dışıdır\", \"target\": \"Sadıkbey (Kara) tramvay durağı\", \"start\": \"14:14\", \"end\": \"15:39\"}", "seconds": 1.859}
+{"id": "test-00238-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Üçyol and Alsancak Stadyumu stops are off limits to passengers\", \"start\": \"09:07\", \"end\": \"12:27\"}", "seconds": 1.727}
+{"id": "test-00238-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Üçyol ve Alsancak Stadyumu durakları hizmet vermeyecektir\", \"start\": \"09:07'den\", \"end\": \"12:27'ye kadar\"}", "seconds": 1.874}
+{"id": "test-00239-en", "reply": "{\"kind\": \"trip_delay\", \"quote\": \"15 minutes late\"}", "seconds": 1.048}
+{"id": "test-00239-tr", "reply": "{\"kind\": \"trip_delay\", \"quote\": \"15 dakika gecikmeli\"}", "seconds": 1.077}
+{"id": "test-00240-en", "reply": "{\"kind\": \"trip_cancellation\", \"quote\": \"Trip tram:2_WEEKDAY_0004 is cancelled\"}", "seconds": 1.227}
+{"id": "test-00240-tr", "reply": "{\"kind\": \"trip_cancellation\", \"quote\": \"seferi iptal edilmiştir\"}", "seconds": 1.119}
+{"id": "test-00241-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Konak is unavailable to riders\", \"start\": \"12:38\", \"end\": \"16:18\"}", "seconds": 1.444}
+{"id": "test-00241-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Konak hizmet dışıdır\", \"start\": \"12:38'den\", \"end\": \"16:18'e\"}", "seconds": 1.505}
+{"id": "test-00242-en", "reply": "[]", "seconds": 0.877}
+{"id": "test-00242-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Sadıkbey (Kara) tramvay durağı 14:46'dan 15:21'e kadar kapalı değildir.\"}", "seconds": 1.658}
+{"id": "test-00243-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Alsancak Stadyumu tram stop might be closed\", \"start\": \"19:44\", \"end\": \"22:59\"}", "seconds": 1.624}
+{"id": "test-00243-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"kapalı olabilir\", \"target\": \"Alsancak Stadyumu tramvay durağı\", \"start\": \"19:44\", \"end\": \"22:59\"}", "seconds": 1.763}
+{"id": "test-00244-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"suspended\", \"target\": \"Havagazı tram stop\", \"start\": \"09:01\", \"end\": \"10:46\"}", "seconds": 1.681}
+{"id": "test-00244-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"durdurulmuştur\", \"target\": \"Havagazı tramvay durağı\", \"start\": \"09:01\", \"end\": \"10:46\"}", "seconds": 1.812}
+{"id": "test-00245-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Alsancak Stadyumu tram stop is unavailable to riders\", \"start\": \"12:06 UTC\", \"end\": \"12:56 UTC\"}", "seconds": 1.676}
+{"id": "test-00245-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"yolcu alımına durdurulmuştur\", \"target\": \"Alsancak Stadyumu tramvay durağı\", \"start\": \"12:06 UTC\", \"end\": \"12:56 UTC\"}", "seconds": 1.962}
+{"id": "test-00246-en", "reply": "[]", "seconds": 0.784}
+{"id": "test-00246-tr", "reply": "[]", "seconds": 0.78}
+{"id": "test-00247-en", "reply": "[]", "seconds": 0.777}
+{"id": "test-00247-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"hizmet dışıdır\", \"target\": \"Alsancak Gar tramvay durağı\", \"start\": \"06:55\", \"end\": \"10:40\"}", "seconds": 1.778}
+{"id": "test-00248-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"shuttered\", \"target\": \"Havagazı tram stop\", \"start\": \"10:53\"}", "seconds": 1.422}
+{"id": "test-00248-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Havagazı tramvay durağı 10:53'e kadar hizmet vermeyecektir.\"}", "seconds": 1.426}
+{"id": "test-00249-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"shuttered\", \"target\": \"Kaymakamlık metro station\", \"start\": \"14:40\"}", "seconds": 1.408}
+{"id": "test-00249-tr", "reply": "[]", "seconds": 0.782}
+{"id": "test-00250-en", "reply": "[]", "seconds": 0.872}
+{"id": "test-00250-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Bölge metro istasyonu yolcu alımına durdurulmuştur\", \"target\": \"Bölge metro istasyonu\", \"start\": \"12:54'e kadar\", \"end\": \"10:49'dan itibaren\"}", "seconds": 2.021}
+{"id": "test-00251-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"shuttered\", \"target\": \"Sadıkbey (Kara) and Alsancak Gar tram stops\", \"start\": \"18:56\", \"end\": \"21:11\"}", "seconds": 1.839}
+{"id": "test-00251-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"hizmet vermeyecektir\", \"target\": \"Sadıkbey (Kara) ve Alsancak Gar tramvay durakları\", \"start\": \"18:56'dan\", \"end\": \"21:11'e\"}", "seconds": 2.061}
+{"id": "test-00252-en", "reply": "{\"kind\": \"trip_delay\", \"quote\": \"14 minutes late\"}", "seconds": 1.051}
+{"id": "test-00252-tr", "reply": "[]", "seconds": 0.785}
+{"id": "test-00253-en", "reply": "{\"kind\": \"trip_cancellation\", \"quote\": \"Trip metro:WEEKDAY_0_0009 is cancelled\"}", "seconds": 1.262}
+{"id": "test-00253-tr", "reply": "{\"kind\": \"trip_cancellation\", \"quote\": \"metro:WEEKDAY_0_0009 seferi iptal edilmiştir\"}", "seconds": 1.337}
+{"id": "test-00254-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Konak is suspended\", \"start\": \"16:27\", \"end\": \"19:52\"}", "seconds": 1.408}
+{"id": "test-00254-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Konak hizmet sunamamaktadır\", \"start\": \"16:27'den\", \"end\": \"19:52'ye kadar\"}", "seconds": 1.639}
+{"id": "test-00255-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Havagazı tram stop is not closed for the period 11:18 to 14:38.\"}", "seconds": 1.451}
+{"id": "test-00255-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Havagazı tramvay durağı 11:18'den 14:38'e kadar kapalı değildir.\"}", "seconds": 1.61}
+{"id": "test-00256-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"closed\", \"target\": \"Alsancak Stadyumu tram stop\", \"start\": \"16:22\", \"end\": \"18:07\"}", "seconds": 1.676}
+{"id": "test-00256-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"kapalı olabilir\", \"target\": \"Alsancak Stadyumu tramvay durağı\", \"start\": \"16:22'den\", \"end\": \"18:07'ye dek\"}", "seconds": 1.854}
+{"id": "test-00257-en", "reply": "```json\n{\n  \"kind\": \"stop_closure\",\n  \"stop\": \"Alsancak Stadyumu tram stop\",\n  \"start\": \"06:31\",\n  \"end\": \"07:21\"\n}\n```", "seconds": 1.861}
+{"id": "test-00257-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"09.11.2026 tarihinde Alsancak Stadyumu tramvay durağı hizmet dışıdır\", \"start\": \"07:21'e kadar\", \"end\": \"06:31'den itibaren\"}", "seconds": 1.99}
+{"id": "test-00258-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Havagazı tram stop is unavailable to riders\", \"start\": \"07:55 UTC\", \"end\": \"10:45 UTC\"}", "seconds": 1.655}
+{"id": "test-00258-tr", "reply": "{\"kind\": \"stop_closure\", \"target\": \"Havagazı tramvay durağı\", \"start\": \"07:55 UTC\", \"end\": \"10:45 UTC\"}", "seconds": 1.64}
+{"id": "test-00259-en", "reply": "[]", "seconds": 0.78}
+{"id": "test-00259-tr", "reply": "[]", "seconds": 0.78}
+{"id": "test-00260-en", "reply": "[]", "seconds": 0.776}
+{"id": "test-00260-tr", "reply": "{\"kind\": \"stop_closure\", \"target\": \"Poligon metro istasyonu\", \"start\": \"19:13'ten\", \"end\": \"19:48'e\"}", "seconds": 1.566}
+{"id": "test-00261-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"shuttered\", \"target\": \"Alsancak Gar tram stop\", \"start\": \"15:43\"}", "seconds": 1.406}
+{"id": "test-00261-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Alsancak Gar tramvay durağı 15:43'e kadar hizmet sunamamaktadır.\"}", "seconds": 1.479}
+{"id": "test-00262-en", "reply": "[]", "seconds": 0.785}
+{"id": "test-00262-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Bölge metro istasyonu 06:57'den itibaren yolcu alımına durdurulmuştur.\"}", "seconds": 1.553}
+{"id": "test-00263-en", "reply": "[]", "seconds": 0.875}
+{"id": "test-00263-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Bölge metro istasyonu hizmet sunamamaktadır\"}", "seconds": 1.275}
+{"id": "test-00264-en", "reply": "[]", "seconds": 0.876}
+{"id": "test-00264-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"yolcu alımına durdurulmuştur\", \"target\": \"Sadıkbey (Kara) ve Bölge\", \"start\": \"06:32'den\", \"end\": \"07:42'ye dek.\"}", "seconds": 2.039}
+{"id": "test-00265-en", "reply": "{\"kind\": \"trip_delay\", \"quote\": \"45 minutes late\"}", "seconds": 1.05}
+{"id": "test-00265-tr", "reply": "{\"kind\": \"trip_delay\", \"quote\": \"45 dakika gecikmeli\"}", "seconds": 1.177}
+{"id": "test-00266-en", "reply": "{\"kind\": \"trip_cancellation\", \"quote\": \"Trip metro:WEEKDAY_1_0186 is cancelled.\"}", "seconds": 1.282}
+{"id": "test-00266-tr", "reply": "{\"kind\": \"trip_cancellation\", \"quote\": \"metro:WEEKDAY_1_0186 seferi iptal edilmiştir\"}", "seconds": 1.335}
+{"id": "test-00267-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Konak is suspended\", \"target\": \"Konak\", \"start\": \"08:03\", \"end\": \"10:13\"}", "seconds": 1.529}
+{"id": "test-00267-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Konak hizmet sunamamaktadır\", \"start\": \"08:03'ten\", \"end\": \"10:13'e dek\"}", "seconds": 1.535}
+{"id": "test-00268-en", "reply": "[]", "seconds": 0.785}
+{"id": "test-00268-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Poligon metro istasyonu 17:13'ten 19:03'e kadar kapalı değildir.\"}", "seconds": 1.513}
+{"id": "test-00269-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Poligon metro station might be closed\", \"start\": \"14:09\", \"end\": \"17:09\"}", "seconds": 1.458}
+{"id": "test-00269-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Poligon metro istasyonu 14:09'dan 17:09'a kadar kapalı olabilir\"}", "seconds": 1.406}
+{"id": "test-00270-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Alsancak Stadyumu tram stop is unavailable to riders\", \"start\": \"11:48\", \"end\": \"13:23\"}", "seconds": 1.643}
+{"id": "test-00270-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"durdurulmuştur\", \"target\": \"Alsancak Stadyumu tramvay durağı\", \"start\": \"11:48'den\", \"end\": \"13:23'e\"}", "seconds": 1.882}
+{"id": "test-00271-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"suspended\", \"target\": \"Bölge metro station\", \"start\": \"18:07 UTC\", \"end\": \"18:37 UTC\"}", "seconds": 1.59}
+{"id": "test-00271-tr", "reply": "{\"kind\": \"stop_closure\", \"target\": \"Bölge metro istasyonu\", \"start\": \"18:07 UTC\", \"end\": \"18:37 UTC\"}", "seconds": 1.567}
+{"id": "test-00272-en", "reply": "[]", "seconds": 0.783}
+{"id": "test-00272-tr", "reply": "[]", "seconds": 0.78}
+{"id": "test-00273-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"unavailable to riders\", \"target\": \"Bölge metro station\", \"start\": \"17:44\", \"end\": \"20:04\"}", "seconds": 1.586}
+{"id": "test-00273-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Bölge metro istasyonu hizmet dışıdır\", \"start\": \"17:44\", \"end\": \"20:04\"}", "seconds": 1.603}
+{"id": "test-00274-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"off limits to passengers\", \"target\": \"Alsancak Stadyumu tram stop\", \"start\": \"11:01\"}", "seconds": 1.461}
+{"id": "test-00274-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"hizmet dışıdır\", \"target\": \"Alsancak Stadyumu tramvay durağı\", \"start\": \"11:01\"}", "seconds": 1.543}
+{"id": "test-00275-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Havagazı tram stop is off limits to passengers from 16:57.\"}", "seconds": 1.332}
+{"id": "test-00275-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Havagazı tramvay durağı 16:57'den itibaren hizmet dışıdır.\"}", "seconds": 1.414}
+{"id": "test-00276-en", "reply": "[]", "seconds": 0.878}
+{"id": "test-00276-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Havagazı tramvay durağı hizmet sunamamaktadır\", \"start\": \"18:14\", \"end\": \"20:59\"}", "seconds": 1.695}
+{"id": "test-00277-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Poligon and Üçyol stops are unavailable to riders for the period 11:42 to 14:42.\"}", "seconds": 1.59}
+{"id": "test-00277-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Poligon ve Üçyol durakları hizmet dışıdır\", \"start\": \"14:42'ye kadar\", \"end\": \"11:42'den itibaren\"}", "seconds": 1.785}
+{"id": "test-00278-en", "reply": "{\"kind\": \"trip_delay\", \"quote\": \"42 minutes late\"}", "seconds": 1.052}
+{"id": "test-00278-tr", "reply": "{\"kind\": \"trip_delay\", \"quote\": \"42 dakika gecikmeli\"}", "seconds": 1.092}
+{"id": "test-00279-en", "reply": "{\"kind\": \"trip_cancellation\", \"quote\": \"Trip metro:WEEKDAY_1_0178 is cancelled.\"}", "seconds": 1.279}
+{"id": "test-00279-tr", "reply": "{\"kind\": \"trip_cancellation\", \"quote\": \"seferi iptal edilmiştir\"}", "seconds": 1.118}
+{"id": "test-00280-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Konak is off limits to passengers\"}", "seconds": 1.109}
+{"id": "test-00280-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Konak hizmet dışıdır\", \"start\": \"06:26'dan\", \"end\": \"08:56'ya kadar\"}", "seconds": 1.531}
+{"id": "test-00281-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Sadıkbey (Kara) tram stop is not closed\", \"target\": \"Sadıkbey (Kara) tram stop\", \"start\": \"07:01\", \"end\": \"09:16\"}", "seconds": 1.93}
+{"id": "test-00281-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Sadıkbey (Kara) tramvay durağı 09:16'ya kadar, 07:01'den itibaren kapalı değildir.\"}", "seconds": 1.724}
+{"id": "test-00282-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Üçyol metro station might be closed\", \"start\": \"10:30\", \"end\": \"11:00\"}", "seconds": 1.587}
+{"id": "test-00282-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Üçyol metro istasyonu 10:30'dan 11:00'e kadar kapalı olabilir\"}", "seconds": 1.432}
+{"id": "test-00283-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"shuttered\", \"target\": \"Alsancak Stadyumu tram stop\", \"start\": \"13:23\", \"end\": \"14:18\"}", "seconds": 1.716}
+{"id": "test-00283-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"durdurulmuştur\", \"target\": \"Alsancak Stadyumu tramvay durağı\", \"start\": \"14:18'e kadar\", \"end\": \"13:23'ten itibaren\"}", "seconds": 1.915}
+{"id": "test-00284-en", "reply": "[]", "seconds": 0.775}
+{"id": "test-00284-tr", "reply": "{\"kind\": \"stop_closure\", \"target\": \"Poligon metro istasyonu\", \"start\": \"07:49 UTC\", \"end\": \"11:04 UTC\"}", "seconds": 1.547}
+{"id": "test-00285-en", "reply": "[]", "seconds": 0.78}
+{"id": "test-00285-tr", "reply": "[]", "seconds": 0.781}
+{"id": "test-00286-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Üçyol metro station is unavailable to riders\", \"start\": \"17:49\", \"end\": \"19:09\"}", "seconds": 1.606}
+{"id": "test-00286-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Üçyol metro istasyonu yolcu alımına durdurulmuştur\", \"target\": \"Üçyol metro istasyonu\", \"start\": \"17:49'dan itibaren\", \"end\": \"19:09'a kadar\"}", "seconds": 2.055}
+{"id": "test-00287-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"shuttered\", \"target\": \"Kaymakamlık metro station\", \"start\": \"16:28\"}", "seconds": 1.404}
+{"id": "test-00287-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"16:28'e kadar yolcu alımına durdurulmuştur\"}", "seconds": 1.388}
+{"id": "test-00288-en", "reply": "[]", "seconds": 0.783}
+{"id": "test-00288-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Bölge metro istasyonu 08:18'den itibaren yolcu alımına durdurulmuştur.\"}", "seconds": 1.55}
+{"id": "test-00289-en", "reply": "[]", "seconds": 0.875}
+{"id": "test-00289-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Havagazı tramvay durağı hizmet vermeyecektir\", \"start\": \"17:31'den\", \"end\": \"18:56'ya dek\"}", "seconds": 1.805}
+{"id": "test-00290-en", "reply": "[]", "seconds": 0.878}
+{"id": "test-00290-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"yolcu alımına durdurulmuştur\", \"target\": \"Kaymakamlık ve Sadıkbey (Kara)\", \"start\": \"17:32\"}", "seconds": 1.774}
+{"id": "test-00291-en", "reply": "{\"kind\": \"trip_delay\", \"quote\": \"48 minutes late\"}", "seconds": 1.049}
+{"id": "test-00291-tr", "reply": "{\"kind\": \"trip_delay\", \"quote\": \"48 dakika gecikmeli\"}", "seconds": 1.176}
+{"id": "test-00292-en", "reply": "{\"kind\": \"trip_cancellation\", \"quote\": \"Trip metro:WEEKDAY_0_0030 is cancelled.\"}", "seconds": 1.286}
+{"id": "test-00292-tr", "reply": "{\"kind\": \"trip_cancellation\", \"quote\": \"metro:WEEKDAY_0_0030 seferi iptal edilmiştir\"}", "seconds": 1.337}
+{"id": "test-00293-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"shuttered\", \"target\": \"Konak\", \"start\": \"07:26\", \"end\": \"10:16\"}", "seconds": 1.514}
+{"id": "test-00293-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Konak hizmet sunamamaktadır\", \"start\": \"10:16'a kadar\", \"end\": \"07:26'dan itibaren\"}", "seconds": 1.641}
+{"id": "test-00294-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"not closed\", \"target\": \"Alsancak Stadyumu tram stop\", \"start\": \"06:56\", \"end\": \"09:11\"}", "seconds": 1.697}
+{"id": "test-00294-tr", "reply": "[]", "seconds": 0.876}
+{"id": "test-00295-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Havagazı tram stop might be closed\", \"start\": \"08:26\", \"end\": \"11:01\"}", "seconds": 1.504}
+{"id": "test-00295-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Havagazı tramvay durağı 11:01'e kadar, 08:26'dan itibaren kapalı olabilir.\"}", "seconds": 1.644}
+{"id": "test-00296-en", "reply": "[]", "seconds": 0.88}
+{"id": "test-00296-tr", "reply": "{\"kind\": \"stop_closure\", \"target\": \"Poligon metro istasyonu\", \"start\": \"11:29'dan\", \"end\": \"15:09'a\"}", "seconds": 1.576}
+{"id": "test-00297-en", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"shuttered\", \"target\": \"Alsancak Gar tram stop\", \"start\": \"12:55 UTC\", \"end\": \"15:15 UTC\"}", "seconds": 1.709}
+{"id": "test-00297-tr", "reply": "{\"kind\": \"stop_closure\", \"target\": \"Alsancak Gar tramvay durağı\", \"start\": \"12:55 UTC\", \"end\": \"15:15 UTC\"}", "seconds": 1.622}
+{"id": "test-00298-en", "reply": "[]", "seconds": 0.783}
+{"id": "test-00298-tr", "reply": "[]", "seconds": 0.778}
+{"id": "test-00299-en", "reply": "[]", "seconds": 0.787}
+{"id": "test-00299-tr", "reply": "{\"kind\": \"stop_closure\", \"quote\": \"Alsancak Gar tramvay durağı hizmet sunamamaktadır\", \"start\": \"11:21'den\", \"end\": \"12:26'ya kadar\"}", "seconds": 1.766}

@@ -1,0 +1,67 @@
+{
+  "runtime": "mlx_lm lora",
+  "base": "Qwen3.5 4B local weights (same as v1)",
+  "config": "finetune/v2.yml",
+  "rows": {
+    "train_rows": 1800,
+    "valid_rows": 100,
+    "exact_overlap": 0,
+    "sha256": {
+      "train": "ba40bca77c119a555c55e2bd90c97faee289570b3be0ef70333cca8dd02c89f2",
+      "valid": "ea154ba73a4fbaca6d312769e239d69c0c0b08aee8cd56160263674367600585"
+    },
+    "source": "data/bench/v3 train split and dev groups below 50"
+  },
+  "adapter_sha256": "32b0cb4e1a5b192a5ab1e7e37f869f0623aa7b5a330f4832645a922fdacf2fdf",
+  "train_loss": [
+    [
+      25,
+      0.508
+    ],
+    [
+      125,
+      0.058
+    ],
+    [
+      225,
+      0.051
+    ],
+    [
+      325,
+      0.041
+    ],
+    [
+      425,
+      0.036
+    ],
+    [
+      525,
+      0.021
+    ]
+  ],
+  "validation_loss": [
+    [
+      1,
+      1.983
+    ],
+    [
+      150,
+      0.081
+    ],
+    [
+      300,
+      0.053
+    ],
+    [
+      450,
+      0.056
+    ],
+    [
+      600,
+      0.048
+    ]
+  ],
+  "iterations": 600,
+  "seed": 42,
+  "note": "One seed. Validation rows are the first 50 dev groups. The adoption set starts at group 50."
+}
