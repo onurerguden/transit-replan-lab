@@ -152,7 +152,6 @@ def test_c5_verifier_rejects_waiting_through_a_closure() -> None:
     assert verify_offer(schedule, scenario, offer, votes(offer), 0, closed) is not None
 
 
-@pytest.mark.xfail(strict=True, reason="V2-C6: a replacement report must replace incidents")
 def test_c6_replacement_report_retracts_the_previous_incident(tmp_path: Path) -> None:
     store = RunStore(tmp_path / "replace.sqlite")
     service = RunService(store, SCHEDULE)
@@ -199,7 +198,6 @@ def test_l1_exhausted_initial_search_is_recorded(
     assert store.view(receipt.run_id).status == "search_incomplete"
 
 
-@pytest.mark.xfail(strict=True, reason="V2-L2: an invalid status can be persisted")
 def test_l2_invalid_status_is_never_persisted(tmp_path: Path) -> None:
     store = RunStore(tmp_path / "status.sqlite")
     service = RunService(store, SCHEDULE)
@@ -212,7 +210,6 @@ def test_l2_invalid_status_is_never_persisted(tmp_path: Path) -> None:
     assert store.view(receipt.run_id).status != "bogus"
 
 
-@pytest.mark.xfail(strict=True, reason="V2-L2: internal failures are reported as model errors")
 def test_l2_internal_failure_is_a_system_error(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
@@ -231,7 +228,6 @@ def test_l2_internal_failure_is_a_system_error(
     assert store.view(receipt.run_id).status == "system_error"
 
 
-@pytest.mark.xfail(strict=True, reason="V2-L4: a newer schema is silently downgraded")
 def test_l4_newer_schema_is_refused(tmp_path: Path) -> None:
     path = tmp_path / "newer.sqlite"
     RunStore(path)

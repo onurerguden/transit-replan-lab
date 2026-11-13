@@ -13,7 +13,7 @@ from fastapi.sse import EventSourceResponse, ServerSentEvent
 from pydantic import BaseModel
 
 from trl import __version__
-from trl.contracts import Clarify, CreateRun, Disrupt, Network, Receipt, RunView
+from trl.contracts import Clarify, CreateRun, Disrupt, Network, Receipt, Retract, Retry, RunView
 from trl.gtfs import load_schedule
 from trl.observability import configure_observability
 from trl.orchestration import RunService
@@ -114,6 +114,28 @@ def create_app(path: Path | None = None) -> FastAPI:
     async def clarification(
         run_id: str,
         body: Clarify,
+        key: IdempotencyKey,
+        runs: Service,
+    ) -> Receipt:
+        receipt = await asyncio.to_thread(runs.store.command, run_id, key, body)
+        runs.enqueue(receipt)
+        return receipt
+
+    @app.post("/v1/runs/{run_id}/retractions", status_code=202)
+    async def retraction(
+        run_id: str,
+        body: Retract,
+        key: IdempotencyKey,
+        runs: Service,
+    ) -> Receipt:
+        receipt = await asyncio.to_thread(runs.store.command, run_id, key, body)
+        runs.enqueue(receipt)
+        return receipt
+
+    @app.post("/v1/runs/{run_id}/retries", status_code=202)
+    async def retry(
+        run_id: str,
+        body: Retry,
         key: IdempotencyKey,
         runs: Service,
     ) -> Receipt:

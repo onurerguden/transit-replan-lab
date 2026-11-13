@@ -1,9 +1,11 @@
 import asyncio
 import subprocess
 import sys
+from contextlib import closing
 from pathlib import Path
 from time import monotonic, sleep
 
+import pytest
 from fastapi.testclient import TestClient
 
 from trl.agents import ModelReply, ReplayModel, RoleView, Stage
@@ -13,7 +15,8 @@ from trl.domain import Record
 from trl.gtfs import load_schedule
 from trl.orchestration import RunService
 from trl.scenarios import load_scenario
-from trl.storage import RunStore
+from trl.settings import get_settings
+from trl.storage import Fence, Fenced, RunStore, current_fence
 
 
 def test_late_operator_reply_changes_no_application_table(tmp_path: Path) -> None:
@@ -86,7 +89,11 @@ def test_schema_repair_is_bounded_and_cannot_verify(tmp_path: Path) -> None:
     asyncio.run(exercise())
 
 
-def test_crash_inside_reserved_model_call_can_resume(tmp_path: Path) -> None:
+def test_crash_inside_reserved_model_call_can_resume(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    monkeypatch.setenv("TRL_LEASE_TTL", "1")
+    get_settings.cache_clear()
     path = tmp_path / "state.sqlite"
     store = RunStore(path)
     schedule = load_schedule()
@@ -110,7 +117,7 @@ from trl.agents import ReplayModel
 from trl.contracts import Receipt
 from trl.gtfs import load_schedule
 from trl.orchestration import RunService
-from trl.storage import RunStore
+from trl.storage import Fence, Fenced, RunStore, current_fence
 
 class Crashing(ReplayModel):
     async def generate(self, *args, **kwargs):
@@ -154,7 +161,7 @@ asyncio.run(service.execute(Receipt.model_validate_json(sys.argv[2])))
     assert sum(event.kind == "verified" for event in store.events(run.run_id, 0)) == 1
 
 
-def test_clarification_waits_for_checkpoint_owner(tmp_path: Path) -> None:
+def test_answer_revokes_the_previous_owner_and_one_worker_finishes(tmp_path: Path) -> None:
     async def exercise() -> None:
         path = tmp_path / "handoff.sqlite"
         schedule = load_schedule()
@@ -168,20 +175,48 @@ def test_clarification_waits_for_checkpoint_owner(tmp_path: Path) -> None:
         state = store.read(run.run_id)
         assert state.evidence and state.evidence.intake and state.evidence.intake.question
         question = state.evidence.intake.question
-        with store.execution_guard(f"{run.run_id}:{work.version}") as acquired:
-            assert acquired
-            reply = store.command(
-                run.run_id,
-                "answer",
-                Clarify(version=work.version, question_id=question.id, answer="Konak İskele tram"),
-            )
-            contender = asyncio.create_task(RunService(RunStore(path), schedule).execute(reply))
-            await asyncio.sleep(0.2)
-            assert not contender.done()
-            assert store.view(run.run_id).status == "planning"
-        await asyncio.wait_for(contender, timeout=10)
+        reply = store.command(
+            run.run_id,
+            "answer",
+            Clarify(version=work.version, question_id=question.id, answer="Konak İskele tram"),
+        )
+        # A worker that started before the answer still holds the old token.
+        stale = Fence(run.run_id, store_token_before(store, run.run_id))
+        token = current_fence.set(stale)
+        try:
+            with pytest.raises(Fenced):
+                store.step(run.run_id, work.version, "late", updates={"status": "planning"})
+        finally:
+            current_fence.reset(token)
+        await asyncio.wait_for(service.execute(reply), timeout=10)
         outcome = store.view(run.run_id)
         assert outcome.status == "verified"
         assert {vote.rider for vote in outcome.votes if vote.accepted} == {"a", "b"}
+        assert sum(event.kind == "verified" for event in store.events(run.run_id, 0)) == 1
 
     asyncio.run(exercise())
+
+
+def store_token_before(store: RunStore, run_id: str) -> int:
+    """The token a worker held before the latest command revoked it."""
+    with closing(store.connect()) as connection:
+        row = connection.execute("SELECT token FROM leases WHERE run_id=?", (run_id,)).fetchone()
+    return row["token"] - 1
+
+
+def test_a_live_lease_blocks_a_second_owner_until_it_expires(tmp_path: Path) -> None:
+    now = [1000.0]
+    store = RunStore(tmp_path / "lease.sqlite", lease_ttl=10, clock=lambda: now[0])
+    run = RunService(store, load_schedule()).new_run(CreateRun(), "start")
+    store.command(run.run_id, "close", Disrupt(version=0, notice=load_scenario().notice))
+    first = store.acquire_lease(run.run_id, 1, "one")
+    assert first is not None
+    assert store.acquire_lease(run.run_id, 1, "two") is None
+    now[0] += 5
+    assert store.heartbeat(first)
+    now[0] += 9
+    assert store.acquire_lease(run.run_id, 1, "two") is None
+    now[0] += 2
+    second = store.acquire_lease(run.run_id, 1, "two")
+    assert second is not None and second.token > first.token
+    assert not store.heartbeat(first)

@@ -31,6 +31,8 @@ class Settings(BaseSettings):
     ollama_model: str = Field(default=DEFAULT_MODEL, validation_alias="TRL_OLLAMA_MODEL")
     operator_model: str | None = Field(default=None, validation_alias="TRL_OPERATOR_MODEL")
     otel_endpoint: str | None = Field(default=None, validation_alias="OTEL_EXPORTER_OTLP_ENDPOINT")
+    # A worker that stops heartbeating loses its lease after this many seconds.
+    lease_ttl: float = Field(default=20.0, gt=0, validation_alias="TRL_LEASE_TTL")
 
 
 @lru_cache(maxsize=1)

@@ -1,5 +1,6 @@
 """Commands and the public read model."""
 
+import hashlib
 from typing import Annotated, Literal
 
 from pydantic import Field, JsonValue, model_validator
@@ -22,6 +23,17 @@ class CreateRun(Record):
 class Disrupt(Record):
     version: Second
     notice: Annotated[str, Field(min_length=1, max_length=600)]
+    # `add` keeps earlier incidents active. `replace` retracts them before reading the report.
+    mode: Literal["add", "replace"] = "add"
+
+
+class Retract(Record):
+    version: Second
+    incident_ids: Annotated[tuple[str, ...], Field(min_length=1, max_length=8)]
+
+
+class Retry(Record):
+    version: Second
 
 
 class Clarify(Record):
@@ -64,6 +76,17 @@ class RunBody(Record):
     question: str | None = None
     verified_offer: str | None = None
     error: str | None = None
+    # Set by a retraction: the remaining incidents stand, so the worker skips report intake.
+    skip_intake: bool = False
+
+
+def incident_id(incident: Disruption) -> str:
+    return hashlib.sha256(incident.model_dump_json().encode()).hexdigest()[:12]
+
+
+class IncidentView(Record):
+    id: str
+    disruption: Disruption
 
 
 class ModelCall(Record):
@@ -108,6 +131,8 @@ class RunView(Record):
     error: str | None
     metrics: Metrics
     evidence: RunEvidence | None = None
+    incidents: tuple[IncidentView, ...] = ()
+    retryable: bool = False
 
 
 class EventDraft(Record):

@@ -2,8 +2,10 @@
 
 import asyncio
 import json
+import os
+import sqlite3
 from collections.abc import AsyncGenerator
-from contextlib import asynccontextmanager
+from contextlib import asynccontextmanager, closing, suppress
 from typing import Literal, TypedDict
 
 import httpx
@@ -19,15 +21,24 @@ from trl.disruptions import Overlay
 from trl.domain import Architecture, Disruption, Offer, Rider, Scenario, Vote
 from trl.gtfs import DATA_ROOT, Schedule
 from trl.intake import answer_facts, decide, extract, lexicon_proposal, slot_facts
+from trl.lifecycle import SETTLED
 from trl.negotiation import Negotiator, StaleRun
 from trl.notice import rule_notice
 from trl.observability import observe, observe_async, tracer
 from trl.robustness import compare
 from trl.routing import SearchIncomplete, find_offers
 from trl.scenarios import load_scenario
-from trl.storage import RunStore
+from trl.storage import Fence, Fenced, NotFound, RunStore, current_fence
 from trl.verify import verify_offer
 from trl.vnext import Extraction, OperatorMode, preferred_offer
+
+
+def with_incident(
+    incidents: tuple[Disruption, ...], incident: Disruption
+) -> tuple[Disruption, ...]:
+    """Add an incident once, so a retried revision does not stack a duplicate."""
+    return incidents if incident in incidents else (*incidents, incident)
+
 
 logger = structlog.get_logger(__name__)
 
@@ -60,6 +71,7 @@ class RunService:
         self.negotiator = Negotiator(store, schedule, model or configured_model(schedule))
         self.default_operator: OperatorMode = "rules"
         self.tasks: dict[tuple[str, int], asyncio.Task[None]] = {}
+        self.changed = asyncio.Event()
 
     async def configure_default_operator(self) -> None:
         model = self.negotiator.model
@@ -112,6 +124,10 @@ class RunService:
         existing = self.tasks.get(key)
         if existing and not existing.done():
             return
+        for (run_id, version), task in tuple(self.tasks.items()):
+            if run_id == receipt.run_id and version < receipt.version and not task.done():
+                # A newer revision supersedes the running one. Its lease is already revoked.
+                task.cancel()
         self.tasks[key] = asyncio.create_task(self.execute(receipt))
         self.tasks[key].add_done_callback(lambda task: self.finished(key, task))
 
@@ -125,15 +141,31 @@ class RunService:
 
     @asynccontextmanager
     async def workers(self) -> AsyncGenerator[None]:
-        for receipt in self.store.active():
+        loop = asyncio.get_running_loop()
+        self.changed = asyncio.Event()
+
+        def notify() -> None:
+            loop.call_soon_threadsafe(self.changed.set)
+
+        self.store.subscribers.append(notify)
+        await asyncio.to_thread(self.prune_checkpoints)
+        for receipt in await asyncio.to_thread(self.store.active):
             self.enqueue(receipt)
         try:
             yield
         finally:
+            self.store.subscribers.remove(notify)
             tasks = tuple(self.tasks.values())
             for task in tasks:
                 task.cancel()
             await asyncio.gather(*tasks, return_exceptions=True)
+
+    async def wait_for_change(self, seconds: float) -> None:
+        """Sleep until a commit in this process, or until the timeout for other processes."""
+        self.changed.clear()
+        with suppress(TimeoutError):
+            async with asyncio.timeout(seconds):
+                await self.changed.wait()
 
     async def execute(self, receipt: Receipt) -> None:
         attributes = {"trl.run_id": receipt.run_id, "trl.version": receipt.version}
@@ -141,22 +173,85 @@ class RunService:
             trace_id = f"{span.get_span_context().trace_id:032x}"
             with structlog.contextvars.bound_contextvars(run_id=receipt.run_id, trace_id=trace_id):
                 await self._execute(receipt)
-                state = self.store.read(receipt.run_id)
+                state = await asyncio.to_thread(self.store.read, receipt.run_id)
                 if state.version == receipt.version:
                     span.set_attribute("trl.outcome", state.status)
                     logger.info("run_state", status=state.status, version=state.version)
 
     async def _execute(self, receipt: Receipt) -> None:
+        owner = f"{os.getpid()}:{id(self)}"
+        delay = 0.05
         while True:
-            current = self.store.read(receipt.run_id)
+            current = await asyncio.to_thread(self.store.read, receipt.run_id)
             if current.version != receipt.version or current.status != "planning":
                 return
-            with self.store.execution_guard(f"{receipt.run_id}:{receipt.version}") as acquired:
-                if acquired:
-                    await self._execute_owned(receipt)
+            fence = await asyncio.to_thread(
+                self.store.acquire_lease, receipt.run_id, receipt.version, owner
+            )
+            if fence is not None:
+                await self._with_lease(receipt, fence)
+                return
+            # Another live worker owns this revision. Retry with a bounded backoff.
+            await self.wait_for_change(delay)
+            delay = min(delay * 2, 1.0)
+
+    async def _with_lease(self, receipt: Receipt, fence: Fence) -> None:
+        worker = asyncio.current_task()
+        lost = False
+
+        async def beat() -> None:
+            nonlocal lost
+            while True:
+                await asyncio.sleep(self.store.lease_ttl / 4)
+                if not await asyncio.to_thread(self.store.heartbeat, fence):
+                    lost = True
+                    if worker is not None:
+                        worker.cancel()
                     return
-            # The owner may be finishing an interrupt or may have died mid-node.
-            await asyncio.sleep(0.1)
+
+        heartbeat = asyncio.create_task(beat())
+        token = current_fence.set(fence)
+        try:
+            await self._execute_owned(receipt)
+        except Fenced:
+            logger.info("lease_revoked", run_id=receipt.run_id)
+        except asyncio.CancelledError:
+            # Losing the lease is not a shutdown. Only an outside cancel propagates.
+            if not lost:
+                raise
+            asyncio.current_task().uncancel()  # pyright: ignore[reportOptionalMemberAccess]
+            logger.info("lease_lost", run_id=receipt.run_id)
+        finally:
+            heartbeat.cancel()
+            current_fence.reset(token)
+            await asyncio.shield(asyncio.to_thread(self.store.release_lease, fence))
+
+    def prune_checkpoints(self) -> int:
+        """Delete execution checkpoints for revisions that can no longer resume."""
+        path = self.store.checkpoint_path
+        if not path.exists():
+            return 0
+        with closing(sqlite3.connect(path)) as connection:
+            tables = {row[0] for row in connection.execute("SELECT name FROM sqlite_master")}
+            if not {"checkpoints", "writes"} <= tables:
+                return 0
+            threads = [
+                row[0] for row in connection.execute("SELECT DISTINCT thread_id FROM checkpoints")
+            ]
+            stale = [thread for thread in threads if self._stale_thread(thread)]
+            for thread in stale:
+                connection.execute("DELETE FROM writes WHERE thread_id=?", (thread,))
+                connection.execute("DELETE FROM checkpoints WHERE thread_id=?", (thread,))
+            connection.commit()
+            return len(stale)
+
+    def _stale_thread(self, thread: str) -> bool:
+        run_id, _, version = thread.rpartition(":")
+        try:
+            run = self.store.read(run_id)
+        except NotFound:
+            return True
+        return run.version != int(version) or run.status not in {"planning", "clarification"}
 
     async def _execute_owned(self, receipt: Receipt) -> None:
         current = self.store.read(receipt.run_id)
@@ -170,8 +265,7 @@ class RunService:
         }
         try:
             graph = self.build_graph(current.architecture)
-            async with AsyncSqliteSaver.from_conn_string(str(self.store.path)) as saver:
-                # Initialize checkpoint DDL before competing workers open the same database.
+            async with AsyncSqliteSaver.from_conn_string(str(self.store.checkpoint_path)) as saver:
                 async with saver.conn.execute("PRAGMA busy_timeout=5000"):
                     pass
                 compiled = graph.compile(checkpointer=saver)  # pyright: ignore[reportUnknownMemberType]
@@ -184,7 +278,11 @@ class RunService:
                 else:
                     entry = state
                 await compiled.ainvoke(entry, config, durability="sync")  # pyright: ignore[reportUnknownMemberType]
-        except StaleRun:
+                final = await asyncio.to_thread(self.store.read, receipt.run_id)
+                if final.status in SETTLED:
+                    # A settled revision never resumes, so its execution checkpoints can go.
+                    await saver.adelete_thread(config["configurable"]["thread_id"])
+        except (StaleRun, Fenced):
             return
         except ModelError as exc:
             await asyncio.to_thread(
@@ -207,8 +305,12 @@ class RunService:
                 receipt.run_id,
                 receipt.version,
                 "worker-error",
-                updates={"status": "model_error", "error": "worker_error"},
-                event=EventDraft(kind="error", role="system", message="The run could not finish."),
+                updates={"status": "system_error", "error": "internal_error"},
+                event=EventDraft(
+                    kind="error",
+                    role="system",
+                    message="The run could not finish because of an internal error.",
+                ),
             )
 
     def build_graph(
@@ -239,6 +341,20 @@ class RunService:
     async def ingest(self, state: GraphState) -> dict[str, object]:
         run = self.active_run(state)
         if run is None or self.store.has_step(run.id, run.version, "ingest"):
+            return {}
+        if run.skip_intake:
+            await asyncio.to_thread(
+                self.store.step,
+                run.id,
+                run.version,
+                "ingest",
+                event=EventDraft(
+                    kind="incident",
+                    role="operator",
+                    message="The remaining incidents stand. Replanning.",
+                    details={"incidents": len(run.overlays)},
+                ),
+            )
             return {}
         if run.workflow == "vnext":
             await self.ingest_vnext(run)
@@ -288,7 +404,7 @@ class RunService:
             "ingest",
             updates={
                 "incident": incident,
-                "overlays": (*run.overlays, incident),
+                "overlays": with_incident(run.overlays, incident),
                 "status": "planning",
             },
             event=EventDraft(
@@ -401,7 +517,7 @@ class RunService:
             "ingest",
             updates={
                 "incident": incident,
-                "overlays": (*run.overlays, incident),
+                "overlays": with_incident(run.overlays, incident),
                 "evidence": evidence,
                 "status": "planning",
             },
