@@ -141,13 +141,11 @@ def dwell_case() -> tuple[Schedule, Scenario, Overlay]:
     return schedule, scenario, Overlay.compile((StopClosure(stop="c", start=6, end=10),))
 
 
-@pytest.mark.xfail(strict=True, reason="V2-C5: the router lets a rider wait in a closed stop")
 def test_c5_router_rejects_waiting_through_a_closure() -> None:
     schedule, scenario, closed = dwell_case()
     assert find_offers(schedule, scenario, overlay=closed) == []
 
 
-@pytest.mark.xfail(strict=True, reason="V2-C5: the verifier accepts waiting in a closed stop")
 def test_c5_verifier_rejects_waiting_through_a_closure() -> None:
     schedule, scenario, closed = dwell_case()
     offer = find_offers(schedule, scenario, overlay=EMPTY)[0]
@@ -192,7 +190,6 @@ def test_c7_uppercase_identifier_resolves() -> None:
     )
 
 
-@pytest.mark.xfail(strict=True, reason="V2-L1: an exhausted initial search returns HTTP 500")
 def test_l1_exhausted_initial_search_is_recorded(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:

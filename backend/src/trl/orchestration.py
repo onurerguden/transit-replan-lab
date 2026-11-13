@@ -78,13 +78,18 @@ class RunService:
 
     def new_run(self, request: CreateRun, key: str, scenario: Scenario | None = None) -> Receipt:
         scenario = scenario or load_scenario(request.scenario)
-        initial = find_offers(self.schedule, scenario, limit=1)
+        try:
+            initial, complete = find_offers(self.schedule, scenario, limit=1), True
+        except SearchIncomplete:
+            # Record the exhausted search instead of failing the create command.
+            initial, complete = [], False
         return self.store.create(
             request,
             key,
             scenario,
             initial[0] if initial else None,
             default_operator=self.default_operator if request.workflow == "vnext" else "rules",
+            initial_complete=complete,
         )
 
     def network(self) -> Network:

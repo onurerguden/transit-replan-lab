@@ -169,11 +169,13 @@ def alternatives(
                 or not accessible(schedule, constraint, walk.destination)
             ):
                 continue
+            # The rider waits at the origin until the walk starts, so it must stay open.
+            leave_by = overlay.last_open_second(current.stop, current.arrival, latest)
             windows = overlay.walk_windows(
                 walk.origin,
                 walk.destination,
                 current.arrival,
-                latest - walk.duration,
+                min(latest - walk.duration, leave_by),
                 walk.duration,
             )
             for index_in_walk, (departure, end) in enumerate(windows):
@@ -200,6 +202,9 @@ def alternatives(
         first = bisect_left(departures, current.arrival, key=lambda item: item.departure)
         for connection in departures[first:]:
             if connection.departure > latest:
+                break
+            if overlay.closed(current.stop, current.arrival, connection.departure):
+                # Every later departure also requires waiting through this closure.
                 break
             if constraint.accessible_only and connection.trip.accessible is not True:
                 continue

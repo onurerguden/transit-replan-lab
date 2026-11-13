@@ -298,6 +298,7 @@ class RunStore:
         initial: Offer | None,
         *,
         default_operator: OperatorMode = "rules",
+        initial_complete: bool = True,
     ) -> Receipt:
         with self.write() as connection:
             digest, previous = self._get_command(connection, "create", key, request)
@@ -306,6 +307,7 @@ class RunStore:
             operator_mode = request.operator_mode or default_operator
             run = RunBody(
                 id=uuid4().hex,
+                status="ready" if initial_complete else "search_incomplete",
                 architecture=request.architecture,
                 counteroffers=request.counteroffers,
                 scenario=scenario,
@@ -333,7 +335,9 @@ class RunStore:
                 EventDraft(
                     kind="ready",
                     role="system",
-                    message="The initial timetable is ready.",
+                    message="The initial timetable is ready."
+                    if initial_complete
+                    else "The initial route search exhausted its budget.",
                 ),
             )
             return self._save_command(

@@ -24,3 +24,13 @@ Each entry records completed acceptance checks and concrete blockers.
 - CI is split into backend (Ubuntu and macOS), frontend, browser and Docker, and a nightly deep
   job. Actions are pinned by commit SHA, caches are enabled, and browser traces upload on failure.
   Dependabot covers actions, uv and npm.
+
+## F1 · Closure semantics and independent verifier
+
+- Specified occupancy in [`closures.md`](../semantics/closures.md) and recorded ADR 0010.
+- `trl.verifier` (reference timetable protocol, `IncidentState`, presence intervals, checks) shares no code with routing. Three import contracts enforce independence, a ban on overlay imports, and layering. `trl.verify` is a thin adapter.
+- The router no longer waits through closures (departure pruning and a bounded wait before walks). The existing walking-window oracle was updated to the occupancy rule.
+- A new Hypothesis oracle enumerates journeys on random networks (mid-trip boarding, pickup and drop-off flags, closures, a cancellation, a delay, wait limits). The router's optimum matches, 38% of generated cases are feasible, every emitted offer verifies, and a one-second mutation is rejected.
+- An exhausted initial search is stored as `search_incomplete` (V2-L1). V2-C5 passes.
+- `trl route --scenario demo` output is byte-identical to v1.2.0.
+- Frozen copy of the label search: `backend/tests/label_search_oracle.py`.
