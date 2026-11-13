@@ -121,7 +121,11 @@ Each entry records completed acceptance checks and concrete blockers.
 ## What was not done
 
 - Segment-scoped RAPTOR with arrival profiles, so full-network meetings on dense bus areas can end as incomplete.
-- An independent SQLite reference for the verifier on the full network, and serving the full network through the API.
+- Serving the full network through the API.
 - A second-family paraphrase bank, independent annotation, two-router plan labels and natural-language trip references.
 - Three-seed adapter training and a full-size test run for the model arms.
 - A single dispatcher for workers and a split of `App.tsx`.
+
+## Addendum · independent reference for the full network
+
+- `trl.verifier.sqlite_reference` loads the raw archives into an indexed SQLite database with its own reader and its own calendar rule and serves trips and stops on demand. A deep test routes random full-network queries and verifies every emitted plan against it. It shares no code with the router or the compiled arrays. The weekly projection for ESHOT and İZBAN is applied by the same stated policy.

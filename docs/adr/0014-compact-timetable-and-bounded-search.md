@@ -37,6 +37,7 @@ walking links still expand too many labels for the exact search.
 
 ## Consequences
 
-The API and the verifier still run on the core schedule. The full network is available through
-the library and the benchmark script. Closing the gap needs dominance across arrival times
+The API still runs on the core schedule. The full network is available through the library and
+the benchmark script, and its plans are checked by `trl.verifier.sqlite_reference`, which reads
+the raw archives instead of the compiled arrays. Closing the gap needs dominance across arrival times
 (range RAPTOR) instead of a label per second, which this release does not implement.
