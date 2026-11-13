@@ -8,7 +8,7 @@ from time import perf_counter
 from trl.disruptions import Overlay
 from trl.gtfs import load_schedule
 from trl.robustness import compare
-from trl.routing import find_offers
+from trl.routing import SearchIncomplete, SearchStats, find_offers
 from trl.scenarios import load_scenario
 from trl.verify import check_plan
 
@@ -35,17 +35,33 @@ def main() -> None:
         overlay = Overlay.compile((case.incident,))
         initial = next(iter(find_offers(schedule, scenario, limit=1)), None)
         start = perf_counter()
-        candidates = tuple(
-            find_offers(
-                schedule,
-                scenario,
-                1,
-                overlay,
-                diverse=True,
-                initial=initial,
-                margin_aware=options.margin_aware,
+        stats = SearchStats()
+        try:
+            candidates = tuple(
+                find_offers(
+                    schedule,
+                    scenario,
+                    1,
+                    overlay,
+                    diverse=True,
+                    initial=initial,
+                    margin_aware=options.margin_aware,
+                    stats=stats,
+                )
             )
-        )
+        except SearchIncomplete as error:
+            rows.append(
+                {
+                    "group": case.group,
+                    "split": options.split,
+                    "margin_aware": options.margin_aware,
+                    "budget_error": str(error),
+                    "labels": stats.labels,
+                    "pairs": stats.pairs,
+                    "search_and_compare_ms": round((perf_counter() - start) * 1000, 3),
+                }
+            )
+            continue
         offers, evidence = compare(
             schedule, scenario, candidates, overlay, initial, "earliest"
         )
@@ -67,6 +83,9 @@ def main() -> None:
                 "split": options.split,
                 "margin_aware": options.margin_aware,
                 "candidates": len(candidates),
+                "labels": stats.labels,
+                "pairs": stats.pairs,
+                "budget_error": None,
                 "search_and_compare_ms": round((perf_counter() - start) * 1000, 3),
                 "earliest_success": early[1].successful,
                 "robust_success": robust[1].successful,

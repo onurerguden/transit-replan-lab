@@ -1,0 +1,56 @@
+{
+  "format_version": 2,
+  "argv": [
+    "python",
+    "-m",
+    "experiments.vnext_runner",
+    "--split",
+    "holdout",
+    "--benchmark",
+    "data/scenarios/review-v2",
+    "--arms",
+    "rules",
+    "lexicon",
+    "hybrid",
+    "adapter",
+    "--adapter",
+    "trl-review-adapter:qlora",
+    "--output",
+    ".local/review/frozen-holdout"
+  ],
+  "system": "macOS-27.0.1-arm64-arm-64bit",
+  "machine": "arm64",
+  "python": "3.12.0",
+  "ollama_version": "0.40.16",
+  "dirty_source_tree": false,
+  "operator_prompt_sha256": "e33663798e6e8d950436eb3f2e0f0d049ed8f81a3d2ca9caa994966ede43ce35",
+  "extraction_schema_sha256": "269b6f71a6cf72d6dc3dacadc4319dbfaacabcbfb659620d9e52f1e09a370042",
+  "split": "holdout",
+  "arms": [
+    "rules",
+    "lexicon",
+    "hybrid",
+    "adapter"
+  ],
+  "snapshot": "11686b1c28f8b1a9f146de261347967973b8c1e3544fd5d0b40a5d41f67d62fc",
+  "data": "2e81887a930096d26cc6013dab8f849ae66be8c74959f3cd343f8db658f2e621",
+  "git": "04dce84881075ea2c0cb96694080ec0e986302dd",
+  "source": "b474c6fe7e805503361370997b1a9d2fff526a9f4c2944a804579d31f7600d59",
+  "evaluation": "synthetic_holdout",
+  "runtime": "Ollama constrained JSON; temperature=0; seed=42; num_ctx=4096; num_predict=260",
+  "latency_scope": "seeded arm order; isolated route caches; warm local model; excludes API overhead",
+  "models": {
+    "hybrid": "c2b626cf44dd0760ec533ab4c95adb4876c26e7b9ee3d90c0e59990aa1317341",
+    "adapter": "84ce43f954d9631d564b8a5340dc866ee49c04b39e804a6727570793060fb76c"
+  },
+  "model_tags": {
+    "hybrid": "trl-review-base:qwen35",
+    "adapter": "trl-review-adapter:qlora"
+  },
+  "arm_order": [
+    "hybrid",
+    "lexicon",
+    "adapter",
+    "rules"
+  ]
+}

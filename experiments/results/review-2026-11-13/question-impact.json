@@ -1,0 +1,606 @@
+{
+  "source": "b474c6fe7e805503361370997b1a9d2fff526a9f4c2944a804579d31f7600d59",
+  "unit": "structured ambiguity",
+  "results": [
+    {
+      "targets": [
+        "tram:7",
+        "tram:8"
+      ],
+      "end_options": [
+        31800,
+        36000
+      ],
+      "tight": false,
+      "fixed": {
+        "slot": "target",
+        "residual": [
+          1,
+          0
+        ]
+      },
+      "impact": {
+        "slot": "target",
+        "residual": [
+          1,
+          0
+        ]
+      }
+    },
+    {
+      "targets": [
+        "tram:7",
+        "tram:8"
+      ],
+      "end_options": [
+        31800,
+        36000
+      ],
+      "tight": true,
+      "fixed": {
+        "slot": "target",
+        "residual": [
+          0,
+          0
+        ]
+      },
+      "impact": {
+        "slot": "target",
+        "residual": [
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "targets": [
+        "tram:7",
+        "tram:3"
+      ],
+      "end_options": [
+        31800,
+        36000
+      ],
+      "tight": false,
+      "fixed": {
+        "slot": "target",
+        "residual": [
+          1,
+          0
+        ]
+      },
+      "impact": {
+        "slot": "target",
+        "residual": [
+          1,
+          0
+        ]
+      }
+    },
+    {
+      "targets": [
+        "tram:7",
+        "tram:3"
+      ],
+      "end_options": [
+        31800,
+        36000
+      ],
+      "tight": true,
+      "fixed": {
+        "slot": "target",
+        "residual": [
+          1,
+          0
+        ]
+      },
+      "impact": {
+        "slot": "target",
+        "residual": [
+          1,
+          0
+        ]
+      }
+    },
+    {
+      "targets": [
+        "tram:8",
+        "tram:3"
+      ],
+      "end_options": [
+        31800,
+        36000
+      ],
+      "tight": false,
+      "fixed": {
+        "slot": "target",
+        "residual": [
+          1,
+          0
+        ]
+      },
+      "impact": {
+        "slot": "end",
+        "residual": [
+          0,
+          900
+        ]
+      }
+    },
+    {
+      "targets": [
+        "tram:8",
+        "tram:3"
+      ],
+      "end_options": [
+        31800,
+        36000
+      ],
+      "tight": true,
+      "fixed": {
+        "slot": "target",
+        "residual": [
+          1,
+          0
+        ]
+      },
+      "impact": {
+        "slot": "target",
+        "residual": [
+          1,
+          0
+        ]
+      }
+    },
+    {
+      "targets": [
+        "tram:7",
+        "tram:8"
+      ],
+      "end_options": [
+        32400,
+        36000
+      ],
+      "tight": false,
+      "fixed": {
+        "slot": "target",
+        "residual": [
+          1,
+          0
+        ]
+      },
+      "impact": {
+        "slot": "target",
+        "residual": [
+          1,
+          0
+        ]
+      }
+    },
+    {
+      "targets": [
+        "tram:7",
+        "tram:8"
+      ],
+      "end_options": [
+        32400,
+        36000
+      ],
+      "tight": true,
+      "fixed": {
+        "slot": "target",
+        "residual": [
+          0,
+          0
+        ]
+      },
+      "impact": {
+        "slot": "target",
+        "residual": [
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "targets": [
+        "tram:7",
+        "tram:3"
+      ],
+      "end_options": [
+        32400,
+        36000
+      ],
+      "tight": false,
+      "fixed": {
+        "slot": "target",
+        "residual": [
+          1,
+          0
+        ]
+      },
+      "impact": {
+        "slot": "target",
+        "residual": [
+          1,
+          0
+        ]
+      }
+    },
+    {
+      "targets": [
+        "tram:7",
+        "tram:3"
+      ],
+      "end_options": [
+        32400,
+        36000
+      ],
+      "tight": true,
+      "fixed": {
+        "slot": "target",
+        "residual": [
+          1,
+          0
+        ]
+      },
+      "impact": {
+        "slot": "target",
+        "residual": [
+          1,
+          0
+        ]
+      }
+    },
+    {
+      "targets": [
+        "tram:8",
+        "tram:3"
+      ],
+      "end_options": [
+        32400,
+        36000
+      ],
+      "tight": false,
+      "fixed": {
+        "slot": "target",
+        "residual": [
+          1,
+          0
+        ]
+      },
+      "impact": {
+        "slot": "end",
+        "residual": [
+          0,
+          1350
+        ]
+      }
+    },
+    {
+      "targets": [
+        "tram:8",
+        "tram:3"
+      ],
+      "end_options": [
+        32400,
+        36000
+      ],
+      "tight": true,
+      "fixed": {
+        "slot": "target",
+        "residual": [
+          1,
+          0
+        ]
+      },
+      "impact": {
+        "slot": "target",
+        "residual": [
+          1,
+          0
+        ]
+      }
+    },
+    {
+      "targets": [
+        "tram:7",
+        "tram:8"
+      ],
+      "end_options": [
+        33000,
+        35400
+      ],
+      "tight": false,
+      "fixed": {
+        "slot": "target",
+        "residual": [
+          1,
+          0
+        ]
+      },
+      "impact": {
+        "slot": "target",
+        "residual": [
+          1,
+          0
+        ]
+      }
+    },
+    {
+      "targets": [
+        "tram:7",
+        "tram:8"
+      ],
+      "end_options": [
+        33000,
+        35400
+      ],
+      "tight": true,
+      "fixed": {
+        "slot": "target",
+        "residual": [
+          0,
+          0
+        ]
+      },
+      "impact": {
+        "slot": "target",
+        "residual": [
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "targets": [
+        "tram:7",
+        "tram:3"
+      ],
+      "end_options": [
+        33000,
+        35400
+      ],
+      "tight": false,
+      "fixed": {
+        "slot": "target",
+        "residual": [
+          0,
+          2250
+        ]
+      },
+      "impact": {
+        "slot": "end",
+        "residual": [
+          0,
+          1350
+        ]
+      }
+    },
+    {
+      "targets": [
+        "tram:7",
+        "tram:3"
+      ],
+      "end_options": [
+        33000,
+        35400
+      ],
+      "tight": true,
+      "fixed": {
+        "slot": "target",
+        "residual": [
+          0,
+          0
+        ]
+      },
+      "impact": {
+        "slot": "target",
+        "residual": [
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "targets": [
+        "tram:8",
+        "tram:3"
+      ],
+      "end_options": [
+        33000,
+        35400
+      ],
+      "tight": false,
+      "fixed": {
+        "slot": "target",
+        "residual": [
+          1,
+          0
+        ]
+      },
+      "impact": {
+        "slot": "target",
+        "residual": [
+          1,
+          0
+        ]
+      }
+    },
+    {
+      "targets": [
+        "tram:8",
+        "tram:3"
+      ],
+      "end_options": [
+        33000,
+        35400
+      ],
+      "tight": true,
+      "fixed": {
+        "slot": "target",
+        "residual": [
+          0,
+          0
+        ]
+      },
+      "impact": {
+        "slot": "target",
+        "residual": [
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "targets": [
+        "tram:7",
+        "tram:8"
+      ],
+      "end_options": [
+        33600,
+        36000
+      ],
+      "tight": false,
+      "fixed": {
+        "slot": "target",
+        "residual": [
+          1,
+          0
+        ]
+      },
+      "impact": {
+        "slot": "target",
+        "residual": [
+          1,
+          0
+        ]
+      }
+    },
+    {
+      "targets": [
+        "tram:7",
+        "tram:8"
+      ],
+      "end_options": [
+        33600,
+        36000
+      ],
+      "tight": true,
+      "fixed": {
+        "slot": "target",
+        "residual": [
+          0,
+          0
+        ]
+      },
+      "impact": {
+        "slot": "target",
+        "residual": [
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "targets": [
+        "tram:7",
+        "tram:3"
+      ],
+      "end_options": [
+        33600,
+        36000
+      ],
+      "tight": false,
+      "fixed": {
+        "slot": "target",
+        "residual": [
+          1,
+          0
+        ]
+      },
+      "impact": {
+        "slot": "target",
+        "residual": [
+          1,
+          0
+        ]
+      }
+    },
+    {
+      "targets": [
+        "tram:7",
+        "tram:3"
+      ],
+      "end_options": [
+        33600,
+        36000
+      ],
+      "tight": true,
+      "fixed": {
+        "slot": "target",
+        "residual": [
+          0,
+          0
+        ]
+      },
+      "impact": {
+        "slot": "target",
+        "residual": [
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "targets": [
+        "tram:8",
+        "tram:3"
+      ],
+      "end_options": [
+        33600,
+        36000
+      ],
+      "tight": false,
+      "fixed": {
+        "slot": "target",
+        "residual": [
+          1,
+          0
+        ]
+      },
+      "impact": {
+        "slot": "end",
+        "residual": [
+          0,
+          1350
+        ]
+      }
+    },
+    {
+      "targets": [
+        "tram:8",
+        "tram:3"
+      ],
+      "end_options": [
+        33600,
+        36000
+      ],
+      "tight": true,
+      "fixed": {
+        "slot": "target",
+        "residual": [
+          0,
+          0
+        ]
+      },
+      "impact": {
+        "slot": "target",
+        "residual": [
+          0,
+          0
+        ]
+      }
+    }
+  ]
+}

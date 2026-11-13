@@ -55,13 +55,28 @@ Ollama tags require local weights. The [training record](../experiments/results/
 identifies the fused artifact by SHA-256.
 
 The [mediation diagnostic](../experiments/results/review-2026-11-13/mediation.md)
-uses seven identical offer pools across arms. Rules and five roles with
-counteroffers reached 7/7 agreements, one model reached 6/7 and five roles
-without counteroffers reached 0/7. The added transfer/arrival conflict accounts
-for the difference between rules and one model. The walking preference still
-needs a fixture where it changes the available trade-off. The same successful
-arms averaged one rank of worst-rider regret. This sample supports retaining
-rules as the default coordinator.
+uses eight matched offer pools across arms, including transfer and walking
+trade-offs. Rules and five roles with counteroffers reached 8/8 agreements,
+one model reached 7/8 and five roles without counteroffers reached 1/8. The
+rules arm averaged one rank of worst-rider regret and had the lowest p95
+latency at 0.57 s. This sample supports retaining rules as the default
+coordinator.
+
+The [question-policy diagnostic](../experiments/results/review-2026-11-13/question-impact.json)
+supplied 24 structured two-field ambiguities on the archived timetable.
+An impact-based question reduced the worst remaining ambiguity in 4/24
+cases. Three resolved disagreement about feasibility and one reduced the
+remaining meeting-time spread. Both strategies asked one question.
+
+A [synthetic holdout](../data/scenarios/review-v2/DATA_CARD.md) was frozen in
+commit `04dce84` before inference. Rules scored 16/24. Lexicon, base and
+adapter each scored 19/24. All three shared the same five failures. Four
+notices used closure wording outside the supported vocabulary. One used an
+English ordering the current clock-binding rule does not accept. The
+[holdout report](../experiments/results/review-2026-11-13/holdout.md) records
+zero unsupported applications and zero nominal verifier violations. These
+failures point to the deterministic evidence gate, which the existing
+adapter cannot expand.
 
 The training audit matched four published artifact hashes and found 20 exact
 overlaps in the original validation data. The
@@ -73,7 +88,11 @@ has not been used to train an adapter.
 Across 23 feasible development groups and 2,944 shared delay worlds, the
 original frontier produced 2,676 early and 2,913 resilient successes. The
 margin-aware frontier produced 2,694 early and 2,900 resilient successes.
-The difference in resilient successes came from one group. See the paired
+The difference in resilient successes came from one group. Both variants
+examined 1,300 arrival pairs with zero budget overruns. The original frontier
+admitted 33,812 labels and the margin-aware frontier admitted 40,257. A
+targeted test also shows how two equal-margin paths can have different
+outcomes under the same trip-specific delay. See the paired
 [default frontier](../experiments/results/review-2026-11-13/resilience-default.jsonl)
 and [margin-aware frontier](../experiments/results/review-2026-11-13/resilience-margin.jsonl) rows.
 
@@ -103,6 +122,5 @@ as possible confounders.
   image with that volume and verify a known completed run before switching.
 
 The [independent evaluation protocol](review-evaluation-protocol.md) and
-packet exporter are ready. A new set written and rated by independent reviewers
-is the remaining research dependency. The hosted GitHub run and release tag
-depend on publication of the branch.
+packet exporter are ready. The exporter produced 96 anonymous synthetic
+trial rows. Independent human authoring and adjudication require reviewers.

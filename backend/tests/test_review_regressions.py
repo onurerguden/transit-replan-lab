@@ -6,11 +6,13 @@ from test_routing import EMPTY, network, small, votes
 
 from trl.agents import Choice, ModelError
 from trl.contracts import CreateRun, Disrupt, EventDraft
-from trl.domain import Constraint, Vote
+from trl.disruptions import Overlay
+from trl.domain import Constraint, TripCancellation, Vote
 from trl.gtfs import load_schedule
 from trl.intake import answer_facts, decide, extract
 from trl.orchestration import RunService
-from trl.routing import find_offers, transfer_margin
+from trl.robustness import evaluate
+from trl.routing import SearchStats, find_offers, transfer_margin
 from trl.scenarios import load_scenario
 from trl.storage import RunStore
 from trl.verify import verify_offer
@@ -66,6 +68,28 @@ def test_diverse_search_preserves_same_arrival_transfer_histories() -> None:
     assert all(
         verify_offer(schedule, scenario, offer, votes(offer), 0, EMPTY) is None for offer in offers
     )
+
+
+def test_equal_margin_paths_can_have_different_delay_outcomes() -> None:
+    schedule = network([("a", "b", 0, 2), ("b", "d", 3, 10), ("a", "c", 0, 5), ("c", "d", 6, 10)])
+    scenario = small().model_copy(update={"b": Constraint(stop="d", ready=10, wait_limit=6)})
+    stats = SearchStats()
+    offers = find_offers(schedule, scenario, diverse=True, margin_aware=True, stats=stats)
+    selected = next(offer for offer in offers if len(offer.a.legs) == 2)
+    first = selected.a.legs[0]
+    assert first.kind == "ride"
+    delay = {(first.trip, first.service_date): 2}
+    assert evaluate(schedule, scenario, selected, EMPTY, delay)[1] is not None
+    omit_first = Overlay.compile(
+        (TripCancellation(trip=first.trip, service_date=first.service_date),)
+    )
+    alternate = find_offers(schedule, scenario, overlay=omit_first)[0]
+    assert transfer_margin(selected.a.legs) == (1, first)
+    margin = transfer_margin(alternate.a.legs)
+    assert margin is not None and margin[0] == 1
+    # The scenario's perturbation is specific to the incoming trip, not to slack.
+    assert evaluate(schedule, scenario, alternate, EMPTY, delay) == (10, None)
+    assert stats.labels > 0 and stats.pairs > 0
 
 
 def test_cached_decision_requires_the_same_role_view(tmp_path: Path) -> None:

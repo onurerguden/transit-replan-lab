@@ -18,6 +18,8 @@ In the follow-up comparison, the lexicon operator matched the adapted model
 on 80 development and 60 calibration notices with zero inference calls.
 Both sets contain previously inspected synthetic notices. [Measurements and conditions](docs/review-implementation.md).
 
+[Mobile preview](docs/assets/review-mobile.png)
+
 ## Run the demo
 
 ```sh

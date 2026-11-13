@@ -21,6 +21,12 @@ class SearchIncomplete(RuntimeError):
     """A bounded search exhausted its resource budget."""
 
 
+@dataclass
+class SearchStats:
+    labels: int = 0
+    pairs: int = 0
+
+
 @dataclass(frozen=True)
 class Boarding:
     departure: int
@@ -99,6 +105,7 @@ def alternatives(
     overlay: Overlay,
     *,
     margin_aware: bool = False,
+    stats: SearchStats | None = None,
 ) -> list[ArrivalWindow]:
     earliest = constraint.ready
     latest = min(deadline, earliest + constraint.travel_limit)
@@ -139,6 +146,8 @@ def alternatives(
         costs[:] = [old for old in costs if not dominates(candidate, old)]
         costs.append(candidate)
         accepted += 1
+        if stats is not None:
+            stats.labels += 1
         if accepted > MAX_LABELS:
             raise SearchIncomplete("Arrival label budget exhausted.")
         heappush(pending, (label.arrival, next(serial), label))
@@ -264,6 +273,7 @@ def find_offers(
     diverse: bool = False,
     initial: Offer | None = None,
     margin_aware: bool = False,
+    stats: SearchStats | None = None,
 ) -> list[Offer]:
     overlay = overlay or Overlay.compile(())
     index = connections(
@@ -287,6 +297,7 @@ def find_offers(
         scenario.meeting_end,
         overlay,
         margin_aware=margin_aware,
+        stats=stats,
     )
     b = alternatives(
         schedule,
@@ -296,6 +307,7 @@ def find_offers(
         scenario.meeting_end,
         overlay,
         margin_aware=margin_aware,
+        stats=stats,
     )
     b_by_stop: dict[str, list[ArrivalWindow]] = defaultdict(list)
     for window in sorted(b, key=lambda item: item.first.arrival):
@@ -321,6 +333,8 @@ def find_offers(
                 if right.first.arrival > deadline:
                     break
                 examined += 1
+                if stats is not None:
+                    stats.pairs += 1
                 if examined > MAX_PAIRS:
                     raise SearchIncomplete("Joint arrival pair budget exhausted.")
                 meeting = max(left.first.arrival, right.first.arrival, scenario.meeting_start)
