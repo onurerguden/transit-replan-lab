@@ -92,6 +92,7 @@ class RunEvidence(Record):
     scenario_profile: str
     operator_mode: OperatorMode = "rules"
     intake: Intake | None = None
+    rounds: int = 0
     offers: tuple[OfferEvidence, ...] = ()
     notice_text: str | None = None
     answer_text: str | None = None

@@ -47,7 +47,7 @@ class Negotiator:
         *,
         attempts: int = 2,
     ) -> T:
-        calls = self.store.calls(run.id, run.version, key)
+        calls = await asyncio.to_thread(self.store.calls, run.id, run.version, key)
         request_digest = view_digest(stage, view)
         for call in calls:
             if call.state == "valid" and call.content is not None:
@@ -133,7 +133,7 @@ class Negotiator:
         evidence = rule_notice(str(view["notice"]), self.schedule, run.scenario.service_date)
         return event if event == evidence else None
 
-    def stored_choice(
+    async def stored_choice(
         self,
         run: RunBody,
         stage: Stage,
@@ -142,7 +142,7 @@ class Negotiator:
         *,
         rider: Rider | None = None,
     ) -> Choice | None:
-        for call in self.store.calls(run.id, run.version, key):
+        for call in await asyncio.to_thread(self.store.calls, run.id, run.version, key):
             if call.state == "valid" and call.content is not None:
                 view = view_for(stage, run, self.schedule, offers, rider=rider)
                 if call.request_sha256 != view_digest(stage, view):
@@ -272,15 +272,14 @@ class Negotiator:
         return decision.offer if decision.accept_a and decision.accept_b else None
 
     async def negotiate(self, run: RunBody, offers: tuple[Offer, ...]) -> str | None:
-        choices = tuple(
-            result.offer
+        stored = [
+            await self.stored_choice(run, "first", f"first:{rider}", offers, rider=rider)
             for rider in ("a", "b")
-            if (result := self.stored_choice(run, "first", f"first:{rider}", offers, rider=rider))
-            is not None
-        )
+        ]
+        choices = tuple(result.offer for result in stored if result is not None)
         if len(choices) != 2:
             raise ModelError("missing_first_preference")
-        analyst = self.stored_choice(run, "analyst", "analyst:1", offers)
+        analyst = await self.stored_choice(run, "analyst", "analyst:1", offers)
         preferred = analyst.offer if analyst else ""
 
         def priority(item: Offer) -> bool:

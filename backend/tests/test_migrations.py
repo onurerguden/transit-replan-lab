@@ -23,6 +23,22 @@ def v1_2_0_database(path: Path) -> Path:
     return path
 
 
+def contains(actual: Any, expected: Any) -> bool:
+    """Whether `actual` holds everything in `expected`. New fields may appear."""
+    if isinstance(expected, dict):
+        return isinstance(actual, dict) and all(
+            key in actual and contains(actual[key], value)
+            for key, value in expected.items()  # pyright: ignore[reportUnknownVariableType]
+        )
+    if isinstance(expected, list):
+        return (
+            isinstance(actual, list)
+            and len(actual) == len(expected)  # pyright: ignore[reportUnknownArgumentType]
+            and all(contains(a, e) for a, e in zip(actual, expected, strict=True))  # pyright: ignore[reportUnknownArgumentType, reportUnknownVariableType]
+        )
+    return actual == expected
+
+
 def test_fixture_comes_from_release_code() -> None:
     assert {name: item["view"]["status"] for name, item in EXPECTED.items()} == {
         "abstained": "abstained",
@@ -45,7 +61,7 @@ def test_upgrade_preserves_views_events_and_receipts(tmp_path: Path) -> None:
         if name in interrupted:
             assert (view["status"], view["error"]) == ("system_error", "upgrade_interrupted")
             old = {**old, "status": "system_error", "error": "upgrade_interrupted"}
-        assert {key: view[key] for key in old} == old, name
+        assert contains(view, old), name
         events = [json.loads(event.model_dump_json()) for event in store.events(item["run_id"], 0)]
         kept = [{k: v for k, v in e.items() if k != "seq"} for e in events[: len(item["events"])]]
         assert kept == [{k: v for k, v in e.items() if k != "seq"} for e in item["events"]], name

@@ -416,7 +416,9 @@ class RunStore:
                 "status": "planning",
                 "clarification": None,
                 "clarification_option": None,
-                "evidence": run.evidence.model_copy(update={"intake": None, "offers": ()})
+                "evidence": run.evidence.model_copy(
+                    update={"intake": None, "offers": (), "rounds": 0}
+                )
                 if run.evidence
                 else None,
                 "question": None,

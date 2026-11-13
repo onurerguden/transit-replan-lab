@@ -86,7 +86,7 @@ The [baseline](v2/baseline.md) lists the reproduced defects, and the
 
 - [x] F0 · Record the baseline and strict expected failures, centralize settings and versions, widen lint and coverage, split and pin CI.
 - [x] F1 · Specify closure occupancy, give the verifier its own reference timetable and semantics, and record exhausted initial searches.
-- [ ] F2 · Add numbered migrations, a transition table, incident sets, leases with fencing, pruned checkpoints, notifier SSE and multi-round clarification.
+- [x] F2 · Add numbered migrations, a transition table, incident sets, leases with fencing, pruned checkpoints, notifier SSE and multi-round clarification.
 - [ ] F3 · Pin all five feeds with health checks, generate footpaths, build the gazetteer and add network profiles.
 - [ ] F4 · Freeze the sealed TRL-Bench v3 notice layer before any language change.
 - [ ] F5 · Replace the time grammar and evidence gate, with round-trip and gate-soundness property suites.

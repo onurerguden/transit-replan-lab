@@ -25,6 +25,8 @@ from trl.vnext import (
 
 ORDER: tuple[Slot, ...] = ("target", "kind", "start", "end", "delay")
 MAX_HYPOTHESES = 4
+MAX_ROUNDS = 3
+REFUSALS = frozenset({"bilmiyorum", "unknown", "idk"})
 MAX_OPTIONS = 4
 REQUIREMENTS: dict[str, tuple[Slot, ...]] = {
     "stop_closure": ("target", "start", "end"),
@@ -404,6 +406,11 @@ def decide(
     )
 
 
+def refused(answer: str, day: date) -> bool:
+    """An answer that declines or names an unsupported context ends the clarification."""
+    return bool(unsupported_context(answer, day)) or normalize(answer.strip()) in REFUSALS
+
+
 def answer_facts(
     intake: Intake,
     answer: str,
@@ -430,11 +437,7 @@ def answer_facts(
         )
         return resolved(choice)
     value, _ = folded(answer)
-    if unsupported_context(answer, day) or normalize(answer.strip()) in {
-        "bilmiyorum",
-        "unknown",
-        "idk",
-    }:
+    if refused(answer, day):
         return ()
     if slot == "target":
         choices = unique(

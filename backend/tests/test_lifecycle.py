@@ -133,3 +133,71 @@ def test_a_retryable_failure_can_be_retried(tmp_path: Path) -> None:
         post(client, f"/v1/runs/{run_id}/retries", {"version": failed.version}, "retry")
         again = wait(client, run_id)
         assert again.status == "verified" and again.version == failed.version + 1
+
+
+def answer(client: TestClient, run_id: str, view: RunView, text: str, key: str) -> RunView:
+    assert view.evidence and view.evidence.intake and view.evidence.intake.question
+    question = view.evidence.intake.question
+    post(
+        client,
+        f"/v1/runs/{run_id}/clarifications",
+        {"version": view.version, "question_id": question.id, "answer": text},
+        key,
+    )
+    return wait(client, run_id)
+
+
+def test_clarification_continues_for_several_rounds(tmp_path: Path) -> None:
+    with TestClient(create_app(tmp_path / "runs.sqlite")) as client:
+        response = client.post(
+            "/v1/runs", json={"workflow": "vnext"}, headers={"Idempotency-Key": "start"}
+        )
+        run_id = response.json()["run_id"]
+        post(
+            client,
+            f"/v1/runs/{run_id}/disruptions",
+            {"version": 0, "notice": "Konak İskele tram stop is closed."},
+            "report",
+        )
+        view = wait(client, run_id)
+        assert view.status == "clarification"
+        first = view.evidence.intake.question.slot  # type: ignore[union-attr]
+        view = answer(client, run_id, view, "banana", "typo")
+        assert view.status == "clarification" and view.evidence
+        assert view.evidence.rounds == 1 and view.evidence.intake
+        assert view.evidence.intake.question and view.evidence.intake.question.slot == first
+        view = answer(client, run_id, view, "08:24", "one")
+        assert view.status == "clarification" and view.evidence and view.evidence.rounds == 2
+        view = answer(client, run_id, view, "10:00", "two")
+        assert view.status in {"verified", "infeasible"} and len(view.incidents) == 1
+
+
+def test_clarification_ends_after_three_rounds_and_on_refusal(tmp_path: Path) -> None:
+    with TestClient(create_app(tmp_path / "runs.sqlite")) as client:
+        run_id = client.post(
+            "/v1/runs", json={"workflow": "vnext"}, headers={"Idempotency-Key": "start"}
+        ).json()["run_id"]
+        post(
+            client,
+            f"/v1/runs/{run_id}/disruptions",
+            {"version": 0, "notice": "Konak İskele tram stop is closed."},
+            "report",
+        )
+        view = wait(client, run_id)
+        for index in range(2):
+            view = answer(client, run_id, view, "banana", f"typo-{index}")
+            assert view.status == "clarification"
+        view = answer(client, run_id, view, "banana", "typo-last")
+        assert view.status == "abstained"
+
+        again = client.post(
+            "/v1/runs", json={"workflow": "vnext"}, headers={"Idempotency-Key": "second"}
+        ).json()["run_id"]
+        post(
+            client,
+            f"/v1/runs/{again}/disruptions",
+            {"version": 0, "notice": "Konak İskele tram stop is closed."},
+            "report-2",
+        )
+        view = wait(client, again)
+        assert answer(client, again, view, "bilmiyorum", "refuse").status == "abstained"

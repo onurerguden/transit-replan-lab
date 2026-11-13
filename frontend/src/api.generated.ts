@@ -106,6 +106,40 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/v1/runs/{run_id}/retractions": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Retraction */
+        post: operations["retraction_v1_runs__run_id__retractions_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/runs/{run_id}/retries": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Retry */
+        post: operations["retry_v1_runs__run_id__retries_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/v1/runs/{run_id}/events": {
         parameters: {
             query?: never;
@@ -196,6 +230,12 @@ export interface components {
             version: number;
             /** Notice */
             notice: string;
+            /**
+             * Mode
+             * @default add
+             * @enum {string}
+             */
+            mode: "add" | "replace";
         };
         /** Fact */
         Fact: {
@@ -239,6 +279,13 @@ export interface components {
              */
             status: "feasible" | "infeasible" | "search_incomplete";
             preview?: components["schemas"]["Offer"] | null;
+        };
+        /** IncidentView */
+        IncidentView: {
+            /** Id */
+            id: string;
+            /** Disruption */
+            disruption: components["schemas"]["StopClosure"] | components["schemas"]["TripCancellation"] | components["schemas"]["TripDelay"];
         };
         /** Intake */
         Intake: {
@@ -373,6 +420,18 @@ export interface components {
             /** Version */
             version: number;
         };
+        /** Retract */
+        Retract: {
+            /** Version */
+            version: number;
+            /** Incident Ids */
+            incident_ids: string[];
+        };
+        /** Retry */
+        Retry: {
+            /** Version */
+            version: number;
+        };
         /** Ride */
         Ride: {
             /**
@@ -426,6 +485,11 @@ export interface components {
             operator_mode: "rules" | "lexicon" | "hybrid";
             intake?: components["schemas"]["Intake"] | null;
             /**
+             * Rounds
+             * @default 0
+             */
+            rounds: number;
+            /**
              * Offers
              * @default []
              */
@@ -445,7 +509,7 @@ export interface components {
              * Status
              * @enum {string}
              */
-            status: "ready" | "planning" | "clarification" | "abstained" | "verified" | "no_agreement" | "infeasible" | "search_incomplete" | "model_error" | "verification_failed";
+            status: "ready" | "planning" | "clarification" | "abstained" | "verified" | "no_agreement" | "infeasible" | "search_incomplete" | "model_error" | "system_error" | "verification_failed";
             /**
              * Architecture
              * @enum {string}
@@ -478,6 +542,16 @@ export interface components {
             error: string | null;
             metrics: components["schemas"]["Metrics"];
             evidence?: components["schemas"]["RunEvidence"] | null;
+            /**
+             * Incidents
+             * @default []
+             */
+            incidents: components["schemas"]["IncidentView"][];
+            /**
+             * Retryable
+             * @default false
+             */
+            retryable: boolean;
         };
         /** Span */
         Span: {
@@ -759,6 +833,80 @@ export interface operations {
         requestBody: {
             content: {
                 "application/json": components["schemas"]["Clarify"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            202: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Receipt"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    retraction_v1_runs__run_id__retractions_post: {
+        parameters: {
+            query?: never;
+            header: {
+                "Idempotency-Key": string;
+            };
+            path: {
+                run_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["Retract"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            202: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Receipt"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    retry_v1_runs__run_id__retries_post: {
+        parameters: {
+            query?: never;
+            header: {
+                "Idempotency-Key": string;
+            };
+            path: {
+                run_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["Retry"];
             };
         };
         responses: {

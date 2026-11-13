@@ -18,7 +18,8 @@ const statusLabels: Record<Run['status'], string> = {
   no_agreement: 'No agreement',
   infeasible: 'No feasible meeting',
   search_incomplete: 'Search incomplete',
-  model_error: 'Model or worker error',
+  model_error: 'Model error',
+  system_error: 'Internal error',
   verification_failed: 'Verification failed',
 }
 

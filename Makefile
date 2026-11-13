@@ -1,6 +1,6 @@
 SHELL := /bin/sh
 # Branch coverage across trl. Ratchets to 90 by the v2 release.
-COVERAGE_FLOOR ?= 86
+COVERAGE_FLOOR ?= 88
 PY := uv run --locked --project backend
 WEB := cd frontend && corepack pnpm
 

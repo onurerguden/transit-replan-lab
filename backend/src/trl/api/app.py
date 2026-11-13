@@ -6,40 +6,25 @@ from contextlib import asynccontextmanager
 from pathlib import Path
 from typing import Annotated, cast
 
-from fastapi import Depends, FastAPI, Header, Query, Request
-from fastapi.exceptions import RequestValidationError
-from fastapi.responses import JSONResponse
+from fastapi import Depends, FastAPI, Header, Query, Request, Response
 from fastapi.sse import EventSourceResponse, ServerSentEvent
 from pydantic import BaseModel
 
 from trl import __version__
+from trl.api.problems import install as install_problems
 from trl.contracts import Clarify, CreateRun, Disrupt, Network, Receipt, Retract, Retry, RunView
 from trl.gtfs import load_schedule
+from trl.lifecycle import SETTLED
 from trl.observability import configure_observability
 from trl.orchestration import RunService
 from trl.settings import get_settings
-from trl.storage import Conflict, NotFound, RunStore
+from trl.storage import RunStore
 
 IdempotencyKey = Annotated[str, Header(alias="Idempotency-Key", min_length=1, max_length=128)]
 
 
 class Health(BaseModel):
     status: str = "ok"
-
-
-class Problem(BaseModel):
-    type: str = "about:blank"
-    title: str
-    status: int
-    detail: str
-
-
-def problem(status: int, title: str, detail: str) -> JSONResponse:
-    return JSONResponse(
-        Problem(title=title, status=status, detail=detail).model_dump(),
-        status_code=status,
-        media_type="application/problem+json",
-    )
 
 
 def service(request: Request) -> RunService:
@@ -71,17 +56,7 @@ def create_app(path: Path | None = None) -> FastAPI:
 
     app = FastAPI(title="Transit Replan Lab", version=__version__, lifespan=lifespan)
 
-    @app.exception_handler(NotFound)
-    async def missing(_request: Request, exc: NotFound) -> JSONResponse:
-        return problem(404, "Run not found", str(exc))
-
-    @app.exception_handler(Conflict)
-    async def conflict(_request: Request, exc: Conflict) -> JSONResponse:
-        return problem(409, "Command conflict", str(exc))
-
-    @app.exception_handler(RequestValidationError)
-    async def invalid(_request: Request, _exc: RequestValidationError) -> JSONResponse:
-        return problem(422, "Invalid request", "Check the command, version, and required headers.")
+    install_problems(app)
 
     @app.get("/healthz")
     async def health() -> Health:
@@ -92,8 +67,10 @@ def create_app(path: Path | None = None) -> FastAPI:
         return runs.network()
 
     @app.post("/v1/runs", status_code=201)
-    def new_run(body: CreateRun, key: IdempotencyKey, runs: Service) -> Receipt:
-        return runs.new_run(body, key)
+    def new_run(body: CreateRun, key: IdempotencyKey, runs: Service, response: Response) -> Receipt:
+        receipt = runs.new_run(body, key)
+        response.headers["Location"] = f"/v1/runs/{receipt.run_id}"
+        return receipt
 
     @app.get("/v1/runs/{run_id}", response_model_exclude_unset=True)
     def run(view: CurrentRun) -> RunView:
@@ -152,21 +129,25 @@ def create_app(path: Path | None = None) -> FastAPI:
         follow: bool = True,
     ) -> AsyncIterator[ServerSentEvent]:
         cursor = max(last, after)
+        first = True
         while True:
             batch = await asyncio.to_thread(runs.store.events, view.id, cursor)
-            if not batch and follow:
-                state = await asyncio.to_thread(runs.store.read, view.id)
-                if state.status != "planning":
-                    # A terminal update and its event commit together.
-                    batch = await asyncio.to_thread(runs.store.events, view.id, cursor)
-                    if not batch:
-                        break
             for event in batch:
                 cursor = event.seq
-                yield ServerSentEvent(id=str(event.seq), data=event)
-            if not batch:
-                if not follow:
+                # Tell the browser how long to wait before it reconnects.
+                yield ServerSentEvent(id=str(event.seq), data=event, retry=3000 if first else None)
+                first = False
+            if batch:
+                continue
+            if not follow:
+                break
+            state = await asyncio.to_thread(runs.store.read, view.id)
+            if state.status in SETTLED or state.status == "ready":
+                # A terminal update and its event commit together, so one more read is final.
+                if not await asyncio.to_thread(runs.store.events, view.id, cursor):
                     break
-                await asyncio.sleep(0.15)
+                continue
+            # Commits in this process wake the stream. Other processes are picked up by polling.
+            await runs.wait_for_change(2.0)
 
     return app

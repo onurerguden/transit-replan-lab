@@ -20,7 +20,15 @@ from trl.contracts import CreateRun, EventDraft, Network, Receipt, RouteLine, Ru
 from trl.disruptions import Overlay
 from trl.domain import Architecture, Disruption, Offer, Rider, Scenario, Vote
 from trl.gtfs import DATA_ROOT, Schedule
-from trl.intake import answer_facts, decide, extract, lexicon_proposal, slot_facts
+from trl.intake import (
+    MAX_ROUNDS,
+    answer_facts,
+    decide,
+    extract,
+    lexicon_proposal,
+    refused,
+    slot_facts,
+)
 from trl.lifecycle import SETTLED
 from trl.negotiation import Negotiator, StaleRun
 from trl.notice import rule_notice
@@ -254,7 +262,7 @@ class RunService:
         return run.version != int(version) or run.status not in {"planning", "clarification"}
 
     async def _execute_owned(self, receipt: Receipt) -> None:
-        current = self.store.read(receipt.run_id)
+        current = await asyncio.to_thread(self.store.read, receipt.run_id)
         if current.version != receipt.version or current.status != "planning":
             return
         state: GraphState = {"run_id": receipt.run_id, "version": receipt.version}
@@ -339,8 +347,10 @@ class RunService:
 
     @observe_async("ingest")
     async def ingest(self, state: GraphState) -> dict[str, object]:
-        run = self.active_run(state)
-        if run is None or self.store.has_step(run.id, run.version, "ingest"):
+        run = await asyncio.to_thread(self.active_run, state)
+        if run is None or await asyncio.to_thread(
+            self.store.has_step, run.id, run.version, "ingest"
+        ):
             return {}
         if run.skip_intake:
             await asyncio.to_thread(
@@ -436,7 +446,10 @@ class RunService:
             raise ValueError("A vNext run requires evidence.")
         date = run.scenario.service_date
         reasons: tuple[str, ...] = ()
+        rounds = run.evidence.rounds
+        declined = False
         if run.clarification is not None and run.evidence.intake:
+            rounds += 1
             facts = answer_facts(
                 run.evidence.intake,
                 run.clarification,
@@ -444,6 +457,12 @@ class RunService:
                 self.schedule,
                 date,
             )
+            if not facts:
+                if run.clarification_option is None and not refused(run.clarification, date):
+                    # An answer that cannot be read asks the same question again.
+                    facts = run.evidence.intake.facts
+                else:
+                    declined = True
         else:
             notice = run.notice or ""
             proposal = lexicon_proposal(notice) if run.operator_mode == "lexicon" else None
@@ -472,26 +491,26 @@ class RunService:
             date,
             evaluate,
             run.version,
-            answered=run.clarification is not None,
+            answered=declined or (run.clarification is not None and rounds >= MAX_ROUNDS),
         )
-        evidence = run.evidence.model_copy(update={"intake": decision})
+        evidence = run.evidence.model_copy(update={"intake": decision, "rounds": rounds})
         if decision.question:
             prompt = decision.question.prompt
             persisted = await asyncio.to_thread(
                 self.store.step,
                 run.id,
                 run.version,
-                "clarification-request",
+                f"clarification-request-{rounds}",
                 updates={"status": "clarification", "question": prompt, "evidence": evidence},
                 event=EventDraft(kind="clarification", role="operator", message=prompt),
             )
-            if not persisted and not self.store.has_step(
-                run.id, run.version, "clarification-request"
+            if not persisted and not await asyncio.to_thread(
+                self.store.has_step, run.id, run.version, f"clarification-request-{rounds}"
             ):
                 raise StaleRun()
             answer: object = interrupt(prompt)
             if isinstance(answer, str):
-                latest = self.store.read(run.id)
+                latest = await asyncio.to_thread(self.store.read, run.id)
                 if latest.version == run.version and latest.clarification:
                     await self.ingest_vnext(latest)
             return
@@ -604,7 +623,7 @@ class RunService:
 
     @observe_async("analyst")
     async def analyst(self, state: GraphState) -> dict[str, object]:
-        run = self.active_run(state)
+        run = await asyncio.to_thread(self.active_run, state)
         if not run or run.status != "planning" or run.architecture != "five" or not run.initial:
             return {}
         incident = run.incident
@@ -623,34 +642,38 @@ class RunService:
             )
             for route in routes
         )
-        offers = self.store.view(run.id).offers
+        offers = (await asyncio.to_thread(self.store.view, run.id)).offers
         if affected and offers:
             await self.negotiator.pick(run, "analyst", "analyst:1", offers)
         return {}
 
     @observe_async("first")
     async def first(self, state: RiderState) -> dict[str, object]:
-        run = self.active_run(state)
+        run = await asyncio.to_thread(self.active_run, state)
         if run and run.status == "planning":
             rider = state["rider"]
-            offers = self.store.view(run.id).offers
+            offers = (await asyncio.to_thread(self.store.view, run.id)).offers
             if offers:
                 await self.negotiator.pick(run, "first", f"first:{rider}", offers, rider=rider)
         return {}
 
     @observe_async("negotiate")
     async def negotiate(self, state: GraphState) -> dict[str, object]:
-        run = self.active_run(state)
+        run = await asyncio.to_thread(self.active_run, state)
         if run and run.status == "planning":
-            offer_id = await self.negotiator.negotiate(run, self.store.view(run.id).offers)
+            offer_id = await self.negotiator.negotiate(
+                run, (await asyncio.to_thread(self.store.view, run.id)).offers
+            )
             await asyncio.to_thread(self.complete_negotiation, run, offer_id)
         return {}
 
     @observe_async("single")
     async def single(self, state: GraphState) -> dict[str, object]:
-        run = self.active_run(state)
+        run = await asyncio.to_thread(self.active_run, state)
         if run and run.status == "planning":
-            offer_id = await self.negotiator.single(run, self.store.view(run.id).offers)
+            offer_id = await self.negotiator.single(
+                run, (await asyncio.to_thread(self.store.view, run.id)).offers
+            )
             await asyncio.to_thread(self.complete_negotiation, run, offer_id)
         return {}
 

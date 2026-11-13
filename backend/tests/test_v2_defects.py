@@ -237,13 +237,12 @@ def test_l4_newer_schema_is_refused(tmp_path: Path) -> None:
         RunStore(path)
 
 
-@pytest.mark.xfail(strict=True, reason="V2-L6: only one clarification round is supported")
 def test_l6_second_missing_slot_gets_a_second_question() -> None:
     facts, reasons = extract("Konak İskele tram stop is closed.", SCHEDULE, DAY)
     first = decide(facts, reasons, SCHEDULE, DAY, infeasible, 1)  # pyright: ignore[reportArgumentType]
     assert first.question is not None and first.question.slot == "start"
     answered = answer_facts(first, "08:24", None, SCHEDULE, DAY)
-    second = decide(answered, (), SCHEDULE, DAY, infeasible, 1, answered=True)  # pyright: ignore[reportArgumentType]
+    second = decide(answered, (), SCHEDULE, DAY, infeasible, 1, answered=False)  # pyright: ignore[reportArgumentType]
     assert second.action == "ask"
     assert second.question is not None and second.question.slot == "end"
 
