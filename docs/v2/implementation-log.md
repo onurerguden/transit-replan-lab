@@ -58,3 +58,11 @@ Each entry records completed acceptance checks and concrete blockers.
 - Deviation from the plan: workers still run one task per receipt with a bounded backoff
   instead of a single dispatcher loop, and `Create` idempotency stays globally scoped because
   the service has no client identity.
+
+## F3 · Feeds, catalogue and footpaths (partial)
+
+- ESHOT (`bus.zip`, 18.4 MB) and İZBAN (`izban.zip`) are pinned with checksums. İzdeniz returns an HTML page, so it is recorded as unavailable. The portal license page confirms CC BY 4.0.
+- `trl.feeds` and `trl feeds --write` produce `data/gtfs/health.json` (counts, calendar coverage, quarantined trips, assumptions). ESHOT and İZBAN calendars do not cover 2026-10-21, so their weekly patterns are projected and labelled as assumptions.
+- `trl.catalogue` lists 11,857 stops. `trl.timetable.footpaths` generates 119,834 links in 0.3 s. The buffer on every link keeps the table closed under the triangle inequality, so no Dijkstra closure is needed. The documented interchanges keep 480 s.
+- `trl.language.gazetteer` resolves stop names with Turkish case suffixes, partial names and mode words.
+- Not done: wiring the gazetteer into intake (F5), a `TRL_NETWORK` setting and ADR 0013. F4 to F11 are not started.

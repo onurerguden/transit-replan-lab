@@ -3,11 +3,13 @@
 import argparse
 import json
 import sys
+from datetime import date
 from pathlib import Path
 
 from trl import dbtools
 from trl.disruptions import Overlay
-from trl.gtfs import load_schedule
+from trl.feeds import network_health
+from trl.gtfs import DATA_ROOT, load_schedule
 from trl.migrations import migrate
 from trl.routing import find_offers
 from trl.scenarios import load_scenario
@@ -19,6 +21,9 @@ def main() -> None:
     subcommands = parser.add_subparsers(dest="command", required=True)
     route = subcommands.add_parser("route", help="compare initial and disrupted itinerary pairs")
     route.add_argument("--scenario", choices=("demo", "infeasible"), default="demo")
+    feeds = subcommands.add_parser("feeds", help="check the pinned official archives")
+    feeds.add_argument("--service-date", type=date.fromisoformat, default=None)
+    feeds.add_argument("--write", action="store_true", help="write data/gtfs/health.json")
     database = subcommands.add_parser("db", help="maintain the run database")
     database.add_argument("--db", type=Path, default=None, help="defaults to TRL_DB")
     actions = database.add_subparsers(dest="action", required=True)
@@ -33,6 +38,8 @@ def main() -> None:
     args = parser.parse_args()
     if args.command == "db":
         sys.exit(run_database(args))
+    if args.command == "feeds":
+        sys.exit(run_feeds(args))
     scenario = load_scenario(args.scenario)
     schedule = load_schedule()
     initial = find_offers(schedule, scenario, limit=1)
@@ -47,6 +54,17 @@ def main() -> None:
             ensure_ascii=False,
         )
     )
+
+
+def run_feeds(args: argparse.Namespace) -> int:
+    day: date = args.service_date or load_scenario().service_date
+    report = network_health(DATA_ROOT / "gtfs", day)
+    text = report.model_dump_json(indent=2) + "\n"
+    if args.write:
+        (DATA_ROOT / "gtfs" / "health.json").write_text(text)
+    print(text, end="")
+    required = [feed for feed in report.feeds if feed.status in {"stale_calendar", "unavailable"}]
+    return 1 if any(feed.id in {"metro", "tram"} for feed in required) else 0
 
 
 def run_database(args: argparse.Namespace) -> int:
