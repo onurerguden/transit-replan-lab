@@ -4,7 +4,7 @@ import asyncio
 import json
 import os
 import sqlite3
-from collections.abc import AsyncGenerator
+from collections.abc import AsyncGenerator, Callable
 from contextlib import asynccontextmanager, closing, suppress
 from typing import Literal, TypedDict
 
@@ -23,6 +23,7 @@ from trl.gtfs import DATA_ROOT, Schedule
 from trl.intake import (
     MAX_ROUNDS,
     answer_facts,
+    conjoined_variants,
     decide,
     extract,
     lexicon_proposal,
@@ -38,7 +39,7 @@ from trl.routing import SearchIncomplete, find_offers
 from trl.scenarios import load_scenario
 from trl.storage import Fence, Fenced, NotFound, RunStore, current_fence
 from trl.verify import verify_offer
-from trl.vnext import Extraction, OperatorMode, preferred_offer
+from trl.vnext import Extraction, Intake, OperatorMode, preferred_offer
 
 
 def with_incident(
@@ -483,6 +484,12 @@ class RunService:
         ) -> tuple[Literal["feasible", "infeasible", "search_incomplete"], Offer | None]:
             return self.preview_incident(run, incident)
 
+        if reasons == ("conflicting_targets",):
+            group = await asyncio.to_thread(self.conjoined, run, evaluate)
+            if group is not None:
+                await self.record_group(run, *group)
+                return
+
         decision = await asyncio.to_thread(
             decide,
             facts,
@@ -545,6 +552,53 @@ class RunService:
                 role="operator",
                 message="Disruption recorded from verified report fields.",
                 details={"kind": incident.kind},
+            ),
+        )
+
+    def conjoined(
+        self,
+        run: RunBody,
+        evaluate: Callable[
+            [Disruption],
+            tuple[Literal["feasible", "infeasible", "search_incomplete"], Offer | None],
+        ],
+    ) -> tuple[Intake, tuple[Disruption, ...]] | None:
+        """Read `A and B closed` as separate incidents when each part reads on its own."""
+        date = run.scenario.service_date
+        decisions: list[Intake] = []
+        for variant in conjoined_variants(run.notice or "", self.schedule, date):
+            facts, reasons = extract(variant, self.schedule, date)
+            decision = decide(facts, reasons, self.schedule, date, evaluate, run.version)
+            if decision.action != "apply" or decision.selected is None:
+                return None
+            decisions.append(decision)
+        if len(decisions) < 2:
+            return None
+        return decisions[0], tuple(item.selected.incident for item in decisions if item.selected)
+
+    async def record_group(
+        self, run: RunBody, decision: Intake, incidents: tuple[Disruption, ...]
+    ) -> None:
+        overlays = run.overlays
+        for incident in incidents:
+            overlays = with_incident(overlays, incident)
+        assert run.evidence is not None  # noqa: S101
+        await asyncio.to_thread(
+            self.store.step,
+            run.id,
+            run.version,
+            "ingest",
+            updates={
+                "incident": incidents[-1],
+                "overlays": overlays,
+                "evidence": run.evidence.model_copy(update={"intake": decision}),
+                "status": "planning",
+            },
+            event=EventDraft(
+                kind="incident",
+                role="operator",
+                message="Several disruptions recorded from verified report fields.",
+                details={"kind": incidents[-1].kind, "count": len(incidents)},
             ),
         )
 

@@ -24,6 +24,8 @@ def main() -> None:
     feeds = subcommands.add_parser("feeds", help="check the pinned official archives")
     feeds.add_argument("--service-date", type=date.fromisoformat, default=None)
     feeds.add_argument("--write", action="store_true", help="write data/gtfs/health.json")
+    network = subcommands.add_parser("network", help="describe a network profile")
+    network.add_argument("--profile", choices=("core", "full"), default="full")
     database = subcommands.add_parser("db", help="maintain the run database")
     database.add_argument("--db", type=Path, default=None, help="defaults to TRL_DB")
     actions = database.add_subparsers(dest="action", required=True)
@@ -38,6 +40,9 @@ def main() -> None:
     args = parser.parse_args()
     if args.command == "db":
         sys.exit(run_database(args))
+    if args.command == "network":
+        print(json.dumps(network_stats(args.profile), indent=2))
+        return
     if args.command == "feeds":
         sys.exit(run_feeds(args))
     scenario = load_scenario(args.scenario)
@@ -54,6 +59,27 @@ def main() -> None:
             ensure_ascii=False,
         )
     )
+
+
+def network_stats(profile: str) -> dict[str, object]:
+    from trl.catalogue import load_catalogue
+    from trl.timetable.footpaths import generate
+
+    root = DATA_ROOT / "gtfs"
+    stops = load_catalogue(root, "full" if profile == "full" else "core")
+    ids = list(stops)
+    paths = generate(ids, [stops[i].longitude for i in ids], [stops[i].latitude for i in ids])
+    health = network_health(root, load_scenario().service_date)
+    return {
+        "profile": profile,
+        "stops": len(stops),
+        "generated_footpaths": paths.count,
+        "feeds": {
+            feed.id: {"status": feed.status, "trips": feed.trips, "stop_times": feed.stop_times}
+            for feed in health.feeds
+            if profile == "full" or feed.id in {"metro", "tram"}
+        },
+    }
 
 
 def run_feeds(args: argparse.Namespace) -> int:

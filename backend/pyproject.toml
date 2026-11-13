@@ -69,7 +69,10 @@ max-args = 8
 # Ratchet: each entry names the v2 phase that rewrites the function and removes the ignore.
 "src/trl/api/app.py" = ["C901"]                   # F2 route modules
 "src/trl/negotiation.py" = ["C901", "BLE001"]     # F2 error taxonomy
+"src/trl/orchestration.py" = ["C901"]             # F5 intake split out of the worker
 "src/trl/intake.py" = ["C901"]                    # F5 language package
+"src/trl/language/*.py" = ["RUF001", "RUF003"]   # Turkish and typographic punctuation is the input
+"src/trl/language/timeexpr.py" = ["C901"]        # one pass per grammar rule, covered by round trips
 "src/trl/routing.py" = ["C901", "PLR0913", "PLR0915"]  # F6 routing v2
 "../experiments/runner.py" = ["ASYNC240", "PLR0915"]      # F7 bench v3 runner
 "../experiments/vnext_cases.py" = ["C901", "PLR0915"]     # F7 bench v3 generator

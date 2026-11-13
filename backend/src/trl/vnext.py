@@ -28,6 +28,8 @@ class Fact(Record):
 
 class ExtractionQuote(Record):
     slot: Slot
+    # The event kind the quote states. The server checks it against the text.
+    kind: Literal["stop_closure", "trip_cancellation", "trip_delay"] | None = None
     quote: Annotated[str, Field(min_length=1, max_length=200)]
 
 

@@ -34,13 +34,25 @@ Stage = Literal["operator_vnext", "operator", "analyst", "first", "mediator", "v
 MODEL = DEFAULT_MODEL
 
 
+def prompt_hash(stage: Stage) -> str:
+    """Digest of the prompt text, so editing a prompt invalidates cached decisions."""
+    path = PROMPT_DIR / f"{stage}.md"
+    return hashlib.sha256(path.read_bytes()).hexdigest() if path.exists() else ""
+
+
+def replay_digest(stage: Stage, view: RoleView) -> str:
+    """Key of recorded fixtures. It predates prompt hashing and stays stable."""
+    revision = "2" if stage == "operator_vnext" or "vnext_preferences" in view else PROMPT_VERSION
+    return hashlib.sha256(
+        json.dumps([revision, stage, view], ensure_ascii=False, sort_keys=True).encode()
+    ).hexdigest()
+
+
 def view_digest(stage: Stage, view: RoleView) -> str:
     revision = "2" if stage == "operator_vnext" or "vnext_preferences" in view else PROMPT_VERSION
     return hashlib.sha256(
         json.dumps(
-            [revision, stage, view],
-            ensure_ascii=False,
-            sort_keys=True,
+            [revision, stage, view, prompt_hash(stage)], ensure_ascii=False, sort_keys=True
         ).encode()
     ).hexdigest()
 
@@ -186,7 +198,8 @@ class ReplayModel:
         schema: type[Record],
         repair: bool,
     ) -> ModelReply:
-        frame = self.frames.get("recorded", {}).get(view_digest(stage, view))
+        recorded = self.frames.get("recorded", {})
+        frame = recorded.get(view_digest(stage, view)) or recorded.get(replay_digest(stage, view))
         if frame is not None:
             return ModelReply(schema.model_validate(frame).model_dump_json(), 0, 0)
         if stage == "operator_vnext":

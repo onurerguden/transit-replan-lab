@@ -6,9 +6,11 @@ from datetime import date
 
 from trl.domain import Disruption, StopClosure, TripCancellation, TripDelay
 from trl.gtfs import Schedule
+from trl.language import timeexpr
+from trl.language.clauses import blocked, clause_at
 
 CLOCK = re.compile(r"(?<![\d:])(\d{1,2}):([0-5]\d)(?![\d:])")
-IDENTIFIER = re.compile(r"(?<![\w:])(?:metro|tram):[\w-]+(?![\w:-])")
+IDENTIFIER = re.compile(r"(?<![\w:])(?:metro|tram):[\w-]+(?![\w:-])", re.IGNORECASE)
 MERIDIEM = re.compile(r"(?<![a-z])(?:a\.?m\.?|p\.?m\.?)(?![a-z])")
 OTHER_UNITS = re.compile(r"\d\s*(?:hours?|hrs?|seconds?|secs?|saat|saniye)\b")
 MINUTES = re.compile(r"(?<![\d.+-])(\d+)\s*(?:minutes?|mins?|dakika)\b")
@@ -29,24 +31,43 @@ def normalize(text: str) -> str:
     return "".join(char for char in folded if not unicodedata.combining(char))
 
 
+def canonical_identifier(key: str, schedule: Schedule) -> str | None:
+    """Resolve an identifier typed in any case to the catalogue spelling."""
+    if key in schedule.stops or key in schedule.trips:
+        return key
+    folded = key.casefold()
+    return next(
+        (name for name in (*schedule.stops, *schedule.trips) if name.casefold() == folded), None
+    )
+
+
 def rule_notice(text: str, schedule: Schedule, day: date) -> Disruption | None:
     value = normalize(text)
-    dates = set(re.findall(r"\b\d{4}-\d{2}-\d{2}\b", value))
-    if UNCERTAIN.search(value) or dates - {day.isoformat()}:
+    parsed = timeexpr.parse(value, day)
+    if parsed.issues:
         return None
-    actions = [kind for kind, pattern in ACTIONS.items() if pattern.search(value)]
-    identifiers = tuple(dict.fromkeys(IDENTIFIER.findall(text)))
+    matches = [
+        (kind, match) for kind, pattern in ACTIONS.items() if (match := pattern.search(value))
+    ]
+    if any(blocked(value, clause_at(value, match.start())) for _, match in matches):
+        return None
+    actions = [kind for kind, _ in matches]
+    identifiers = tuple(
+        dict.fromkeys(
+            canonical_identifier(key, schedule) or key for key in IDENTIFIER.findall(text)
+        )
+    )
     if actions == ["stop_closure"]:
-        stamps = CLOCK.findall(value)
         stops = stop_candidates(value, schedule)
         if (
-            len(stamps) != 2
+            parsed.start is None
+            or parsed.end is None
+            or len(parsed.clocks) != 2
             or len(stops) != 1
             or set(identifiers) - set(stops)
-            or MERIDIEM.search(value)
         ):
             return None
-        start, end = (int(hour) * 3600 + int(minute) * 60 for hour, minute in stamps)
+        start, end = parsed.start.seconds, parsed.end.seconds
         if 0 <= start < end <= 172800:
             return StopClosure(stop=stops[0], start=start, end=end)
         return None
@@ -57,14 +78,10 @@ def rule_notice(text: str, schedule: Schedule, day: date) -> Disruption | None:
         return None
     if actions == ["trip_cancellation"]:
         return TripCancellation(trip=trip, service_date=day)
-    minutes = MINUTES.findall(value)
-    if (
-        actions == ["trip_delay"]
-        and len(minutes) == 1
-        and not OTHER_UNITS.search(value)
-        and 0 < int(minutes[0]) <= 720
-    ):
-        return TripDelay(trip=trip, service_date=day, seconds=int(minutes[0]) * 60)
+    if actions == ["trip_delay"] and len(parsed.durations) == 1 and not parsed.clocks:
+        seconds = parsed.durations[0].seconds
+        if 0 < seconds <= 43200:
+            return TripDelay(trip=trip, service_date=day, seconds=seconds)
     return None
 
 
@@ -87,7 +104,9 @@ def stop_candidates(text: str, schedule: Schedule) -> tuple[str, ...]:
             for left, right in spans
         )
     ]
-    explicit = set(IDENTIFIER.findall(value)) & names.keys()
+    explicit = {
+        found for key in IDENTIFIER.findall(value) if (found := canonical_identifier(key, schedule))
+    } & names.keys()
     if explicit:
         groups.append(explicit)
     if not groups:

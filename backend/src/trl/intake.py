@@ -9,7 +9,9 @@ from typing import Literal
 
 from trl.domain import Disruption, Offer, StopClosure, TripCancellation, TripDelay
 from trl.gtfs import Schedule
-from trl.notice import ACTIONS, IDENTIFIER, normalize, stop_candidates
+from trl.language import timeexpr
+from trl.language.clauses import blocked, clause_at
+from trl.notice import ACTIONS, IDENTIFIER, canonical_identifier, normalize, stop_candidates
 from trl.vnext import (
     Extraction,
     ExtractionQuote,
@@ -26,6 +28,7 @@ from trl.vnext import (
 ORDER: tuple[Slot, ...] = ("target", "kind", "start", "end", "delay")
 MAX_HYPOTHESES = 4
 MAX_ROUNDS = 3
+MIN_QUOTE = 4
 REFUSALS = frozenset({"bilmiyorum", "unknown", "idk"})
 MAX_OPTIONS = 4
 REQUIREMENTS: dict[str, tuple[Slot, ...]] = {
@@ -40,14 +43,6 @@ PROMPTS: dict[Slot, str] = {
     "end": "When does the closure end?",
     "delay": "How long is the delay?",
 }
-TIME = re.compile(r"(?<![\w:])(\d{1,2}):([0-5]\d)(?:\s*([ap])\.?m\.?)?(?![\w:])")
-DURATION = re.compile(
-    r"(?<![\w.+-])([0-9]{1,3})\s*(hours?|hrs?|saat|minutes?|mins?|dakika|seconds?|secs?|saniye)\b"
-)
-UNCERTAIN = re.compile(
-    r"\b(?:no|not|never|maybe|might|possible|possibly|if|tomorrow|yesterday|"
-    r"degil|belki|muhtemel\w*|yarin|dun|edilmedi|kapatilmadi|gecikmiyor)\b|n['\u2019]t\b|\?"
-)
 INDIRECT = {
     "stop_closure": re.compile(r"\b(?:out of service|erisime ara verildi|giris cikis yok)\b"),
     "trip_cancellation": re.compile(r"\b(?:taken off the timetable|seferden cekildi)\b"),
@@ -60,11 +55,12 @@ Evaluate = Callable[
 
 
 def unsupported_context(text: str, day: date) -> tuple[str, ...]:
+    """Reasons the report names a zone or day this simulation does not model."""
     value, _ = folded(text)
-    if re.search(r"\b(?:utc|gmt|zulu)\b", value):
+    issues = timeexpr.parse(value, day).issues
+    if "unsupported_timezone" in issues:
         return ("unsupported_timezone",)
-    dates = set(re.findall(r"\b\d{4}-\d{2}-\d{2}\b", value))
-    if UNCERTAIN.search(value) or dates - {day.isoformat()}:
+    if {"out_of_service_date", "ambiguous_date"} & set(issues):
         return ("uncertain_or_wrong_service_date",)
     return ()
 
@@ -92,40 +88,14 @@ def span_at(text: str, start: int, end: int, source: Source) -> Span | None:
     return None
 
 
-def seconds(match: re.Match[str]) -> int | None:
-    hour, minute = int(match[1]), int(match[2])
-    if period := match[3]:
-        if not 1 <= hour <= 12:
-            return None
-        hour = hour % 12 + (12 if period == "p" else 0)
-    return hour * 3600 + minute * 60 if hour <= 47 else None
-
-
 def durations(value: str) -> list[tuple[int, int, int]]:
-    result: list[tuple[int, int, int]] = []
-    for match in DURATION.finditer(value):
-        unit = match[2]
-        multiplier = (
-            3600
-            if unit.startswith(("h", "saat"))
-            else 60
-            if unit.startswith(("m", "dakika"))
-            else 1
-        )
-        amount = int(match[1]) * multiplier
-        if result and re.fullmatch(r"\s*(?:and|ve)?\s*", value[result[-1][2] : match.start()]):
-            previous, start, _ = result.pop()
-            amount += previous
-        else:
-            start = match.start()
-        result.append((amount, start, match.end()))
-    return result
+    return [(item.seconds, item.start, item.end) for item in timeexpr.read_durations(value)]
 
 
 def targets(text: str, schedule: Schedule, day: date, trip: bool, source: Source) -> list[Fact]:
     explicit: list[Fact] = []
     for match in IDENTIFIER.finditer(text):
-        key = match[0]
+        key = canonical_identifier(match[0], schedule) or match[0]
         if trip and key in schedule.trips and schedule.runs(schedule.trips[key].service, day):
             explicit.append(
                 Fact(
@@ -192,6 +162,31 @@ def targets(text: str, schedule: Schedule, day: date, trip: bool, source: Source
     return found
 
 
+def conjoined_variants(text: str, schedule: Schedule, day: date) -> list[str]:
+    """Split `A and B closed` into one text per stop, blanking the other stops' names.
+
+    Alternatives (`or`) are not conjunctions and return nothing. Spans stay valid because each
+    variant keeps the original length.
+    """
+    value, _ = folded(text)
+    if re.search(r"\b(?:or|veya|ya da)\b", value):
+        return []
+    mentions = unique(targets(text, schedule, day, False, "notice"))
+    if not 2 <= len(mentions) <= MAX_OPTIONS - 1 or any(item.span is None for item in mentions):
+        return []
+    variants: list[str] = []
+    for keep in mentions:
+        blanked = text
+        for other in mentions:
+            if other is not keep and other.span is not None:
+                span = other.span
+                blanked = (
+                    blanked[: span.start] + " " * (span.end - span.start) + blanked[span.end :]
+                )
+        variants.append(blanked)
+    return variants
+
+
 def unique(facts: Iterable[Fact]) -> tuple[Fact, ...]:
     return tuple({(item.slot, item.value): item for item in facts}.values())
 
@@ -203,12 +198,43 @@ def lexicon_proposal(notice: str) -> Extraction:
         quotes=tuple(
             ExtractionQuote(
                 slot="kind",
+                kind=name,  # pyright: ignore[reportArgumentType]
                 quote=notice[offsets[match.start()] : offsets[match.end() - 1] + 1],
             )
-            for pattern in INDIRECT.values()
+            for name, pattern in INDIRECT.items()
             for match in pattern.finditer(value)
         )[:6]
     )
+
+
+def verified_kinds(text: str, value: str, proposal: Extraction) -> list[Fact] | None:
+    """Accept a model's kind quote only when the text itself supports it.
+
+    The quote must appear verbatim in a clause that is not negated, hedged or restored, and
+    the kind must come from the quote's declared kind or the supported phrase list. Every
+    other field still comes from the deterministic parsers, so the model cannot add evidence.
+    Returns None when a quote sits in a blocked clause.
+    """
+    accepted: list[Fact] = []
+    for quote in proposal.quotes:
+        if quote.slot != "kind":
+            continue
+        needle, _ = folded(quote.quote)
+        needle = needle.strip()
+        found = [m.start() for m in re.finditer(rf"(?<!\w){re.escape(needle)}(?!\w)", value)]
+        if len(needle) < MIN_QUOTE or len(found) != 1:
+            continue
+        position = found[0]
+        if blocked(value, clause_at(value, position)):
+            return None
+        kind = quote.kind or next(
+            (name for name, pattern in INDIRECT.items() if pattern.search(needle)), None
+        )
+        if kind is None:
+            continue
+        accepted.append(fact("kind", kind, text, position, position + len(needle), "notice"))
+    kinds = {item.value for item in accepted}
+    return accepted if len(kinds) == 1 else []
 
 
 def extract(
@@ -217,26 +243,24 @@ def extract(
     day: date,
     proposal: Extraction | None = None,
 ) -> tuple[tuple[Fact, ...], tuple[str, ...]]:
-    value, offsets = folded(text)
+    value, _ = folded(text)
     if reasons := unsupported_context(text, day):
         return (), reasons
-    kinds = [
-        fact("kind", kind, text, match.start(), match.end(), "notice")
-        for kind, pattern in ACTIONS.items()
-        if (match := pattern.search(value))
+    matches = [
+        (kind, match) for kind, pattern in ACTIONS.items() if (match := pattern.search(value))
     ]
+    kinds = [
+        fact("kind", kind, text, match.start(), match.end(), "notice") for kind, match in matches
+    ]
+    if any(blocked(value, clause_at(value, match.start())) for _, match in matches):
+        return (), ("uncertain_or_wrong_service_date",)
     if proposal and not kinds:
-        # A quoted phrase can enable a supported indirect construction. Check the full text
-        # for competing event meanings and resolve offsets on the server.
-        indirect = [
-            (kind, match) for kind, pattern in INDIRECT.items() for match in pattern.finditer(value)
-        ]
-        for kind, match in indirect:
-            fragment = text[offsets[match.start()] : offsets[match.end() - 1] + 1]
-            if any(quote.slot == "kind" and quote.quote == fragment for quote in proposal.quotes):
-                if len({entry[0] for entry in indirect}) == 1:
-                    kinds.append(fact("kind", kind, text, match.start(), match.end(), "notice"))
-    ids = {match[0] for match in IDENTIFIER.finditer(text)}
+        kinds = verified_kinds(text, value, proposal)
+        if kinds is None:
+            return (), ("uncertain_or_wrong_service_date",)
+    ids = {
+        canonical_identifier(match[0], schedule) or match[0] for match in IDENTIFIER.finditer(text)
+    }
     if ids - schedule.stops.keys() - schedule.trips.keys():
         return (), ("catalogue_miss",)
     want_trip = any(item.value != "stop_closure" for item in kinds) or bool(
@@ -255,23 +279,14 @@ def extract(
         ):
             return (), ("conflicting_targets",)
         facts.extend(stops)
-    times = list(TIME.finditer(value))
-    if len(times) == 1:
-        previous = value[: times[0].start()].strip()
-        slot: Slot = "end" if re.search(r"\b(?:until|to|kadar)\s*$", previous) else "start"
-        if (instant := seconds(times[0])) is not None:
-            facts.append(fact(slot, instant, text, times[0].start(), times[0].end(), "notice"))
-    elif len(times) == 2:
-        separator = value[times[0].end() : times[1].start()]
-        if not re.fullmatch(r"\s*(?:to|until|and|ile|ve|[-\u2013\u2014])\s*", separator):
-            if any(item.value == "stop_closure" for item in kinds):
-                return (), ("unbound_times",)
-        for field, match in zip(("start", "end"), times, strict=True):
-            if (instant := seconds(match)) is not None:
-                slot = "start" if field == "start" else "end"
-                facts.append(fact(slot, instant, text, match.start(), match.end(), "notice"))
-    elif times:
-        return (), ("conflicting_times",)
+    parsed = timeexpr.parse(value, day)
+    if parsed.issues:
+        return (), (parsed.issues[0],)
+    for slot, clock in (("start", parsed.start), ("end", parsed.end)):
+        if clock is not None:
+            facts.append(
+                fact(slot, clock.seconds, text, clock.start, clock.end, "notice")  # pyright: ignore[reportArgumentType]
+            )
     facts.extend(
         fact("delay", amount, text, start, end, "notice")
         for amount, start, end in durations(value)
@@ -446,10 +461,10 @@ def answer_facts(
         )
         return resolved(choices[0]) if len(choices) == 1 else ()
     if slot in {"start", "end"}:
-        matches = list(TIME.finditer(value))
-        if len(matches) == 1 and (time := seconds(matches[0])) is not None:
-            match = matches[0]
-            return resolved(fact(slot, time, answer, match.start(), match.end(), "answer"))
+        parsed = timeexpr.parse(value, day)
+        clock = parsed.start or parsed.end
+        if not parsed.issues and clock is not None and len(parsed.clocks) == 1:
+            return resolved(fact(slot, clock.seconds, answer, clock.start, clock.end, "answer"))
     if slot == "delay":
         amounts = durations(value)
         if len(amounts) == 1:

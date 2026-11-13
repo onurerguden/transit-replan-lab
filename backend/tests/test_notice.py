@@ -20,8 +20,6 @@ def schedule() -> Schedule:
         "Konak İskele tram stop might be closed 08:24\u201310:00.",
         "Konak İskele tram stop is closed from 08:24.",
         "Konak İskele tram stop is closed from 08:24 to 08:00.",
-        "Konak İskele tram stop is closed from 08:24 to 10:00 PM.",
-        "Konak İskele tram stop is closed from 08:24 to 10:00 p.m.",
         "Konak İskele tram stop is closed 08:24\u201310:00 on 2026-12-30.",
         "Konak İskele tram stop tram:unknown is closed 08:24\u201310:00.",
     ],
@@ -58,11 +56,24 @@ def test_trip_evidence_checks_action_service_and_duration(schedule: Schedule) ->
     )
     for notice in (
         f"Trip {trip} is delayed by 8 minutes or 12 minutes.",
-        f"Trip {trip} is delayed by 8.5 minutes.",
-        f"Trip {trip} is delayed by 8 minutes 30 seconds.",
-        f"{trip} seferi 1 saat 8 dakika gecikiyor.",
         f"{trip} seferi iptal edilmedi.",
         f"Trip {trip} is delayed by 8 minutes. Cancel this trip.",
         f"Trips {trip} and tram:unknown are cancelled.",
     ):
         assert rule_notice(notice, schedule, day) is None
+
+
+def test_meridiem_and_mixed_duration_units_are_read_exactly(schedule: Schedule) -> None:
+    day = load_scenario().service_date
+    assert rule_notice(
+        "Konak İskele tram stop is closed from 08:24 to 10:00 PM.", schedule, day
+    ) == StopClosure(stop="tram:7", start=73440, end=79200)
+    trip = next(item.id for item in schedule.trips.values() if schedule.runs(item.service, day))
+    for notice, seconds in (
+        (f"Trip {trip} is delayed by 8.5 minutes.", 510),
+        (f"Trip {trip} is delayed by 8 minutes 30 seconds.", 510),
+        (f"{trip} seferi 1 saat 8 dakika gecikiyor.", 4080),
+    ):
+        assert rule_notice(notice, schedule, day) == TripDelay(
+            trip=trip, service_date=day, seconds=seconds
+        )

@@ -66,3 +66,15 @@ Each entry records completed acceptance checks and concrete blockers.
 - `trl.catalogue` lists 11,857 stops. `trl.timetable.footpaths` generates 119,834 links in 0.3 s. The buffer on every link keeps the table closed under the triangle inequality, so no Dijkstra closure is needed. The documented interchanges keep 480 s.
 - `trl.language.gazetteer` resolves stop names with Turkish case suffixes, partial names and mode words.
 - Not done: wiring the gazetteer into intake (F5), a `TRL_NETWORK` setting and ADR 0013. F4 to F11 are not started.
+
+## F5 · Language layer and evidence gate
+
+- `trl.language.timeexpr` and `clauses` back both parsers. All defect markers in
+  `test_v2_defects.py` are removed: C1–C4, C7, L6–L9 now pass as plain regressions.
+- Verified-quote gate replaces the eight-phrase whitelist. Quotes need four characters, a unique
+  whole-word match and an unblocked clause. Prompt text is part of the request digest.
+- Conjoined stops become separate incidents. Property tests cover round trips and gate
+  soundness; `make test-deep` runs 20,000 adversarial quotes.
+- Changed behavior: `10:00 pm` after an unmarked start carries to the start, fractional and mixed
+  duration units are read, `GMT+3` counts as local time.
+- Cut: natural-language trip references.

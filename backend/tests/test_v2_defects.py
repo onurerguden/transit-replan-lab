@@ -66,7 +66,6 @@ OTHER_DATES = (
 )
 
 
-@pytest.mark.xfail(strict=True, reason="V2-C1: non-ISO or T-separated dates bypass the guard")
 @pytest.mark.parametrize("notice", OTHER_DATES)
 def test_c1_notice_for_another_day_is_never_applied(notice: str) -> None:
     assert intake(notice).action == "abstain"
@@ -78,7 +77,6 @@ def test_c1_notice_for_the_service_day_still_applies() -> None:
     assert closure(intake(notice)) == MORNING
 
 
-@pytest.mark.xfail(strict=True, reason="V2-C2: an ISO offset is read as a clock time")
 def test_c2_local_offset_is_not_a_clock_time() -> None:
     notice = "Konak İskele tram stop is closed from 2026-10-21T08:24:00+03:00 to 10:00."
     assert closure(intake(notice)) == MORNING
@@ -86,7 +84,6 @@ def test_c2_local_offset_is_not_a_clock_time() -> None:
     assert legacy is None or (isinstance(legacy, StopClosure) and legacy.start == MORNING[0])
 
 
-@pytest.mark.xfail(strict=True, reason="V2-C3: Turkish suffix and preposition binding")
 @pytest.mark.parametrize(
     "notice",
     [
@@ -99,7 +96,6 @@ def test_c3_closure_ranges_bind_start_and_end(notice: str) -> None:
     assert closure(intake(notice)) == MORNING
 
 
-@pytest.mark.xfail(strict=True, reason="V2-C3: a lone end time is read as the start")
 @pytest.mark.parametrize(
     "notice",
     [
@@ -112,19 +108,16 @@ def test_c3_lone_end_time_binds_to_end(notice: str) -> None:
     assert slot_values(notice, "start") == []
 
 
-@pytest.mark.xfail(strict=True, reason="V2-C4: meridiem applies to one side of a range")
 def test_c4_meridiem_carries_across_a_short_range() -> None:
     notice = "Konak İskele tram stop is closed from 8:24 to 10:00 pm."
     assert closure(intake(notice)) == (20 * 3600 + 24 * 60, 22 * 3600)
 
 
-@pytest.mark.xfail(strict=True, reason="V2-C4: decimal comma in a Turkish duration")
 def test_c4_decimal_comma_duration() -> None:
     notice = f"{running_trip()} seferi 1,5 saat gecikmeli."
     assert slot_values(notice, "delay") == [5400]
 
 
-@pytest.mark.xfail(strict=True, reason="V2-C4: an overnight range ends after midnight")
 def test_c4_overnight_closure_uses_service_day_seconds() -> None:
     notice = "Konak İskele tram stop is closed from 23:30 to 00:30."
     assert closure(intake(notice)) == (23 * 3600 + 30 * 60, 24 * 3600 + 30 * 60)
@@ -180,7 +173,6 @@ def test_c6_replacement_report_retracts_the_previous_incident(tmp_path: Path) ->
     ]
 
 
-@pytest.mark.xfail(strict=True, reason="V2-C7: identifiers are case-insensitive")
 def test_c7_uppercase_identifier_resolves() -> None:
     decision = intake("TRAM:7 is closed from 08:24 to 10:00.")
     assert decision.selected is not None
@@ -247,7 +239,6 @@ def test_l6_second_missing_slot_gets_a_second_question() -> None:
     assert second.question is not None and second.question.slot == "end"
 
 
-@pytest.mark.xfail(strict=True, reason="V2-L7: verified model quotes are limited to a whitelist")
 def test_l7_verified_model_quote_can_supply_the_event_kind() -> None:
     notice = "Konak İskele tram stop is shuttered from 08:24 to 10:00."
     quote = ExtractionQuote.model_validate(
@@ -256,7 +247,6 @@ def test_l7_verified_model_quote_can_supply_the_event_kind() -> None:
     assert closure(intake(notice, Extraction(quotes=(quote,)))) == MORNING
 
 
-@pytest.mark.xfail(strict=True, reason="V2-L7: a quote from a negated clause must not apply")
 def test_l7_model_quote_in_a_negated_clause_is_rejected() -> None:
     notice = "Konak İskele tram stop is not shuttered; service runs from 08:24 to 10:00."
     quote = ExtractionQuote.model_validate(
@@ -265,19 +255,33 @@ def test_l7_model_quote_in_a_negated_clause_is_rejected() -> None:
     assert intake(notice, Extraction(quotes=(quote,))).action != "apply"
 
 
-@pytest.mark.xfail(strict=True, reason="V2-L8: negation outside the event clause abstains")
 def test_l8_unrelated_negation_does_not_block_the_event() -> None:
     notice = "Konak İskele tram stop is closed from 08:24 to 10:00 (no lifts)."
     assert closure(intake(notice)) == MORNING
 
 
-@pytest.mark.xfail(strict=True, reason="V2-L8: conjoined stops are separate events")
-def test_l8_conjoined_closures_apply_together() -> None:
-    notice = "Konak İskele and Karataş tram stops are closed from 08:24 to 10:00."
-    assert intake(notice).action == "apply"
+def test_l8_conjoined_closures_apply_together(tmp_path: Path) -> None:
+    store = RunStore(tmp_path / "conjoined.sqlite")
+    service = RunService(store, SCHEDULE)
+    receipt = service.new_run(CreateRun(workflow="vnext"), "create")
+    work = store.command(
+        receipt.run_id,
+        "report",
+        Disrupt(
+            version=0, notice="Konak İskele and Karataş tram stops are closed from 08:24 to 10:00."
+        ),
+    )
+    asyncio.run(service.execute(work))
+    view = store.view(receipt.run_id)
+    assert view.status in {"verified", "infeasible"}
+    assert {
+        item.disruption.stop for item in view.incidents if isinstance(item.disruption, StopClosure)
+    } == {  # pyright: ignore[reportAttributeAccessIssue]
+        "tram:7",
+        "tram:8",
+    }
 
 
-@pytest.mark.xfail(strict=True, reason="V2-L9: prompt content must be part of the digest")
 def test_l9_prompt_content_changes_the_request_digest(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
