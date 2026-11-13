@@ -77,7 +77,7 @@ Each entry records completed acceptance checks and concrete blockers.
   soundness; `make test-deep` runs 20,000 adversarial quotes.
 - Changed behavior: `10:00 pm` after an unmarked start carries to the start, fractional and mixed
   duration units are read, `GMT+3` counts as local time.
-- Cut: natural-language trip references.
+- Natural-language trip references (stop plus departure time) were added after the first cut, see the addendum.
 
 ## F6 · Routing on the full network (partial)
 
@@ -122,10 +122,15 @@ Each entry records completed acceptance checks and concrete blockers.
 
 - Segment-scoped RAPTOR with arrival profiles, so full-network meetings on dense bus areas can end as incomplete.
 - Serving the full network through the API.
-- A second-family paraphrase bank, independent annotation, two-router plan labels and natural-language trip references.
+- A second-family paraphrase bank, independent annotation and two-router plan labels.
 - Three-seed adapter training and a full-size test run for the model arms.
-- A single dispatcher for workers and a split of `App.tsx`.
+- A single dispatcher for workers.
 
 ## Addendum · independent reference for the full network
 
 - `trl.verifier.sqlite_reference` loads the raw archives into an indexed SQLite database with its own reader and its own calendar rule and serves trips and stops on demand. A deep test routes random full-network queries and verifies every emitted plan against it. It shares no code with the router or the compiled arrays. The weekly projection for ESHOT and İZBAN is applied by the same stated policy.
+
+## Addendum · trip references and the interface split
+
+- `trl.language.trips` resolves a stop plus a departure time to one trip. A property-style test builds the report in English and Turkish for hundreds of unique departures and checks the resulting incident. An unknown departure names no trip.
+- `App.tsx` went from 391 to 236 lines, with the plan, offer evidence, timeline and formatting helpers in their own modules. Unit and browser suites are unchanged.

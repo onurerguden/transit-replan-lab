@@ -206,3 +206,48 @@ def test_a_colon_followed_by_a_space_ends_a_clause_but_not_an_identifier() -> No
 
     value = "note: tram:7 is closed"
     assert [value[a:b] for a, b in clauses(value)] == ["note", "tram:7 is closed"]
+
+
+def departures() -> list[tuple[str, str, int]]:
+    """Trips whose departure from a named stop is unique at that minute."""
+    seen: dict[tuple[str, int], list[str]] = {}
+    for trip in SCHEDULE.trips.values():
+        if not SCHEDULE.runs(trip.service, DAY):
+            continue
+        for call in trip.calls[:-1]:
+            seen.setdefault((call.stop, call.departure), []).append(trip.id)
+    return [
+        (ids[0], SCHEDULE.stops[stop].name, at)
+        for (stop, at), ids in seen.items()
+        if len(ids) == 1 and at % 60 == 0 and at < 86400
+    ]
+
+
+def test_a_departure_from_a_stop_names_one_trip() -> None:
+    from trl.domain import TripDelay
+
+    found = 0
+    for trip, stop_name, at in departures()[:400]:
+        stops = [s for s in SCHEDULE.stops.values() if s.name == stop_name]
+        if len(stops) != 1:
+            continue
+        clock = f"{at // 3600:02d}:{at // 60 % 60:02d}"
+        for text in (
+            f"The {clock} departure from {stop_name} is delayed by 10 minutes.",
+            f"{stop_name} durağından {clock} kalkış seferi 10 dakika gecikmeli.",
+        ):
+            facts, reasons = extract(text, SCHEDULE, DAY)
+            decision = decide(facts, reasons, SCHEDULE, DAY, lambda _: ("infeasible", None), 1)
+            if decision.action == "apply" and decision.selected:
+                assert decision.selected.incident == TripDelay(
+                    trip=trip, service_date=DAY, seconds=600
+                )
+                found += 1
+    assert found >= 20
+
+
+def test_an_unknown_departure_names_no_trip() -> None:
+    text = "The 03:07 departure from Konak İskele is delayed by 10 minutes."
+    facts, reasons = extract(text, SCHEDULE, DAY)
+    decision = decide(facts, reasons, SCHEDULE, DAY, lambda _: ("infeasible", None), 1)
+    assert decision.action != "apply"

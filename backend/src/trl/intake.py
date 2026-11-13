@@ -11,6 +11,7 @@ from trl.domain import Disruption, Offer, StopClosure, TripCancellation, TripDel
 from trl.gtfs import Schedule
 from trl.language import timeexpr
 from trl.language.clauses import blocked, clause_at
+from trl.language.trips import resolve as trip_references
 from trl.notice import ACTIONS, IDENTIFIER, canonical_identifier, normalize, stop_candidates
 from trl.vnext import (
     Extraction,
@@ -269,7 +270,13 @@ def extract(
     want_stop = not kinds or any(item.value == "stop_closure" for item in kinds)
     facts = kinds[:]
     if want_trip:
-        facts.extend(targets(text, schedule, day, True, "notice"))
+        named = targets(text, schedule, day, True, "notice")
+        if not named:
+            named = [
+                Fact(slot="target", value=trip, span=span_at(text, start, end, "notice"))
+                for trip, start, end in trip_references(text, schedule, day)
+            ]
+        facts.extend(named)
     if want_stop:
         stops = targets(text, schedule, day, False, "notice")
         if (
