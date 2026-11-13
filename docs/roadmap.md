@@ -70,3 +70,10 @@ The Phase 0 workflow passed on macOS and in an Ubuntu container via act. The mai
 - [x] Publish a project README with screenshots, reproduction commands, outcomes, attribution, and limitations.
 - [x] Review candidate files, complete history, prompts, data, and secret scans with the maintainer.
 - [x] Publish the public repository and tag the release after CI.
+
+## Review follow-up
+
+The [implementation record](review-implementation.md) covers durability,
+operator comparisons, the refreshed interface and local package acceptance.
+The [evaluation protocol](review-evaluation-protocol.md) records the remaining
+independent holdout work.

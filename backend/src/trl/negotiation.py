@@ -48,8 +48,11 @@ class Negotiator:
         attempts: int = 2,
     ) -> T:
         calls = self.store.calls(run.id, run.version, key)
+        request_digest = view_digest(stage, view)
         for call in calls:
             if call.state == "valid" and call.content is not None:
+                if call.request_sha256 != request_digest:
+                    raise ModelError("request_mismatch")
                 return schema.model_validate_json(call.content)
         if len(calls) >= attempts and any(call.state == "pending" for call in calls):
             raise ModelError("model_interrupted")
@@ -71,7 +74,7 @@ class Negotiator:
                     info.name,
                     info.digest,
                     info.context,
-                    view_digest(stage, view),
+                    request_digest,
                 )
             except Conflict as exc:
                 raise ModelError("call_budget") from exc
@@ -130,10 +133,24 @@ class Negotiator:
         evidence = rule_notice(str(view["notice"]), self.schedule, run.scenario.service_date)
         return event if event == evidence else None
 
-    def stored_choice(self, run: RunBody, key: str) -> Choice | None:
+    def stored_choice(
+        self,
+        run: RunBody,
+        stage: Stage,
+        key: str,
+        offers: tuple[Offer, ...],
+        *,
+        rider: Rider | None = None,
+    ) -> Choice | None:
         for call in self.store.calls(run.id, run.version, key):
             if call.state == "valid" and call.content is not None:
-                return Choice.model_validate_json(call.content)
+                view = view_for(stage, run, self.schedule, offers, rider=rider)
+                if call.request_sha256 != view_digest(stage, view):
+                    raise ModelError("request_mismatch")
+                choice = Choice.model_validate_json(call.content)
+                if choice.offer not in {offer.id for offer in offers}:
+                    raise ModelError("unknown_offer")
+                return choice
         return None
 
     async def pick(
@@ -258,11 +275,12 @@ class Negotiator:
         choices = tuple(
             result.offer
             for rider in ("a", "b")
-            if (result := self.stored_choice(run, f"first:{rider}")) is not None
+            if (result := self.stored_choice(run, "first", f"first:{rider}", offers, rider=rider))
+            is not None
         )
         if len(choices) != 2:
             raise ModelError("missing_first_preference")
-        analyst = self.stored_choice(run, "analyst:1")
+        analyst = self.stored_choice(run, "analyst", "analyst:1", offers)
         preferred = analyst.offer if analyst else ""
 
         def priority(item: Offer) -> bool:

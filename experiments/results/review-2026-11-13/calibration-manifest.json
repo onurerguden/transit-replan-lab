@@ -1,0 +1,8 @@
+{
+  "cases": 60,
+  "sha256": {
+    "calibration.md": "8529c3375a9c92d5f25e9edd7e1e5a2b7f0642a0c3504181bd7545a0d3e4b746",
+    "calibration.jsonl": "1da1d4244c7f35b915e5fe3d15ffe3065fca06d0ef93c61dd0bc98ba399fbef1",
+    "calibration-conditions.json": "93ab61a489979554d89b6f6306c073b6ddfaacb1673869c341f6b680bf928b3c"
+  }
+}

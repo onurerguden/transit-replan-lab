@@ -49,6 +49,9 @@ function features(network: Network, offer: Offer | null | undefined): MapData {
         sections.sort((left, right) => left.length - right.length)
         ids = sections[0] ?? ids
       }
+      // MapLibre measures the offset relative to coordinate order. Give both
+      // riders the same orientation along a shared section, regardless of travel.
+      if (ids[0]! > ids[ids.length - 1]!) ids = [...ids].reverse()
       const segment: Feature<Geometry, { kind: string; rider: string }> = {
         type: 'Feature', geometry: { type: 'LineString', coordinates: coordinates(ids) },
         properties: { kind: leg.kind, rider },
@@ -85,7 +88,7 @@ function markerElement(stop: Stop, role: string) {
   root.className = `station-marker station-marker--${role}`
   const symbol = document.createElement('span')
   symbol.className = 'station-symbol'
-  symbol.textContent = { a: 'A', b: 'B', closed: '×', target: '◎', transfer: '↔' }[role] ?? '•'
+  symbol.textContent = { a: '1', b: '2', closed: '×', target: '◎', transfer: '↔' }[role] ?? '•'
   const name = document.createElement('span')
   name.className = 'station-name'
   name.textContent = stop.name
@@ -112,7 +115,7 @@ export function RouteMap(props: MapProps) {
       const map = new Map({
         container: node,
         style: { version: 8, sources: {}, layers: [
-          { id: 'paper', type: 'background', paint: { 'background-color': '#e9eef2' } },
+          { id: 'paper', type: 'background', paint: { 'background-color': '#070a08' } },
         ] },
         attributionControl: false,
         dragRotate: false,
@@ -140,23 +143,27 @@ export function RouteMap(props: MapProps) {
         map.addLayer({ id: 'network', source: 'timetable', type: 'line',
           filter: ['in', ['get', 'kind'], ['literal', ['metro', 'tram']]],
           layout: { 'line-cap': 'round', 'line-join': 'round' },
-          paint: { 'line-width': 3, 'line-color': ['match', ['get', 'kind'], 'metro', '#a5b8ca', '#bbaab4'] },
+          paint: { 'line-width': 3, 'line-color': ['match', ['get', 'kind'], 'metro', '#44584c', '#605d47'] },
         })
         map.addLayer({ id: 'stops', source: 'timetable', type: 'circle',
           filter: ['==', ['get', 'kind'], 'station'],
-          paint: { 'circle-radius': 3, 'circle-color': '#f8fafc', 'circle-stroke-width': 1,
-            'circle-stroke-color': '#9aacbc' },
+          paint: { 'circle-radius': 3, 'circle-color': '#c2ccc5', 'circle-stroke-width': 1,
+            'circle-stroke-color': '#34453a' },
         })
-        map.addLayer({ id: 'rides', source: 'timetable', type: 'line',
-          filter: ['==', ['get', 'kind'], 'ride'],
-          layout: { 'line-cap': 'round', 'line-join': 'round' },
-          paint: { 'line-width': 5, 'line-color': ['match', ['get', 'rider'], 'a', '#1b69bd', '#117c6f'],
-            'line-offset': ['match', ['get', 'rider'], 'a', -1.5, 1.5] },
-        })
-        map.addLayer({ id: 'walks', source: 'timetable', type: 'line',
-          filter: ['==', ['get', 'kind'], 'walk'],
-          paint: { 'line-width': 4, 'line-dasharray': [1, 1], 'line-color': '#263e57' },
-        })
+        for (const rider of ['a', 'b']) {
+          map.addLayer({ id: `rides-${rider}`, source: 'timetable', type: 'line',
+            filter: ['all', ['==', ['get', 'kind'], 'ride'], ['==', ['get', 'rider'], rider]],
+            layout: { 'line-cap': 'butt', 'line-join': 'round' },
+            paint: { 'line-width': 5, 'line-color': rider === 'a' ? '#61e6a5' : '#f2d35f',
+              'line-offset': rider === 'a' ? -3 : 3,
+              ...(rider === 'b' ? { 'line-dasharray': [4, 2] } : {}) },
+          })
+          map.addLayer({ id: `walks-${rider}`, source: 'timetable', type: 'line',
+            filter: ['all', ['==', ['get', 'kind'], 'walk'], ['==', ['get', 'rider'], rider]],
+            paint: { 'line-width': 4, 'line-dasharray': [1, 2],
+              'line-color': rider === 'a' ? '#61e6a5' : '#f2d35f', 'line-offset': rider === 'a' ? -3 : 3 },
+          })
+        }
         setMarkers(() => Marker)
       })
     }).catch(() => {

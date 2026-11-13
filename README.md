@@ -10,9 +10,13 @@ result.
 
 [![CI](https://github.com/onurerguden/transit-replan-lab/actions/workflows/ci.yml/badge.svg)](https://github.com/onurerguden/transit-replan-lab/actions/workflows/ci.yml)
 
-![The resilient offer and its evidence in Transit Replan Lab](docs/assets/vnext-demo.png)
+![The resilient offer and its evidence in Transit Replan Lab](docs/assets/review-demo.png)
 
-[90-second demo](docs/assets/vnext-demo.webm) · [Evaluation and reproduction](docs/vnext.md)
+[90-second demo](docs/assets/review-demo.webm) · [Evaluation and reproduction](docs/vnext.md) · [Published v1.1.0 evidence](https://github.com/onurerguden/transit-replan-lab/tree/v1.1.0/experiments/results/vnext)
+
+In the follow-up comparison, the lexicon operator matched the adapted model
+on 80 development and 60 calibration notices with zero inference calls.
+Both sets contain previously inspected synthetic notices. [Measurements and conditions](docs/review-implementation.md).
 
 ## Run the demo
 

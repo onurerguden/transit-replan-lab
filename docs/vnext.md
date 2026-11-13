@@ -107,7 +107,7 @@ in the same process and share its peak RSS measurement.
 
 ```sh
 uv run --locked --project backend python -m scripts.profile_vnext --output .local/api-profile.json
-uv run --locked --project backend python -m scripts.evaluate_resilience --output .local/resilience.jsonl
+uv run --locked --project backend python -m scripts.evaluate_resilience --split locked --output .local/resilience.jsonl
 ```
 
 ## Release verification
@@ -117,3 +117,11 @@ test, and 10 Chromium scenarios passed. The browser suite ran against the
 Docker package. An isolated rollback exercise verified the same legacy run
 and two votes on the previous image, on vNext, and on the restored
 pre-upgrade SQLite backup with the previous image.
+
+## Follow-up engineering review
+
+The [implementation record](review-implementation.md) links the newer
+development comparison, durability checks and Docker acceptance. The
+lexicon operator uses the same supported indirect phrases as the hybrid
+operator without inference. Select it under **Run settings → Operator**.
+The v1.1.0 results above remain the reference for the published release.

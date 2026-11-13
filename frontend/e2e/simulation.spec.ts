@@ -52,7 +52,7 @@ test('shows independent votes and a mediated replay on mobile', async ({ page })
   await expect(page.locator('.timeline').getByText('Accepted the offer.')).toHaveCount(2)
   await expect(page.getByText(/7 model calls/)).toBeVisible()
   await page.locator('.evidence summary').click()
-  await expect(page.getByRole('region', { name: 'Rider A evidence' })).toContainText('Accepted')
+  await expect(page.getByRole('region', { name: 'Rider 1 evidence' })).toContainText('Accepted')
   expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(390)
   if (process.env.TRL_MOBILE_CAPTURE) {
     await page.screenshot({ path: process.env.TRL_MOBILE_CAPTURE, fullPage: true })
@@ -147,7 +147,7 @@ test('clarifies an ambiguous notice and keeps evidence bound to the selected off
   await evidence.locator('summary').focus()
   await page.keyboard.press('Enter')
   await expect(evidence).toContainText('Timetable check passed')
-  const rider = page.getByRole('region', { name: 'Rider A evidence' })
+  const rider = page.getByRole('region', { name: 'Rider 1 evidence' })
   await expect(rider).toBeVisible()
   await expect(rider).toContainText('Accepted')
   await expect(rider).toContainText('Walk')
@@ -211,8 +211,8 @@ test('compares closure interpretations and independently verifies the resilient 
   await pause(15_000)
   await page.getByText('Offer evidence', { exact: true }).click()
   await expect(page.getByText('Timetable check passed')).toBeVisible()
-  await expect(page.getByRole('region', { name: 'Rider A evidence' })).toContainText('Accepted')
-  if (record) await page.getByRole('region', { name: 'Rider A evidence' }).scrollIntoViewIfNeeded()
+  await expect(page.getByRole('region', { name: 'Rider 1 evidence' })).toContainText('Accepted')
+  if (record) await page.getByRole('region', { name: 'Rider 1 evidence' }).scrollIntoViewIfNeeded()
   await pause(18_000)
   if (process.env.TRL_VNEXT_CAPTURE) await page.screenshot({ path: process.env.TRL_VNEXT_CAPTURE, fullPage: true })
   await page.getByRole('button', { name: /Earliest/ }).click()
@@ -232,4 +232,53 @@ test('keeps an unanswered disruption unresolved on mobile', async ({ page }) => 
   await expect(page.getByRole('status')).toHaveText('Disruption unresolved')
   await expect(page.getByRole('region', { name: 'Joint offers' })).toHaveCount(0)
   expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(390)
+})
+
+test('clarifies by keyboard on a narrow screen without WebGL', async ({ page }) => {
+  await page.setViewportSize({ width: 320, height: 844 })
+  await page.addInitScript(() => {
+    const original = HTMLCanvasElement.prototype.getContext
+    HTMLCanvasElement.prototype.getContext = function (this: HTMLCanvasElement, ...args: unknown[]) {
+      return String(args[0]).startsWith('webgl') ? null : Reflect.apply(original, this, args)
+    } as typeof original
+  })
+  await page.goto('/')
+  await expect(page.getByRole('status')).toHaveText('Ready')
+  async function activate(name: string) {
+    const button = page.getByRole('button', { name, exact: true })
+    for (let step = 0; step < 80; step += 1) {
+      if (await button.evaluate(element => element === document.activeElement)) {
+        await page.keyboard.press('Enter')
+        return
+      }
+      await page.keyboard.press('Tab')
+    }
+    throw new Error(`Unreachable by keyboard: ${name}`)
+  }
+  await activate('Apply disruption')
+  await expect(page.getByRole('status')).toHaveText('Clarification needed')
+  await activate('Konak İskele (Tram)')
+  await expect(page.getByRole('status')).toHaveText('Verified')
+  await expect(page.getByRole('region', { name: 'Decision summary' }))
+    .toContainText('2/2 current rider acceptances')
+  await expect(page.getByText('The map needs WebGL. Journey details are available below.').first()).toBeVisible()
+  await expect(page.getByRole('region', { name: 'New plan' })).toContainText('Via Fahrettin Altay')
+  await expect(page.getByRole('region', { name: 'New plan' })).toContainText('Direct tram')
+  expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(320)
+})
+
+test('uses the lexicon operator for an indirect report', async ({ page }) => {
+  await page.goto('/')
+  await expect(page.getByRole('status')).toHaveText('Ready')
+  await page.getByText('Run settings', { exact: true }).click()
+  await page.getByLabel('Operator', { exact: true }).selectOption('lexicon')
+  await page.getByRole('button', { name: 'Set up run', exact: true }).click()
+  await expect(page.getByRole('button', { name: 'Apply disruption' })).toBeEnabled()
+  await page.getByRole('textbox', { name: 'Disruption notice text' })
+    .fill('Konak İskele tram stop is out of service from 08:24 to 10:00.')
+  await page.getByRole('button', { name: 'Apply disruption' }).click()
+  await expect(page.getByRole('status')).toHaveText('Verified')
+  await expect(page.getByText(/model calls/)).toHaveCount(0)
+  await expect(page.getByRole('region', { name: 'Decision summary' }))
+    .toContainText('Konak İskele closed · 08:24–10:00')
 })

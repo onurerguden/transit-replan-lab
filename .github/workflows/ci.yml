@@ -30,3 +30,15 @@ jobs:
       - run: make e2e
         env:
           TRL_MODEL: replay
+      - name: Build and start the Docker demo
+        run: docker compose up --build --wait
+      - name: Run the browser suite against Docker
+        run: make e2e
+        env:
+          TRL_E2E_BASE: http://127.0.0.1:8080
+      - name: Capture Docker logs on failure
+        if: failure()
+        run: docker compose logs --no-color
+      - name: Stop the Docker demo
+        if: always()
+        run: docker compose down --volumes

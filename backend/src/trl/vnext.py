@@ -7,7 +7,7 @@ from pydantic import Field
 from trl.domain import Disruption, Offer, Record, Rider, Second
 
 Workflow = Literal["legacy", "vnext"]
-OperatorMode = Literal["rules", "hybrid"]
+OperatorMode = Literal["rules", "lexicon", "hybrid"]
 RoutePolicy = Literal["earliest", "robust", "balanced"]
 Preference = Literal["fewer_transfers", "less_wait", "less_walking", "earlier_arrival"]
 Slot = Literal["target", "kind", "start", "end", "delay"]

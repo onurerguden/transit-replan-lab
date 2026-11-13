@@ -18,7 +18,7 @@ from trl.contracts import CreateRun, EventDraft, Network, Receipt, RouteLine, Ru
 from trl.disruptions import Overlay
 from trl.domain import Architecture, Disruption, Offer, Rider, Scenario, Vote
 from trl.gtfs import DATA_ROOT, Schedule
-from trl.intake import answer_facts, decide, extract, slot_facts
+from trl.intake import answer_facts, decide, extract, lexicon_proposal, slot_facts
 from trl.negotiation import Negotiator, StaleRun
 from trl.notice import rule_notice
 from trl.observability import observe, observe_async, tracer
@@ -142,6 +142,18 @@ class RunService:
                     logger.info("run_state", status=state.status, version=state.version)
 
     async def _execute(self, receipt: Receipt) -> None:
+        while True:
+            current = self.store.read(receipt.run_id)
+            if current.version != receipt.version or current.status != "planning":
+                return
+            with self.store.execution_guard(f"{receipt.run_id}:{receipt.version}") as acquired:
+                if acquired:
+                    await self._execute_owned(receipt)
+                    return
+            # The owner may be finishing an interrupt or may have died mid-node.
+            await asyncio.sleep(0.1)
+
+    async def _execute_owned(self, receipt: Receipt) -> None:
         current = self.store.read(receipt.run_id)
         if current.version != receipt.version or current.status != "planning":
             return
@@ -312,7 +324,8 @@ class RunService:
             )
         else:
             notice = run.notice or ""
-            facts, reasons = extract(notice, self.schedule, date)
+            proposal = lexicon_proposal(notice) if run.operator_mode == "lexicon" else None
+            facts, reasons = extract(notice, self.schedule, date, proposal)
             if run.operator_mode == "hybrid" and not slot_facts(facts, "kind") and not reasons:
                 proposal = await self.negotiator.ask(
                     run,

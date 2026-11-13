@@ -2,12 +2,13 @@ import asyncio
 import subprocess
 import sys
 from pathlib import Path
+from time import monotonic, sleep
 
 from fastapi.testclient import TestClient
 
 from trl.agents import ModelReply, ReplayModel, RoleView, Stage
 from trl.api.app import create_app
-from trl.contracts import CreateRun, Disrupt
+from trl.contracts import Clarify, CreateRun, Disrupt
 from trl.domain import Record
 from trl.gtfs import load_schedule
 from trl.orchestration import RunService
@@ -95,7 +96,7 @@ def test_crash_inside_reserved_model_call_can_resume(tmp_path: Path) -> None:
         "close",
         Disrupt(version=0, notice=load_scenario().notice),
     )
-    crashed = subprocess.run(
+    owner = subprocess.Popen(
         [
             sys.executable,
             "-c",
@@ -113,6 +114,9 @@ from trl.storage import RunStore
 
 class Crashing(ReplayModel):
     async def generate(self, *args, **kwargs):
+        Path(sys.argv[3]).touch()
+        while not Path(sys.argv[4]).exists():
+            await asyncio.sleep(0.01)
         os.kill(os.getpid(), signal.SIGKILL)
 
 schedule = load_schedule()
@@ -121,15 +125,63 @@ asyncio.run(service.execute(Receipt.model_validate_json(sys.argv[2])))
 """,
             str(path),
             receipt.model_dump_json(),
+            str(tmp_path / "reserved"),
+            str(tmp_path / "crash"),
         ],
-        check=False,
-        timeout=15,
-        capture_output=True,
     )
-    assert crashed.returncode == -9, crashed.stderr
-    assert store.calls(run.run_id, 1)[0].state == "pending"
-    with TestClient(create_app(path)) as client:
-        replay = client.get(f"/v1/runs/{run.run_id}/events")
-        assert '"kind":"verified"' in replay.text
+    try:
+        deadline = monotonic() + 10
+        while not (tmp_path / "reserved").exists():
+            assert owner.poll() is None and monotonic() < deadline
+            sleep(0.02)
+        with TestClient(create_app(path)) as client:
+            # Startup enqueues the planning revision in the second process.
+            # It may not reserve a second call while the original owner is alive.
+            sleep(0.25)
+            assert [call.state for call in store.calls(run.run_id, 1)] == ["pending"]
+            (tmp_path / "crash").touch()
+            assert owner.wait(timeout=5) == -9
+            while store.view(run.run_id).status == "planning":
+                assert monotonic() < deadline
+                sleep(0.02)
+            assert client.get(f"/v1/runs/{run.run_id}").json()["status"] == "verified"
+    finally:
+        if owner.poll() is None:
+            owner.kill()
+            owner.wait(timeout=5)
     assert store.view(run.run_id).status == "verified"
     assert [call.state for call in store.calls(run.run_id, 1)] == ["pending", "valid", "valid"]
+    assert sum(event.kind == "verified" for event in store.events(run.run_id, 0)) == 1
+
+
+def test_clarification_waits_for_checkpoint_owner(tmp_path: Path) -> None:
+    async def exercise() -> None:
+        path = tmp_path / "handoff.sqlite"
+        schedule = load_schedule()
+        store = RunStore(path)
+        service = RunService(store, schedule)
+        run = service.new_run(CreateRun(workflow="vnext"), "start")
+        work = store.command(
+            run.run_id, "notice", Disrupt(version=0, notice="Konak is closed from 08:24 to 10:00.")
+        )
+        await service.execute(work)
+        state = store.read(run.run_id)
+        assert state.evidence and state.evidence.intake and state.evidence.intake.question
+        question = state.evidence.intake.question
+        with store.execution_guard(f"{run.run_id}:{work.version}") as acquired:
+            assert acquired
+            reply = store.command(
+                run.run_id,
+                "answer",
+                Clarify(version=work.version, question_id=question.id, answer="Konak İskele tram"),
+            )
+            contender = asyncio.create_task(RunService(RunStore(path), schedule).execute(reply))
+            await asyncio.sleep(0.2)
+            assert not contender.done()
+            assert store.view(run.run_id).status == "planning"
+        await asyncio.wait_for(contender, timeout=10)
+        outcome = store.view(run.run_id)
+        assert outcome.status == "verified"
+        assert {vote.rider for vote in outcome.votes if vote.accepted} == {"a", "b"}
+
+    asyncio.run(exercise())

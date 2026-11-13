@@ -105,7 +105,10 @@ def test_shared_worlds_and_batched_verdicts_match_serial(tmp_path: Path) -> None
     assert batched[1][0].successful > batched[1][1].successful
 
 
-def test_question_prioritizes_the_field_that_changes_feasibility() -> None:
+@pytest.mark.parametrize("feasibility_changes", [True, False])
+def test_question_prioritizes_the_field_that_changes_feasibility(
+    feasibility_changes: bool,
+) -> None:
     from typing import Literal
 
     from trl.domain import Disruption, Offer
@@ -125,7 +128,11 @@ def test_question_prioritizes_the_field_that_changes_feasibility() -> None:
 
     def evaluate(incident: Disruption) -> tuple[Literal["feasible", "infeasible"], Offer | None]:
         assert incident.kind == "stop_closure"
-        return ("feasible", nominal) if incident.end == 31000 else ("infeasible", None)
+        if incident.end == 31000:
+            return "feasible", nominal
+        if feasibility_changes:
+            return "infeasible", None
+        return "feasible", nominal.model_copy(update={"meeting": nominal.meeting + 60})
 
     targeted = decide(facts, (), schedule, scenario.service_date, evaluate, 1)
     fixed = decide(facts, (), schedule, scenario.service_date, evaluate, 1, strategy="fixed")
@@ -164,14 +171,17 @@ def test_real_vnext_hybrid_grounds_a_report_and_recovers_a_meeting(tmp_path: Pat
     import asyncio
     import os
 
-    from trl.agents import OllamaModel
+    from trl.agents import MODEL, OllamaModel
     from trl.contracts import CreateRun, Disrupt
     from trl.orchestration import RunService
     from trl.storage import RunStore
 
     schedule = load_schedule()
     store = RunStore(tmp_path / "ollama.sqlite")
-    model = OllamaModel(os.environ.get("OLLAMA_BASE_URL", "http://127.0.0.1:11434"))
+    model = OllamaModel(
+        os.environ.get("OLLAMA_BASE_URL", "http://127.0.0.1:11434"),
+        model=os.environ.get("TRL_OLLAMA_MODEL", MODEL),
+    )
     service = RunService(store, schedule, model)
     run = service.new_run(
         CreateRun(workflow="vnext", operator_mode="hybrid", route_policy="robust"), "create"

@@ -56,6 +56,57 @@ def test_commands_and_event_resume(tmp_path: Path) -> None:
         ] == ids[2:]
 
 
+def test_vnext_clarification_rejects_utc_after_restart(tmp_path: Path) -> None:
+    path = tmp_path / "answer.sqlite"
+    with TestClient(create_app(path)) as client:
+        run = client.post(
+            "/v1/runs", json={"workflow": "vnext"}, headers={"Idempotency-Key": "start"}
+        )
+        run.raise_for_status()
+        run_id = run.json()["run_id"]
+        client.post(
+            f"/v1/runs/{run_id}/disruptions",
+            json={"version": 0, "notice": "Konak İskele tram stop closed until 10:00."},
+            headers={"Idempotency-Key": "notice"},
+        ).raise_for_status()
+        pending = wait(client, run_id)
+        assert pending.status == "clarification" and pending.evidence and pending.evidence.intake
+        question = pending.evidence.intake.question
+        assert question and question.slot == "start"
+    with TestClient(create_app(path)) as client:
+        client.post(
+            f"/v1/runs/{run_id}/clarifications",
+            json={"version": 1, "question_id": question.id, "answer": "08:24 UTC"},
+            headers={"Idempotency-Key": "answer"},
+        ).raise_for_status()
+        outcome = wait(client, run_id)
+        assert outcome.status == "abstained"
+        assert outcome.incident is None and not outcome.offers and not outcome.votes
+
+
+def test_lexicon_applies_a_grounded_paraphrase_without_a_model(tmp_path: Path) -> None:
+    with TestClient(create_app(tmp_path / "lexicon.sqlite")) as client:
+        response = client.post(
+            "/v1/runs",
+            json={"workflow": "vnext", "operator_mode": "lexicon"},
+            headers={"Idempotency-Key": "start"},
+        )
+        response.raise_for_status()
+        run_id = response.json()["run_id"]
+        client.post(
+            f"/v1/runs/{run_id}/disruptions",
+            json={
+                "version": 0,
+                "notice": "Konak İskele tram stop is out of service from 08:24 to 10:00.",
+            },
+            headers={"Idempotency-Key": "report"},
+        ).raise_for_status()
+        outcome = wait(client, run_id)
+        assert outcome.status == "verified" and outcome.incident == load_scenario().incident
+        assert outcome.metrics.backend == "none" and outcome.metrics.calls == 0
+        assert {vote.rider for vote in outcome.votes if vote.accepted} == {"a", "b"}
+
+
 def test_reopens_a_persisted_queued_run(tmp_path: Path) -> None:
     path = tmp_path / "runs.sqlite"
     scenario = load_scenario()

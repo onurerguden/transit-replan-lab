@@ -1,5 +1,6 @@
 """Transactional application state and public event log."""
 
+import fcntl
 import hashlib
 import sqlite3
 from collections.abc import Generator, Mapping
@@ -87,11 +88,12 @@ class Conflict(ValueError):
 
 class RunStore:
     def __init__(self, path: Path) -> None:
-        self.path = path
+        self.path = path.resolve()
         path.parent.mkdir(parents=True, exist_ok=True)
         with closing(self.connect()) as connection:
             connection.execute("PRAGMA journal_mode = WAL")
             connection.executescript(SCHEMA)
+        with self.write() as connection:
             if not any(
                 row["name"] == "request_sha256"
                 for row in connection.execute("PRAGMA table_info(model_calls)")
@@ -106,6 +108,27 @@ class RunStore:
         connection.execute("PRAGMA foreign_keys = ON")
         connection.execute("PRAGMA busy_timeout = 5000")
         return connection
+
+    @contextmanager
+    def execution_guard(self, run_id: str) -> Generator[bool]:
+        """One process owns a run's checkpoint execution; OS releases on crash.
+
+        Advisory locks require local storage (the supported macOS/Linux setup).
+        The file is intentionally retained: unlinking creates a lock-inode race.
+        """
+        directory = self.path.parent / f"{self.path.name}.workers"
+        directory.mkdir(exist_ok=True)
+        identifier = hashlib.sha256(run_id.encode()).hexdigest()
+        with (directory / identifier).open("a") as handle:
+            try:
+                fcntl.flock(handle, fcntl.LOCK_EX | fcntl.LOCK_NB)
+            except BlockingIOError:
+                yield False
+                return
+            try:
+                yield True
+            finally:
+                fcntl.flock(handle, fcntl.LOCK_UN)
 
     @contextmanager
     def write(self) -> Generator[sqlite3.Connection]:
@@ -408,7 +431,7 @@ class RunStore:
     ) -> bool:
         with self.write() as connection:
             run = self._read(connection, run_id)
-            if run.version != version:
+            if run.version != version or run.status != "planning":
                 return False
             inserted = connection.execute(
                 "INSERT INTO steps VALUES (?,?,?) ON CONFLICT DO NOTHING",
@@ -461,7 +484,8 @@ class RunStore:
         request_sha256: str = "",
     ) -> int | None:
         with self.write() as connection:
-            if self._read(connection, run_id).version != version:
+            run = self._read(connection, run_id)
+            if run.version != version or run.status != "planning":
                 return None
             spent = connection.execute(
                 "SELECT count(*) FROM model_calls WHERE run_id=? AND version=?",
@@ -489,7 +513,8 @@ class RunStore:
         duration_ms: int,
     ) -> bool:
         with self.write() as connection:
-            if self._read(connection, run_id).version != version:
+            run = self._read(connection, run_id)
+            if run.version != version or run.status != "planning":
                 return False
             return (
                 connection.execute(
