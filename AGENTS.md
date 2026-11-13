@@ -2,7 +2,7 @@
 
 ## Mission
 
-Build a local, timetable-backed simulator that coordinates two riders after a transit disruption in İzmir. v1 covers Metro M1 and Konak Tram, four coordination variants, independent route verification, local inference, an Operator adaptation experiment, and a reproducible release. Live transit, additional networks, and hosted demos are outside v1.
+Build a local, timetable-backed simulator that coordinates two riders after a transit disruption in İzmir. v1 covered Metro M1 and Konak Tram, four coordination variants, independent route verification, local inference, an Operator adaptation experiment, and a reproducible release. v2 extends the network to all five official İzmir GTFS feeds, keeps Metro M1 and Konak Tram as the `core` demo profile, and adds a model-free hosted demo. Live transit data, rider accounts, and travel advice remain out of scope. The [v2 plan](docs/v2/engineering-plan.md) and the [roadmap](docs/roadmap.md) track the work.
 
 ## System invariants
 
@@ -22,7 +22,9 @@ Keep unrelated private material, personal data, and credentials outside the repo
 - `backend/` contains the Python service and tests. `frontend/` contains the React application.
 - `data/` holds sources and scenarios. `experiments/` and `finetune/` hold evaluation and training tooling as those phases land.
 - `docs/` contains architecture, decisions, and the [phase checklist](docs/roadmap.md).
-- Run `make setup`, `make check`, `make test`, `make build`, and `make hooks` from the root. Run `make dev-api` and `make dev-web` in separate terminals. The roadmap tracks when `make e2e`, `make experiment`, and `make finetune` become available.
+- Run `make setup`, `make check`, `make test`, `make build`, and `make hooks` from the root. Run `make dev-api` and `make dev-web` in separate terminals.
+- `make test-ollama` runs real-model tests, `make test-deep` runs the nightly property and differential suites, `make api-drift` checks the OpenAPI schema and generated client, and `make e2e` runs the browser suite. The roadmap tracks the v2 benchmark, load and training targets.
+- `trl.settings` is the only place that reads environment variables.
 
 ## Change discipline
 
