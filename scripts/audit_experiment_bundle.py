@@ -66,7 +66,7 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("directory", type=Path)
     parser.add_argument(
-        "--split", choices=("dev", "calibration", "locked"), required=True
+        "--split", choices=("dev", "calibration", "locked", "holdout"), required=True
     )
     parser.add_argument("--benchmark", type=Path, default=ROOT)
     args = parser.parse_args()

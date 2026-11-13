@@ -40,6 +40,7 @@ ARMS: tuple[tuple[str, Architecture, bool], ...] = (
 PREFERENCES: tuple[tuple[Preference, Preference], ...] = (
     ("earlier_arrival", "less_wait"),
     ("fewer_transfers", "earlier_arrival"),
+    ("less_walking", "earlier_arrival"),
 )
 OUTPUT = Path(".local/vnext-mediation")
 
@@ -79,8 +80,11 @@ async def run(output: Path, expanded: bool) -> None:
     with (output / "raw.jsonl").open("x", encoding="utf-8") as raw:
         scenarios = [(a, b, baseline.destinations, PREFERENCES[0]) for a, b in ORIGINS]
         if expanded:
-            scenarios.append(
-                ("metro:3", "tram:8", ("tram:3", "tram:10"), PREFERENCES[1])
+            scenarios.extend(
+                (
+                    ("metro:3", "tram:8", ("tram:3", "tram:10"), PREFERENCES[1]),
+                    ("metro:1", "tram:8", ("tram:3", "metro:8"), PREFERENCES[2]),
+                )
             )
         for number, (a, b, destinations, preferences) in enumerate(scenarios, start=1):
             scenario = baseline.model_copy(
@@ -91,6 +95,14 @@ async def run(output: Path, expanded: bool) -> None:
                     "destinations": destinations,
                 }
             )
+            if preferences[0] == "less_walking":
+                scenario = scenario.model_copy(
+                    update={
+                        "meeting_end": 37800,
+                        "a": scenario.a.model_copy(update={"wait_limit": 1200}),
+                        "b": scenario.b.model_copy(update={"wait_limit": 1200}),
+                    }
+                )
             before = next(iter(find_offers(schedule, scenario, limit=1)), None)
             candidates = tuple(
                 find_offers(
@@ -101,9 +113,9 @@ async def run(output: Path, expanded: bool) -> None:
                 schedule, scenario, candidates, overlay, before, "earliest"
             )
             if len(offers) < 2:
-                continue
+                raise ValueError(f"{scenario.id} does not have two offers.")
             if not has_conflict(offers, *preferences):
-                continue
+                raise ValueError(f"{scenario.id} has no preference conflict.")
             pa, pb = preferences
             costs_a = sorted({preference_cost(offer, "a", pa) for offer in offers})
             costs_b = sorted({preference_cost(offer, "b", pb) for offer in offers})

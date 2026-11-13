@@ -531,6 +531,8 @@ async def run_fresh(
         "source": code_digest(),
         "evaluation": "exploratory"
         if exploratory or split == "locked"
+        else "synthetic_holdout"
+        if split == "holdout"
         else "development",
         "runtime": "Ollama constrained JSON; temperature=0; seed=42; num_ctx=4096; num_predict=260",
         "latency_scope": "seeded arm order; isolated route caches; warm local model; excludes API overhead",
@@ -583,7 +585,7 @@ async def run_fresh(
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
-        "--split", choices=("dev", "calibration", "locked"), required=True
+        "--split", choices=("dev", "calibration", "locked", "holdout"), required=True
     )
     parser.add_argument("--arms", nargs="+", choices=ARMS, default=ARMS[:-1])
     parser.add_argument("--output", type=Path, default=OUTPUT)
