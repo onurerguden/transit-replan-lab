@@ -8,7 +8,8 @@ The audit script also checks the older artifacts against their published hashes.
 ```sh
 uv run --locked --project backend python -m finetune.vnext_data
 uv run --locked --project backend python -m scripts.audit_training \
-  --corpus .local/vnext-training --export .local/vnext-export
+  --corpus .local/vnext-training --export .local/vnext-export \
+  --config .local/vnext-adapter/adapter_config.json
 ```
 
 ## Apple silicon setup

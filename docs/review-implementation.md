@@ -78,7 +78,8 @@ zero unsupported applications and zero nominal verifier violations. These
 failures point to the deterministic evidence gate, which the existing
 adapter cannot expand.
 
-The training audit matched four published artifact hashes and found 20 exact
+The [training artifact audit](../experiments/results/review-2026-11-13/training-artifacts-audit.json)
+matched four published hashes, validated the MLX adapter configuration and found 20 exact
 overlaps in the original validation data. The
 [revised corpus audit](../experiments/results/review-2026-11-13/training-data-audit.json)
 found zero exact or grounded event overlaps and six balanced family/language
@@ -105,8 +106,8 @@ as possible confounders.
 ## Verification and recovery
 
 - Fresh dependency installation and production build passed. The local CI
-  commands passed with 73 deterministic backend tests, the frontend unit
-  test, and about 97% coverage across the four configured backend modules.
+  commands passed with 74 deterministic backend tests, two frontend unit
+  tests, and about 97% coverage across the four configured backend modules.
 - Eleven browser scenarios passed against the host stack. Twelve passed against
   the production Docker stack, including the lexicon operator flow. The Docker
   suite is also wired into the GitHub workflow.

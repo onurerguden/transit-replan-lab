@@ -47,5 +47,8 @@ uv run --locked --project backend python -m scripts.export_blind_review \
 ```
 
 Consider training when the base and lexicon share a reproducible error slice
-on new development data. Define the target improvement on that slice before
-training, and evaluate the resulting model on the independent holdout.
+on new development data and model behavior can change that outcome through
+the production evidence gate. For the frozen synthetic diagnostic, all five
+shared failures came from vocabulary and clock binding. Address that gate
+on development data before training. Evaluate a later model on a fresh
+independent holdout.

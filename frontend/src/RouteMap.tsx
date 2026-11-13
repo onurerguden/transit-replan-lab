@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
-import type { Feature, FeatureCollection, Geometry, Position } from 'geojson'
+import type { FeatureCollection, Geometry, Position } from 'geojson'
 import type { GeoJSONSource, Map as LibreMap, Marker } from 'maplibre-gl'
 import type { Incident, Itinerary, Network, Offer, Stop } from './api'
 import 'maplibre-gl/dist/maplibre-gl.css'
@@ -16,7 +16,7 @@ interface MapProps {
 
 type MapData = FeatureCollection<Geometry, { kind: string; rider?: string }>
 
-function features(network: Network, offer: Offer | null | undefined): MapData {
+export function routeFeatures(network: Network, offer: Offer | null | undefined): MapData {
   const stops = new Map(network.stops.map(stop => [stop.id, stop]))
   const coordinates = (ids: readonly string[]): Position[] => ids.flatMap(id => {
     const stop = stops.get(id)
@@ -43,20 +43,24 @@ function features(network: Network, offer: Offer | null | undefined): MapData {
           const from = line.stops.indexOf(leg.origin)
           const to = line.stops.indexOf(leg.destination)
           if (line.mode !== mode || from === -1 || to === -1) return []
+          // Anchor direction to the full line so overlapping subsections use
+          // the same coordinate order even when riders travel in reverse.
           const section = line.stops.slice(Math.min(from, to), Math.max(from, to) + 1)
-          return [from < to ? section : section.reverse()]
+          return [line.stops[0]! < line.stops[line.stops.length - 1]!
+            ? section : section.reverse()]
         })
         sections.sort((left, right) => left.length - right.length)
         ids = sections[0] ?? ids
+        if (!sections.length && leg.origin > leg.destination) ids.reverse()
+      } else if (leg.origin > leg.destination) {
+        ids.reverse()
       }
-      // MapLibre measures the offset relative to coordinate order. Give both
-      // riders the same orientation along a shared section, regardless of travel.
-      if (ids[0]! > ids[ids.length - 1]!) ids = [...ids].reverse()
-      const segment: Feature<Geometry, { kind: string; rider: string }> = {
-        type: 'Feature', geometry: { type: 'LineString', coordinates: coordinates(ids) },
+      const points = coordinates(ids)
+      if (points.length < 2) continue
+      paths.push({
+        type: 'Feature', geometry: { type: 'LineString', coordinates: points },
         properties: { kind: leg.kind, rider },
-      }
-      paths.push(segment)
+      })
     }
   }
   if (offer) {
@@ -103,7 +107,7 @@ export function RouteMap(props: MapProps) {
   const mapRef = useRef<LibreMap | undefined>(undefined)
   const [markers, setMarkers] = useState<typeof Marker>()
   const [failure, setFailure] = useState(false)
-  const data = useMemo(() => features(network, offer), [network, offer])
+  const data = useMemo(() => routeFeatures(network, offer), [network, offer])
 
   useEffect(() => {
     let disposed = false
@@ -139,7 +143,7 @@ export function RouteMap(props: MapProps) {
       map.addControl(new NavigationControl({ showCompass: false }), 'bottom-right')
       map.once('load', () => {
         if (disposed) return
-        map.addSource('timetable', { type: 'geojson', data: features(network, undefined) })
+        map.addSource('timetable', { type: 'geojson', data: routeFeatures(network, undefined) })
         map.addLayer({ id: 'network', source: 'timetable', type: 'line',
           filter: ['in', ['get', 'kind'], ['literal', ['metro', 'tram']]],
           layout: { 'line-cap': 'round', 'line-join': 'round' },
