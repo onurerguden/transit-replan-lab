@@ -58,6 +58,11 @@ def check() -> int:
 
 
 def require_frozen(split: str) -> None:
+    if (
+        split == "paraphrase"
+        and not Path("docs/v2/preregistration-paraphrase.md").exists()
+    ):
+        raise SystemExit("Register the paraphrase arms before reading them.")
     if split == "test":
         plan = Path("docs/v2/preregistration.md")
         tracked = subprocess.run(
@@ -172,7 +177,7 @@ def main() -> None:
     global RESULTS
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("command", choices=("build", "audit", "run", "report"))
-    parser.add_argument("--split", choices=SPLITS, default="dev")
+    parser.add_argument("--split", choices=(*SPLITS, "paraphrase"), default="dev")
     parser.add_argument("--arms", nargs="*", default=list(runner.ARMS))
     parser.add_argument(
         "--only-ids-from", type=Path, default=None, help="score only ids in this JSONL"

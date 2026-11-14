@@ -34,11 +34,16 @@ def main() -> None:
     parser.add_argument("--model", type=Path, required=True)
     parser.add_argument("--adapter", type=Path, default=None)
     parser.add_argument(
-        "--split", choices=("dev", "calibration", "test"), required=True
+        "--split", choices=("dev", "calibration", "test", "paraphrase"), required=True
     )
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--limit", type=int, default=None)
     args = parser.parse_args()
+    if (
+        args.split == "paraphrase"
+        and not Path("docs/v2/preregistration-paraphrase.md").exists()
+    ):
+        raise SystemExit("Register the paraphrase arms before reading them.")
     if args.split == "test" and not Path("docs/v2/preregistration-models.md").exists():
         raise SystemExit("Register the model arms before reading the test split.")
     prompt = PROMPT.read_text()
