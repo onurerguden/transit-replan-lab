@@ -1,0 +1,21 @@
+train: true
+fine_tune_type: lora
+data: .local/finetune-v31
+adapter_path: .local/finetune-v31/adapter-c2-s42
+seed: 42
+batch_size: 1
+num_layers: 16
+iters: 1200
+learning_rate: 0.00005
+max_seq_length: 512
+steps_per_eval: 200
+steps_per_report: 25
+save_every: 400
+val_batches: 25
+mask_prompt: true
+grad_checkpoint: true
+lora_parameters:
+  rank: 16
+  scale: 16.0
+  dropout: 0.0
+  keys: [self_attn.q_proj, self_attn.v_proj]

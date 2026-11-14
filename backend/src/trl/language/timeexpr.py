@@ -29,7 +29,7 @@ ISO_DATETIME = re.compile(
     r"(\d{4})-(\d{2})-(\d{2})(?:[t ](\d{2}):(\d{2})(?::\d{2})?(?:\.\d+)?"
     r"(?:\s*z|\s*[+-]\d{2}:?\d{2})?)?"
 )
-NUMERIC_DATE = re.compile(r"(?<![\d:.])(\d{1,2})[./](\d{1,2})[./](\d{4})(?![\d:])")
+NUMERIC_DATE = re.compile(r"(?<![\d:.])(\d{1,2})[./](\d{1,2})[./](\d{4})(?!\d|:\d)")
 NAMED_DAY_FIRST = re.compile(rf"\b(\d{{1,2}})\s*(?:'|’)?\s*(?:inci|nci|uncu)?\s*({MONTH})\b")
 NAMED_MONTH_FIRST = re.compile(rf"\b({MONTH})\s+(\d{{1,2}})(?:st|nd|rd|th)?\b")
 RELATIVE = re.compile(

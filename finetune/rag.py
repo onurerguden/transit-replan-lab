@@ -98,6 +98,7 @@ class Index:
 
 
 def build(path: Path = Path("data/bench/v3/train.jsonl")) -> Index:
+    """An index over a train bank file. Pass the v3.1 train file for the v3.1 benchmark."""
     stops, _, _ = catalogue.load()
     return Index(read(path), list(stops.values()))
 
