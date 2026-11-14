@@ -72,7 +72,7 @@ test('withdraws the old verified plan while a new revision is pending', async ({
   })
   try {
     await page.getByRole('button', { name: 'Apply disruption' }).click()
-    await expect(page.getByText('Revision 2')).toBeVisible()
+    await expect(page.locator('.run-bar')).toContainText('Revision 2')
     await expect(page.getByRole('status')).toHaveText('Replanning')
     await expect(page.getByRole('region', { name: 'New plan' })).not.toContainText('Verified')
     await expect(page.getByRole('region', { name: 'Joint offers' })).toHaveCount(0)
@@ -152,7 +152,7 @@ test('clarifies an ambiguous notice and keeps evidence bound to the selected off
   await expect(rider).toContainText('Accepted')
   await expect(rider).toContainText('Walk')
   await expect(rider).toContainText('Fahrettin Altay')
-  await expect(page.getByText('Konak İskele closed · 08:24–10:00')).toBeVisible()
+  await expect(page.getByText('Konak İskele closed · 08:24–10:00').first()).toBeVisible()
   if (process.env.TRL_EVIDENCE_CAPTURE) {
     await page.screenshot({ path: process.env.TRL_EVIDENCE_CAPTURE, fullPage: true })
   }
@@ -281,4 +281,51 @@ test('uses the lexicon operator for an indirect report', async ({ page }) => {
   await expect(page.getByText(/model calls/)).toHaveCount(0)
   await expect(page.getByRole('region', { name: 'Decision summary' }))
     .toContainText('Konak İskele closed · 08:24–10:00')
+})
+
+test('retracts an incident and reopens the same run from its link', async ({ page }) => {
+  await page.goto('/?workflow=legacy')
+  await expect(page.getByRole('status')).toHaveText('Ready')
+  await page.getByRole('button', { name: 'Apply disruption' }).click()
+  await expect(page.getByRole('status')).toHaveText('Verified', { timeout: 20_000 })
+
+  const incidents = page.getByRole('region', { name: 'Active disruptions' })
+  await expect(incidents.getByRole('listitem')).toHaveCount(1)
+  await expect(page).toHaveURL(/run=[0-9a-f]{32}/)
+
+  // The run survives a reload because its link names it.
+  const link = page.url()
+  await page.reload()
+  await expect(page.getByRole('status')).toHaveText('Verified')
+  expect(page.url()).toBe(link)
+  await expect(page.locator('.run-bar')).toContainText('Revision 1')
+
+  await incidents.getByRole('button', { name: /Retract/ }).click()
+  await expect(page.getByRole('status')).toHaveText('Ready', { timeout: 20_000 })
+  await expect(incidents).toContainText('No disruption is active.')
+  await expect(page.locator('.run-bar')).toContainText('Revision 2')
+})
+
+test('switches the interface to Turkish and remembers the choice', async ({ page }) => {
+  await page.goto('/?workflow=legacy')
+  await expect(page.getByRole('status')).toHaveText('Ready')
+  await page.getByRole('button', { name: 'Türkçe' }).click()
+  await expect(page.getByRole('status')).toHaveText('Hazır')
+  await page.reload()
+  await expect(page.getByRole('status')).toHaveText('Hazır')
+  await expect(page.locator('html')).toHaveAttribute('lang', 'tr')
+})
+
+test('has no serious accessibility violations in light or dark themes', async ({ page }) => {
+  const { default: AxeBuilder } = await import('@axe-core/playwright')
+  await page.goto('/?workflow=legacy')
+  await expect(page.getByRole('status')).toHaveText('Ready')
+  await page.getByRole('button', { name: 'Apply disruption' }).click()
+  await expect(page.getByRole('status')).toHaveText('Verified', { timeout: 20_000 })
+  for (const dark of [false, true]) {
+    if (dark) await page.getByRole('button', { name: 'Switch theme' }).click()
+    const result = await new AxeBuilder({ page }).disableRules(['color-contrast']).analyze()
+    const serious = result.violations.filter(item => item.impact === 'serious' || item.impact === 'critical')
+    expect(serious.map(item => `${item.id}: ${item.nodes[0]?.html}`)).toEqual([])
+  }
 })

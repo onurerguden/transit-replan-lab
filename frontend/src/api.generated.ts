@@ -4,6 +4,23 @@
  */
 
 export interface paths {
+    "/v1/route": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Route Endpoint */
+        post: operations["route_endpoint_v1_route_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/healthz": {
         parameters: {
             query?: never;
@@ -13,6 +30,26 @@ export interface paths {
         };
         /** Health */
         get: operations["health_healthz_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/readyz": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Ready
+         * @description Ready when the database answers at the current schema and the timetable is loaded.
+         */
+        get: operations["ready_readyz_get"];
         put?: never;
         post?: never;
         delete?: never;
@@ -100,6 +137,40 @@ export interface paths {
         put?: never;
         /** Clarification */
         post: operations["clarification_v1_runs__run_id__clarifications_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/runs/{run_id}/retractions": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Retraction */
+        post: operations["retraction_v1_runs__run_id__retractions_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/runs/{run_id}/retries": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Retry */
+        post: operations["retry_v1_runs__run_id__retries_post"];
         delete?: never;
         options?: never;
         head?: never;
@@ -196,6 +267,12 @@ export interface components {
             version: number;
             /** Notice */
             notice: string;
+            /**
+             * Mode
+             * @default add
+             * @enum {string}
+             */
+            mode: "add" | "replace";
         };
         /** Fact */
         Fact: {
@@ -239,6 +316,13 @@ export interface components {
              */
             status: "feasible" | "infeasible" | "search_incomplete";
             preview?: components["schemas"]["Offer"] | null;
+        };
+        /** IncidentView */
+        IncidentView: {
+            /** Id */
+            id: string;
+            /** Disruption */
+            disruption: components["schemas"]["StopClosure"] | components["schemas"]["TripCancellation"] | components["schemas"]["TripDelay"];
         };
         /** Intake */
         Intake: {
@@ -373,6 +457,18 @@ export interface components {
             /** Version */
             version: number;
         };
+        /** Retract */
+        Retract: {
+            /** Version */
+            version: number;
+            /** Incident Ids */
+            incident_ids: string[];
+        };
+        /** Retry */
+        Retry: {
+            /** Version */
+            version: number;
+        };
         /** Ride */
         Ride: {
             /**
@@ -400,6 +496,42 @@ export interface components {
             /** Alight Index */
             alight_index: number;
         };
+        /** RouteAnswer */
+        RouteAnswer: {
+            /**
+             * Network
+             * @enum {string}
+             */
+            network: "core" | "full";
+            /**
+             * Mode
+             * @default fast
+             * @enum {string}
+             */
+            mode: "fast" | "exact";
+            /**
+             * Status
+             * @enum {string}
+             */
+            status: "feasible" | "infeasible" | "search_incomplete";
+            /**
+             * Offers
+             * @default []
+             */
+            offers: components["schemas"]["Offer"][];
+            /**
+             * Kept Trips
+             * @default 0
+             */
+            kept_trips: number;
+            /**
+             * Work
+             * @default 0
+             */
+            work: number;
+            /** Detail */
+            detail?: string | null;
+        };
         /** RouteLine */
         RouteLine: {
             /** Id */
@@ -411,6 +543,46 @@ export interface components {
             mode: "metro" | "tram";
             /** Stops */
             stops: string[];
+        };
+        /**
+         * RouteQuery
+         * @description A stateless meeting query on the compiled network.
+         */
+        RouteQuery: {
+            /** A Stop */
+            a_stop: string;
+            /** B Stop */
+            b_stop: string;
+            /** Destination */
+            destination: string;
+            /** A Ready */
+            a_ready: number;
+            /** B Ready */
+            b_ready: number;
+            /**
+             * Wait Limit
+             * @default 600
+             */
+            wait_limit: number;
+            /** Meeting Start */
+            meeting_start?: number | null;
+            /** Meeting End */
+            meeting_end?: number | null;
+            /**
+             * Limit
+             * @default 3
+             */
+            limit: number;
+            /**
+             * Exact
+             * @default false
+             */
+            exact: boolean;
+            /**
+             * Alternatives
+             * @default 1
+             */
+            alternatives: number;
         };
         /** RunEvidence */
         RunEvidence: {
@@ -425,6 +597,11 @@ export interface components {
              */
             operator_mode: "rules" | "lexicon" | "hybrid";
             intake?: components["schemas"]["Intake"] | null;
+            /**
+             * Rounds
+             * @default 0
+             */
+            rounds: number;
             /**
              * Offers
              * @default []
@@ -445,7 +622,7 @@ export interface components {
              * Status
              * @enum {string}
              */
-            status: "ready" | "planning" | "clarification" | "abstained" | "verified" | "no_agreement" | "infeasible" | "search_incomplete" | "model_error" | "verification_failed";
+            status: "ready" | "planning" | "clarification" | "abstained" | "verified" | "no_agreement" | "infeasible" | "search_incomplete" | "model_error" | "system_error" | "verification_failed";
             /**
              * Architecture
              * @enum {string}
@@ -478,6 +655,16 @@ export interface components {
             error: string | null;
             metrics: components["schemas"]["Metrics"];
             evidence?: components["schemas"]["RunEvidence"] | null;
+            /**
+             * Incidents
+             * @default []
+             */
+            incidents: components["schemas"]["IncidentView"][];
+            /**
+             * Retryable
+             * @default false
+             */
+            retryable: boolean;
         };
         /** Span */
         Span: {
@@ -602,6 +789,39 @@ export interface components {
 }
 export type $defs = Record<string, never>;
 export interface operations {
+    route_endpoint_v1_route_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["RouteQuery"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["RouteAnswer"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
     health_healthz_get: {
         parameters: {
             query?: never;
@@ -618,6 +838,26 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["Health"];
+                };
+            };
+        };
+    };
+    ready_readyz_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
                 };
             };
         };
@@ -759,6 +999,80 @@ export interface operations {
         requestBody: {
             content: {
                 "application/json": components["schemas"]["Clarify"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            202: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Receipt"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    retraction_v1_runs__run_id__retractions_post: {
+        parameters: {
+            query?: never;
+            header: {
+                "Idempotency-Key": string;
+            };
+            path: {
+                run_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["Retract"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            202: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Receipt"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    retry_v1_runs__run_id__retries_post: {
+        parameters: {
+            query?: never;
+            header: {
+                "Idempotency-Key": string;
+            };
+            path: {
+                run_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["Retry"];
             };
         };
         responses: {

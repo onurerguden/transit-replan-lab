@@ -12,3 +12,15 @@ Attribution for reuse is **İzmir Metropolitan Municipality · Public Transporta
 The demo service date is 2026-10-21 in Europe/Istanbul. Both feeds schedule weekday service that day. The archived feeds do not provide shapes or stop-level wheelchair fields. Map geometry uses stop sequences and straight segments. The two documented interchanges use an assumed eight-minute walk in each direction, with unknown accessibility.
 
 Run `uv run --locked --project backend python scripts/fetch_gtfs.py` to verify the pinned archives or recover missing copies from upstream if those exact bytes remain available.
+
+## Full-network archives (v2)
+
+Checked 2026-11-13 against the [official dataset](https://acikveri.bizizmir.com/en/dataset/toplu-ulasim-gtfs-verileri). License: CC BY 4.0 per the portal license page. Health report: `health.json` (`trl feeds --write`).
+
+| Feed | Archive | SHA-256 | Status for 2026-10-21 |
+| --- | --- | --- | --- |
+| ESHOT bus | `bus.zip` | `c3d9fa3818d375ee69b18a6ad4cfc84f1de34cfa141de6a2ce6537c102f679d0` | Calendar ends 2026-10-09. The weekly pattern is projected onto the service day (assumption). |
+| İZBAN | `izban.zip` | `cb2424f4a61b7bfbee78d3ff764a1b6d8e752cc787b04cc724b1ce2b0b3682aa` | Calendar ends 2025-01-01 and the data is from 2023. The weekly pattern is projected (assumption). |
+| İzdeniz ferry | none | none | The official URL returns an HTML page, not an archive. Skipped. |
+
+Generated footpaths are assumptions: 1.2 m/s, detour 1.3, 60 s buffer, links up to 600 s. The two documented Metro–Tram interchanges keep 480 s.

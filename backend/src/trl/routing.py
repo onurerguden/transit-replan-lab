@@ -3,10 +3,11 @@
 from bisect import bisect_left
 from collections import defaultdict
 from collections.abc import Callable, Iterator
-from dataclasses import dataclass, replace
+from dataclasses import dataclass, field, replace
 from datetime import date, timedelta
 from heapq import heappop, heappush, nsmallest
 from itertools import count
+from time import perf_counter
 
 from trl.disruptions import Overlay
 from trl.domain import Constraint, Itinerary, Leg, Offer, Ride, Scenario, Transfer, Trip, Walk
@@ -21,10 +22,36 @@ class SearchIncomplete(RuntimeError):
     """A bounded search exhausted its resource budget."""
 
 
+DEFAULT_WORK = 2_000_000
+
+
+@dataclass
+class Budget:
+    """A deterministic work counter with an optional wall-clock deadline.
+
+    `work` counts every candidate label and every examined pair, so it does not depend on the
+    machine. The deadline is a safety net and is checked every 1,024 units.
+    """
+
+    max_work: int = DEFAULT_WORK
+    deadline_s: float | None = None
+    work: int = 0
+    started: float = field(default_factory=perf_counter)
+
+    def charge(self, units: int = 1) -> None:
+        self.work += units
+        if self.work > self.max_work:
+            raise SearchIncomplete("Work budget exhausted.")
+        if self.deadline_s is not None and self.work % 1024 < units:
+            if perf_counter() - self.started > self.deadline_s:
+                raise SearchIncomplete("Search deadline exceeded.")
+
+
 @dataclass
 class SearchStats:
     labels: int = 0
     pairs: int = 0
+    work: int = 0
 
 
 @dataclass(frozen=True)
@@ -63,7 +90,8 @@ class ArrivalWindow:
         if arrival == self.first.arrival:
             return self.first
         walk = self.first.legs[-1]
-        assert walk.kind == "walk"
+        if walk.kind != "walk":
+            raise ValueError("A shifted meeting arrival requires a final walk.")
         leg = walk.model_copy(
             update={"departure": walk.departure + arrival - walk.arrival, "arrival": arrival}
         )
@@ -106,6 +134,8 @@ def alternatives(
     *,
     margin_aware: bool = False,
     stats: SearchStats | None = None,
+    budget: Budget | None = None,
+    dominate: int = 0,
 ) -> list[ArrivalWindow]:
     earliest = constraint.ready
     latest = min(deadline, earliest + constraint.travel_limit)
@@ -136,8 +166,38 @@ def alternatives(
         if len(final) > MAX_LABELS:
             raise SearchIncomplete("Arrival window budget exhausted.")
 
+    seen: dict[str, list[tuple[int, int, int, bool, str]]] = defaultdict(list)
+    targets = set(destinations)
+
+    def covered(label: Label) -> bool:
+        """Whether earlier, no costlier labels at this stop make this one redundant.
+
+        Waiting at an open stop is free, so anything reachable from the later label is reachable
+        from an earlier one. A label is dropped only after `dominate` earlier labels that end on
+        different trips already cover it, which keeps a few alternative chains per stop.
+        Destinations keep every arrival because a meeting needs a rider to arrive late enough
+        to wait for the other.
+        """
+        if label.stop in targets:
+            return False
+        last = next((leg.trip for leg in reversed(label.legs) if leg.kind == "ride"), "")
+        mine = (label.arrival, label.rides, label.walking, label.walked)
+        better = {
+            old[4]
+            for old in seen[label.stop]
+            if old[0] <= mine[0] and old[1] <= mine[1] and old[2] <= mine[2] and old[3] <= mine[3]
+        }
+        if len(better) >= dominate:
+            return True
+        seen[label.stop].append((*mine, last))
+        return False
+
     def add(label: Label) -> None:
         nonlocal accepted
+        if budget is not None:
+            budget.charge()
+        if dominate and covered(label):
+            return
         key = (label.stop, label.arrival, label.walked)
         costs = frontier[key]
         candidate = cost(label)
@@ -168,11 +228,13 @@ def alternatives(
                 or not accessible(schedule, constraint, walk.destination)
             ):
                 continue
+            # The rider waits at the origin until the walk starts, so it must stay open.
+            leave_by = overlay.last_open_second(current.stop, current.arrival, latest)
             windows = overlay.walk_windows(
                 walk.origin,
                 walk.destination,
                 current.arrival,
-                latest - walk.duration,
+                min(latest - walk.duration, leave_by),
                 walk.duration,
             )
             for index_in_walk, (departure, end) in enumerate(windows):
@@ -199,6 +261,9 @@ def alternatives(
         first = bisect_left(departures, current.arrival, key=lambda item: item.departure)
         for connection in departures[first:]:
             if connection.departure > latest:
+                break
+            if overlay.closed(current.stop, current.arrival, connection.departure):
+                # Every later departure also requires waiting through this closure.
                 break
             if constraint.accessible_only and connection.trip.accessible is not True:
                 continue
@@ -274,8 +339,11 @@ def find_offers(
     initial: Offer | None = None,
     margin_aware: bool = False,
     stats: SearchStats | None = None,
+    budget: Budget | None = None,
+    fast: int = 0,
 ) -> list[Offer]:
     overlay = overlay or Overlay.compile(())
+    budget = budget or Budget()
     index = connections(
         schedule,
         scenario.service_date,
@@ -298,6 +366,8 @@ def find_offers(
         overlay,
         margin_aware=margin_aware,
         stats=stats,
+        budget=budget,
+        dominate=0 if overlay.closures else fast,
     )
     b = alternatives(
         schedule,
@@ -308,6 +378,8 @@ def find_offers(
         overlay,
         margin_aware=margin_aware,
         stats=stats,
+        budget=budget,
+        dominate=0 if overlay.closures else fast,
     )
     b_by_stop: dict[str, list[ArrivalWindow]] = defaultdict(list)
     for window in sorted(b, key=lambda item: item.first.arrival):
@@ -333,6 +405,7 @@ def find_offers(
                 if right.first.arrival > deadline:
                     break
                 examined += 1
+                budget.charge()
                 if stats is not None:
                     stats.pairs += 1
                 if examined > MAX_PAIRS:
@@ -349,6 +422,8 @@ def find_offers(
         selected = diverse_pairs(pairs(), rank, initial, scenario)
     else:
         selected = nsmallest(limit, pairs(), key=rank)
+    if stats is not None:
+        stats.work = budget.work
     return [
         Offer(
             id=f"v{version}-{number}",

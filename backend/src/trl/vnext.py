@@ -28,6 +28,8 @@ class Fact(Record):
 
 class ExtractionQuote(Record):
     slot: Slot
+    # The event kind the quote states. The server checks it against the text.
+    kind: Literal["stop_closure", "trip_cancellation", "trip_delay"] | None = None
     quote: Annotated[str, Field(min_length=1, max_length=200)]
 
 
@@ -92,6 +94,7 @@ class RunEvidence(Record):
     scenario_profile: str
     operator_mode: OperatorMode = "rules"
     intake: Intake | None = None
+    rounds: int = 0
     offers: tuple[OfferEvidence, ...] = ()
     notice_text: str | None = None
     answer_text: str | None = None

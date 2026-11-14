@@ -1,0 +1,101 @@
+{
+  "service_date": "2026-10-21",
+  "feeds": [
+    {
+      "id": "metro",
+      "mode": "metro",
+      "status": "ok",
+      "detail": "The calendar covers the service day.",
+      "sha256": "c1a86738dac8de3749aff96f0ce92f432be6a4e9ce67769c2854a530f92ce5fd",
+      "bytes": 116277,
+      "routes": 2,
+      "stops": 24,
+      "trips": 844,
+      "stop_times": 19416,
+      "services": 3,
+      "calendar_start": "2026-07-09",
+      "calendar_end": "2027-07-09",
+      "quarantined_trips": 0,
+      "quarantine_samples": [],
+      "assumptions": []
+    },
+    {
+      "id": "tram",
+      "mode": "tram",
+      "status": "ok",
+      "detail": "The calendar covers the service day.",
+      "sha256": "9af3877eb5d567ebe54a634f2f7188e66c8192fcbea96a89ca0496bf11a214fe",
+      "bytes": 158951,
+      "routes": 5,
+      "stops": 53,
+      "trips": 2021,
+      "stop_times": 26003,
+      "services": 3,
+      "calendar_start": "2026-07-16",
+      "calendar_end": "2027-07-16",
+      "quarantined_trips": 0,
+      "quarantine_samples": [],
+      "assumptions": []
+    },
+    {
+      "id": "bus",
+      "mode": "bus",
+      "status": "projected_calendar",
+      "detail": "The published calendar does not cover the service day.",
+      "sha256": "c3d9fa3818d375ee69b18a6ad4cfc84f1de34cfa141de6a2ce6537c102f679d0",
+      "bytes": 18410657,
+      "routes": 421,
+      "stops": 11739,
+      "trips": 61343,
+      "stop_times": 2108736,
+      "services": 3,
+      "calendar_start": "2026-08-05",
+      "calendar_end": "2026-10-09",
+      "quarantined_trips": 0,
+      "quarantine_samples": [],
+      "assumptions": [
+        "The weekly pattern is repeated on 2026-10-21. The operator published 2026-08-05 to 2026-10-09. This is an assumption, not a timetable."
+      ]
+    },
+    {
+      "id": "izban",
+      "mode": "rail",
+      "status": "projected_calendar",
+      "detail": "The published calendar does not cover the service day.",
+      "sha256": "cb2424f4a61b7bfbee78d3ff764a1b6d8e752cc787b04cc724b1ce2b0b3682aa",
+      "bytes": 40841,
+      "routes": 8,
+      "stops": 41,
+      "trips": 239,
+      "stop_times": 6564,
+      "services": 2,
+      "calendar_start": "2022-01-01",
+      "calendar_end": "2025-01-01",
+      "quarantined_trips": 1,
+      "quarantine_samples": [
+        "1793"
+      ],
+      "assumptions": [
+        "The weekly pattern is repeated on 2026-10-21. The operator published 2022-01-01 to 2025-01-01. This is an assumption, not a timetable."
+      ]
+    },
+    {
+      "id": "ferry",
+      "mode": "ferry",
+      "status": "unavailable",
+      "detail": "No archive is pinned. The official URL did not return a GTFS archive when checked.",
+      "sha256": null,
+      "bytes": null,
+      "routes": 0,
+      "stops": 0,
+      "trips": 0,
+      "stop_times": 0,
+      "services": 0,
+      "calendar_start": null,
+      "calendar_end": null,
+      "quarantined_trips": 0,
+      "quarantine_samples": [],
+      "assumptions": []
+    }
+  ]
+}

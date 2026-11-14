@@ -2,49 +2,155 @@ name: CI
 
 on:
   push:
+    branches: [main]
   pull_request:
+  schedule:
+    - cron: '17 3 * * *'
+  workflow_dispatch:
 
 permissions:
   contents: read
 
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+env:
+  UV_VERSION: '0.11.7'
+
 jobs:
-  check:
-    runs-on: ubuntu-24.04
-    timeout-minutes: 15
+  backend:
+    name: Backend (${{ matrix.os }})
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-24.04, macos-15]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 20
     steps:
-      - uses: actions/checkout@v7
-      - uses: actions/setup-node@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2 # v10.3.3
         with:
-          node-version-file: .node-version
-      - uses: astral-sh/setup-uv@v10.3.3
-        with:
-          version: '0.11.7'
-          enable-cache: false
-      - run: npm install --global corepack@0.36.0
-      - run: make setup
-      - run: make check
+          version: ${{ env.UV_VERSION }}
+          enable-cache: true
+          cache-dependency-glob: backend/uv.lock
+      - run: uv sync --locked --project backend
+      - name: Lint and format
+        run: |
+          uv run --locked --project backend ruff check backend scripts experiments finetune
+          uv run --locked --project backend ruff format --check backend scripts experiments finetune
+      - name: Type check
+        run: uv run --locked --project backend pyright --project backend/pyproject.toml
+      - name: Test with branch coverage
+        run: |
+          uv run --locked --project backend pytest backend/tests -m "not ollama and not deep" \
+            --cov --cov-config=backend/pyproject.toml --cov-report=term \
+            --cov-fail-under="$(sed -n 's/^COVERAGE_FLOOR ?= //p' Makefile)"
+      - name: Import contracts
+        working-directory: backend
+        run: uv run --locked lint-imports
+      - name: Public boundary
+        run: uv run --locked --project backend python scripts/check_public_boundary.py
+      - name: Audit the benchmark splits against the freeze manifest
+        run: uv run --locked --project backend python -m experiments.bench_v3 audit
       - name: Verify frozen corpus and published holdout evidence
+        if: runner.os == 'Linux'
         run: |
           uv run --locked --project backend python -m experiments.review_holdout --output "$RUNNER_TEMP/holdout"
           cmp data/scenarios/review-v2/manifest.json "$RUNNER_TEMP/holdout/manifest.json"
           uv run --locked --project backend python -m scripts.audit_experiment_bundle \
             experiments/results/review-2026-11-13 --split holdout --benchmark data/scenarios/review-v2
+
+  frontend:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version-file: .node-version
+      - uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2 # v10.3.3
+        with:
+          version: ${{ env.UV_VERSION }}
+          enable-cache: true
+          cache-dependency-glob: backend/uv.lock
+      - run: npm install --global corepack@0.36.0
+      - id: pnpm
+        working-directory: frontend
+        run: echo "store=$(corepack pnpm store path --silent)" >> "$GITHUB_OUTPUT"
+      - uses: actions/cache@caa296126883cff596d87d8935842f9db880ef25 # v5
+        with:
+          path: ${{ steps.pnpm.outputs.store }}
+          key: pnpm-${{ runner.os }}-${{ hashFiles('frontend/pnpm-lock.yaml') }}
+      - run: make setup
+      - name: Lint, type check and unit tests
+        working-directory: frontend
+        run: |
+          corepack pnpm run lint
+          corepack pnpm run typecheck
+          corepack pnpm run test
+      - name: OpenAPI schema and client types match the backend
+        run: make api-drift
       - run: make build
+
+  e2e:
+    needs: [backend, frontend]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version-file: .node-version
+      - uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2 # v10.3.3
+        with:
+          version: ${{ env.UV_VERSION }}
+          enable-cache: true
+          cache-dependency-glob: backend/uv.lock
+      - run: npm install --global corepack@0.36.0
+      - run: make setup
+      - uses: actions/cache@caa296126883cff596d87d8935842f9db880ef25 # v5
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ runner.os }}-${{ hashFiles('frontend/pnpm-lock.yaml') }}
       - name: Install Chromium for the simulation tests
         working-directory: frontend
         run: corepack pnpm exec playwright install --with-deps chromium
-      - run: make e2e
+      - name: Browser suite against the local stack
+        run: make e2e
         env:
           TRL_MODEL: replay
       - name: Build and start the Docker demo
         run: docker compose up --build --wait
-      - name: Run the browser suite against Docker
+      - name: Browser suite against Docker
         run: make e2e
         env:
           TRL_E2E_BASE: http://127.0.0.1:8080
       - name: Capture Docker logs on failure
         if: failure()
         run: docker compose logs --no-color
+      - name: Upload browser traces on failure
+        if: failure()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: playwright-results
+          path: frontend/test-results
+          retention-days: 7
       - name: Stop the Docker demo
         if: always()
         run: docker compose down --volumes
+
+  deep:
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2 # v10.3.3
+        with:
+          version: ${{ env.UV_VERSION }}
+          enable-cache: true
+          cache-dependency-glob: backend/uv.lock
+      - run: uv sync --locked --project backend
+      - name: Long property, differential and state-machine suites
+        run: make test-deep

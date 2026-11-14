@@ -77,3 +77,22 @@ The [implementation record](review-implementation.md) covers durability,
 operator comparisons, the refreshed interface and local package acceptance.
 The [evaluation protocol](review-evaluation-protocol.md) records the remaining
 independent holdout work.
+
+## v2
+
+The [v2 engineering plan](v2/engineering-plan.md) extends the scope to the full İzmir network.
+The [baseline](v2/baseline.md) lists the reproduced defects, and the
+[implementation log](v2/implementation-log.md) records progress.
+
+- [x] F0 · Record the baseline and strict expected failures, centralize settings and versions, widen lint and coverage, split and pin CI.
+- [x] F1 · Specify closure occupancy, give the verifier its own reference timetable and semantics, and record exhausted initial searches.
+- [x] F2 · Add numbered migrations, a transition table, incident sets, leases with fencing, pruned checkpoints, notifier SSE and multi-round clarification.
+- [x] F3 · Pin all five feeds with health checks, generate footpaths, build the gazetteer and add network profiles.
+- [x] F4 · Freeze the sealed TRL-Bench v3 notice layer before any language change.
+- [x] F5 · Replace the time grammar and evidence gate, with round-trip and gate-soundness property suites.
+- [x] F6 · Ship the compact timetable, the bounded and fast searches, differential tests, budgets and load measurements.
+- [x] F7 · Sample scenarios, require two-router label agreement, and build the resumable evaluation harness and preregistration.
+- [x] F8 · Train Operator LoRA v2 and run the single final evaluation.
+- [x] F9 · Deliver addressable runs, the incident and clarification interface, bilingual UI and accessibility tests.
+- [x] F10 · Add metrics, tracing, readiness, security headers, rate limiting and supply-chain scanning.
+- [x] F11 · Publish documentation and prepare the signed release workflow.

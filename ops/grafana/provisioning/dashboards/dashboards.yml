@@ -1,0 +1,6 @@
+apiVersion: 1
+providers:
+  - name: Transit Replan Lab
+    type: file
+    options:
+      path: /var/lib/grafana/dashboards

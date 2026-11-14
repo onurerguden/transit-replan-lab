@@ -19,7 +19,7 @@ export default defineConfig({
   },
   webServer: external ? undefined : [
     {
-      command: `uv run --locked --project ../backend uvicorn trl.api.app:app --port ${apiPort}`,
+      command: `uv run --locked --project ../backend uvicorn --factory trl.api.app:create_app --port ${apiPort}`,
       url: `http://127.0.0.1:${apiPort}/healthz`,
       env: { TRL_DB: `../.local/e2e/run-${process.pid}.sqlite` },
     },

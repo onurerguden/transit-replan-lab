@@ -3,26 +3,41 @@
 import csv
 import hashlib
 import io
-import os
 from dataclasses import dataclass
 from datetime import date, datetime
 from pathlib import Path
+from typing import Literal
 from zipfile import ZipFile
 
 from pydantic import TypeAdapter
 
 from trl.domain import Record, Stop, StopTime, Transfer, Trip
+from trl.settings import get_settings
 
-DATA_ROOT = Path(os.environ.get("TRL_DATA", str(Path(__file__).resolve().parents[3] / "data")))
+DATA_ROOT: Path = get_settings().data
+
+
+Mode = Literal["metro", "tram", "rail", "bus", "ferry"]
+CalendarPolicy = Literal["strict", "project_weekdays"]
+Profile = Literal["core", "full"]
 
 
 class Feed(Record):
+    """One official archive. `routes` selects routes for the core profile."""
+
     id: str
     url: str
-    sha256: str
-    routes: tuple[str, ...]
-    start: date
-    end: date
+    # An archive that is unavailable upstream has no checksum or calendar bounds.
+    sha256: str | None = None
+    routes: tuple[str, ...] = ()
+    start: date | None = None
+    end: date | None = None
+    mode: Mode = "rail"
+    optional: bool = False
+    # `project_weekdays` repeats the weekly pattern outside the published calendar. It is an
+    # assumption, recorded in the feed health report and shown with the plan.
+    calendar_policy: CalendarPolicy = "strict"
+    profiles: tuple[Profile, ...] = ("core", "full")
 
 
 @dataclass(frozen=True)
@@ -54,9 +69,9 @@ def feed_specs(root: Path) -> list[Feed]:
     return TypeAdapter(list[Feed]).validate_json((root / "feeds.json").read_bytes())
 
 
-def checked_archive(path: Path, sha256: str) -> bytes:
+def checked_archive(path: Path, sha256: str | None) -> bytes:
     data = path.read_bytes()
-    if hashlib.sha256(data).hexdigest() != sha256:
+    if sha256 is None or hashlib.sha256(data).hexdigest() != sha256:
         raise ValueError(f"SHA-256 mismatch: {path.name}")
     return data
 
@@ -169,9 +184,11 @@ def read_feed(data: bytes, feed: Feed) -> Schedule:
 
 
 def load_schedule(root: Path = DATA_ROOT / "gtfs") -> Schedule:
+    # The routing core loads the pinned core profile. The full network is compiled separately.
     feeds = [
         read_feed(checked_archive(root / f"{feed.id}.zip", feed.sha256), feed)
         for feed in feed_specs(root)
+        if "core" in feed.profiles
     ]
     transfers = TypeAdapter(tuple[Transfer, ...]).validate_json(
         (root / "transfers.json").read_bytes()

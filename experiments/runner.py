@@ -172,7 +172,11 @@ async def run_cases(split: str, output: Path, replay: bool, limit: int | None) -
         execution="replay" if replay else "ollama",
         model_digest=info.digest,
         operator_digest=operator_digest,
-        gtfs={item.id: item.sha256 for item in feed_specs(DATA_ROOT / "gtfs")},
+        gtfs={
+            item.id: item.sha256
+            for item in feed_specs(DATA_ROOT / "gtfs")
+            if "core" in item.profiles and item.sha256
+        },
     )
     if any(not condition.accepts(row, split) for row in data):
         raise SystemExit("Existing rows belong to a different experimental condition.")

@@ -1,6 +1,6 @@
 """Trace execution and model metadata without emitting notice or prompt text."""
 
-import os
+import logging
 from collections.abc import Awaitable, Callable
 from functools import wraps
 
@@ -11,11 +11,14 @@ from opentelemetry.sdk.resources import Resource
 from opentelemetry.sdk.trace import TracerProvider
 from opentelemetry.sdk.trace.export import BatchSpanProcessor
 
+from trl.settings import get_settings
+
 _provider: TracerProvider | None = None
 
 
 def configure_observability() -> None:
     global _provider
+    logging.basicConfig(format="%(message)s", level=logging.INFO, force=True)
     structlog.configure(
         processors=[
             structlog.contextvars.merge_contextvars,
@@ -26,21 +29,22 @@ def configure_observability() -> None:
         ],
         logger_factory=structlog.PrintLoggerFactory(),
     )
-    endpoint = os.environ.get("OTEL_EXPORTER_OTLP_ENDPOINT")
+    endpoint = get_settings().otel_endpoint
     if endpoint and _provider is None:
-        provider = TracerProvider(
-            resource=Resource.create(
-                {
-                    "service.name": "transit-replan-lab",
-                }
-            )
-        )
+        provider = TracerProvider(resource=Resource.create({"service.name": "transit-replan-lab"}))
         provider.add_span_processor(
-            BatchSpanProcessor(
-                OTLPSpanExporter(endpoint=endpoint.rstrip("/") + "/v1/traces"),
-            )
+            BatchSpanProcessor(OTLPSpanExporter(endpoint=endpoint.rstrip("/") + "/v1/traces"))
         )
+        trace.set_tracer_provider(provider)
         _provider = provider
+
+
+def shutdown_observability() -> None:
+    """Flush buffered spans before the process exits."""
+    global _provider
+    if _provider is not None:
+        _provider.shutdown()
+        _provider = None
 
 
 def tracer() -> trace.Tracer:

@@ -18,7 +18,7 @@ from trl.storage import RunStore
 from trl.verify import verify_offer
 
 
-@pytest.mark.parametrize("answer", ["08:24 UTC", "08:24 GMT+3", "08:24 on 2030-01-01"])
+@pytest.mark.parametrize("answer", ["08:24 UTC", "08:24 GMT+1", "08:24 on 2030-01-01"])
 def test_clarification_rejects_unsupported_time_context(answer: str) -> None:
     schedule, day = load_schedule(), load_scenario().service_date
     facts, reasons = extract("Konak İskele tram stop closed until 10:00.", schedule, day)

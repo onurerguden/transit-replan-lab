@@ -4,14 +4,21 @@ import type { Architecture, Network, Receipt, Run, RunEvent, RunSetup, ScenarioI
 
 const finalEvents = new Set(['verified', 'verification_failed', 'infeasible', 'error', 'clarification', 'no_agreement', 'abstained'])
 
+export function runLink(runId: string, search = window.location.search) {
+  const params = new URLSearchParams(search)
+  params.set('run', runId)
+  return `${window.location.pathname}?${params.toString()}`
+}
+
 type PendingCommand = {
   id: string
-  kind: 'disruptions' | 'clarifications'
+  kind: 'disruptions' | 'clarifications' | 'retractions' | 'retries'
   version: number
   text: string
   key: string
   questionId?: string
   optionId?: string
+  ids?: string[]
 }
 
 type Retry = 'command' | 'snapshot'
@@ -36,6 +43,7 @@ export function useRun() {
   const pending = useRef<PendingCommand | undefined>(undefined)
   const reload = useRef<(() => Promise<void>) | undefined>(undefined)
   const createKey = useRef<{ body: string; key: string } | undefined>(undefined)
+  const opener = useRef<((runId: string) => Promise<void>) | undefined>(undefined)
 
   const start = useCallback(async (scenario: ScenarioId, architecture: Architecture, configuration: RunSetup = {}) => {
     if (inFlight.current) return
@@ -67,6 +75,7 @@ export function useRun() {
         setSettings(body)
         setNetwork(map)
         setRun(snapshot)
+        window.history.replaceState(null, '', runLink(snapshot.id))
       }
     } catch (cause) {
       if (generation === epoch.current) setError(describe(cause))
@@ -80,7 +89,15 @@ export function useRun() {
 
   useEffect(() => {
     const setup = window.setTimeout(() => {
-      const legacy = new URLSearchParams(window.location.search).get('workflow') === 'legacy'
+      const params = new URLSearchParams(window.location.search)
+      const legacy = params.get('workflow') === 'legacy'
+      const existing = params.get('run')
+      if (existing) {
+        void (opener.current?.(existing) ?? Promise.reject(new Error('unavailable'))).catch(() => {
+          void start(legacy ? 'demo' : 'resilience', 'rules', { workflow: legacy ? 'legacy' : 'vnext', route_policy: 'earliest', operator_mode: null, preference_a: null, preference_b: null })
+        })
+        return
+      }
       void start(legacy ? 'demo' : 'resilience', 'rules', { workflow: legacy ? 'legacy' : 'vnext', route_policy: 'earliest', operator_mode: null, preference_a: null, preference_b: null })
     }, 0)
     return () => {
@@ -136,6 +153,21 @@ export function useRun() {
     }
   }
 
+  async function open(runId: string) {
+    const generation = ++epoch.current
+    const [map, snapshot] = await Promise.all([get<Network>('/v1/network'), get<Run>(`/v1/runs/${runId}`)])
+    if (generation !== epoch.current) return
+    cursor.current = 0
+    setNetwork(map)
+    setRun(snapshot)
+    setSettings({ scenario: snapshot.scenario as ScenarioId, architecture: snapshot.architecture })
+    if (snapshot.status === 'planning') watch({ run_id: snapshot.id, version: snapshot.version }, generation)
+  }
+
+  useEffect(() => {
+    opener.current = open
+  })
+
   async function submit(action: PendingCommand) {
     if (inFlight.current) return
     const generation = epoch.current
@@ -147,6 +179,8 @@ export function useRun() {
     setError('')
     try {
       const body = kind === 'disruptions' ? { version, notice: text }
+        : kind === 'retractions' ? { version, incident_ids: action.ids ?? [] }
+        : kind === 'retries' ? { version }
         : { version, question_id: questionId, ...(optionId ? { option_id: optionId } : { answer: text }) }
       const receipt = await command<Receipt>(`/v1/runs/${id}/${kind}`, body, key)
       if (generation !== epoch.current) return
@@ -163,7 +197,15 @@ export function useRun() {
         evidence: current.evidence ? { ...current.evidence, intake: null, offers: [] } : undefined,
         error: null,
       } : current)
-      watch(receipt, generation)
+      if (kind === 'retractions') {
+        // A retraction of the last incident settles at once, so read it instead of waiting.
+        const snapshot = await get<Run>(`/v1/runs/${id}`)
+        if (generation !== epoch.current) return
+        setRun(snapshot)
+        if (snapshot.status === 'planning') watch(receipt, generation)
+      } else {
+        watch(receipt, generation)
+      }
     } catch (cause) {
       if (generation !== epoch.current) return
       if (cause instanceof HttpError && cause.status >= 400 && cause.status < 500) {
@@ -181,10 +223,10 @@ export function useRun() {
     }
   }
 
-  async function send(kind: PendingCommand['kind'], text: string, optionId?: string) {
+  async function send(kind: PendingCommand['kind'], text: string, optionId?: string, ids?: string[]) {
     if (!run || pending.current || run.status === 'planning') return
     await submit({
-      id: run.id, kind, version: run.version, text, key: crypto.randomUUID(),
+      id: run.id, kind, version: run.version, text, key: crypto.randomUUID(), ids,
       questionId: kind === 'clarifications' ? run.evidence?.intake?.question?.id : undefined,
       optionId,
     })

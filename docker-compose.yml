@@ -8,17 +8,25 @@ services:
       TRL_OLLAMA_MODEL: ${TRL_OLLAMA_MODEL:-qwen3.5:4b-q4_K_M}
       OLLAMA_BASE_URL: ${OLLAMA_BASE_URL:-http://host.docker.internal:11434}
       OTEL_EXPORTER_OTLP_ENDPOINT: ${OTEL_EXPORTER_OTLP_ENDPOINT:-}
+      TRL_RATE_LIMIT: ${TRL_RATE_LIMIT:-600}
     extra_hosts:
       - "host.docker.internal:host-gateway"
+    restart: unless-stopped
     volumes:
       - run-state:/var/lib/trl
     healthcheck:
-      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/healthz', timeout=2).close()"]
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/readyz', timeout=2).close()"]
       interval: 4s
       timeout: 3s
       retries: 12
   web:
     build: ./frontend
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "-q", "-O", "/dev/null", "http://127.0.0.1:8080/healthz"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
     depends_on:
       api:
         condition: service_healthy
@@ -30,6 +38,27 @@ services:
     ports:
       - "127.0.0.1:16686:16686"
       - "127.0.0.1:4318:4318"
+
+  prometheus:
+    image: prom/prometheus:v3.5.0
+    profiles: [obs]
+    volumes:
+      - ./ops/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+    ports:
+      - "127.0.0.1:9090:9090"
+  grafana:
+    image: grafana/grafana:12.2.0
+    profiles: [obs]
+    environment:
+      GF_AUTH_ANONYMOUS_ENABLED: "true"
+      GF_AUTH_ANONYMOUS_ORG_ROLE: Viewer
+    volumes:
+      - ./ops/grafana/provisioning:/etc/grafana/provisioning:ro
+      - ./ops/grafana/dashboards:/var/lib/grafana/dashboards:ro
+    ports:
+      - "127.0.0.1:3000:3000"
+    depends_on:
+      - prometheus
 
 volumes:
   run-state:

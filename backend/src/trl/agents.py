@@ -3,7 +3,6 @@
 import asyncio
 import hashlib
 import json
-import os
 from dataclasses import dataclass
 from datetime import date
 from pathlib import Path
@@ -25,22 +24,35 @@ from trl.domain import (
 )
 from trl.gtfs import DATA_ROOT, Schedule, service_second
 from trl.notice import rule_notice
+from trl.settings import DEFAULT_MODEL, get_settings
 from trl.vnext import Extraction, preference_cost
 
 PROMPT_VERSION = "1"
 PROMPT_DIR = Path(__file__).with_name("prompts")
 RoleView = dict[str, JsonValue]
 Stage = Literal["operator_vnext", "operator", "analyst", "first", "mediator", "vote", "single"]
-MODEL = "qwen3.5:4b-q4_K_M"
+MODEL = DEFAULT_MODEL
+
+
+def prompt_hash(stage: Stage) -> str:
+    """Digest of the prompt text, so editing a prompt invalidates cached decisions."""
+    path = PROMPT_DIR / f"{stage}.md"
+    return hashlib.sha256(path.read_bytes()).hexdigest() if path.exists() else ""
+
+
+def replay_digest(stage: Stage, view: RoleView) -> str:
+    """Key of recorded fixtures. It predates prompt hashing and stays stable."""
+    revision = "2" if stage == "operator_vnext" or "vnext_preferences" in view else PROMPT_VERSION
+    return hashlib.sha256(
+        json.dumps([revision, stage, view], ensure_ascii=False, sort_keys=True).encode()
+    ).hexdigest()
 
 
 def view_digest(stage: Stage, view: RoleView) -> str:
     revision = "2" if stage == "operator_vnext" or "vnext_preferences" in view else PROMPT_VERSION
     return hashlib.sha256(
         json.dumps(
-            [revision, stage, view],
-            ensure_ascii=False,
-            sort_keys=True,
+            [revision, stage, view, prompt_hash(stage)], ensure_ascii=False, sort_keys=True
         ).encode()
     ).hexdigest()
 
@@ -186,7 +198,8 @@ class ReplayModel:
         schema: type[Record],
         repair: bool,
     ) -> ModelReply:
-        frame = self.frames.get("recorded", {}).get(view_digest(stage, view))
+        recorded = self.frames.get("recorded", {})
+        frame = recorded.get(view_digest(stage, view)) or recorded.get(replay_digest(stage, view))
         if frame is not None:
             return ModelReply(schema.model_validate(frame).model_dump_json(), 0, 0)
         if stage == "operator_vnext":
@@ -205,7 +218,8 @@ class ReplayModel:
             raise ModelError("The role received no offers.")
         index = 1 if stage == "first" and view.get("rider") == "b" and len(pool) > 1 else 0
         row = pool[index]
-        assert isinstance(row, dict)
+        if not isinstance(row, dict):
+            raise ModelError("The role received a malformed offer.")
         offer = str(view.get("proposed") or row["id"])
         if stage == "vote":
             output = Decision(offer=offer, action="accept", reason="valid")
@@ -371,13 +385,7 @@ def view_for(
 
 
 def configured_model(schedule: Schedule) -> ModelPort:
-    setting = os.environ.get("TRL_MODEL", "replay")
-    if setting == "ollama":
-        return OllamaModel(
-            os.environ.get("OLLAMA_BASE_URL", "http://127.0.0.1:11434"),
-            os.environ.get("TRL_OLLAMA_MODEL", MODEL),
-            os.environ.get("TRL_OPERATOR_MODEL"),
-        )
-    if setting != "replay":
-        raise ValueError("TRL_MODEL must be replay or ollama.")
+    settings = get_settings()
+    if settings.model == "ollama":
+        return OllamaModel(settings.ollama_base_url, settings.ollama_model, settings.operator_model)
     return ReplayModel(schedule)

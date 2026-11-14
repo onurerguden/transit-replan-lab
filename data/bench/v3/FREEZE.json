@@ -1,0 +1,16 @@
+{
+  "files": {
+    "calibration": "1f85f5f795809c81c17d2986e80966fad5b1f5c9fc16748ce4b08a46adb0950e",
+    "dev": "4f14211ef99c6b2a1255c8389fc6b2f5fdb0d5e2a9a8f70a026289509ff2df5a",
+    "test": "1d7a9cfe4b840fec09c392b5ec9895f9e3747cf184aaf0af4f0aaac7e05e1fd5",
+    "train": "0999c1ab7106eaf3b956ecf950198edaee67a8bb23519428442d2c44a1ef7ae5"
+  },
+  "generator": "755b0d4bc2459853673eba3db90164e4bc04771cb6efd9b7ce2b06a8975b8327",
+  "seed": 20261114,
+  "sizes": {
+    "calibration": 300,
+    "dev": 600,
+    "test": 1000,
+    "train": 3000
+  }
+}

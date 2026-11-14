@@ -19,6 +19,7 @@ Status = Literal[
     "infeasible",
     "search_incomplete",
     "model_error",
+    "system_error",
     "verification_failed",
 ]
 

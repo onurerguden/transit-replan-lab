@@ -3,16 +3,77 @@
     "id": "metro",
     "url": "https://www.izmirmetro.com.tr/gtfs/rail-metro-gtfs.zip",
     "sha256": "c1a86738dac8de3749aff96f0ce92f432be6a4e9ce67769c2854a530f92ce5fd",
-    "routes": ["1", "2"],
+    "routes": [
+      "1",
+      "2"
+    ],
     "start": "2026-07-09",
-    "end": "2027-07-09"
+    "end": "2027-07-09",
+    "mode": "metro",
+    "optional": false,
+    "calendar_policy": "strict",
+    "profiles": [
+      "core",
+      "full"
+    ]
   },
   {
     "id": "tram",
     "url": "https://www.tramizmir.com/gtfs/rail-tramizmir-gtfs.zip",
     "sha256": "9af3877eb5d567ebe54a634f2f7188e66c8192fcbea96a89ca0496bf11a214fe",
-    "routes": ["KONAK"],
+    "routes": [
+      "KONAK"
+    ],
     "start": "2026-07-16",
-    "end": "2027-07-16"
+    "end": "2027-07-16",
+    "mode": "tram",
+    "optional": false,
+    "calendar_policy": "strict",
+    "profiles": [
+      "core",
+      "full"
+    ]
+  },
+  {
+    "id": "bus",
+    "url": "https://www.eshot.gov.tr/gtfs/bus-eshot-gtfs.zip",
+    "sha256": "c3d9fa3818d375ee69b18a6ad4cfc84f1de34cfa141de6a2ce6537c102f679d0",
+    "routes": [],
+    "start": "2026-08-05",
+    "end": "2026-10-09",
+    "mode": "bus",
+    "optional": true,
+    "calendar_policy": "project_weekdays",
+    "profiles": [
+      "full"
+    ]
+  },
+  {
+    "id": "izban",
+    "url": "https://www.izban.com.tr/gtfs/rail-izban-gtfs.zip",
+    "sha256": "cb2424f4a61b7bfbee78d3ff764a1b6d8e752cc787b04cc724b1ce2b0b3682aa",
+    "routes": [],
+    "start": "2022-01-01",
+    "end": "2025-01-01",
+    "mode": "rail",
+    "optional": true,
+    "calendar_policy": "project_weekdays",
+    "profiles": [
+      "full"
+    ]
+  },
+  {
+    "id": "ferry",
+    "url": "https://www.izdeniz.com.tr/gtfs/ship-izdeniz-gtfs.zip",
+    "sha256": null,
+    "routes": [],
+    "start": null,
+    "end": null,
+    "mode": "ferry",
+    "optional": true,
+    "calendar_policy": "strict",
+    "profiles": [
+      "full"
+    ]
   }
 ]

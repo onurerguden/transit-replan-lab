@@ -1,0 +1,65 @@
+{
+  "host": "macOS-27.0.1-arm64-arm-64bit",
+  "python": "3.12.0",
+  "cold_start_s": 0.298,
+  "peak_rss_mb_after_load": 149.9,
+  "runs": [
+    {
+      "repeat": 0,
+      "workers": 1,
+      "wall_s": 24.15,
+      "queries": 40,
+      "feasible": 26,
+      "infeasible": 14,
+      "incomplete": 0,
+      "invalid_offers": 0,
+      "p50_s": 0.56,
+      "p95_s": 1.497,
+      "max_s": 1.631,
+      "throughput_qps": 1.66
+    },
+    {
+      "repeat": 0,
+      "workers": 4,
+      "wall_s": 7.71,
+      "queries": 40,
+      "feasible": 26,
+      "infeasible": 14,
+      "incomplete": 0,
+      "invalid_offers": 0,
+      "p50_s": 0.627,
+      "p95_s": 1.654,
+      "max_s": 1.752,
+      "throughput_qps": 5.19
+    },
+    {
+      "repeat": 1,
+      "workers": 1,
+      "wall_s": 24.21,
+      "queries": 40,
+      "feasible": 26,
+      "infeasible": 14,
+      "incomplete": 0,
+      "invalid_offers": 0,
+      "p50_s": 0.575,
+      "p95_s": 1.489,
+      "max_s": 1.624,
+      "throughput_qps": 1.65
+    },
+    {
+      "repeat": 1,
+      "workers": 4,
+      "wall_s": 7.64,
+      "queries": 40,
+      "feasible": 26,
+      "infeasible": 14,
+      "incomplete": 0,
+      "invalid_offers": 0,
+      "p50_s": 0.603,
+      "p95_s": 1.667,
+      "max_s": 1.748,
+      "throughput_qps": 5.24
+    }
+  ],
+  "peak_rss_mb_final": 471.3
+}

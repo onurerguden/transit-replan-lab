@@ -2,12 +2,14 @@ import time
 from pathlib import Path
 from typing import cast
 
+import pytest
 from fastapi.testclient import TestClient
 
 from trl.api.app import create_app
 from trl.contracts import CreateRun, Disrupt, RunView
 from trl.orchestration import RunService
 from trl.scenarios import load_scenario
+from trl.settings import get_settings
 from trl.storage import RunStore
 
 
@@ -146,10 +148,15 @@ def test_interrupt_resumes_after_application_restart(tmp_path: Path) -> None:
         assert wait(client, run_id).status == "verified"
 
 
-def test_process_death_recovers_last_durable_node(tmp_path: Path) -> None:
+def test_process_death_recovers_last_durable_node(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
     import subprocess
     import sys
 
+    # The killed worker's lease lapses after one second instead of twenty.
+    monkeypatch.setenv("TRL_LEASE_TTL", "1")
+    get_settings.cache_clear()
     path = tmp_path / "runs.sqlite"
     scenario = load_scenario()
     store = RunStore(path)

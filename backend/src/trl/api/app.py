@@ -1,44 +1,34 @@
 """Local simulation HTTP API and replayable event stream."""
 
 import asyncio
-import os
 from collections.abc import AsyncGenerator, AsyncIterator
-from contextlib import asynccontextmanager
+from contextlib import asynccontextmanager, closing
 from pathlib import Path
 from typing import Annotated, cast
 
-from fastapi import Depends, FastAPI, Header, Query, Request
-from fastapi.exceptions import RequestValidationError
+from fastapi import Depends, FastAPI, Header, Query, Request, Response
 from fastapi.responses import JSONResponse
 from fastapi.sse import EventSourceResponse, ServerSentEvent
 from pydantic import BaseModel
 
-from trl.contracts import Clarify, CreateRun, Disrupt, Network, Receipt, RunView
+from trl import __version__, metrics
+from trl.api import middleware
+from trl.api.problems import install as install_problems
+from trl.api.routing import router as route_router
+from trl.contracts import Clarify, CreateRun, Disrupt, Network, Receipt, Retract, Retry, RunView
 from trl.gtfs import load_schedule
-from trl.observability import configure_observability
+from trl.lifecycle import SETTLED
+from trl.migrations import LATEST, schema_version
+from trl.observability import configure_observability, shutdown_observability
 from trl.orchestration import RunService
-from trl.storage import Conflict, NotFound, RunStore
+from trl.settings import get_settings
+from trl.storage import RunStore
 
 IdempotencyKey = Annotated[str, Header(alias="Idempotency-Key", min_length=1, max_length=128)]
 
 
 class Health(BaseModel):
     status: str = "ok"
-
-
-class Problem(BaseModel):
-    type: str = "about:blank"
-    title: str
-    status: int
-    detail: str
-
-
-def problem(status: int, title: str, detail: str) -> JSONResponse:
-    return JSONResponse(
-        Problem(title=title, status=status, detail=detail).model_dump(),
-        status_code=status,
-        media_type="application/problem+json",
-    )
 
 
 def service(request: Request) -> RunService:
@@ -55,8 +45,34 @@ def current_run(run_id: str, runs: Service) -> RunView:
 CurrentRun = Annotated[RunView, Depends(current_run)]
 
 
+async def stream(
+    view: RunView, runs: RunService, cursor: int, follow: bool, first: bool
+) -> AsyncIterator[ServerSentEvent]:
+    """Replay committed events, then follow new ones until the revision settles."""
+    while True:
+        batch = await asyncio.to_thread(runs.store.events, view.id, cursor)
+        for event in batch:
+            cursor = event.seq
+            # Tell the browser how long to wait before it reconnects.
+            yield ServerSentEvent(id=str(event.seq), data=event, retry=3000 if first else None)
+            first = False
+        if batch:
+            continue
+        if not follow:
+            break
+        state = await asyncio.to_thread(runs.store.read, view.id)
+        if state.status in SETTLED or state.status == "ready":
+            # A terminal update and its event commit together, so one more read is final.
+            if not await asyncio.to_thread(runs.store.events, view.id, cursor):
+                break
+            continue
+        # Commits in this process wake the stream. Other processes are picked up by polling.
+        await runs.wait_for_change(2.0)
+
+
 def create_app(path: Path | None = None) -> FastAPI:
-    database = path or Path(os.environ.get("TRL_DB", ".local/state/transit.sqlite"))
+    """Build the application. Run it with `uvicorn --factory trl.api.app:create_app`."""
+    database = path or get_settings().database
 
     @asynccontextmanager
     async def lifespan(app: FastAPI) -> AsyncGenerator[None]:
@@ -64,34 +80,57 @@ def create_app(path: Path | None = None) -> FastAPI:
         runs = RunService(RunStore(database), load_schedule())
         await runs.configure_default_operator()
         app.state.service = runs
-        async with runs.workers():
-            yield
+        try:
+            async with runs.workers():
+                yield
+        finally:
+            shutdown_observability()
 
-    app = FastAPI(title="Transit Replan Lab", version="1.0.0", lifespan=lifespan)
+    app = FastAPI(title="Transit Replan Lab", version=__version__, lifespan=lifespan)
 
-    @app.exception_handler(NotFound)
-    async def missing(_request: Request, exc: NotFound) -> JSONResponse:
-        return problem(404, "Run not found", str(exc))
+    install_problems(app)
+    app.include_router(route_router)
+    middleware.install(app, get_settings().rate_limit)
+    if get_settings().otel_endpoint:
+        from opentelemetry.instrumentation.fastapi import FastAPIInstrumentor
 
-    @app.exception_handler(Conflict)
-    async def conflict(_request: Request, exc: Conflict) -> JSONResponse:
-        return problem(409, "Command conflict", str(exc))
-
-    @app.exception_handler(RequestValidationError)
-    async def invalid(_request: Request, _exc: RequestValidationError) -> JSONResponse:
-        return problem(422, "Invalid request", "Check the command, version, and required headers.")
+        FastAPIInstrumentor.instrument_app(app, excluded_urls="healthz,readyz,metrics")
 
     @app.get("/healthz")
     async def health() -> Health:
         return Health()
+
+    @app.get("/readyz")
+    async def ready(runs: Service) -> Response:
+        """Ready when the database answers at the current schema and the timetable is loaded."""
+
+        def check() -> dict[str, object]:
+            with closing(runs.store.connect()) as connection:
+                version = schema_version(connection)
+            return {"schema": version, "stops": len(runs.schedule.stops)}
+
+        try:
+            facts = await asyncio.to_thread(check)
+        except Exception:  # noqa: BLE001
+            return JSONResponse({"status": "unavailable"}, status_code=503)
+        ok = facts["schema"] == LATEST and bool(facts["stops"])
+        return JSONResponse(
+            {"status": "ok" if ok else "unavailable", **facts}, status_code=200 if ok else 503
+        )
+
+    @app.get("/metrics", include_in_schema=False)
+    async def scrape() -> Response:
+        return Response(metrics.render(), media_type="text/plain; version=0.0.4")
 
     @app.get("/v1/network")
     def network(runs: Service) -> Network:
         return runs.network()
 
     @app.post("/v1/runs", status_code=201)
-    def new_run(body: CreateRun, key: IdempotencyKey, runs: Service) -> Receipt:
-        return runs.new_run(body, key)
+    def new_run(body: CreateRun, key: IdempotencyKey, runs: Service, response: Response) -> Receipt:
+        receipt = runs.new_run(body, key)
+        response.headers["Location"] = f"/v1/runs/{receipt.run_id}"
+        return receipt
 
     @app.get("/v1/runs/{run_id}", response_model_exclude_unset=True)
     def run(view: CurrentRun) -> RunView:
@@ -119,6 +158,28 @@ def create_app(path: Path | None = None) -> FastAPI:
         runs.enqueue(receipt)
         return receipt
 
+    @app.post("/v1/runs/{run_id}/retractions", status_code=202)
+    async def retraction(
+        run_id: str,
+        body: Retract,
+        key: IdempotencyKey,
+        runs: Service,
+    ) -> Receipt:
+        receipt = await asyncio.to_thread(runs.store.command, run_id, key, body)
+        runs.enqueue(receipt)
+        return receipt
+
+    @app.post("/v1/runs/{run_id}/retries", status_code=202)
+    async def retry(
+        run_id: str,
+        body: Retry,
+        key: IdempotencyKey,
+        runs: Service,
+    ) -> Receipt:
+        receipt = await asyncio.to_thread(runs.store.command, run_id, key, body)
+        runs.enqueue(receipt)
+        return receipt
+
     @app.get("/v1/runs/{run_id}/events", response_class=EventSourceResponse)
     async def events(
         view: CurrentRun,
@@ -128,24 +189,12 @@ def create_app(path: Path | None = None) -> FastAPI:
         follow: bool = True,
     ) -> AsyncIterator[ServerSentEvent]:
         cursor = max(last, after)
-        while True:
-            batch = await asyncio.to_thread(runs.store.events, view.id, cursor)
-            if not batch and follow:
-                state = await asyncio.to_thread(runs.store.read, view.id)
-                if state.status != "planning":
-                    # A terminal update and its event commit together.
-                    batch = await asyncio.to_thread(runs.store.events, view.id, cursor)
-                    if not batch:
-                        break
-            for event in batch:
-                cursor = event.seq
-                yield ServerSentEvent(id=str(event.seq), data=event)
-            if not batch:
-                if not follow:
-                    break
-                await asyncio.sleep(0.15)
+        first = True
+        metrics.STREAMS.inc()
+        try:
+            async for item in stream(view, runs, cursor, follow, first):
+                yield item
+        finally:
+            metrics.STREAMS.dec()
 
     return app
-
-
-app = create_app()

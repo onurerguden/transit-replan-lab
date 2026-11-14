@@ -1,5 +1,6 @@
 """Commands and the public read model."""
 
+import hashlib
 from typing import Annotated, Literal
 
 from pydantic import Field, JsonValue, model_validator
@@ -22,6 +23,17 @@ class CreateRun(Record):
 class Disrupt(Record):
     version: Second
     notice: Annotated[str, Field(min_length=1, max_length=600)]
+    # `add` keeps earlier incidents active. `replace` retracts them before reading the report.
+    mode: Literal["add", "replace"] = "add"
+
+
+class Retract(Record):
+    version: Second
+    incident_ids: Annotated[tuple[str, ...], Field(min_length=1, max_length=8)]
+
+
+class Retry(Record):
+    version: Second
 
 
 class Clarify(Record):
@@ -64,6 +76,17 @@ class RunBody(Record):
     question: str | None = None
     verified_offer: str | None = None
     error: str | None = None
+    # Set by a retraction: the remaining incidents stand, so the worker skips report intake.
+    skip_intake: bool = False
+
+
+def incident_id(incident: Disruption) -> str:
+    return hashlib.sha256(incident.model_dump_json().encode()).hexdigest()[:12]
+
+
+class IncidentView(Record):
+    id: str
+    disruption: Disruption
 
 
 class ModelCall(Record):
@@ -108,6 +131,8 @@ class RunView(Record):
     error: str | None
     metrics: Metrics
     evidence: RunEvidence | None = None
+    incidents: tuple[IncidentView, ...] = ()
+    retryable: bool = False
 
 
 class EventDraft(Record):
@@ -132,3 +157,31 @@ class RouteLine(Record):
 class Network(Record):
     stops: tuple[Stop, ...]
     lines: tuple[RouteLine, ...]
+
+
+class RouteQuery(Record):
+    """A stateless meeting query on the compiled network."""
+
+    a_stop: str
+    b_stop: str
+    destination: str
+    a_ready: Second
+    b_ready: Second
+    wait_limit: Annotated[int, Field(ge=0, le=7200)] = 600
+    meeting_start: Second | None = None
+    meeting_end: Annotated[int, Field(gt=0, le=172800)] | None = None
+    limit: Annotated[int, Field(ge=1, le=6)] = 3
+    # Exact search keeps every alternative chain. The default dominates across arrival times.
+    exact: bool = False
+    # In fast mode, labels kept per stop that end on different trips before one is dropped.
+    alternatives: Annotated[int, Field(ge=1, le=6)] = 1
+
+
+class RouteAnswer(Record):
+    network: Literal["core", "full"]
+    mode: Literal["fast", "exact"] = "fast"
+    status: Literal["feasible", "infeasible", "search_incomplete"]
+    offers: tuple[Offer, ...] = ()
+    kept_trips: int = 0
+    work: int = 0
+    detail: str | None = None

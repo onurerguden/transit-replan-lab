@@ -306,11 +306,12 @@ def test_walking_windows_match_exhaustive_second_by_second_search(
         return [
             t + duration
             for t in range(ready, 31 - duration)
-            if open_between(origin, t, t + duration) and open_between("d", t, t + duration)
+            # The rider occupies the origin from readiness until the walk ends.
+            if open_between(origin, ready, t + duration) and open_between("d", t, t + duration)
         ]
 
     b_arrivals = walk_arrivals("b", start_b, 2) if walk_b else []
-    if open_between("d", start_b + 2, start_b + 2):
+    if open_between("b", start_b, start_b) and open_between("d", start_b + 2, start_b + 2):
         b_arrivals.append(start_b + 2)
     expected = min(
         (

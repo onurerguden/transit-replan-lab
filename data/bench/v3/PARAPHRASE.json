@@ -1,0 +1,9 @@
+{
+  "model": "llama3.2:3b",
+  "model_digest": "a80c4f17acd55265feec403c7aef86be0c25983ab279d83f3bcd3abbcb5b8b72",
+  "groups_requested": 300,
+  "reports_kept": 438,
+  "reports_dropped": 58,
+  "sha256": "34b1393e078cbf7dd0545b1fa22db412ed43a4bf0d6869ec54fcb6d7dc06acb0",
+  "raw_sha256": "b556a57684356b9d65c42ec60ccbe3f9d2857742cef6b5eb54b13a32dc4ace2d"
+}

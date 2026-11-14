@@ -1,0 +1,1257 @@
+{
+  "abstained": {
+    "events": [
+      {
+        "details": {},
+        "kind": "ready",
+        "message": "The initial timetable is ready.",
+        "recorded_at": "2026-11-13T18:04:31.418Z",
+        "role": "system",
+        "seq": 19,
+        "version": 0
+      },
+      {
+        "details": {},
+        "kind": "disruption_received",
+        "message": "A new disruption report is queued.",
+        "recorded_at": "2026-11-13T18:04:31.420Z",
+        "role": "operator",
+        "seq": 20,
+        "version": 1
+      },
+      {
+        "details": {},
+        "kind": "clarification",
+        "message": "When does the closure start?",
+        "recorded_at": "2026-11-13T18:04:31.429Z",
+        "role": "operator",
+        "seq": 21,
+        "version": 1
+      },
+      {
+        "details": {},
+        "kind": "clarification_received",
+        "message": "The operator received a clarification.",
+        "recorded_at": "2026-11-13T18:04:31.435Z",
+        "role": "operator",
+        "seq": 22,
+        "version": 1
+      },
+      {
+        "details": {},
+        "kind": "abstained",
+        "message": "The report did not support a single disruption.",
+        "recorded_at": "2026-11-13T18:04:31.448Z",
+        "role": "operator",
+        "seq": 23,
+        "version": 1
+      }
+    ],
+    "run_id": "83c45da2f0fb4ce8af4b2614a43d28d8",
+    "view": {
+      "architecture": "rules",
+      "destinations": [
+        "tram:3"
+      ],
+      "error": null,
+      "evidence": {
+        "answer_text": "08:24 UTC",
+        "intake": {
+          "action": "abstain",
+          "facts": [],
+          "impacts": [],
+          "question": null,
+          "reasons": [
+            "unresolved_after_answer"
+          ],
+          "selected": null
+        },
+        "notice_text": "Konak İskele tram stop closed until 10:00.",
+        "offers": [],
+        "operator_mode": "rules",
+        "scenario_profile": "synthetic-delay-v1",
+        "snapshot": "11686b1c28f8b1a9f146de261347967973b8c1e3544fd5d0b40a5d41f67d62fc"
+      },
+      "id": "83c45da2f0fb4ce8af4b2614a43d28d8",
+      "incident": null,
+      "initial": {
+        "a": {
+          "arrival": 32448,
+          "destination": "tram:3",
+          "legs": [
+            {
+              "alight_index": 10,
+              "arrival": 30690,
+              "board_index": 8,
+              "departure": 30420,
+              "destination": "metro:2",
+              "kind": "ride",
+              "origin": "metro:4",
+              "service_date": "2026-10-21",
+              "trip": "metro:WEEKDAY_0_0025"
+            },
+            {
+              "arrival": 31170,
+              "departure": 30690,
+              "destination": "tram:7",
+              "kind": "walk",
+              "origin": "metro:2"
+            },
+            {
+              "alight_index": 14,
+              "arrival": 32448,
+              "board_index": 9,
+              "departure": 31401,
+              "destination": "tram:3",
+              "kind": "ride",
+              "origin": "tram:7",
+              "service_date": "2026-10-21",
+              "trip": "tram:1_WEEKDAY_0017"
+            }
+          ],
+          "origin": "metro:4",
+          "start": 30240
+        },
+        "b": {
+          "arrival": 31998,
+          "destination": "tram:3",
+          "legs": [
+            {
+              "alight_index": 14,
+              "arrival": 31998,
+              "board_index": 8,
+              "departure": 30683,
+              "destination": "tram:3",
+              "kind": "ride",
+              "origin": "tram:8",
+              "service_date": "2026-10-21",
+              "trip": "tram:1_WEEKDAY_0016"
+            }
+          ],
+          "origin": "tram:8",
+          "start": 30540
+        },
+        "id": "v0-1",
+        "meeting": 32448,
+        "version": 0
+      },
+      "metrics": {
+        "backend": "none",
+        "calls": 0,
+        "input_tokens": 0,
+        "model_ms": 0,
+        "output_tokens": 0
+      },
+      "notice": "Konak İskele tramvay durağı 08:24 ile 10:00 arasında kapalı.",
+      "offers": [],
+      "origin_a": "metro:4",
+      "origin_b": "tram:8",
+      "question": null,
+      "scenario": "demo",
+      "service_date": "2026-10-21",
+      "status": "abstained",
+      "verified_offer": null,
+      "version": 1,
+      "votes": []
+    }
+  },
+  "clarification": {
+    "events": [
+      {
+        "details": {},
+        "kind": "ready",
+        "message": "The initial timetable is ready.",
+        "recorded_at": "2026-11-13T18:04:29.855Z",
+        "role": "system",
+        "seq": 8,
+        "version": 0
+      },
+      {
+        "details": {},
+        "kind": "disruption_received",
+        "message": "A new disruption report is queued.",
+        "recorded_at": "2026-11-13T18:04:29.858Z",
+        "role": "operator",
+        "seq": 9,
+        "version": 1
+      },
+      {
+        "details": {},
+        "kind": "clarification",
+        "message": "When does the closure start?",
+        "recorded_at": "2026-11-13T18:04:29.868Z",
+        "role": "operator",
+        "seq": 10,
+        "version": 1
+      }
+    ],
+    "run_id": "4645011382414aa986d1937afddcf7a0",
+    "view": {
+      "architecture": "rules",
+      "destinations": [
+        "tram:3"
+      ],
+      "error": null,
+      "evidence": {
+        "answer_text": null,
+        "intake": {
+          "action": "ask",
+          "facts": [
+            {
+              "slot": "kind",
+              "span": {
+                "end": 29,
+                "source": "notice",
+                "start": 23
+              },
+              "value": "stop_closure"
+            },
+            {
+              "slot": "target",
+              "span": {
+                "end": 12,
+                "source": "notice",
+                "start": 0
+              },
+              "value": "tram:7"
+            },
+            {
+              "slot": "end",
+              "span": {
+                "end": 41,
+                "source": "notice",
+                "start": 36
+              },
+              "value": 36000
+            }
+          ],
+          "impacts": [],
+          "question": {
+            "id": "q1-start",
+            "options": [],
+            "prompt": "When does the closure start?",
+            "slot": "start"
+          },
+          "reasons": [],
+          "selected": null
+        },
+        "notice_text": "Konak İskele tram stop closed until 10:00.",
+        "offers": [],
+        "operator_mode": "rules",
+        "scenario_profile": "synthetic-delay-v1",
+        "snapshot": "11686b1c28f8b1a9f146de261347967973b8c1e3544fd5d0b40a5d41f67d62fc"
+      },
+      "id": "4645011382414aa986d1937afddcf7a0",
+      "incident": null,
+      "initial": {
+        "a": {
+          "arrival": 32448,
+          "destination": "tram:3",
+          "legs": [
+            {
+              "alight_index": 10,
+              "arrival": 30690,
+              "board_index": 8,
+              "departure": 30420,
+              "destination": "metro:2",
+              "kind": "ride",
+              "origin": "metro:4",
+              "service_date": "2026-10-21",
+              "trip": "metro:WEEKDAY_0_0025"
+            },
+            {
+              "arrival": 31170,
+              "departure": 30690,
+              "destination": "tram:7",
+              "kind": "walk",
+              "origin": "metro:2"
+            },
+            {
+              "alight_index": 14,
+              "arrival": 32448,
+              "board_index": 9,
+              "departure": 31401,
+              "destination": "tram:3",
+              "kind": "ride",
+              "origin": "tram:7",
+              "service_date": "2026-10-21",
+              "trip": "tram:1_WEEKDAY_0017"
+            }
+          ],
+          "origin": "metro:4",
+          "start": 30240
+        },
+        "b": {
+          "arrival": 31998,
+          "destination": "tram:3",
+          "legs": [
+            {
+              "alight_index": 14,
+              "arrival": 31998,
+              "board_index": 8,
+              "departure": 30683,
+              "destination": "tram:3",
+              "kind": "ride",
+              "origin": "tram:8",
+              "service_date": "2026-10-21",
+              "trip": "tram:1_WEEKDAY_0016"
+            }
+          ],
+          "origin": "tram:8",
+          "start": 30540
+        },
+        "id": "v0-1",
+        "meeting": 32448,
+        "version": 0
+      },
+      "metrics": {
+        "backend": "none",
+        "calls": 0,
+        "input_tokens": 0,
+        "model_ms": 0,
+        "output_tokens": 0
+      },
+      "notice": "Konak İskele tramvay durağı 08:24 ile 10:00 arasında kapalı.",
+      "offers": [],
+      "origin_a": "metro:4",
+      "origin_b": "tram:8",
+      "question": "When does the closure start?",
+      "scenario": "demo",
+      "service_date": "2026-10-21",
+      "status": "clarification",
+      "verified_offer": null,
+      "version": 1,
+      "votes": []
+    }
+  },
+  "model_error": {
+    "events": [
+      {
+        "details": {},
+        "kind": "ready",
+        "message": "The initial timetable is ready.",
+        "recorded_at": "2026-11-13T18:04:30.669Z",
+        "role": "system",
+        "seq": 13,
+        "version": 0
+      },
+      {
+        "details": {},
+        "kind": "disruption_received",
+        "message": "A new disruption report is queued.",
+        "recorded_at": "2026-11-13T18:04:30.671Z",
+        "role": "operator",
+        "seq": 14,
+        "version": 1
+      },
+      {
+        "details": {},
+        "kind": "error",
+        "message": "The local model could not decide.",
+        "recorded_at": "2026-11-13T18:04:30.672Z",
+        "role": "system",
+        "seq": 15,
+        "version": 1
+      }
+    ],
+    "run_id": "6ffb336314cf4ce5b0a51ae53f1c0caa",
+    "view": {
+      "architecture": "rules",
+      "destinations": [
+        "tram:3"
+      ],
+      "error": "model_unavailable",
+      "evidence": null,
+      "id": "6ffb336314cf4ce5b0a51ae53f1c0caa",
+      "incident": null,
+      "initial": {
+        "a": {
+          "arrival": 32448,
+          "destination": "tram:3",
+          "legs": [
+            {
+              "alight_index": 10,
+              "arrival": 30690,
+              "board_index": 8,
+              "departure": 30420,
+              "destination": "metro:2",
+              "kind": "ride",
+              "origin": "metro:4",
+              "service_date": "2026-10-21",
+              "trip": "metro:WEEKDAY_0_0025"
+            },
+            {
+              "arrival": 31170,
+              "departure": 30690,
+              "destination": "tram:7",
+              "kind": "walk",
+              "origin": "metro:2"
+            },
+            {
+              "alight_index": 14,
+              "arrival": 32448,
+              "board_index": 9,
+              "departure": 31401,
+              "destination": "tram:3",
+              "kind": "ride",
+              "origin": "tram:7",
+              "service_date": "2026-10-21",
+              "trip": "tram:1_WEEKDAY_0017"
+            }
+          ],
+          "origin": "metro:4",
+          "start": 30240
+        },
+        "b": {
+          "arrival": 31998,
+          "destination": "tram:3",
+          "legs": [
+            {
+              "alight_index": 14,
+              "arrival": 31998,
+              "board_index": 8,
+              "departure": 30683,
+              "destination": "tram:3",
+              "kind": "ride",
+              "origin": "tram:8",
+              "service_date": "2026-10-21",
+              "trip": "tram:1_WEEKDAY_0016"
+            }
+          ],
+          "origin": "tram:8",
+          "start": 30540
+        },
+        "id": "v0-1",
+        "meeting": 32448,
+        "version": 0
+      },
+      "metrics": {
+        "backend": "none",
+        "calls": 0,
+        "input_tokens": 0,
+        "model_ms": 0,
+        "output_tokens": 0
+      },
+      "notice": "Konak İskele tramvay durağı 08:24 ile 10:00 arasında kapalı.",
+      "offers": [],
+      "origin_a": "metro:4",
+      "origin_b": "tram:8",
+      "question": null,
+      "scenario": "demo",
+      "service_date": "2026-10-21",
+      "status": "model_error",
+      "verified_offer": null,
+      "version": 1,
+      "votes": []
+    }
+  },
+  "planning_pending_call": {
+    "events": [
+      {
+        "details": {},
+        "kind": "ready",
+        "message": "The initial timetable is ready.",
+        "recorded_at": "2026-11-13T18:04:30.289Z",
+        "role": "system",
+        "seq": 11,
+        "version": 0
+      },
+      {
+        "details": {},
+        "kind": "disruption_received",
+        "message": "A new disruption report is queued.",
+        "recorded_at": "2026-11-13T18:04:30.291Z",
+        "role": "operator",
+        "seq": 12,
+        "version": 1
+      }
+    ],
+    "run_id": "ea7c8b45e8c242f3a73435741c9a97f5",
+    "view": {
+      "architecture": "rules",
+      "destinations": [
+        "tram:3"
+      ],
+      "error": null,
+      "evidence": null,
+      "id": "ea7c8b45e8c242f3a73435741c9a97f5",
+      "incident": null,
+      "initial": {
+        "a": {
+          "arrival": 32448,
+          "destination": "tram:3",
+          "legs": [
+            {
+              "alight_index": 10,
+              "arrival": 30690,
+              "board_index": 8,
+              "departure": 30420,
+              "destination": "metro:2",
+              "kind": "ride",
+              "origin": "metro:4",
+              "service_date": "2026-10-21",
+              "trip": "metro:WEEKDAY_0_0025"
+            },
+            {
+              "arrival": 31170,
+              "departure": 30690,
+              "destination": "tram:7",
+              "kind": "walk",
+              "origin": "metro:2"
+            },
+            {
+              "alight_index": 14,
+              "arrival": 32448,
+              "board_index": 9,
+              "departure": 31401,
+              "destination": "tram:3",
+              "kind": "ride",
+              "origin": "tram:7",
+              "service_date": "2026-10-21",
+              "trip": "tram:1_WEEKDAY_0017"
+            }
+          ],
+          "origin": "metro:4",
+          "start": 30240
+        },
+        "b": {
+          "arrival": 31998,
+          "destination": "tram:3",
+          "legs": [
+            {
+              "alight_index": 14,
+              "arrival": 31998,
+              "board_index": 8,
+              "departure": 30683,
+              "destination": "tram:3",
+              "kind": "ride",
+              "origin": "tram:8",
+              "service_date": "2026-10-21",
+              "trip": "tram:1_WEEKDAY_0016"
+            }
+          ],
+          "origin": "tram:8",
+          "start": 30540
+        },
+        "id": "v0-1",
+        "meeting": 32448,
+        "version": 0
+      },
+      "metrics": {
+        "backend": "ollama",
+        "calls": 1,
+        "input_tokens": 0,
+        "model_ms": 0,
+        "output_tokens": 0
+      },
+      "notice": "Konak İskele tramvay durağı 08:24 ile 10:00 arasında kapalı.",
+      "offers": [],
+      "origin_a": "metro:4",
+      "origin_b": "tram:8",
+      "question": null,
+      "scenario": "demo",
+      "service_date": "2026-10-21",
+      "status": "planning",
+      "verified_offer": null,
+      "version": 1,
+      "votes": []
+    }
+  },
+  "superseded": {
+    "events": [
+      {
+        "details": {},
+        "kind": "ready",
+        "message": "The initial timetable is ready.",
+        "recorded_at": "2026-11-13T18:04:31.041Z",
+        "role": "system",
+        "seq": 16,
+        "version": 0
+      },
+      {
+        "details": {},
+        "kind": "disruption_received",
+        "message": "A new disruption report is queued.",
+        "recorded_at": "2026-11-13T18:04:31.043Z",
+        "role": "operator",
+        "seq": 17,
+        "version": 1
+      },
+      {
+        "details": {},
+        "kind": "disruption_received",
+        "message": "A new disruption report is queued.",
+        "recorded_at": "2026-11-13T18:04:31.045Z",
+        "role": "operator",
+        "seq": 18,
+        "version": 2
+      }
+    ],
+    "run_id": "c0d284cce8fe48af8543f57fe6ba4688",
+    "view": {
+      "architecture": "rules",
+      "destinations": [
+        "tram:3"
+      ],
+      "error": null,
+      "evidence": null,
+      "id": "c0d284cce8fe48af8543f57fe6ba4688",
+      "incident": null,
+      "initial": {
+        "a": {
+          "arrival": 32448,
+          "destination": "tram:3",
+          "legs": [
+            {
+              "alight_index": 10,
+              "arrival": 30690,
+              "board_index": 8,
+              "departure": 30420,
+              "destination": "metro:2",
+              "kind": "ride",
+              "origin": "metro:4",
+              "service_date": "2026-10-21",
+              "trip": "metro:WEEKDAY_0_0025"
+            },
+            {
+              "arrival": 31170,
+              "departure": 30690,
+              "destination": "tram:7",
+              "kind": "walk",
+              "origin": "metro:2"
+            },
+            {
+              "alight_index": 14,
+              "arrival": 32448,
+              "board_index": 9,
+              "departure": 31401,
+              "destination": "tram:3",
+              "kind": "ride",
+              "origin": "tram:7",
+              "service_date": "2026-10-21",
+              "trip": "tram:1_WEEKDAY_0017"
+            }
+          ],
+          "origin": "metro:4",
+          "start": 30240
+        },
+        "b": {
+          "arrival": 31998,
+          "destination": "tram:3",
+          "legs": [
+            {
+              "alight_index": 14,
+              "arrival": 31998,
+              "board_index": 8,
+              "departure": 30683,
+              "destination": "tram:3",
+              "kind": "ride",
+              "origin": "tram:8",
+              "service_date": "2026-10-21",
+              "trip": "tram:1_WEEKDAY_0016"
+            }
+          ],
+          "origin": "tram:8",
+          "start": 30540
+        },
+        "id": "v0-1",
+        "meeting": 32448,
+        "version": 0
+      },
+      "metrics": {
+        "backend": "none",
+        "calls": 0,
+        "input_tokens": 0,
+        "model_ms": 0,
+        "output_tokens": 0
+      },
+      "notice": "Konak İskele tramvay durağı 08:24 ile 10:00 arasında kapalı.",
+      "offers": [],
+      "origin_a": "metro:4",
+      "origin_b": "tram:8",
+      "question": null,
+      "scenario": "demo",
+      "service_date": "2026-10-21",
+      "status": "planning",
+      "verified_offer": null,
+      "version": 2,
+      "votes": []
+    }
+  },
+  "verified": {
+    "events": [
+      {
+        "details": {},
+        "kind": "ready",
+        "message": "The initial timetable is ready.",
+        "recorded_at": "2026-11-13T18:04:29.125Z",
+        "role": "system",
+        "seq": 1,
+        "version": 0
+      },
+      {
+        "details": {},
+        "kind": "disruption_received",
+        "message": "A new disruption report is queued.",
+        "recorded_at": "2026-11-13T18:04:29.127Z",
+        "role": "operator",
+        "seq": 2,
+        "version": 1
+      },
+      {
+        "details": {
+          "kind": "stop_closure"
+        },
+        "kind": "incident",
+        "message": "Disruption recorded.",
+        "recorded_at": "2026-11-13T18:04:29.142Z",
+        "role": "operator",
+        "seq": 3,
+        "version": 1
+      },
+      {
+        "details": {
+          "count": 6
+        },
+        "kind": "offers",
+        "message": "6 joint offers found.",
+        "recorded_at": "2026-11-13T18:04:29.432Z",
+        "role": "router",
+        "seq": 4,
+        "version": 1
+      },
+      {
+        "details": {
+          "accepted": true,
+          "offer_id": "v1-1"
+        },
+        "kind": "vote",
+        "message": "Accepted the offer.",
+        "recorded_at": "2026-11-13T18:04:29.435Z",
+        "role": "rider_a",
+        "seq": 5,
+        "version": 1
+      },
+      {
+        "details": {
+          "accepted": true,
+          "offer_id": "v1-1"
+        },
+        "kind": "vote",
+        "message": "Accepted the offer.",
+        "recorded_at": "2026-11-13T18:04:29.436Z",
+        "role": "rider_b",
+        "seq": 6,
+        "version": 1
+      },
+      {
+        "details": {
+          "offer_id": "v1-1"
+        },
+        "kind": "verified",
+        "message": "Both votes and the timetable agree.",
+        "recorded_at": "2026-11-13T18:04:29.437Z",
+        "role": "verifier",
+        "seq": 7,
+        "version": 1
+      }
+    ],
+    "run_id": "2361a6ae87e24a29a51185c8e5a8c135",
+    "view": {
+      "architecture": "rules",
+      "destinations": [
+        "tram:3"
+      ],
+      "error": null,
+      "evidence": null,
+      "id": "2361a6ae87e24a29a51185c8e5a8c135",
+      "incident": {
+        "end": 36000,
+        "kind": "stop_closure",
+        "start": 30240,
+        "stop": "tram:7"
+      },
+      "initial": {
+        "a": {
+          "arrival": 32448,
+          "destination": "tram:3",
+          "legs": [
+            {
+              "alight_index": 10,
+              "arrival": 30690,
+              "board_index": 8,
+              "departure": 30420,
+              "destination": "metro:2",
+              "kind": "ride",
+              "origin": "metro:4",
+              "service_date": "2026-10-21",
+              "trip": "metro:WEEKDAY_0_0025"
+            },
+            {
+              "arrival": 31170,
+              "departure": 30690,
+              "destination": "tram:7",
+              "kind": "walk",
+              "origin": "metro:2"
+            },
+            {
+              "alight_index": 14,
+              "arrival": 32448,
+              "board_index": 9,
+              "departure": 31401,
+              "destination": "tram:3",
+              "kind": "ride",
+              "origin": "tram:7",
+              "service_date": "2026-10-21",
+              "trip": "tram:1_WEEKDAY_0017"
+            }
+          ],
+          "origin": "metro:4",
+          "start": 30240
+        },
+        "b": {
+          "arrival": 31998,
+          "destination": "tram:3",
+          "legs": [
+            {
+              "alight_index": 14,
+              "arrival": 31998,
+              "board_index": 8,
+              "departure": 30683,
+              "destination": "tram:3",
+              "kind": "ride",
+              "origin": "tram:8",
+              "service_date": "2026-10-21",
+              "trip": "tram:1_WEEKDAY_0016"
+            }
+          ],
+          "origin": "tram:8",
+          "start": 30540
+        },
+        "id": "v0-1",
+        "meeting": 32448,
+        "version": 0
+      },
+      "metrics": {
+        "backend": "none",
+        "calls": 0,
+        "input_tokens": 0,
+        "model_ms": 0,
+        "output_tokens": 0
+      },
+      "notice": "Konak İskele tramvay durağı 08:24 ile 10:00 arasında kapalı.",
+      "offers": [
+        {
+          "a": {
+            "arrival": 34698,
+            "destination": "tram:3",
+            "legs": [
+              {
+                "alight_index": 16,
+                "arrival": 31380,
+                "board_index": 8,
+                "departure": 30420,
+                "destination": "metro:17",
+                "kind": "ride",
+                "origin": "metro:4",
+                "service_date": "2026-10-21",
+                "trip": "metro:WEEKDAY_0_0025"
+              },
+              {
+                "arrival": 31860,
+                "departure": 31380,
+                "destination": "tram:21",
+                "kind": "walk",
+                "origin": "metro:17"
+              },
+              {
+                "alight_index": 14,
+                "arrival": 34698,
+                "board_index": 0,
+                "departure": 31950,
+                "destination": "tram:3",
+                "kind": "ride",
+                "origin": "tram:21",
+                "service_date": "2026-10-21",
+                "trip": "tram:1_WEEKDAY_0022"
+              }
+            ],
+            "origin": "metro:4",
+            "start": 30240
+          },
+          "b": {
+            "arrival": 34248,
+            "destination": "tram:3",
+            "legs": [
+              {
+                "alight_index": 14,
+                "arrival": 34248,
+                "board_index": 8,
+                "departure": 32933,
+                "destination": "tram:3",
+                "kind": "ride",
+                "origin": "tram:8",
+                "service_date": "2026-10-21",
+                "trip": "tram:1_WEEKDAY_0021"
+              }
+            ],
+            "origin": "tram:8",
+            "start": 30540
+          },
+          "id": "v1-1",
+          "meeting": 34698,
+          "version": 1
+        },
+        {
+          "a": {
+            "arrival": 34698,
+            "destination": "tram:3",
+            "legs": [
+              {
+                "alight_index": 16,
+                "arrival": 31380,
+                "board_index": 8,
+                "departure": 30420,
+                "destination": "metro:17",
+                "kind": "ride",
+                "origin": "metro:4",
+                "service_date": "2026-10-21",
+                "trip": "metro:WEEKDAY_0_0025"
+              },
+              {
+                "arrival": 31860,
+                "departure": 31380,
+                "destination": "tram:21",
+                "kind": "walk",
+                "origin": "metro:17"
+              },
+              {
+                "alight_index": 14,
+                "arrival": 34698,
+                "board_index": 0,
+                "departure": 31950,
+                "destination": "tram:3",
+                "kind": "ride",
+                "origin": "tram:21",
+                "service_date": "2026-10-21",
+                "trip": "tram:1_WEEKDAY_0022"
+              }
+            ],
+            "origin": "metro:4",
+            "start": 30240
+          },
+          "b": {
+            "arrival": 34698,
+            "destination": "tram:3",
+            "legs": [
+              {
+                "alight_index": 14,
+                "arrival": 34698,
+                "board_index": 8,
+                "departure": 33383,
+                "destination": "tram:3",
+                "kind": "ride",
+                "origin": "tram:8",
+                "service_date": "2026-10-21",
+                "trip": "tram:1_WEEKDAY_0022"
+              }
+            ],
+            "origin": "tram:8",
+            "start": 30540
+          },
+          "id": "v1-2",
+          "meeting": 34698,
+          "version": 1
+        },
+        {
+          "a": {
+            "arrival": 34698,
+            "destination": "tram:3",
+            "legs": [
+              {
+                "alight_index": 16,
+                "arrival": 31380,
+                "board_index": 8,
+                "departure": 30420,
+                "destination": "metro:17",
+                "kind": "ride",
+                "origin": "metro:4",
+                "service_date": "2026-10-21",
+                "trip": "metro:WEEKDAY_0_0025"
+              },
+              {
+                "arrival": 31860,
+                "departure": 31380,
+                "destination": "tram:21",
+                "kind": "walk",
+                "origin": "metro:17"
+              },
+              {
+                "alight_index": 14,
+                "arrival": 34698,
+                "board_index": 0,
+                "departure": 31950,
+                "destination": "tram:3",
+                "kind": "ride",
+                "origin": "tram:21",
+                "service_date": "2026-10-21",
+                "trip": "tram:1_WEEKDAY_0022"
+              }
+            ],
+            "origin": "metro:4",
+            "start": 30240
+          },
+          "b": {
+            "arrival": 34303,
+            "destination": "tram:3",
+            "legs": [
+              {
+                "alight_index": 17,
+                "arrival": 32689,
+                "board_index": 8,
+                "departure": 30683,
+                "destination": "tram:1",
+                "kind": "ride",
+                "origin": "tram:8",
+                "service_date": "2026-10-21",
+                "trip": "tram:1_WEEKDAY_0016"
+              },
+              {
+                "alight_index": 2,
+                "arrival": 34303,
+                "board_index": 0,
+                "departure": 33750,
+                "destination": "tram:3",
+                "kind": "ride",
+                "origin": "tram:1",
+                "service_date": "2026-10-21",
+                "trip": "tram:2_WEEKDAY_0026"
+              }
+            ],
+            "origin": "tram:8",
+            "start": 30540
+          },
+          "id": "v1-3",
+          "meeting": 34698,
+          "version": 1
+        },
+        {
+          "a": {
+            "arrival": 34698,
+            "destination": "tram:3",
+            "legs": [
+              {
+                "alight_index": 16,
+                "arrival": 31380,
+                "board_index": 8,
+                "departure": 30420,
+                "destination": "metro:17",
+                "kind": "ride",
+                "origin": "metro:4",
+                "service_date": "2026-10-21",
+                "trip": "metro:WEEKDAY_0_0025"
+              },
+              {
+                "arrival": 31860,
+                "departure": 31380,
+                "destination": "tram:21",
+                "kind": "walk",
+                "origin": "metro:17"
+              },
+              {
+                "alight_index": 14,
+                "arrival": 34698,
+                "board_index": 0,
+                "departure": 31950,
+                "destination": "tram:3",
+                "kind": "ride",
+                "origin": "tram:21",
+                "service_date": "2026-10-21",
+                "trip": "tram:1_WEEKDAY_0022"
+              }
+            ],
+            "origin": "metro:4",
+            "start": 30240
+          },
+          "b": {
+            "arrival": 34753,
+            "destination": "tram:3",
+            "legs": [
+              {
+                "alight_index": 17,
+                "arrival": 32689,
+                "board_index": 8,
+                "departure": 30683,
+                "destination": "tram:1",
+                "kind": "ride",
+                "origin": "tram:8",
+                "service_date": "2026-10-21",
+                "trip": "tram:1_WEEKDAY_0016"
+              },
+              {
+                "alight_index": 2,
+                "arrival": 34753,
+                "board_index": 0,
+                "departure": 34200,
+                "destination": "tram:3",
+                "kind": "ride",
+                "origin": "tram:1",
+                "service_date": "2026-10-21",
+                "trip": "tram:2_WEEKDAY_0027"
+              }
+            ],
+            "origin": "tram:8",
+            "start": 30540
+          },
+          "id": "v1-4",
+          "meeting": 34753,
+          "version": 1
+        },
+        {
+          "a": {
+            "arrival": 34698,
+            "destination": "tram:3",
+            "legs": [
+              {
+                "alight_index": 16,
+                "arrival": 31380,
+                "board_index": 8,
+                "departure": 30420,
+                "destination": "metro:17",
+                "kind": "ride",
+                "origin": "metro:4",
+                "service_date": "2026-10-21",
+                "trip": "metro:WEEKDAY_0_0025"
+              },
+              {
+                "arrival": 31860,
+                "departure": 31380,
+                "destination": "tram:21",
+                "kind": "walk",
+                "origin": "metro:17"
+              },
+              {
+                "alight_index": 14,
+                "arrival": 34698,
+                "board_index": 0,
+                "departure": 31950,
+                "destination": "tram:3",
+                "kind": "ride",
+                "origin": "tram:21",
+                "service_date": "2026-10-21",
+                "trip": "tram:1_WEEKDAY_0022"
+              }
+            ],
+            "origin": "metro:4",
+            "start": 30240
+          },
+          "b": {
+            "arrival": 35148,
+            "destination": "tram:3",
+            "legs": [
+              {
+                "alight_index": 14,
+                "arrival": 35148,
+                "board_index": 8,
+                "departure": 33833,
+                "destination": "tram:3",
+                "kind": "ride",
+                "origin": "tram:8",
+                "service_date": "2026-10-21",
+                "trip": "tram:1_WEEKDAY_0023"
+              }
+            ],
+            "origin": "tram:8",
+            "start": 30540
+          },
+          "id": "v1-5",
+          "meeting": 35148,
+          "version": 1
+        },
+        {
+          "a": {
+            "arrival": 35148,
+            "destination": "tram:3",
+            "legs": [
+              {
+                "alight_index": 16,
+                "arrival": 31380,
+                "board_index": 8,
+                "departure": 30420,
+                "destination": "metro:17",
+                "kind": "ride",
+                "origin": "metro:4",
+                "service_date": "2026-10-21",
+                "trip": "metro:WEEKDAY_0_0025"
+              },
+              {
+                "arrival": 31860,
+                "departure": 31380,
+                "destination": "tram:21",
+                "kind": "walk",
+                "origin": "metro:17"
+              },
+              {
+                "alight_index": 14,
+                "arrival": 35148,
+                "board_index": 0,
+                "departure": 32400,
+                "destination": "tram:3",
+                "kind": "ride",
+                "origin": "tram:21",
+                "service_date": "2026-10-21",
+                "trip": "tram:1_WEEKDAY_0023"
+              }
+            ],
+            "origin": "metro:4",
+            "start": 30240
+          },
+          "b": {
+            "arrival": 34698,
+            "destination": "tram:3",
+            "legs": [
+              {
+                "alight_index": 14,
+                "arrival": 34698,
+                "board_index": 8,
+                "departure": 33383,
+                "destination": "tram:3",
+                "kind": "ride",
+                "origin": "tram:8",
+                "service_date": "2026-10-21",
+                "trip": "tram:1_WEEKDAY_0022"
+              }
+            ],
+            "origin": "tram:8",
+            "start": 30540
+          },
+          "id": "v1-6",
+          "meeting": 35148,
+          "version": 1
+        }
+      ],
+      "origin_a": "metro:4",
+      "origin_b": "tram:8",
+      "question": null,
+      "scenario": "demo",
+      "service_date": "2026-10-21",
+      "status": "verified",
+      "verified_offer": "v1-1",
+      "version": 1,
+      "votes": [
+        {
+          "accepted": true,
+          "offer_id": "v1-1",
+          "rider": "a",
+          "version": 1
+        },
+        {
+          "accepted": true,
+          "offer_id": "v1-1",
+          "rider": "b",
+          "version": 1
+        }
+      ]
+    }
+  }
+}
