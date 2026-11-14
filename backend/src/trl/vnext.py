@@ -1,6 +1,6 @@
 """Versioned evidence shared by the API, simulation, and durable run state."""
 
-from typing import Annotated, Literal
+from typing import Annotated, Any, Literal
 
 from pydantic import Field
 
@@ -35,6 +35,21 @@ class ExtractionQuote(Record):
 
 class Extraction(Record):
     quotes: Annotated[tuple[ExtractionQuote, ...], Field(max_length=6)] = ()
+
+
+def ollama_format(schema: type[Record]) -> dict[str, Any]:
+    """The JSON schema sent to Ollama for structured output.
+
+    `kind` has a default, so the schema leaves it optional, and constrained decoding then skips
+    it even for a model trained to state it. The evidence gate reads the kind of a quote from
+    that field, so a reply without it carries no event. Require the field. A quote about a stop,
+    time or delay states `null`.
+    """
+    result = schema.model_json_schema()
+    quote = result.get("$defs", {}).get("ExtractionQuote")
+    if quote is not None and "kind" not in quote.get("required", []):
+        quote["required"] = [*quote.get("required", []), "kind"]
+    return result
 
 
 class Hypothesis(Record):

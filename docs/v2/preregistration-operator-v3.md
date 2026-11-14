@@ -91,3 +91,17 @@ agreement between each fused Ollama model and its MLX adapter on dev.
 
 The test split is read once per arm. Results files open with mode `x`. If a run fails for a
 technical reason, rerun the same arm with the same configuration and record the failure.
+
+## Amendments (committed before any test report is read by a model)
+
+1. **Retrieval depth.** To save compute time, k = 4 is used without the dev comparison of k = 2
+   and k = 8. The three depths had not been compared when this was decided.
+2. **Test subset.** Model arms read the even-numbered groups of the test hard slice (616 reports in
+   308 groups), fixed before any test inference. The lexicon arm is scored on the same reports.
+   Contrasts, intervals and the adoption rule apply to this subset.
+3. **Schema.** The first dev run showed that no model reply stated `kind`, because Ollama's
+   constrained decoding skips an optional field. `ollama_format` now requires it, in the
+   production path and in the evaluator. The dev results above use the required field. The first
+   dev run, without it, is kept under `.local` and reported as a finding.
+4. **Adapter seed.** Dev hard-slice accuracy ties between seeds 42 and 43. The smaller seed, 42, is
+   the `adapter` arm. Seeds 43 and 44 run on the same subset for the spread condition.

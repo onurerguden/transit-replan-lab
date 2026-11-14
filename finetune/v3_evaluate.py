@@ -14,7 +14,7 @@ from pathlib import Path
 from time import perf_counter
 
 import httpx
-from trl.vnext import Extraction
+from trl.vnext import Extraction, ollama_format
 
 from finetune import rag
 
@@ -36,7 +36,7 @@ HARD = {
 
 
 def selected(
-    bench: str, split: str, limit: int | None, hard: bool
+    bench: str, split: str, limit: int | None, hard: bool, half: bool = False
 ) -> list[dict[str, object]]:
     rows = [
         json.loads(line)
@@ -50,6 +50,8 @@ def selected(
         ]
     if hard:
         rows = [r for r in rows if r["family"] in HARD]
+    if half:  # a fixed subset, chosen before any test report is read
+        rows = [r for r in rows if int(str(r["group"]).split("-")[1]) % 2 == 0]
     return rows[:limit] if limit else rows
 
 
@@ -61,7 +63,7 @@ def ask(client: httpx.Client, model: str, system: str, content: str) -> tuple[st
             "model": model,
             "stream": False,
             "think": False,
-            "format": Extraction.model_json_schema(),
+            "format": ollama_format(Extraction),
             "keep_alive": "30m",
             "options": {
                 "temperature": 0,
@@ -101,6 +103,7 @@ def main() -> None:
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--limit", type=int, default=None)
     parser.add_argument("--hard", action="store_true", help="only the hard slice")
+    parser.add_argument("--half", action="store_true", help="even-numbered groups only")
     parser.add_argument("--workers", type=int, default=4)
     parser.add_argument(
         "--rag", type=int, default=0, help="retrieve this many train examples"
@@ -120,7 +123,7 @@ def main() -> None:
     )
     rows = [
         r
-        for r in selected(args.bench, args.split, args.limit, args.hard)
+        for r in selected(args.bench, args.split, args.limit, args.hard, args.half)
         if r["id"] not in done
     ]
 
