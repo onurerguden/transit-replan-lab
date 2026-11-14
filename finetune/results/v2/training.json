@@ -63,5 +63,82 @@
   ],
   "iterations": 600,
   "seed": 42,
-  "note": "One seed. Validation rows are the first 50 dev groups. The adoption set starts at group 50."
+  "note": "Seeds 43 and 44 were trained after the first result and are reported with it. Validation rows are the first 50 dev groups.",
+  "seeds": {
+    "42": {
+      "adapter_sha256": "32b0cb4e1a5b192a5ab1e7e37f869f0623aa7b5a330f4832645a922fdacf2fdf",
+      "validation_loss": [
+        [
+          1,
+          1.983
+        ],
+        [
+          150,
+          0.081
+        ],
+        [
+          300,
+          0.053
+        ],
+        [
+          450,
+          0.056
+        ],
+        [
+          600,
+          0.048
+        ]
+      ]
+    },
+    "43": {
+      "adapter_sha256": "cb2c66e4c53decd36507ae3474d24ef068c518fd8f920f4662c0fa30a3df97f6",
+      "validation_loss": [
+        [
+          1,
+          2.22
+        ],
+        [
+          150,
+          0.091
+        ],
+        [
+          300,
+          0.052
+        ],
+        [
+          450,
+          0.095
+        ],
+        [
+          600,
+          0.117
+        ]
+      ]
+    },
+    "44": {
+      "adapter_sha256": "416c560316b41ba7f774d654a0793f06abc51716b015da9be42124369e02034b",
+      "validation_loss": [
+        [
+          1,
+          2.066
+        ],
+        [
+          150,
+          0.065
+        ],
+        [
+          300,
+          0.06
+        ],
+        [
+          450,
+          0.103
+        ],
+        [
+          600,
+          0.095
+        ]
+      ]
+    }
+  }
 }

@@ -72,9 +72,8 @@ after the single preregistered run, and a labelled post-hoc re-run with the fixe
 4B model without and with an adapter trained on 1,800 rows of the train split. Without the adapter
 and with unconstrained decoding the model produced no schema-valid reply in 600, so it equals
 the deterministic rules at 53.7%. The adapter produced 600 valid replies and read 59.5%
-[52.4%, 67.1%]. Against the base arm it gained 35 reports and lost none (exact p below 0.0001),
-all in ambiguous-stop reports. It returned no quote for any of the new closure wordings, which
-is the gap to the 96.2% ceiling. No arm applied an unsupported incident (upper bound 0.61%).
+[52.4%, 67.1%] with the registered seed, and 77.7% and 76.8% with two further seeds trained afterwards. Against the base arm it gained 35 reports and lost none (exact p below 0.0001),
+all in ambiguous-stop reports. With seed 42 it returned no quote for new closure wordings. Seeds 43 and 44 quote them in about half of the reports of each closure family. All three stay below the 96.2% ceiling. No arm applied an unsupported incident (upper bound 0.61%).
 The adoption rule required a gain on the dev adoption set, where every arm is perfect because
 dev phrases are in the production list, so the adapter is not adopted.
 
@@ -94,4 +93,4 @@ implemented.
 - The gold-quote arm is an upper bound, not a language model. A real model's quotes may fail the gate.
 - Plan outcomes were not labelled by two independent routers. The evaluation measures reading and clarification, and plans are checked by the verifier.
 - ESHOT and İZBAN timetables for the demo day are projections.
-- Results come from one machine and one model runtime.
+- Results come from one machine and one model runtime. Adapter results vary by about 18 points across three seeds.

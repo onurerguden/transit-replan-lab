@@ -123,7 +123,7 @@ Each entry records completed acceptance checks and concrete blockers.
 - Segment-scoped RAPTOR with arrival profiles, so full-network meetings on dense bus areas can end as incomplete.
 - Serving the full network through the API.
 - A second-family paraphrase bank, independent annotation and two-router plan labels.
-- Three-seed adapter training and a full-size test run for the model arms.
+- A full-size test run for the model arms.
 - A single dispatcher for workers.
 
 ## Addendum · independent reference for the full network
@@ -134,3 +134,7 @@ Each entry records completed acceptance checks and concrete blockers.
 
 - `trl.language.trips` resolves a stop plus a departure time to one trip. A property-style test builds the report in English and Turkish for hundreds of unique departures and checks the resulting incident. An unknown departure names no trip.
 - `App.tsx` went from 391 to 236 lines, with the plan, offer evidence, timeline and formatting helpers in their own modules. Unit and browser suites are unchanged.
+
+## Addendum · adapter seeds
+
+- Two more seeds (43, 44) were trained and scored on the same 600 reports: 77.7% and 76.8% against 59.5% for seed 42. The adoption rule, registered earlier on a dev set where every arm is perfect, is unchanged, so the adapter is still not adopted.

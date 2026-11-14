@@ -1,0 +1,600 @@
+{"id": "test-00000-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is shuttered\"}]}", "seconds": 1.21}
+{"id": "test-00000-tr", "reply": "{\"quotes\":[]}", "seconds": 0.898}
+{"id": "test-00001-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is suspended\"}]}", "seconds": 1.05}
+{"id": "test-00001-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"yolcu alımına durdurulmuştur\"}]}", "seconds": 1.317}
+{"id": "test-00002-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is shuttered\"}]}", "seconds": 1.066}
+{"id": "test-00002-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"hizmet dışıdır\"}]}", "seconds": 1.122}
+{"id": "test-00003-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is shuttered\"}]}", "seconds": 1.159}
+{"id": "test-00003-tr", "reply": "{\"quotes\":[]}", "seconds": 0.897}
+{"id": "test-00004-en", "reply": "{\"quotes\":[]}", "seconds": 0.897}
+{"id": "test-00004-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"hizmet vermeyecektir\"}]}", "seconds": 1.253}
+{"id": "test-00005-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_delay\",\"quote\":\"late\"}]}", "seconds": 1.03}
+{"id": "test-00005-tr", "reply": "{\"quotes\":[]}", "seconds": 0.803}
+{"id": "test-00006-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_cancellation\",\"quote\":\"cancelled\"}]}", "seconds": 1.05}
+{"id": "test-00006-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_cancellation\",\"quote\":\"iptal\"}]}", "seconds": 1.069}
+{"id": "test-00007-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is shuttered\"}]}", "seconds": 1.066}
+{"id": "test-00007-tr", "reply": "{\"quotes\":[]}", "seconds": 0.893}
+{"id": "test-00008-en", "reply": "{\"quotes\":[]}", "seconds": 0.799}
+{"id": "test-00008-tr", "reply": "{\"quotes\":[]}", "seconds": 0.897}
+{"id": "test-00009-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"closed\"}]}", "seconds": 1.121}
+{"id": "test-00009-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"kapalı\"}]}", "seconds": 1.148}
+{"id": "test-00010-en", "reply": "{\"quotes\":[]}", "seconds": 0.896}
+{"id": "test-00010-tr", "reply": "{\"quotes\":[]}", "seconds": 0.903}
+{"id": "test-00011-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is suspended\"}]}", "seconds": 1.053}
+{"id": "test-00011-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"hizmet sunamamaktadır\"}]}", "seconds": 1.232}
+{"id": "test-00012-en", "reply": "{\"quotes\":[]}", "seconds": 0.802}
+{"id": "test-00012-tr", "reply": "{\"quotes\":[]}", "seconds": 0.807}
+{"id": "test-00013-en", "reply": "{\"quotes\":[]}", "seconds": 0.798}
+{"id": "test-00013-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"hizmet dışıdır\"}]}", "seconds": 1.214}
+{"id": "test-00014-en", "reply": "{\"quotes\":[]}", "seconds": 0.805}
+{"id": "test-00014-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"durdurulmuştur\"}]}", "seconds": 1.217}
+{"id": "test-00015-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is unavailable to riders\"}]}", "seconds": 1.081}
+{"id": "test-00015-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"hizmet dışıdır\"}]}", "seconds": 1.211}
+{"id": "test-00016-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is suspended\"}]}", "seconds": 1.139}
+{"id": "test-00016-tr", "reply": "{\"quotes\":[]}", "seconds": 0.899}
+{"id": "test-00017-en", "reply": "{\"quotes\":[]}", "seconds": 0.897}
+{"id": "test-00017-tr", "reply": "{\"quotes\":[]}", "seconds": 0.901}
+{"id": "test-00018-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_delay\",\"quote\":\"late\"}]}", "seconds": 1.032}
+{"id": "test-00018-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_delay\",\"quote\":\"gecikmeli\"}]}", "seconds": 1.156}
+{"id": "test-00019-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_cancellation\",\"quote\":\"cancelled\"}]}", "seconds": 1.046}
+{"id": "test-00019-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_cancellation\",\"quote\":\"iptal\"}]}", "seconds": 1.066}
+{"id": "test-00020-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is shuttered\"}]}", "seconds": 1.066}
+{"id": "test-00020-tr", "reply": "{\"quotes\":[]}", "seconds": 0.896}
+{"id": "test-00021-en", "reply": "{\"quotes\":[]}", "seconds": 0.796}
+{"id": "test-00021-tr", "reply": "{\"quotes\":[]}", "seconds": 0.899}
+{"id": "test-00022-en", "reply": "{\"quotes\":[]}", "seconds": 0.8}
+{"id": "test-00022-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"kapalı\"}]}", "seconds": 1.142}
+{"id": "test-00023-en", "reply": "{\"quotes\":[]}", "seconds": 0.899}
+{"id": "test-00023-tr", "reply": "{\"quotes\":[]}", "seconds": 0.902}
+{"id": "test-00024-en", "reply": "{\"quotes\":[]}", "seconds": 0.8}
+{"id": "test-00024-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"hizmet dışıdır\"}]}", "seconds": 1.209}
+{"id": "test-00025-en", "reply": "{\"quotes\":[]}", "seconds": 0.804}
+{"id": "test-00025-tr", "reply": "{\"quotes\":[]}", "seconds": 0.805}
+{"id": "test-00026-en", "reply": "{\"quotes\":[]}", "seconds": 0.806}
+{"id": "test-00026-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"hizmet sunamamaktadır\"}]}", "seconds": 1.234}
+{"id": "test-00027-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is unavailable to riders\"}]}", "seconds": 1.084}
+{"id": "test-00027-tr", "reply": "{\"quotes\":[]}", "seconds": 0.894}
+{"id": "test-00028-en", "reply": "{\"quotes\":[]}", "seconds": 0.807}
+{"id": "test-00028-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"durdurulmuştur\"}]}", "seconds": 1.217}
+{"id": "test-00029-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is shuttered\"}]}", "seconds": 1.157}
+{"id": "test-00029-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"hizmet dışıdır\"}]}", "seconds": 1.212}
+{"id": "test-00030-en", "reply": "{\"quotes\":[]}", "seconds": 0.898}
+{"id": "test-00030-tr", "reply": "{\"quotes\":[]}", "seconds": 0.9}
+{"id": "test-00031-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_delay\",\"quote\":\"late\"}]}", "seconds": 1.033}
+{"id": "test-00031-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_delay\",\"quote\":\"gecikmeli\"}]}", "seconds": 1.059}
+{"id": "test-00032-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_cancellation\",\"quote\":\"cancelled\"}]}", "seconds": 1.047}
+{"id": "test-00032-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_cancellation\",\"quote\":\"iptal\"}]}", "seconds": 1.067}
+{"id": "test-00033-en", "reply": "{\"quotes\":[]}", "seconds": 0.808}
+{"id": "test-00033-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_delay\",\"quote\":\"hizmet sunamamaktadır\"}]}", "seconds": 1.231}
+{"id": "test-00034-en", "reply": "{\"quotes\":[]}", "seconds": 0.898}
+{"id": "test-00034-tr", "reply": "{\"quotes\":[]}", "seconds": 0.896}
+{"id": "test-00035-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"closed\"}]}", "seconds": 1.032}
+{"id": "test-00035-tr", "reply": "{\"quotes\":[]}", "seconds": 0.797}
+{"id": "test-00036-en", "reply": "{\"quotes\":[]}", "seconds": 0.899}
+{"id": "test-00036-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"durdurulmuştur\"}]}", "seconds": 1.21}
+{"id": "test-00037-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is suspended\"}]}", "seconds": 1.05}
+{"id": "test-00037-tr", "reply": "{\"quotes\":[]}", "seconds": 0.808}
+{"id": "test-00038-en", "reply": "{\"quotes\":[]}", "seconds": 0.805}
+{"id": "test-00038-tr", "reply": "{\"quotes\":[]}", "seconds": 0.807}
+{"id": "test-00039-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is shuttered\"}]}", "seconds": 1.158}
+{"id": "test-00039-tr", "reply": "{\"quotes\":[]}", "seconds": 0.898}
+{"id": "test-00040-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is shuttered\"}]}", "seconds": 1.071}
+{"id": "test-00040-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"hizmet vermeyecektir\"}]}", "seconds": 1.146}
+{"id": "test-00041-en", "reply": "{\"quotes\":[]}", "seconds": 0.806}
+{"id": "test-00041-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"hizmet sunamamaktadır\"}]}", "seconds": 1.226}
+{"id": "test-00042-en", "reply": "{\"quotes\":[]}", "seconds": 0.895}
+{"id": "test-00042-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"hizmet vermeyecektir\"}]}", "seconds": 1.25}
+{"id": "test-00043-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"suspended\"}]}", "seconds": 1.137}
+{"id": "test-00043-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"yolcu alımına durdurulmuştur\"}]}", "seconds": 1.32}
+{"id": "test-00044-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_delay\",\"quote\":\"late\"}]}", "seconds": 1.03}
+{"id": "test-00044-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_delay\",\"quote\":\"gecikmeli\"}]}", "seconds": 1.074}
+{"id": "test-00045-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_cancellation\",\"quote\":\"cancelled\"}]}", "seconds": 1.047}
+{"id": "test-00045-tr", "reply": "{\"quotes\":[]}", "seconds": 0.805}
+{"id": "test-00046-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is suspended\"}]}", "seconds": 1.054}
+{"id": "test-00046-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"durdurulmuştur\"}]}", "seconds": 1.21}
+{"id": "test-00047-en", "reply": "{\"quotes\":[]}", "seconds": 0.799}
+{"id": "test-00047-tr", "reply": "{\"quotes\":[]}", "seconds": 0.898}
+{"id": "test-00048-en", "reply": "{\"quotes\":[]}", "seconds": 0.897}
+{"id": "test-00048-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"kapalı olabilir\"}]}", "seconds": 1.164}
+{"id": "test-00049-en", "reply": "{\"quotes\":[]}", "seconds": 0.899}
+{"id": "test-00049-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"durdurulmuştur\"}]}", "seconds": 1.224}
+{"id": "test-00050-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is suspended\"}]}", "seconds": 1.05}
+{"id": "test-00050-tr", "reply": "{\"quotes\":[]}", "seconds": 0.898}
+{"id": "test-00051-en", "reply": "{\"quotes\":[]}", "seconds": 0.804}
+{"id": "test-00051-tr", "reply": "{\"quotes\":[]}", "seconds": 0.802}
+{"id": "test-00052-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is shuttered\"}]}", "seconds": 1.158}
+{"id": "test-00052-tr", "reply": "{\"quotes\":[]}", "seconds": 0.897}
+{"id": "test-00053-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is shuttered\"}]}", "seconds": 1.069}
+{"id": "test-00053-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"hizmet dışı\"}]}", "seconds": 1.101}
+{"id": "test-00054-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is shuttered\"}]}", "seconds": 1.066}
+{"id": "test-00054-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"hizmet sunamamaktadır\"}]}", "seconds": 1.131}
+{"id": "test-00055-en", "reply": "{\"quotes\":[]}", "seconds": 0.897}
+{"id": "test-00055-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"hizmet vermeyecektir\"}]}", "seconds": 1.253}
+{"id": "test-00056-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"suspended\"}]}", "seconds": 1.138}
+{"id": "test-00056-tr", "reply": "{\"quotes\":[]}", "seconds": 0.9}
+{"id": "test-00057-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_delay\",\"quote\":\"late\"}]}", "seconds": 1.037}
+{"id": "test-00057-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_delay\",\"quote\":\"gecikmeli\"}]}", "seconds": 1.066}
+{"id": "test-00058-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_cancellation\",\"quote\":\"cancelled\"}]}", "seconds": 1.048}
+{"id": "test-00058-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_cancellation\",\"quote\":\"iptal\"}]}", "seconds": 1.065}
+{"id": "test-00059-en", "reply": "{\"quotes\":[]}", "seconds": 0.808}
+{"id": "test-00059-tr", "reply": "{\"quotes\":[]}", "seconds": 0.895}
+{"id": "test-00060-en", "reply": "{\"quotes\":[]}", "seconds": 0.799}
+{"id": "test-00060-tr", "reply": "{\"quotes\":[]}", "seconds": 0.897}
+{"id": "test-00061-en", "reply": "{\"quotes\":[]}", "seconds": 0.897}
+{"id": "test-00061-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"kapalı\"}]}", "seconds": 1.14}
+{"id": "test-00062-en", "reply": "{\"quotes\":[]}", "seconds": 0.899}
+{"id": "test-00062-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"hizmet sunamamaktadır\"}]}", "seconds": 1.234}
+{"id": "test-00063-en", "reply": "{\"quotes\":[]}", "seconds": 0.895}
+{"id": "test-00063-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"durdurulmuştur\"}]}", "seconds": 1.213}
+{"id": "test-00064-en", "reply": "{\"quotes\":[]}", "seconds": 0.803}
+{"id": "test-00064-tr", "reply": "{\"quotes\":[]}", "seconds": 0.804}
+{"id": "test-00065-en", "reply": "{\"quotes\":[]}", "seconds": 0.896}
+{"id": "test-00065-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"durdurulmuştur\"}]}", "seconds": 1.217}
+{"id": "test-00066-en", "reply": "{\"quotes\":[]}", "seconds": 0.806}
+{"id": "test-00066-tr", "reply": "{\"quotes\":[]}", "seconds": 0.806}
+{"id": "test-00067-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is shuttered\"}]}", "seconds": 1.067}
+{"id": "test-00067-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"durdurulmuştur\"}]}", "seconds": 1.208}
+{"id": "test-00068-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is unavailable to riders\"}]}", "seconds": 1.175}
+{"id": "test-00068-tr", "reply": "{\"quotes\":[]}", "seconds": 0.9}
+{"id": "test-00069-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"shuttered\"}]}", "seconds": 1.156}
+{"id": "test-00069-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"hizmet dışıdır\"}]}", "seconds": 1.219}
+{"id": "test-00070-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_delay\",\"quote\":\"late\"}]}", "seconds": 1.032}
+{"id": "test-00070-tr", "reply": "{\"quotes\":[]}", "seconds": 0.809}
+{"id": "test-00071-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_cancellation\",\"quote\":\"cancelled\"}]}", "seconds": 1.051}
+{"id": "test-00071-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_cancellation\",\"quote\":\"iptal\"}]}", "seconds": 1.068}
+{"id": "test-00072-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is shuttered\"}]}", "seconds": 1.067}
+{"id": "test-00072-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"hizmet vermeyecektir\"}]}", "seconds": 1.247}
+{"id": "test-00073-en", "reply": "{\"quotes\":[]}", "seconds": 0.894}
+{"id": "test-00073-tr", "reply": "{\"quotes\":[]}", "seconds": 0.899}
+{"id": "test-00074-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"closed\"}]}", "seconds": 1.023}
+{"id": "test-00074-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"kapalı\"}]}", "seconds": 1.139}
+{"id": "test-00075-en", "reply": "{\"quotes\":[]}", "seconds": 0.897}
+{"id": "test-00075-tr", "reply": "{\"quotes\":[]}", "seconds": 0.899}
+{"id": "test-00076-en", "reply": "{\"quotes\":[]}", "seconds": 0.897}
+{"id": "test-00076-tr", "reply": "{\"quotes\":[]}", "seconds": 0.895}
+{"id": "test-00077-en", "reply": "{\"quotes\":[]}", "seconds": 0.807}
+{"id": "test-00077-tr", "reply": "{\"quotes\":[]}", "seconds": 0.807}
+{"id": "test-00078-en", "reply": "{\"quotes\":[]}", "seconds": 0.898}
+{"id": "test-00078-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"hizmet dışıdır\"}]}", "seconds": 1.213}
+{"id": "test-00079-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is suspended\"}]}", "seconds": 1.047}
+{"id": "test-00079-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"hizmet vermeyecektir\"}]}", "seconds": 1.248}
+{"id": "test-00080-en", "reply": "{\"quotes\":[]}", "seconds": 0.804}
+{"id": "test-00080-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"durdurulmuştur\"}]}", "seconds": 1.209}
+{"id": "test-00081-en", "reply": "{\"quotes\":[]}", "seconds": 0.897}
+{"id": "test-00081-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"hizmet vermeyecektir\"}]}", "seconds": 1.254}
+{"id": "test-00082-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"shuttered\"}]}", "seconds": 1.156}
+{"id": "test-00082-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"hizmet vermeyecektir\"}]}", "seconds": 1.249}
+{"id": "test-00083-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_delay\",\"quote\":\"late\"}]}", "seconds": 1.031}
+{"id": "test-00083-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_delay\",\"quote\":\"gecikmeli\"}]}", "seconds": 1.068}
+{"id": "test-00084-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_cancellation\",\"quote\":\"cancelled\"}]}", "seconds": 1.047}
+{"id": "test-00084-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_cancellation\",\"quote\":\"iptal\"}]}", "seconds": 1.068}
+{"id": "test-00085-en", "reply": "{\"quotes\":[]}", "seconds": 0.805}
+{"id": "test-00085-tr", "reply": "{\"quotes\":[]}", "seconds": 0.895}
+{"id": "test-00086-en", "reply": "{\"quotes\":[]}", "seconds": 0.808}
+{"id": "test-00086-tr", "reply": "{\"quotes\":[]}", "seconds": 0.897}
+{"id": "test-00087-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"might be closed\"}]}", "seconds": 1.069}
+{"id": "test-00087-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"kapalı\"}]}", "seconds": 1.14}
+{"id": "test-00088-en", "reply": "{\"quotes\":[]}", "seconds": 0.899}
+{"id": "test-00088-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"durdurulmuştur\"}]}", "seconds": 1.22}
+{"id": "test-00089-en", "reply": "{\"quotes\":[]}", "seconds": 0.893}
+{"id": "test-00089-tr", "reply": "{\"quotes\":[]}", "seconds": 0.896}
+{"id": "test-00090-en", "reply": "{\"quotes\":[]}", "seconds": 0.804}
+{"id": "test-00090-tr", "reply": "{\"quotes\":[]}", "seconds": 0.807}
+{"id": "test-00091-en", "reply": "{\"quotes\":[]}", "seconds": 0.894}
+{"id": "test-00091-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"hizmet dışıdır\"}]}", "seconds": 1.209}
+{"id": "test-00092-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is suspended\"}]}", "seconds": 1.046}
+{"id": "test-00092-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"hizmet dışı\"}]}", "seconds": 1.19}
+{"id": "test-00093-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is shuttered\"}]}", "seconds": 1.067}
+{"id": "test-00093-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"durdurulmuştur\"}]}", "seconds": 1.209}
+{"id": "test-00094-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is shuttered\"}]}", "seconds": 1.156}
+{"id": "test-00094-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"yolcu alımına durdurulmuştur\"}]}", "seconds": 1.32}
+{"id": "test-00095-en", "reply": "{\"quotes\":[]}", "seconds": 0.896}
+{"id": "test-00095-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"hizmet dışıdır\"}]}", "seconds": 1.215}
+{"id": "test-00096-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_delay\",\"quote\":\"late\"}]}", "seconds": 1.033}
+{"id": "test-00096-tr", "reply": "{\"quotes\":[]}", "seconds": 0.807}
+{"id": "test-00097-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_cancellation\",\"quote\":\"cancelled\"}]}", "seconds": 1.05}
+{"id": "test-00097-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_cancellation\",\"quote\":\"iptal\"}]}", "seconds": 1.067}
+{"id": "test-00098-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is suspended\"}]}", "seconds": 1.052}
+{"id": "test-00098-tr", "reply": "{\"quotes\":[]}", "seconds": 0.795}
+{"id": "test-00099-en", "reply": "{\"quotes\":[]}", "seconds": 0.808}
+{"id": "test-00099-tr", "reply": "{\"quotes\":[]}", "seconds": 0.898}
+{"id": "test-00100-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"might be closed\"}]}", "seconds": 1.157}
+{"id": "test-00100-tr", "reply": "{\"quotes\":[]}", "seconds": 0.897}
+{"id": "test-00101-en", "reply": "{\"quotes\":[]}", "seconds": 0.9}
+{"id": "test-00101-tr", "reply": "{\"quotes\":[]}", "seconds": 0.901}
+{"id": "test-00102-en", "reply": "{\"quotes\":[]}", "seconds": 0.81}
+{"id": "test-00102-tr", "reply": "{\"quotes\":[]}", "seconds": 0.808}
+{"id": "test-00103-en", "reply": "{\"quotes\":[]}", "seconds": 0.805}
+{"id": "test-00103-tr", "reply": "{\"quotes\":[]}", "seconds": 0.805}
+{"id": "test-00104-en", "reply": "{\"quotes\":[]}", "seconds": 0.8}
+{"id": "test-00104-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"hizmet dışıdır\"}]}", "seconds": 1.209}
+{"id": "test-00105-en", "reply": "{\"quotes\":[]}", "seconds": 0.806}
+{"id": "test-00105-tr", "reply": "{\"quotes\":[]}", "seconds": 0.796}
+{"id": "test-00106-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is off limits to passengers\"}]}", "seconds": 1.102}
+{"id": "test-00106-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"durdurulmuştur\"}]}", "seconds": 1.214}
+{"id": "test-00107-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is suspended\"}]}", "seconds": 1.14}
+{"id": "test-00107-tr", "reply": "{\"quotes\":[]}", "seconds": 0.896}
+{"id": "test-00108-en", "reply": "{\"quotes\":[]}", "seconds": 0.9}
+{"id": "test-00108-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"hizmet vermeyecektir\"}]}", "seconds": 1.249}
+{"id": "test-00109-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_delay\",\"quote\":\"late\"}]}", "seconds": 1.036}
+{"id": "test-00109-tr", "reply": "{\"quotes\":[]}", "seconds": 0.805}
+{"id": "test-00110-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_cancellation\",\"quote\":\"cancelled\"}]}", "seconds": 1.051}
+{"id": "test-00110-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_cancellation\",\"quote\":\"iptal\"}]}", "seconds": 1.069}
+{"id": "test-00111-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is suspended\"}]}", "seconds": 1.048}
+{"id": "test-00111-tr", "reply": "{\"quotes\":[]}", "seconds": 0.896}
+{"id": "test-00112-en", "reply": "{\"quotes\":[]}", "seconds": 0.807}
+{"id": "test-00112-tr", "reply": "{\"quotes\":[]}", "seconds": 0.896}
+{"id": "test-00113-en", "reply": "{\"quotes\":[]}", "seconds": 0.897}
+{"id": "test-00113-tr", "reply": "{\"quotes\":[]}", "seconds": 0.897}
+{"id": "test-00114-en", "reply": "{\"quotes\":[]}", "seconds": 0.899}
+{"id": "test-00114-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"durdurulmuştur\"}]}", "seconds": 1.219}
+{"id": "test-00115-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is shuttered\"}]}", "seconds": 1.057}
+{"id": "test-00115-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"hizmet dışıdır\"}]}", "seconds": 1.208}
+{"id": "test-00116-en", "reply": "{\"quotes\":[]}", "seconds": 0.802}
+{"id": "test-00116-tr", "reply": "{\"quotes\":[]}", "seconds": 0.807}
+{"id": "test-00117-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is shuttered\"}]}", "seconds": 1.156}
+{"id": "test-00117-tr", "reply": "{\"quotes\":[]}", "seconds": 0.897}
+{"id": "test-00118-en", "reply": "{\"quotes\":[]}", "seconds": 0.809}
+{"id": "test-00118-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"yolcu alımına durdurulmuştur\"}]}", "seconds": 1.317}
+{"id": "test-00119-en", "reply": "{\"quotes\":[]}", "seconds": 0.805}
+{"id": "test-00119-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"hizmet vermeyecektir\"}]}", "seconds": 1.243}
+{"id": "test-00120-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is shuttered\"}]}", "seconds": 1.156}
+{"id": "test-00120-tr", "reply": "{\"quotes\":[]}", "seconds": 0.899}
+{"id": "test-00121-en", "reply": "{\"quotes\":[]}", "seconds": 0.897}
+{"id": "test-00121-tr", "reply": "{\"quotes\":[]}", "seconds": 0.9}
+{"id": "test-00122-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_delay\",\"quote\":\"late\"}]}", "seconds": 1.034}
+{"id": "test-00122-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_delay\",\"quote\":\"gecikmeli\"}]}", "seconds": 1.058}
+{"id": "test-00123-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_cancellation\",\"quote\":\"cancelled\"}]}", "seconds": 1.049}
+{"id": "test-00123-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_cancellation\",\"quote\":\"iptal\"}]}", "seconds": 1.069}
+{"id": "test-00124-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is suspended\"}]}", "seconds": 1.051}
+{"id": "test-00124-tr", "reply": "{\"quotes\":[]}", "seconds": 0.807}
+{"id": "test-00125-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is not closed\"}]}", "seconds": 1.06}
+{"id": "test-00125-tr", "reply": "{\"quotes\":[]}", "seconds": 0.895}
+{"id": "test-00126-en", "reply": "{\"quotes\":[]}", "seconds": 0.808}
+{"id": "test-00126-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"kapalı\"}]}", "seconds": 1.14}
+{"id": "test-00127-en", "reply": "{\"quotes\":[]}", "seconds": 0.898}
+{"id": "test-00127-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"hizmet dışıdır\"}]}", "seconds": 1.215}
+{"id": "test-00128-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is unavailable to riders\"}]}", "seconds": 1.172}
+{"id": "test-00128-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"hizmet sunamamaktadır\"}]}", "seconds": 1.228}
+{"id": "test-00129-en", "reply": "{\"quotes\":[]}", "seconds": 0.803}
+{"id": "test-00129-tr", "reply": "{\"quotes\":[]}", "seconds": 0.804}
+{"id": "test-00130-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is suspended\"}]}", "seconds": 1.054}
+{"id": "test-00130-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"durdurulmuştur\"}]}", "seconds": 1.214}
+{"id": "test-00131-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is suspended\"}]}", "seconds": 1.048}
+{"id": "test-00131-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"yolcu alımına durdurulmuştur\"}]}", "seconds": 1.315}
+{"id": "test-00132-en", "reply": "{\"quotes\":[]}", "seconds": 0.805}
+{"id": "test-00132-tr", "reply": "{\"quotes\":[]}", "seconds": 0.808}
+{"id": "test-00133-en", "reply": "{\"quotes\":[]}", "seconds": 0.897}
+{"id": "test-00133-tr", "reply": "{\"quotes\":[]}", "seconds": 0.901}
+{"id": "test-00134-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"shuttered\"}]}", "seconds": 1.064}
+{"id": "test-00134-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"hizmet dışıdır\"}]}", "seconds": 1.207}
+{"id": "test-00135-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_delay\",\"quote\":\"late\"}]}", "seconds": 1.031}
+{"id": "test-00135-tr", "reply": "{\"quotes\":[]}", "seconds": 0.806}
+{"id": "test-00136-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_cancellation\",\"quote\":\"cancelled\"}]}", "seconds": 1.051}
+{"id": "test-00136-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_cancellation\",\"quote\":\"iptal\"}]}", "seconds": 1.063}
+{"id": "test-00137-en", "reply": "{\"quotes\":[]}", "seconds": 0.805}
+{"id": "test-00137-tr", "reply": "{\"quotes\":[]}", "seconds": 0.809}
+{"id": "test-00138-en", "reply": "{\"quotes\":[]}", "seconds": 0.808}
+{"id": "test-00138-tr", "reply": "{\"quotes\":[]}", "seconds": 0.895}
+{"id": "test-00139-en", "reply": "{\"quotes\":[]}", "seconds": 0.81}
+{"id": "test-00139-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"kapalı\"}]}", "seconds": 1.141}
+{"id": "test-00140-en", "reply": "{\"quotes\":[]}", "seconds": 0.9}
+{"id": "test-00140-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"durdurulmuştur\"}]}", "seconds": 1.31}
+{"id": "test-00141-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is shuttered\"}]}", "seconds": 1.059}
+{"id": "test-00141-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"durdurulmuştur\"}]}", "seconds": 1.213}
+{"id": "test-00142-en", "reply": "{\"quotes\":[]}", "seconds": 0.804}
+{"id": "test-00142-tr", "reply": "{\"quotes\":[]}", "seconds": 0.806}
+{"id": "test-00143-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is suspended\"}]}", "seconds": 1.05}
+{"id": "test-00143-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"durdurulmuştur\"}]}", "seconds": 1.212}
+{"id": "test-00144-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is suspended\"}]}", "seconds": 1.049}
+{"id": "test-00144-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"hizmet dışıdır\"}]}", "seconds": 1.213}
+{"id": "test-00145-en", "reply": "{\"quotes\":[]}", "seconds": 0.805}
+{"id": "test-00145-tr", "reply": "{\"quotes\":[]}", "seconds": 0.797}
+{"id": "test-00146-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is shuttered\"}]}", "seconds": 1.159}
+{"id": "test-00146-tr", "reply": "{\"quotes\":[]}", "seconds": 0.902}
+{"id": "test-00147-en", "reply": "{\"quotes\":[]}", "seconds": 0.899}
+{"id": "test-00147-tr", "reply": "{\"quotes\":[]}", "seconds": 0.901}
+{"id": "test-00148-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_delay\",\"quote\":\"late\"}]}", "seconds": 1.037}
+{"id": "test-00148-tr", "reply": "{\"quotes\":[]}", "seconds": 0.806}
+{"id": "test-00149-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_cancellation\",\"quote\":\"cancelled\"}]}", "seconds": 1.047}
+{"id": "test-00149-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_cancellation\",\"quote\":\"iptal\"}]}", "seconds": 1.068}
+{"id": "test-00150-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is shuttered\"}]}", "seconds": 1.073}
+{"id": "test-00150-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"hizmet vermeyecektir\"}]}", "seconds": 1.244}
+{"id": "test-00151-en", "reply": "{\"quotes\":[]}", "seconds": 0.893}
+{"id": "test-00151-tr", "reply": "{\"quotes\":[]}", "seconds": 0.899}
+{"id": "test-00152-en", "reply": "{\"quotes\":[]}", "seconds": 0.81}
+{"id": "test-00152-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"kapalı\"}]}", "seconds": 1.139}
+{"id": "test-00153-en", "reply": "{\"quotes\":[]}", "seconds": 0.898}
+{"id": "test-00153-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"durdurulmuştur\"}]}", "seconds": 1.217}
+{"id": "test-00154-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is suspended\"}]}", "seconds": 1.14}
+{"id": "test-00154-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"hizmet dışıdır\"}]}", "seconds": 1.212}
+{"id": "test-00155-en", "reply": "{\"quotes\":[]}", "seconds": 0.805}
+{"id": "test-00155-tr", "reply": "{\"quotes\":[]}", "seconds": 0.804}
+{"id": "test-00156-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is unavailable\"}]}", "seconds": 1.141}
+{"id": "test-00156-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"durdurulmuştur\"}]}", "seconds": 1.211}
+{"id": "test-00157-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is shuttered\"}]}", "seconds": 1.066}
+{"id": "test-00157-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"durdurulmuştur\"}]}", "seconds": 1.209}
+{"id": "test-00158-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is shuttered\"}]}", "seconds": 1.064}
+{"id": "test-00158-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"hizmet sunamamaktadır\"}]}", "seconds": 1.14}
+{"id": "test-00159-en", "reply": "{\"quotes\":[]}", "seconds": 0.896}
+{"id": "test-00159-tr", "reply": "{\"quotes\":[]}", "seconds": 0.899}
+{"id": "test-00160-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"suspended\"}]}", "seconds": 1.143}
+{"id": "test-00160-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"hizmet dışıdır\"}]}", "seconds": 1.214}
+{"id": "test-00161-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_delay\",\"quote\":\"late\"}]}", "seconds": 1.031}
+{"id": "test-00161-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_delay\",\"quote\":\"gecikmeli\"}]}", "seconds": 1.057}
+{"id": "test-00162-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_cancellation\",\"quote\":\"cancelled\"}]}", "seconds": 1.047}
+{"id": "test-00162-tr", "reply": "{\"quotes\":[]}", "seconds": 0.804}
+{"id": "test-00163-en", "reply": "{\"quotes\":[]}", "seconds": 0.807}
+{"id": "test-00163-tr", "reply": "{\"quotes\":[]}", "seconds": 0.897}
+{"id": "test-00164-en", "reply": "{\"quotes\":[]}", "seconds": 0.896}
+{"id": "test-00164-tr", "reply": "{\"quotes\":[]}", "seconds": 0.899}
+{"id": "test-00165-en", "reply": "{\"quotes\":[]}", "seconds": 0.9}
+{"id": "test-00165-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"kapalı\"}]}", "seconds": 1.143}
+{"id": "test-00166-en", "reply": "{\"quotes\":[]}", "seconds": 0.898}
+{"id": "test-00166-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"durdurulmuştur\"}]}", "seconds": 1.218}
+{"id": "test-00167-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is shuttered\"}]}", "seconds": 1.158}
+{"id": "test-00167-tr", "reply": "{\"quotes\":[]}", "seconds": 0.896}
+{"id": "test-00168-en", "reply": "{\"quotes\":[]}", "seconds": 0.805}
+{"id": "test-00168-tr", "reply": "{\"quotes\":[]}", "seconds": 0.807}
+{"id": "test-00169-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is suspended\"}]}", "seconds": 1.051}
+{"id": "test-00169-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"hizmet sunamamaktadır\"}]}", "seconds": 1.226}
+{"id": "test-00170-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is suspended\"}]}", "seconds": 1.049}
+{"id": "test-00170-tr", "reply": "{\"quotes\":[]}", "seconds": 0.806}
+{"id": "test-00171-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is shuttered\"}]}", "seconds": 1.067}
+{"id": "test-00171-tr", "reply": "{\"quotes\":[]}", "seconds": 0.795}
+{"id": "test-00172-en", "reply": "{\"quotes\":[]}", "seconds": 0.897}
+{"id": "test-00172-tr", "reply": "{\"quotes\":[]}", "seconds": 0.9}
+{"id": "test-00173-en", "reply": "{\"quotes\":[]}", "seconds": 0.899}
+{"id": "test-00173-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"hizmet dışıdır\"}]}", "seconds": 1.221}
+{"id": "test-00174-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_delay\",\"quote\":\"late\"}]}", "seconds": 1.032}
+{"id": "test-00174-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_delay\",\"quote\":\"gecikmeli\"}]}", "seconds": 1.067}
+{"id": "test-00175-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_cancellation\",\"quote\":\"cancelled\"}]}", "seconds": 1.046}
+{"id": "test-00175-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_cancellation\",\"quote\":\"iptal\"}]}", "seconds": 1.075}
+{"id": "test-00176-en", "reply": "{\"quotes\":[]}", "seconds": 0.806}
+{"id": "test-00176-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"durdurulmuştur\"}]}", "seconds": 1.215}
+{"id": "test-00177-en", "reply": "{\"quotes\":[]}", "seconds": 0.894}
+{"id": "test-00177-tr", "reply": "{\"quotes\":[]}", "seconds": 0.899}
+{"id": "test-00178-en", "reply": "{\"quotes\":[]}", "seconds": 0.806}
+{"id": "test-00178-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"kapalı\"}]}", "seconds": 1.142}
+{"id": "test-00179-en", "reply": "{\"quotes\":[]}", "seconds": 0.898}
+{"id": "test-00179-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"hizmet vermeyecektir\"}]}", "seconds": 1.252}
+{"id": "test-00180-en", "reply": "{\"quotes\":[]}", "seconds": 0.893}
+{"id": "test-00180-tr", "reply": "{\"quotes\":[]}", "seconds": 0.897}
+{"id": "test-00181-en", "reply": "{\"quotes\":[]}", "seconds": 0.807}
+{"id": "test-00181-tr", "reply": "{\"quotes\":[]}", "seconds": 0.805}
+{"id": "test-00182-en", "reply": "{\"quotes\":[]}", "seconds": 0.81}
+{"id": "test-00182-tr", "reply": "{\"quotes\":[]}", "seconds": 0.898}
+{"id": "test-00183-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is suspended\"}]}", "seconds": 1.049}
+{"id": "test-00183-tr", "reply": "{\"quotes\":[]}", "seconds": 0.806}
+{"id": "test-00184-en", "reply": "{\"quotes\":[]}", "seconds": 0.806}
+{"id": "test-00184-tr", "reply": "{\"quotes\":[]}", "seconds": 0.895}
+{"id": "test-00185-en", "reply": "{\"quotes\":[]}", "seconds": 0.898}
+{"id": "test-00185-tr", "reply": "{\"quotes\":[]}", "seconds": 0.902}
+{"id": "test-00186-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"shuttered\"}]}", "seconds": 1.156}
+{"id": "test-00186-tr", "reply": "{\"quotes\":[]}", "seconds": 0.896}
+{"id": "test-00187-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_delay\",\"quote\":\"late\"}]}", "seconds": 1.035}
+{"id": "test-00187-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_delay\",\"quote\":\"gecikmeli\"}]}", "seconds": 1.156}
+{"id": "test-00188-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_cancellation\",\"quote\":\"cancelled\"}]}", "seconds": 1.05}
+{"id": "test-00188-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_cancellation\",\"quote\":\"iptal\"}]}", "seconds": 1.073}
+{"id": "test-00189-en", "reply": "{\"quotes\":[]}", "seconds": 0.808}
+{"id": "test-00189-tr", "reply": "{\"quotes\":[]}", "seconds": 0.811}
+{"id": "test-00190-en", "reply": "{\"quotes\":[]}", "seconds": 0.897}
+{"id": "test-00190-tr", "reply": "{\"quotes\":[]}", "seconds": 0.898}
+{"id": "test-00191-en", "reply": "{\"quotes\":[]}", "seconds": 0.798}
+{"id": "test-00191-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"kapalı\"}]}", "seconds": 1.137}
+{"id": "test-00192-en", "reply": "{\"quotes\":[]}", "seconds": 0.896}
+{"id": "test-00192-tr", "reply": "{\"quotes\":[]}", "seconds": 0.901}
+{"id": "test-00193-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is suspended\"}]}", "seconds": 1.057}
+{"id": "test-00193-tr", "reply": "{\"quotes\":[]}", "seconds": 0.895}
+{"id": "test-00194-en", "reply": "{\"quotes\":[]}", "seconds": 0.805}
+{"id": "test-00194-tr", "reply": "{\"quotes\":[]}", "seconds": 0.806}
+{"id": "test-00195-en", "reply": "{\"quotes\":[]}", "seconds": 0.809}
+{"id": "test-00195-tr", "reply": "{\"quotes\":[]}", "seconds": 0.895}
+{"id": "test-00196-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is off limits to passengers\"}]}", "seconds": 1.102}
+{"id": "test-00196-tr", "reply": "{\"quotes\":[]}", "seconds": 0.807}
+{"id": "test-00197-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is shuttered\"}]}", "seconds": 1.067}
+{"id": "test-00197-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"hizmet vermeyecektir\"}]}", "seconds": 1.16}
+{"id": "test-00198-en", "reply": "{\"quotes\":[]}", "seconds": 0.894}
+{"id": "test-00198-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"hizmet vermeyecektir\"}]}", "seconds": 1.252}
+{"id": "test-00199-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"shuttered\"}]}", "seconds": 1.155}
+{"id": "test-00199-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"hizmet sunamamaktadır\"}]}", "seconds": 1.229}
+{"id": "test-00200-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_delay\",\"quote\":\"late\"}]}", "seconds": 1.031}
+{"id": "test-00200-tr", "reply": "{\"quotes\":[]}", "seconds": 0.805}
+{"id": "test-00201-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_cancellation\",\"quote\":\"cancelled\"}]}", "seconds": 1.05}
+{"id": "test-00201-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_cancellation\",\"quote\":\"iptal\"}]}", "seconds": 1.067}
+{"id": "test-00202-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is shuttered\"}]}", "seconds": 1.067}
+{"id": "test-00202-tr", "reply": "{\"quotes\":[]}", "seconds": 0.897}
+{"id": "test-00203-en", "reply": "{\"quotes\":[]}", "seconds": 0.895}
+{"id": "test-00203-tr", "reply": "{\"quotes\":[]}", "seconds": 0.897}
+{"id": "test-00204-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"might be closed\"}]}", "seconds": 1.154}
+{"id": "test-00204-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"kapalı olabilir\"}]}", "seconds": 1.159}
+{"id": "test-00205-en", "reply": "{\"quotes\":[]}", "seconds": 0.899}
+{"id": "test-00205-tr", "reply": "{\"quotes\":[]}", "seconds": 0.902}
+{"id": "test-00206-en", "reply": "{\"quotes\":[]}", "seconds": 0.809}
+{"id": "test-00206-tr", "reply": "{\"quotes\":[]}", "seconds": 0.807}
+{"id": "test-00207-en", "reply": "{\"quotes\":[]}", "seconds": 0.805}
+{"id": "test-00207-tr", "reply": "{\"quotes\":[]}", "seconds": 0.804}
+{"id": "test-00208-en", "reply": "{\"quotes\":[]}", "seconds": 0.811}
+{"id": "test-00208-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"hizmet dışıdır\"}]}", "seconds": 1.206}
+{"id": "test-00209-en", "reply": "{\"quotes\":[]}", "seconds": 0.806}
+{"id": "test-00209-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"hizmet sunamamaktadır\"}]}", "seconds": 1.137}
+{"id": "test-00210-en", "reply": "{\"quotes\":[]}", "seconds": 0.806}
+{"id": "test-00210-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"hizmet dışıdır\"}]}", "seconds": 1.209}
+{"id": "test-00211-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is shuttered\"}]}", "seconds": 1.158}
+{"id": "test-00211-tr", "reply": "{\"quotes\":[]}", "seconds": 0.897}
+{"id": "test-00212-en", "reply": "{\"quotes\":[]}", "seconds": 0.898}
+{"id": "test-00212-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"hizmet dışıdır\"}]}", "seconds": 1.216}
+{"id": "test-00213-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_delay\",\"quote\":\"late\"}]}", "seconds": 1.033}
+{"id": "test-00213-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_delay\",\"quote\":\"gecikmeli\"}]}", "seconds": 1.154}
+{"id": "test-00214-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_cancellation\",\"quote\":\"cancelled\"}]}", "seconds": 1.055}
+{"id": "test-00214-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_cancellation\",\"quote\":\"iptal\"}]}", "seconds": 1.069}
+{"id": "test-00215-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is shuttered\"}]}", "seconds": 1.069}
+{"id": "test-00215-tr", "reply": "{\"quotes\":[]}", "seconds": 0.806}
+{"id": "test-00216-en", "reply": "{\"quotes\":[]}", "seconds": 0.799}
+{"id": "test-00216-tr", "reply": "{\"quotes\":[]}", "seconds": 0.898}
+{"id": "test-00217-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"closed\"}]}", "seconds": 1.025}
+{"id": "test-00217-tr", "reply": "{\"quotes\":[]}", "seconds": 0.895}
+{"id": "test-00218-en", "reply": "{\"quotes\":[]}", "seconds": 0.899}
+{"id": "test-00218-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"hizmet dışıdır\"}]}", "seconds": 1.214}
+{"id": "test-00219-en", "reply": "{\"quotes\":[]}", "seconds": 0.798}
+{"id": "test-00219-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"durdurulmuştur\"}]}", "seconds": 1.215}
+{"id": "test-00220-en", "reply": "{\"quotes\":[]}", "seconds": 0.802}
+{"id": "test-00220-tr", "reply": "{\"quotes\":[]}", "seconds": 0.806}
+{"id": "test-00221-en", "reply": "{\"quotes\":[]}", "seconds": 0.8}
+{"id": "test-00221-tr", "reply": "{\"quotes\":[]}", "seconds": 0.897}
+{"id": "test-00222-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is shuttered\"}]}", "seconds": 1.071}
+{"id": "test-00222-tr", "reply": "{\"quotes\":[]}", "seconds": 0.894}
+{"id": "test-00223-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is suspended\"}]}", "seconds": 1.05}
+{"id": "test-00223-tr", "reply": "{\"quotes\":[]}", "seconds": 0.798}
+{"id": "test-00224-en", "reply": "{\"quotes\":[]}", "seconds": 0.897}
+{"id": "test-00224-tr", "reply": "{\"quotes\":[]}", "seconds": 0.9}
+{"id": "test-00225-en", "reply": "{\"quotes\":[]}", "seconds": 0.894}
+{"id": "test-00225-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"hizmet dışıdır\"}]}", "seconds": 1.21}
+{"id": "test-00226-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_delay\",\"quote\":\"late\"}]}", "seconds": 1.03}
+{"id": "test-00226-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_delay\",\"quote\":\"gecikmeli\"}]}", "seconds": 1.07}
+{"id": "test-00227-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_cancellation\",\"quote\":\"cancelled\"}]}", "seconds": 1.049}
+{"id": "test-00227-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_cancellation\",\"quote\":\"iptal\"}]}", "seconds": 1.067}
+{"id": "test-00228-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is suspended\"}]}", "seconds": 1.049}
+{"id": "test-00228-tr", "reply": "{\"quotes\":[]}", "seconds": 0.798}
+{"id": "test-00229-en", "reply": "{\"quotes\":[]}", "seconds": 0.811}
+{"id": "test-00229-tr", "reply": "{\"quotes\":[]}", "seconds": 0.895}
+{"id": "test-00230-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"might be closed\"}]}", "seconds": 1.069}
+{"id": "test-00230-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"kapalı olabilir\"}]}", "seconds": 1.157}
+{"id": "test-00231-en", "reply": "{\"quotes\":[]}", "seconds": 0.899}
+{"id": "test-00231-tr", "reply": "{\"quotes\":[]}", "seconds": 0.899}
+{"id": "test-00232-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is suspended\"}]}", "seconds": 1.051}
+{"id": "test-00232-tr", "reply": "{\"quotes\":[]}", "seconds": 0.893}
+{"id": "test-00233-en", "reply": "{\"quotes\":[]}", "seconds": 0.806}
+{"id": "test-00233-tr", "reply": "{\"quotes\":[]}", "seconds": 0.804}
+{"id": "test-00234-en", "reply": "{\"quotes\":[]}", "seconds": 0.898}
+{"id": "test-00234-tr", "reply": "{\"quotes\":[]}", "seconds": 0.9}
+{"id": "test-00235-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is suspended\"}]}", "seconds": 1.05}
+{"id": "test-00235-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"hizmet sunamamaktadır\"}]}", "seconds": 1.23}
+{"id": "test-00236-en", "reply": "{\"quotes\":[]}", "seconds": 0.807}
+{"id": "test-00236-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"hizmet vermeyecektir\"}]}", "seconds": 1.246}
+{"id": "test-00237-en", "reply": "{\"quotes\":[]}", "seconds": 0.897}
+{"id": "test-00237-tr", "reply": "{\"quotes\":[]}", "seconds": 0.902}
+{"id": "test-00238-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"off limits to passengers\"}]}", "seconds": 1.176}
+{"id": "test-00238-tr", "reply": "{\"quotes\":[]}", "seconds": 0.899}
+{"id": "test-00239-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_delay\",\"quote\":\"late\"}]}", "seconds": 1.029}
+{"id": "test-00239-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_delay\",\"quote\":\"gecikmeli\"}]}", "seconds": 1.059}
+{"id": "test-00240-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_cancellation\",\"quote\":\"cancelled\"}]}", "seconds": 1.048}
+{"id": "test-00240-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_cancellation\",\"quote\":\"iptal\"}]}", "seconds": 1.067}
+{"id": "test-00241-en", "reply": "{\"quotes\":[]}", "seconds": 0.807}
+{"id": "test-00241-tr", "reply": "{\"quotes\":[]}", "seconds": 0.81}
+{"id": "test-00242-en", "reply": "{\"quotes\":[]}", "seconds": 0.896}
+{"id": "test-00242-tr", "reply": "{\"quotes\":[]}", "seconds": 0.9}
+{"id": "test-00243-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"closed\"}]}", "seconds": 1.121}
+{"id": "test-00243-tr", "reply": "{\"quotes\":[]}", "seconds": 0.894}
+{"id": "test-00244-en", "reply": "{\"quotes\":[]}", "seconds": 0.898}
+{"id": "test-00244-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"durdurulmuştur\"}]}", "seconds": 1.219}
+{"id": "test-00245-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is unavailable to riders\"}]}", "seconds": 1.175}
+{"id": "test-00245-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"durdurulmuştur\"}]}", "seconds": 1.213}
+{"id": "test-00246-en", "reply": "{\"quotes\":[]}", "seconds": 0.802}
+{"id": "test-00246-tr", "reply": "{\"quotes\":[]}", "seconds": 0.806}
+{"id": "test-00247-en", "reply": "{\"quotes\":[]}", "seconds": 0.797}
+{"id": "test-00247-tr", "reply": "{\"quotes\":[]}", "seconds": 0.896}
+{"id": "test-00248-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is shuttered\"}]}", "seconds": 1.069}
+{"id": "test-00248-tr", "reply": "{\"quotes\":[]}", "seconds": 0.804}
+{"id": "test-00249-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is shuttered\"}]}", "seconds": 1.068}
+{"id": "test-00249-tr", "reply": "{\"quotes\":[]}", "seconds": 0.806}
+{"id": "test-00250-en", "reply": "{\"quotes\":[]}", "seconds": 0.897}
+{"id": "test-00250-tr", "reply": "{\"quotes\":[]}", "seconds": 0.902}
+{"id": "test-00251-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"shuttered\"}]}", "seconds": 1.156}
+{"id": "test-00251-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"hizmet vermeyecektir\"}]}", "seconds": 1.25}
+{"id": "test-00252-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_delay\",\"quote\":\"late\"}]}", "seconds": 1.033}
+{"id": "test-00252-tr", "reply": "{\"quotes\":[]}", "seconds": 0.809}
+{"id": "test-00253-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_cancellation\",\"quote\":\"cancelled\"}]}", "seconds": 1.048}
+{"id": "test-00253-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_cancellation\",\"quote\":\"iptal\"}]}", "seconds": 1.069}
+{"id": "test-00254-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is suspended\"}]}", "seconds": 1.05}
+{"id": "test-00254-tr", "reply": "{\"quotes\":[]}", "seconds": 0.895}
+{"id": "test-00255-en", "reply": "{\"quotes\":[]}", "seconds": 0.798}
+{"id": "test-00255-tr", "reply": "{\"quotes\":[]}", "seconds": 0.895}
+{"id": "test-00256-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"closed\"}]}", "seconds": 1.122}
+{"id": "test-00256-tr", "reply": "{\"quotes\":[]}", "seconds": 0.895}
+{"id": "test-00257-en", "reply": "{\"quotes\":[]}", "seconds": 0.9}
+{"id": "test-00257-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"hizmet dışıdır\"}]}", "seconds": 1.221}
+{"id": "test-00258-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is unavailable\"}]}", "seconds": 1.138}
+{"id": "test-00258-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"hizmet vermeyecektir\"}]}", "seconds": 1.245}
+{"id": "test-00259-en", "reply": "{\"quotes\":[]}", "seconds": 0.803}
+{"id": "test-00259-tr", "reply": "{\"quotes\":[]}", "seconds": 0.806}
+{"id": "test-00260-en", "reply": "{\"quotes\":[]}", "seconds": 0.798}
+{"id": "test-00260-tr", "reply": "{\"quotes\":[]}", "seconds": 0.897}
+{"id": "test-00261-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is shuttered\"}]}", "seconds": 1.072}
+{"id": "test-00261-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"hizmet sunamamaktadır\"}]}", "seconds": 1.227}
+{"id": "test-00262-en", "reply": "{\"quotes\":[]}", "seconds": 0.804}
+{"id": "test-00262-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"durdurulmuştur\"}]}", "seconds": 1.215}
+{"id": "test-00263-en", "reply": "{\"quotes\":[]}", "seconds": 0.893}
+{"id": "test-00263-tr", "reply": "{\"quotes\":[]}", "seconds": 0.896}
+{"id": "test-00264-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"suspended\"}]}", "seconds": 1.14}
+{"id": "test-00264-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"yolcu alımına durdurulmuştur\"}]}", "seconds": 1.319}
+{"id": "test-00265-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_delay\",\"quote\":\"late\"}]}", "seconds": 1.031}
+{"id": "test-00265-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_delay\",\"quote\":\"gecikmeli\"}]}", "seconds": 1.157}
+{"id": "test-00266-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_cancellation\",\"quote\":\"cancelled\"}]}", "seconds": 1.047}
+{"id": "test-00266-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_cancellation\",\"quote\":\"iptal\"}]}", "seconds": 1.069}
+{"id": "test-00267-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is suspended\"}]}", "seconds": 1.05}
+{"id": "test-00267-tr", "reply": "{\"quotes\":[]}", "seconds": 0.808}
+{"id": "test-00268-en", "reply": "{\"quotes\":[]}", "seconds": 0.809}
+{"id": "test-00268-tr", "reply": "{\"quotes\":[]}", "seconds": 0.899}
+{"id": "test-00269-en", "reply": "{\"quotes\":[]}", "seconds": 0.807}
+{"id": "test-00269-tr", "reply": "{\"quotes\":[]}", "seconds": 0.809}
+{"id": "test-00270-en", "reply": "{\"quotes\":[]}", "seconds": 0.902}
+{"id": "test-00270-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"durdurulmuştur\"}]}", "seconds": 1.219}
+{"id": "test-00271-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is suspended\"}]}", "seconds": 1.053}
+{"id": "test-00271-tr", "reply": "{\"quotes\":[]}", "seconds": 0.894}
+{"id": "test-00272-en", "reply": "{\"quotes\":[]}", "seconds": 0.805}
+{"id": "test-00272-tr", "reply": "{\"quotes\":[]}", "seconds": 0.806}
+{"id": "test-00273-en", "reply": "{\"quotes\":[]}", "seconds": 0.808}
+{"id": "test-00273-tr", "reply": "{\"quotes\":[]}", "seconds": 0.894}
+{"id": "test-00274-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is off limits to passengers\"}]}", "seconds": 1.104}
+{"id": "test-00274-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"hizmet dışıdır\"}]}", "seconds": 1.11}
+{"id": "test-00275-en", "reply": "{\"quotes\":[]}", "seconds": 0.806}
+{"id": "test-00275-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"hizmet dışıdır\"}]}", "seconds": 1.122}
+{"id": "test-00276-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is suspended\"}]}", "seconds": 1.137}
+{"id": "test-00276-tr", "reply": "{\"quotes\":[]}", "seconds": 0.898}
+{"id": "test-00277-en", "reply": "{\"quotes\":[]}", "seconds": 0.897}
+{"id": "test-00277-tr", "reply": "{\"quotes\":[]}", "seconds": 0.897}
+{"id": "test-00278-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_delay\",\"quote\":\"late\"}]}", "seconds": 1.037}
+{"id": "test-00278-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_delay\",\"quote\":\"gecikmeli\"}]}", "seconds": 1.071}
+{"id": "test-00279-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_cancellation\",\"quote\":\"cancelled\"}]}", "seconds": 1.047}
+{"id": "test-00279-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_cancellation\",\"quote\":\"iptal\"}]}", "seconds": 1.068}
+{"id": "test-00280-en", "reply": "{\"quotes\":[]}", "seconds": 0.805}
+{"id": "test-00280-tr", "reply": "{\"quotes\":[]}", "seconds": 0.809}
+{"id": "test-00281-en", "reply": "{\"quotes\":[]}", "seconds": 0.898}
+{"id": "test-00281-tr", "reply": "{\"quotes\":[]}", "seconds": 0.9}
+{"id": "test-00282-en", "reply": "{\"quotes\":[]}", "seconds": 0.896}
+{"id": "test-00282-tr", "reply": "{\"quotes\":[]}", "seconds": 0.8}
+{"id": "test-00283-en", "reply": "{\"quotes\":[]}", "seconds": 0.9}
+{"id": "test-00283-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"durdurulmuştur\"}]}", "seconds": 1.219}
+{"id": "test-00284-en", "reply": "{\"quotes\":[]}", "seconds": 0.798}
+{"id": "test-00284-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"hizmet dışıdır\"}]}", "seconds": 1.208}
+{"id": "test-00285-en", "reply": "{\"quotes\":[]}", "seconds": 0.804}
+{"id": "test-00285-tr", "reply": "{\"quotes\":[]}", "seconds": 0.805}
+{"id": "test-00286-en", "reply": "{\"quotes\":[]}", "seconds": 0.899}
+{"id": "test-00286-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"durdurulmuştur\"}]}", "seconds": 1.216}
+{"id": "test-00287-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is shuttered\"}]}", "seconds": 1.063}
+{"id": "test-00287-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"durdurulmuştur\"}]}", "seconds": 1.21}
+{"id": "test-00288-en", "reply": "{\"quotes\":[]}", "seconds": 0.806}
+{"id": "test-00288-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"durdurulmuştur\"}]}", "seconds": 1.218}
+{"id": "test-00289-en", "reply": "{\"quotes\":[]}", "seconds": 0.897}
+{"id": "test-00289-tr", "reply": "{\"quotes\":[]}", "seconds": 0.898}
+{"id": "test-00290-en", "reply": "{\"quotes\":[]}", "seconds": 0.901}
+{"id": "test-00290-tr", "reply": "{\"quotes\":[]}", "seconds": 0.902}
+{"id": "test-00291-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_delay\",\"quote\":\"late\"}]}", "seconds": 1.035}
+{"id": "test-00291-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_delay\",\"quote\":\"gecikmeli\"}]}", "seconds": 1.154}
+{"id": "test-00292-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_cancellation\",\"quote\":\"cancelled\"}]}", "seconds": 1.046}
+{"id": "test-00292-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_cancellation\",\"quote\":\"iptal\"}]}", "seconds": 1.067}
+{"id": "test-00293-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is shuttered\"}]}", "seconds": 1.067}
+{"id": "test-00293-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_delay\",\"quote\":\"hizmet sunamamaktadır\"}]}", "seconds": 1.228}
+{"id": "test-00294-en", "reply": "{\"quotes\":[]}", "seconds": 0.894}
+{"id": "test-00294-tr", "reply": "{\"quotes\":[]}", "seconds": 0.897}
+{"id": "test-00295-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"might be closed\"}]}", "seconds": 1.061}
+{"id": "test-00295-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"kapalı olabilir\"}]}", "seconds": 1.159}
+{"id": "test-00296-en", "reply": "{\"quotes\":[]}", "seconds": 0.898}
+{"id": "test-00296-tr", "reply": "{\"quotes\":[]}", "seconds": 0.902}
+{"id": "test-00297-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is shuttered\"}]}", "seconds": 1.158}
+{"id": "test-00297-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"hizmet vermeyecektir\"}]}", "seconds": 1.246}
+{"id": "test-00298-en", "reply": "{\"quotes\":[]}", "seconds": 0.803}
+{"id": "test-00298-tr", "reply": "{\"quotes\":[]}", "seconds": 0.805}
+{"id": "test-00299-en", "reply": "{\"quotes\":[]}", "seconds": 0.808}
+{"id": "test-00299-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"hizmet sunamamaktadır\"}]}", "seconds": 1.229}

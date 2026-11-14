@@ -11,7 +11,7 @@ measurable: it can supply the event kind for phrases outside the production list
 
 ## Decision
 
-- Train a LoRA adapter (rank 8, eight layers, 600 iterations, one seed, learning rate 1e-4) on 1,800 rows drawn only from the TRL-Bench v3 train split. A row asks for the quote and kind of the event phrase, or for nothing when the report names no event, denies it or hedges it. Validation uses the first 50 dev groups. The final training loss was 0.03 and the validation loss 0.05, not zero.
+- Train a LoRA adapter (rank 8, eight layers, 600 iterations, seed 42 first, learning rate 1e-4) on 1,800 rows drawn only from the TRL-Bench v3 train split. A row asks for the quote and kind of the event phrase, or for nothing when the report names no event, denies it or hedges it. Validation uses the first 50 dev groups. The final training loss was 0.03 and the validation loss 0.05, not zero.
 - Evaluate base and adapter in the MLX runtime with greedy decoding on a preregistered adoption set (200 dev reports) and a preregistered test subset (the first 600 test reports).
 - Adopt the adapter only if it beats the base arm on the adoption set with an exact McNemar p below 0.05 and applies no unsupported incident.
 
@@ -33,8 +33,23 @@ The base arm produced **no schema-valid reply in 600** because free decoding doe
 extraction schema. In production the Ollama structured-output constraint fixes the schema, so
 that row measures format compliance in this runtime, not language ability.
 
+## Seeds
+
+Two further seeds (43 and 44), same data and settings, were trained after the first result and
+scored on the same 600 reports. They read **77.7%** [72.6%, 82.5%] and **76.8%** [70.9%, 82.2%],
+against 59.5% for seed 42 and 53.7% for rules. Seeds 43 and 44 are statistically indistinguishable
+(exact p 0.69). Seed 42 is clearly worse than both (p below 0.0001), so a single seed
+understated what this recipe can do by about 18 points. All three applied no unsupported
+incident. Seeds 43 and 44 quote new closure wordings in roughly half of the reports in each
+closure family, which is the gain over seed 42. They remain well below the 96.2% ceiling.
+
+The registered adoption rule used the dev adoption set, where every arm scores 200 of 200, so it
+cannot be satisfied and the adapter stays **not adopted**. The rule was registered before the
+seeds existed and is not changed afterwards. A later registration should use a dev bank with
+predicates outside the production list.
+
 ## Consequences
 
 The default operator stays deterministic. The adapter is kept as a measured negative result and
 as the starting point for a corpus that includes the held-out predicate types in training under
-a new split. One seed and a 4B model limit what this run shows.
+a new split. Three seeds and a 4B model limit what this run shows.
