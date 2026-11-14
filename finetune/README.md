@@ -70,3 +70,17 @@ The MLX comparison tests strict JSON schema compliance with unconstrained genera
 ## Measured outcome
 
 The [results](results/REPORT.md) report both MLX evaluation partitions and the Ollama route slice. The initial fused import lacked Qwen's renderer and parser and returned clarification for all four cases. The final recipe preserves these settings. It matched two of four reference outcomes, so the candidate was not adopted for the simulator. The unadapted local Ollama Operator remains the inference default.
+
+## Adapter v3 (TRL-Bench v3.1)
+
+```sh
+uv run --locked --project backend python -m finetune.v31_data --output .local/finetune-v31
+.local/mlx/venv/bin/python -m mlx_lm lora --config finetune/v31-c1.yml --model .local/mlx/qwen35-4b
+```
+
+Stop Ollama first. The three published adapters (seeds 42 to 44) are in `results/v31` with their
+losses and checksums. To use one, export and fuse it as above with `--adapter results/v31/adapter-s42`,
+then `ollama create` a tag and set `TRL_OPERATOR_MODEL` to it. Evaluate any Ollama model on the dev hard
+slice with `python -m finetune.v3_evaluate --model TAG --split dev --hard --workers 4`, start Ollama with
+`OLLAMA_NUM_PARALLEL=4`, and score the replies with `python -m experiments.bench_v31 run`. The
+[results](../experiments/results/v2_1/REPORT.md) and [ADR 0017](../docs/adr/0017-operator-adapter-v3.md) report the comparison.

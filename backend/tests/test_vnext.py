@@ -196,3 +196,11 @@ def test_real_vnext_hybrid_grounds_a_report_and_recovers_a_meeting(tmp_path: Pat
     assert state.status == "verified"
     assert state.metrics.backend == "ollama" and state.metrics.calls == 1
     assert state.incident == load_scenario().incident and len(state.votes) == 2
+
+
+def test_the_ollama_schema_requires_the_kind_of_a_quote() -> None:
+    from trl.vnext import Extraction, ollama_format
+
+    quote = ollama_format(Extraction)["$defs"]["ExtractionQuote"]
+    assert set(quote["required"]) == {"slot", "kind", "quote"}
+    assert "kind" not in Extraction.model_json_schema()["$defs"]["ExtractionQuote"]["required"]

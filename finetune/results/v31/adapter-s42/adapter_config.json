@@ -1,0 +1,46 @@
+{
+    "adapter_path": ".local/finetune-v31/adapter-c1-s42",
+    "batch_size": 1,
+    "clear_cache_threshold": 0,
+    "config": ".local/v31/c1-s42.yml",
+    "data": ".local/finetune-v31",
+    "fine_tune_type": "lora",
+    "grad_accumulation_steps": 1,
+    "grad_checkpoint": true,
+    "iters": 600,
+    "learning_rate": 0.0001,
+    "lora_parameters": {
+        "rank": 8,
+        "scale": 16.0,
+        "dropout": 0.0,
+        "keys": [
+            "self_attn.q_proj",
+            "self_attn.v_proj"
+        ]
+    },
+    "lr_schedule": null,
+    "mask_prompt": true,
+    "max_seq_length": 512,
+    "model": ".local/mlx/qwen35-4b",
+    "num_layers": 8,
+    "optimizer": "adam",
+    "optimizer_config": {
+        "adam": {},
+        "adamw": {},
+        "muon": {},
+        "sgd": {},
+        "adafactor": {}
+    },
+    "project_name": null,
+    "report_to": null,
+    "resume_adapter_file": null,
+    "save_every": 150,
+    "seed": 42,
+    "steps_per_eval": 150,
+    "steps_per_report": 25,
+    "test": false,
+    "test_batches": 500,
+    "train": true,
+    "trust_remote_code": false,
+    "val_batches": 25
+}

@@ -48,15 +48,20 @@ evidence gate: it supplies the event kind, and every other field is still read b
 parsers from text that the gate has checked. The upper bound on unsupported applications is
 0.18% at 95% confidence. [Full report](experiments/results/v2/bench/test.md) · [Preregistration](docs/v2/preregistration.md).
 
-**Language model arms (first 600 test reports, preregistered subset, three training seeds).** A 4B
-local model with a LoRA adapter trained on the train split reads 59.5%, 77.7% and 76.8% across
-seeds, against 53.7% for rules, the phrase list and the unadapted model, and 96.2% for a gold quote.
-No arm applies an unsupported incident. On all 2,000 test reports with the final reader, rules read
-53.8% and the seeds 59.6%, 80.3% and 78.5%. On 438 reports rewritten by a model from another family
-(label noise from dropped negations is documented), rules read 36.8% and the three seeds 43.8–52.7%.
-The seed spread is large, so a single seed would have
-misreported the recipe. The adapter is still **not adopted** because the registered adoption rule
-could not be met on dev, and the default stays deterministic. [ADR 0016](docs/adr/0016-operator-adapter-v2.md).
+**Operator comparison (TRL-Bench v3.1, 616 test reports of the hard slice).** A 4B local model
+(Qwen3.5-4B, 4-bit) is compared in Ollama with structured output at temperature 0. A LoRA adapter
+(rank 8, 0.23M trainable parameters) reads 89.6% [87.2%, 92.0%] of reports exactly. The same model
+with four retrieved train examples reads 83.8%, the unadapted model 18.2% and the production lexicon
+8.1%. The adapter beats retrieval by 5.8 points [2.6, 9.1] and applies no unsupported incident
+(upper bound 0.60%). The test wording was written by a model from another family and avoids the
+production word list. Three training seeds read 89.6%, 92.2% and 89.0%. The adapter is adopted as the recommended local Operator, and the default run stays model-free. The first dev run also found that Ollama's constrained decoding
+skipped the optional event-kind field, which hid every model quote from the evidence gate until the
+schema required it. [Report](experiments/results/v2_1/REPORT.md) · [ADR 0017](docs/adr/0017-operator-adapter-v3.md)
+· [Preregistration](docs/v2/preregistration-operator-v3.md).
+
+**Earlier arms on the v3 benchmark (v2.0.0).** The adapter trained on the small v3 train bank read
+59.5%, 77.7% and 76.8% across three seeds against 53.7% for rules and the unadapted model, and it was
+not adopted. [ADR 0016](docs/adr/0016-operator-adapter-v2.md).
 
 **Routing on the whole network (five feeds, 11,857 stops, 2.2 million stop times).** The network
 compiles in about five seconds and loads from a cache in 30 ms. With riders starting near a

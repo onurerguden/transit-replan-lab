@@ -96,3 +96,4 @@ The [baseline](v2/baseline.md) lists the reproduced defects, and the
 - [x] F9 · Deliver addressable runs, the incident and clarification interface, bilingual UI and accessibility tests.
 - [x] F10 · Add metrics, tracing, readiness, security headers, rate limiting and supply-chain scanning.
 - [x] F11 · Publish documentation and prepare the signed release workflow.
+- [x] v2.1 · Train Operator adapter v3 on TRL-Bench v3.1, add a retrieval arm and run the preregistered comparison.

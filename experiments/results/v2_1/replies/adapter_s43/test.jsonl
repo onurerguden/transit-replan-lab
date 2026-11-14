@@ -1,0 +1,616 @@
+{"id": "test-00002-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is experiencing disruptions\"}]}", "prompt_tokens": 219, "seconds": 6.66}
+{"id": "test-00002-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"gecersiz\"}]}", "prompt_tokens": 220, "seconds": 6.662}
+{"id": "test-00000-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is currently experiencing issues\"}]}", "prompt_tokens": 227, "seconds": 6.726}
+{"id": "test-00000-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"belirilĿ\"}]}", "prompt_tokens": 229, "seconds": 8.655}
+{"id": "test-00004-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"are currently inaccessible\"}]}", "prompt_tokens": 235, "seconds": 4.01}
+{"id": "test-00004-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"geçersiz\"}]}", "prompt_tokens": 242, "seconds": 4.01}
+{"id": "test-00008-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"kaybolmuştur değildir\"}]}", "prompt_tokens": 236, "seconds": 3.694}
+{"id": "test-00008-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is operational not until 09:26\"}]}", "prompt_tokens": 228, "seconds": 5.686}
+{"id": "test-00014-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"geişľğ\"}]}", "prompt_tokens": 225, "seconds": 4.166}
+{"id": "test-00014-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"has been placed on hold\"}]}", "prompt_tokens": 220, "seconds": 4.249}
+{"id": "test-00016-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is currently experiencing issues\"}]}", "prompt_tokens": 230, "seconds": 4.179}
+{"id": "test-00016-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"belirilĿ. şoför yok\"}]}", "prompt_tokens": 238, "seconds": 5.175}
+{"id": "test-00020-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"has ceased\"}]}", "prompt_tokens": 223, "seconds": 4.003}
+{"id": "test-00020-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"olayamaz\"}]}", "prompt_tokens": 228, "seconds": 4.004}
+{"id": "test-00022-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"may be expected to close\"}]}", "prompt_tokens": 229, "seconds": 4.283}
+{"id": "test-00022-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"belki bekleniyor\"}]}", "prompt_tokens": 234, "seconds": 4.22}
+{"id": "test-00026-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"olayamaz\"}]}", "prompt_tokens": 233, "seconds": 3.985}
+{"id": "test-00026-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"has been taken out of action\"}]}", "prompt_tokens": 229, "seconds": 4.888}
+{"id": "test-00028-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"has been taken offline\"}]}", "prompt_tokens": 220, "seconds": 4.18}
+{"id": "test-00028-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"kapanış\"}]}", "prompt_tokens": 220, "seconds": 4.116}
+{"id": "test-00030-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"are currently being maintained\"}]}", "prompt_tokens": 231, "seconds": 4.197}
+{"id": "test-00030-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"belirilĿler\"}]}", "prompt_tokens": 235, "seconds": 4.328}
+{"id": "test-00034-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is active not\"}]}", "prompt_tokens": 227, "seconds": 4.038}
+{"id": "test-00034-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"kaybolmuştur değildir\"}]}", "prompt_tokens": 228, "seconds": 4.382}
+{"id": "test-00040-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is experiencing technical difficulties\"}]}", "prompt_tokens": 221, "seconds": 4.271}
+{"id": "test-00040-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"deşeğ\"}]}", "prompt_tokens": 224, "seconds": 4.214}
+{"id": "test-00042-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is currently inaccessible\"}]}", "prompt_tokens": 231, "seconds": 4.246}
+{"id": "test-00042-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"olamayaz\"}]}", "prompt_tokens": 239, "seconds": 4.502}
+{"id": "test-00046-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is currently out of operation\"}]}", "prompt_tokens": 228, "seconds": 4.641}
+{"id": "test-00046-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"belirilĿ\"}]}", "prompt_tokens": 228, "seconds": 4.626}
+{"id": "test-00048-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"could possibly shut\"}]}", "prompt_tokens": 226, "seconds": 4.449}
+{"id": "test-00048-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"ihtimal ki bekleniyor\"}]}", "prompt_tokens": 233, "seconds": 4.301}
+{"id": "test-00052-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is experiencing technical difficulties\"}]}", "prompt_tokens": 224, "seconds": 4.09}
+{"id": "test-00052-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"olumayar\"}]}", "prompt_tokens": 232, "seconds": 4.027}
+{"id": "test-00054-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"has been suspended\"}]}", "prompt_tokens": 220, "seconds": 4.062}
+{"id": "test-00054-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"geışľğ\"}]}", "prompt_tokens": 226, "seconds": 4.16}
+{"id": "test-00056-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"are currently being maintained\"}]}", "prompt_tokens": 233, "seconds": 4.141}
+{"id": "test-00056-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"deşeğler\"}]}", "prompt_tokens": 237, "seconds": 4.081}
+{"id": "test-00060-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"will not be halted\"}]}", "prompt_tokens": 226, "seconds": 4.016}
+{"id": "test-00060-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"açık değildir\"}]}", "prompt_tokens": 225, "seconds": 4.07}
+{"id": "test-00066-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is currently experiencing disruptions\"}]}", "prompt_tokens": 220, "seconds": 4.161}
+{"id": "test-00066-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"gecersiz\"}]}", "prompt_tokens": 222, "seconds": 3.484}
+{"id": "test-00068-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is currently undergoing repairs\"}]}", "prompt_tokens": 230, "seconds": 4.164}
+{"id": "test-00068-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"çıkış yok\"}]}", "prompt_tokens": 232, "seconds": 4.128}
+{"id": "test-00072-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is temporarily suspended\"}]}", "prompt_tokens": 222, "seconds": 4.066}
+{"id": "test-00072-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"geışľğ\"}]}", "prompt_tokens": 227, "seconds": 4.066}
+{"id": "test-00074-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"could possibly shut\"}]}", "prompt_tokens": 226, "seconds": 4.189}
+{"id": "test-00074-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"ihtimal ki bekleniyor\"}]}", "prompt_tokens": 233, "seconds": 4.343}
+{"id": "test-00078-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"has been taken offline\"}]}", "prompt_tokens": 230, "seconds": 4.172}
+{"id": "test-00078-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"geışľğ\"}]}", "prompt_tokens": 234, "seconds": 4.091}
+{"id": "test-00080-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"iscurrentlyexperiencingdisruptions\"}]}", "prompt_tokens": 218, "seconds": 4.365}
+{"id": "test-00080-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"kapanış\"}]}", "prompt_tokens": 218, "seconds": 4.193}
+{"id": "test-00082-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"have been disabled\"}]}", "prompt_tokens": 232, "seconds": 4.266}
+{"id": "test-00082-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"deşeğler\"}]}", "prompt_tokens": 236, "seconds": 4.348}
+{"id": "test-00086-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"will not be closed\"}]}", "prompt_tokens": 229, "seconds": 4.25}
+{"id": "test-00092-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"deşeğ\"}]}", "prompt_tokens": 219, "seconds": 3.377}
+{"id": "test-00086-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"kaybolmamıştır değildir\"}]}", "prompt_tokens": 235, "seconds": 4.375}
+{"id": "test-00092-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is currently experiencing technical difficulties\"}]}", "prompt_tokens": 221, "seconds": 4.846}
+{"id": "test-00094-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"has been suspended\"}]}", "prompt_tokens": 230, "seconds": 4.155}
+{"id": "test-00098-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is undergoing maintenance\"}]}", "prompt_tokens": 222, "seconds": 4.096}
+{"id": "test-00094-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"çıkış yok\"}]}", "prompt_tokens": 236, "seconds": 4.156}
+{"id": "test-00098-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"olayamaz\"}]}", "prompt_tokens": 222, "seconds": 4.145}
+{"id": "test-00100-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is closed\"}]}", "prompt_tokens": 227, "seconds": 4.123}
+{"id": "test-00100-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"belki bekleniyor\"}]}", "prompt_tokens": 231, "seconds": 4.274}
+{"id": "test-00104-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"gşğliğ\"}]}", "prompt_tokens": 237, "seconds": 2.923}
+{"id": "test-00106-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"has been suspended\"}]}", "prompt_tokens": 219, "seconds": 3.346}
+{"id": "test-00104-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is undergoing maintenance for the period 16:48 to 18:08\"}]}", "prompt_tokens": 233, "seconds": 7.142}
+{"id": "test-00106-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"değerlamaz\"}]}", "prompt_tokens": 229, "seconds": 4.214}
+{"id": "test-00108-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"are currently unavailabel\"}]}", "prompt_tokens": 231, "seconds": 4.214}
+{"id": "test-00108-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"geışľğler\"}]}", "prompt_tokens": 237, "seconds": 4.377}
+{"id": "test-00112-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"has not been suspended\"}]}", "prompt_tokens": 233, "seconds": 4.246}
+{"id": "test-00112-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"kapalidir değildir\"}]}", "prompt_tokens": 237, "seconds": 4.227}
+{"id": "test-00118-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is currently experiencing issues\"}]}", "prompt_tokens": 219, "seconds": 4.145}
+{"id": "test-00118-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"belirilĿ\"}]}", "prompt_tokens": 219, "seconds": 4.242}
+{"id": "test-00120-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is currently experiencing issues\"}]}", "prompt_tokens": 233, "seconds": 4.19}
+{"id": "test-00120-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"oluyamaz\"}]}", "prompt_tokens": 242, "seconds": 4.072}
+{"id": "test-00124-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"has been suspended\"}]}", "prompt_tokens": 221, "seconds": 4.072}
+{"id": "test-00124-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"olayamaz\"}]}", "prompt_tokens": 228, "seconds": 4.053}
+{"id": "test-00126-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is closed\"}]}", "prompt_tokens": 226, "seconds": 4.086}
+{"id": "test-00126-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"kapalıs\"}]}", "prompt_tokens": 239, "seconds": 4.152}
+{"id": "test-00130-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is experiencing disruptions\"}]}", "prompt_tokens": 228, "seconds": 4.153}
+{"id": "test-00130-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"geışľğ\"}]}", "prompt_tokens": 239, "seconds": 4.25}
+{"id": "test-00132-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is currently undergoing repairs\"}]}", "prompt_tokens": 218, "seconds": 4.34}
+{"id": "test-00132-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"geışľğ\"}]}", "prompt_tokens": 220, "seconds": 4.345}
+{"id": "test-00134-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"are currently undergoing repairs\"}]}", "prompt_tokens": 238, "seconds": 4.345}
+{"id": "test-00134-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"geışľğler\"}]}", "prompt_tokens": 244, "seconds": 4.378}
+{"id": "test-00138-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is open not until 08:41\"}]}", "prompt_tokens": 228, "seconds": 4.528}
+{"id": "test-00138-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"kaybolmamıştır değildir\"}]}", "prompt_tokens": 239, "seconds": 4.279}
+{"id": "test-00144-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"has been taken out of action\"}]}", "prompt_tokens": 227, "seconds": 4.28}
+{"id": "test-00144-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"geışľğ\"}]}", "prompt_tokens": 227, "seconds": 4.161}
+{"id": "test-00146-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is temporarily suspended\"}]}", "prompt_tokens": 229, "seconds": 4.119}
+{"id": "test-00146-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"gşğliğ\"}]}", "prompt_tokens": 236, "seconds": 4.212}
+{"id": "test-00150-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is currently experiencing technical difficulties\"}]}", "prompt_tokens": 226, "seconds": 4.297}
+{"id": "test-00150-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"gecersiz\"}]}", "prompt_tokens": 224, "seconds": 4.16}
+{"id": "test-00152-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"expected be shut\"}]}", "prompt_tokens": 225, "seconds": 4.227}
+{"id": "test-00156-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"has been taken offline\"}]}", "prompt_tokens": 227, "seconds": 4.191}
+{"id": "test-00152-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"belki bekleniyor\"}]}", "prompt_tokens": 233, "seconds": 4.361}
+{"id": "test-00156-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"geışľğ\"}]}", "prompt_tokens": 229, "seconds": 4.275}
+{"id": "test-00158-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is temporarily suspended\"}]}", "prompt_tokens": 219, "seconds": 4.18}
+{"id": "test-00158-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"değerlamaz\"}]}", "prompt_tokens": 223, "seconds": 4.301}
+{"id": "test-00160-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"are experiencing technical difficulties\"}]}", "prompt_tokens": 232, "seconds": 4.22}
+{"id": "test-00160-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"olmayar\"}]}", "prompt_tokens": 232, "seconds": 4.229}
+{"id": "test-00164-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"will not be closed\"}]}", "prompt_tokens": 231, "seconds": 4.224}
+{"id": "test-00164-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"kapalidir değildir\"}]}", "prompt_tokens": 237, "seconds": 4.25}
+{"id": "test-00170-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is currently experiencing technical difficulties\"}]}", "prompt_tokens": 224, "seconds": 4.333}
+{"id": "test-00170-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"gecersiz\"}]}", "prompt_tokens": 218, "seconds": 4.216}
+{"id": "test-00172-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is currently unavailable\"}]}", "prompt_tokens": 232, "seconds": 4.339}
+{"id": "test-00172-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"gecersiz\"}]}", "prompt_tokens": 235, "seconds": 4.283}
+{"id": "test-00176-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"has been disabled\"}]}", "prompt_tokens": 220, "seconds": 4.207}
+{"id": "test-00176-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"olayamaz\"}]}", "prompt_tokens": 226, "seconds": 4.26}
+{"id": "test-00178-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"could possibly be shut\"}]}", "prompt_tokens": 226, "seconds": 4.28}
+{"id": "test-00182-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is currently experiencing disruptions\"}]}", "prompt_tokens": 226, "seconds": 4.239}
+{"id": "test-00182-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"belirilĿ\"}]}", "prompt_tokens": 230, "seconds": 3.695}
+{"id": "test-00178-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"olaylar olasılıkla bekleniyor\"}]}", "prompt_tokens": 234, "seconds": 5.337}
+{"id": "test-00184-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is experiencing technical difficulties\"}]}", "prompt_tokens": 218, "seconds": 4.271}
+{"id": "test-00184-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"geışľğ\"}]}", "prompt_tokens": 220, "seconds": 4.3}
+{"id": "test-00186-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"gşğliğ\"}]}", "prompt_tokens": 236, "seconds": 4.343}
+{"id": "test-00186-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"have been taken out of action\"}]}", "prompt_tokens": 234, "seconds": 5.146}
+{"id": "test-00190-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"was not shut down\"}]}", "prompt_tokens": 229, "seconds": 4.405}
+{"id": "test-00190-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"açık değildir\"}]}", "prompt_tokens": 233, "seconds": 4.343}
+{"id": "test-00196-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"has been disabled\"}]}", "prompt_tokens": 217, "seconds": 4.303}
+{"id": "test-00196-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"deşeğ\"}]}", "prompt_tokens": 218, "seconds": 4.268}
+{"id": "test-00198-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is currently undergoing repairs\"}]}", "prompt_tokens": 232, "seconds": 4.254}
+{"id": "test-00198-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"olayamaz\"}]}", "prompt_tokens": 230, "seconds": 4.147}
+{"id": "test-00202-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"geçersiz\"}]}", "prompt_tokens": 226, "seconds": 3.528}
+{"id": "test-00202-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is currently out of operation\"}]}", "prompt_tokens": 226, "seconds": 4.297}
+{"id": "test-00204-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"might be shut\"}]}", "prompt_tokens": 225, "seconds": 4.285}
+{"id": "test-00204-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"belki kapalıs\"}]}", "prompt_tokens": 233, "seconds": 4.377}
+{"id": "test-00208-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"geışľğ\"}]}", "prompt_tokens": 238, "seconds": 4.328}
+{"id": "test-00208-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"has been taken out of action\"}]}", "prompt_tokens": 235, "seconds": 5.194}
+{"id": "test-00210-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"has been taken offline\"}]}", "prompt_tokens": 217, "seconds": 4.428}
+{"id": "test-00210-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"değerlamaz\"}]}", "prompt_tokens": 219, "seconds": 4.429}
+{"id": "test-00212-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"have been placed on hold\"}]}", "prompt_tokens": 232, "seconds": 4.546}
+{"id": "test-00212-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"geışľğler\"}]}", "prompt_tokens": 235, "seconds": 4.5}
+{"id": "test-00216-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"will not be halted\"}]}", "prompt_tokens": 229, "seconds": 4.377}
+{"id": "test-00216-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"açık değildir\"}]}", "prompt_tokens": 235, "seconds": 4.412}
+{"id": "test-00222-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"olmayacak\"}]}", "prompt_tokens": 225, "seconds": 3.727}
+{"id": "test-00222-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is currently out of operation\"}]}", "prompt_tokens": 224, "seconds": 4.548}
+{"id": "test-00224-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is currently out of operation\"}]}", "prompt_tokens": 231, "seconds": 4.427}
+{"id": "test-00224-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"kapanş\"}]}", "prompt_tokens": 228, "seconds": 4.224}
+{"id": "test-00228-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"değerlamaz\"}]}", "prompt_tokens": 225, "seconds": 4.287}
+{"id": "test-00228-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is currently out of operation\"}]}", "prompt_tokens": 223, "seconds": 4.353}
+{"id": "test-00230-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"could possibly be closed\"}]}", "prompt_tokens": 227, "seconds": 4.294}
+{"id": "test-00230-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"ihtimal ki bekleniyor\"}]}", "prompt_tokens": 241, "seconds": 4.404}
+{"id": "test-00234-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"has been taken offline\"}]}", "prompt_tokens": 228, "seconds": 4.21}
+{"id": "test-00234-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"belirilĿ\"}]}", "prompt_tokens": 236, "seconds": 4.209}
+{"id": "test-00236-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is currently out of operation\"}]}", "prompt_tokens": 221, "seconds": 4.346}
+{"id": "test-00236-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"belirilĿ\"}]}", "prompt_tokens": 222, "seconds": 4.365}
+{"id": "test-00238-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"have been suspended\"}]}", "prompt_tokens": 230, "seconds": 4.473}
+{"id": "test-00238-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"deşeğler\"}]}", "prompt_tokens": 236, "seconds": 4.476}
+{"id": "test-00242-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is active not\"}]}", "prompt_tokens": 228, "seconds": 4.425}
+{"id": "test-00242-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"kaybolmamıştır değildir\"}]}", "prompt_tokens": 237, "seconds": 4.683}
+{"id": "test-00248-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"has been taken offline\"}]}", "prompt_tokens": 222, "seconds": 4.417}
+{"id": "test-00248-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"belirilĿ\"}]}", "prompt_tokens": 226, "seconds": 4.416}
+{"id": "test-00250-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is currently out of operation\"}]}", "prompt_tokens": 239, "seconds": 4.464}
+{"id": "test-00250-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"çıkış yok\"}]}", "prompt_tokens": 241, "seconds": 4.293}
+{"id": "test-00254-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is currently being maintained\"}]}", "prompt_tokens": 223, "seconds": 4.274}
+{"id": "test-00254-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"değerlamaz\"}]}", "prompt_tokens": 229, "seconds": 4.211}
+{"id": "test-00256-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"might be shut\"}]}", "prompt_tokens": 229, "seconds": 4.179}
+{"id": "test-00256-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"kapalı\"}]}", "prompt_tokens": 232, "seconds": 4.126}
+{"id": "test-00260-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"has been disabled\"}]}", "prompt_tokens": 228, "seconds": 4.127}
+{"id": "test-00260-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"deşeğ\"}]}", "prompt_tokens": 233, "seconds": 4.127}
+{"id": "test-00262-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is temporarily suspended\"}]}", "prompt_tokens": 219, "seconds": 4.239}
+{"id": "test-00262-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"gecersiz\"}]}", "prompt_tokens": 221, "seconds": 4.258}
+{"id": "test-00264-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"are currently undergoing repairs\"}]}", "prompt_tokens": 227, "seconds": 4.41}
+{"id": "test-00264-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"belirilĿler 16:57'ye kadar\"}]}", "prompt_tokens": 237, "seconds": 5.881}
+{"id": "test-00268-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"açık değildir\"}]}", "prompt_tokens": 230, "seconds": 3.911}
+{"id": "test-00274-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is currently unavailable\"}]}", "prompt_tokens": 221, "seconds": 3.862}
+{"id": "test-00268-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is operational not for the period 14:03 to 14:43\"}]}", "prompt_tokens": 229, "seconds": 7.079}
+{"id": "test-00274-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"gşğliğ\"}]}", "prompt_tokens": 231, "seconds": 4.54}
+{"id": "test-00276-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is currently being maintained\"}]}", "prompt_tokens": 231, "seconds": 4.45}
+{"id": "test-00276-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"geçersiz\"}]}", "prompt_tokens": 233, "seconds": 4.238}
+{"id": "test-00280-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is currently being maintained\"}]}", "prompt_tokens": 224, "seconds": 4.342}
+{"id": "test-00280-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"kapanş\"}]}", "prompt_tokens": 225, "seconds": 4.214}
+{"id": "test-00282-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"may be expected to close\"}]}", "prompt_tokens": 229, "seconds": 4.438}
+{"id": "test-00282-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"kapalıs\"}]}", "prompt_tokens": 235, "seconds": 4.304}
+{"id": "test-00286-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is currently experiencing issues\"}]}", "prompt_tokens": 226, "seconds": 4.291}
+{"id": "test-00286-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"gşğliğ\"}]}", "prompt_tokens": 235, "seconds": 4.281}
+{"id": "test-00288-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is experiencing technical difficulties\"}]}", "prompt_tokens": 219, "seconds": 4.359}
+{"id": "test-00288-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"gşğliğ\"}]}", "prompt_tokens": 222, "seconds": 4.562}
+{"id": "test-00290-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"have ceased\"}]}", "prompt_tokens": 227, "seconds": 4.515}
+{"id": "test-00290-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"belirilĿler\"}]}", "prompt_tokens": 238, "seconds": 4.923}
+{"id": "test-00294-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"was not closed\"}]}", "prompt_tokens": 230, "seconds": 4.585}
+{"id": "test-00294-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"kaybolmuştur değildir\"}]}", "prompt_tokens": 238, "seconds": 4.708}
+{"id": "test-00300-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"has been placed on hold\"}]}", "prompt_tokens": 221, "seconds": 3.872}
+{"id": "test-00300-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"geişľğ\"}]}", "prompt_tokens": 223, "seconds": 4.402}
+{"id": "test-00302-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is experiencing disruptions\"}]}", "prompt_tokens": 233, "seconds": 4.334}
+{"id": "test-00302-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"geışľğ\"}]}", "prompt_tokens": 237, "seconds": 4.338}
+{"id": "test-00306-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is currently experiencing technical difficulties\"}]}", "prompt_tokens": 225, "seconds": 4.397}
+{"id": "test-00306-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"kapanış\"}]}", "prompt_tokens": 226, "seconds": 4.36}
+{"id": "test-00308-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"could possibly be shut\"}]}", "prompt_tokens": 225, "seconds": 4.476}
+{"id": "test-00308-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"kapalıs\"}]}", "prompt_tokens": 232, "seconds": 4.402}
+{"id": "test-00312-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is currently unavailable\"}]}", "prompt_tokens": 231, "seconds": 4.343}
+{"id": "test-00312-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"kapanş\"}]}", "prompt_tokens": 235, "seconds": 4.319}
+{"id": "test-00314-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"iscurrentlyexperiencingissues\"}]}", "prompt_tokens": 218, "seconds": 4.505}
+{"id": "test-00314-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"kapanş\"}]}", "prompt_tokens": 221, "seconds": 4.328}
+{"id": "test-00316-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"are currently unavailabel\"}]}", "prompt_tokens": 237, "seconds": 5.138}
+{"id": "test-00316-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"kapanışlar\"}]}", "prompt_tokens": 239, "seconds": 4.37}
+{"id": "test-00320-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"will not be halted\"}]}", "prompt_tokens": 227, "seconds": 4.358}
+{"id": "test-00320-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"yanlış değildir\"}]}", "prompt_tokens": 231, "seconds": 4.377}
+{"id": "test-00326-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"has been taken offline\"}]}", "prompt_tokens": 222, "seconds": 4.6}
+{"id": "test-00326-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"olmayar\"}]}", "prompt_tokens": 230, "seconds": 4.487}
+{"id": "test-00328-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"has been taken out of action\"}]}", "prompt_tokens": 230, "seconds": 4.603}
+{"id": "test-00328-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"gşğliğ\"}]}", "prompt_tokens": 232, "seconds": 3.695}
+{"id": "test-00332-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is currently undergoing repairs\"}]}", "prompt_tokens": 224, "seconds": 4.313}
+{"id": "test-00332-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"gşğliğ\"}]}", "prompt_tokens": 223, "seconds": 4.317}
+{"id": "test-00334-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"could possibly be shut\"}]}", "prompt_tokens": 229, "seconds": 4.564}
+{"id": "test-00338-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is currently experiencing issues\"}]}", "prompt_tokens": 229, "seconds": 3.94}
+{"id": "test-00334-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"olaylar olasılıkla bekleniyor\"}]}", "prompt_tokens": 238, "seconds": 5.662}
+{"id": "test-00338-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"olumayar\"}]}", "prompt_tokens": 236, "seconds": 4.828}
+{"id": "test-00340-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is temporarily suspended\"}]}", "prompt_tokens": 218, "seconds": 4.793}
+{"id": "test-00340-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"değerlamaz\"}]}", "prompt_tokens": 222, "seconds": 4.856}
+{"id": "test-00342-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"are currently experiencing technical difficulties\"}]}", "prompt_tokens": 232, "seconds": 4.859}
+{"id": "test-00342-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"deşeğler\"}]}", "prompt_tokens": 237, "seconds": 4.768}
+{"id": "test-00346-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is open not\"}]}", "prompt_tokens": 228, "seconds": 4.649}
+{"id": "test-00352-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is currently inaccessible\"}]}", "prompt_tokens": 223, "seconds": 4.665}
+{"id": "test-00346-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"kaybolmuştur değildir\"}]}", "prompt_tokens": 233, "seconds": 5.805}
+{"id": "test-00352-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"kapanş\"}]}", "prompt_tokens": 224, "seconds": 4.747}
+{"id": "test-00354-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is currently experiencing disruptions\"}]}", "prompt_tokens": 232, "seconds": 4.804}
+{"id": "test-00354-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"şoför yok\"}]}", "prompt_tokens": 235, "seconds": 4.692}
+{"id": "test-00358-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is currently undergoing repairs\"}]}", "prompt_tokens": 226, "seconds": 4.694}
+{"id": "test-00358-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"gşğlık\"}]}", "prompt_tokens": 226, "seconds": 4.765}
+{"id": "test-00360-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"could possibly be shut\"}]}", "prompt_tokens": 229, "seconds": 4.843}
+{"id": "test-00360-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"kapalıs\"}]}", "prompt_tokens": 234, "seconds": 4.738}
+{"id": "test-00364-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"iscurrentlyexperiencingdisruptions\"}]}", "prompt_tokens": 233, "seconds": 4.942}
+{"id": "test-00364-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"kapanş\"}]}", "prompt_tokens": 234, "seconds": 3.915}
+{"id": "test-00366-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is currently undergoing repairs\"}]}", "prompt_tokens": 220, "seconds": 4.582}
+{"id": "test-00366-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"oluamayır\"}]}", "prompt_tokens": 229, "seconds": 4.539}
+{"id": "test-00368-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"are undergoing maintenance\"}]}", "prompt_tokens": 229, "seconds": 4.588}
+{"id": "test-00368-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"oluymayar\"}]}", "prompt_tokens": 234, "seconds": 4.589}
+{"id": "test-00372-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"was not closed\"}]}", "prompt_tokens": 227, "seconds": 4.523}
+{"id": "test-00372-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"kaybolmuştur değildir\"}]}", "prompt_tokens": 234, "seconds": 4.867}
+{"id": "test-00378-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"gecersiz\"}]}", "prompt_tokens": 227, "seconds": 4.635}
+{"id": "test-00378-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is currently out of operation\"}]}", "prompt_tokens": 220, "seconds": 5.492}
+{"id": "test-00380-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is currently undergoing repairs\"}]}", "prompt_tokens": 230, "seconds": 4.754}
+{"id": "test-00380-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"değerlamaz\"}]}", "prompt_tokens": 236, "seconds": 4.707}
+{"id": "test-00384-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is currently unavailable\"}]}", "prompt_tokens": 222, "seconds": 4.597}
+{"id": "test-00384-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"geışľğ\"}]}", "prompt_tokens": 227, "seconds": 4.85}
+{"id": "test-00386-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is expected to close\"}]}", "prompt_tokens": 227, "seconds": 4.888}
+{"id": "test-00386-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"kapalıs\"}]}", "prompt_tokens": 231, "seconds": 4.783}
+{"id": "test-00390-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"kapanş\"}]}", "prompt_tokens": 233, "seconds": 3.797}
+{"id": "test-00390-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"has been taken out of action\"}]}", "prompt_tokens": 233, "seconds": 4.906}
+{"id": "test-00392-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"has been taken out of action\"}]}", "prompt_tokens": 226, "seconds": 4.743}
+{"id": "test-00392-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"geışľğ\"}]}", "prompt_tokens": 227, "seconds": 4.612}
+{"id": "test-00394-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"are currently inaccessible\"}]}", "prompt_tokens": 236, "seconds": 4.616}
+{"id": "test-00394-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"belirilĿler\"}]}", "prompt_tokens": 244, "seconds": 5.551}
+{"id": "test-00398-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"was not closed\"}]}", "prompt_tokens": 224, "seconds": 4.601}
+{"id": "test-00398-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"yasaklanmadı\"}]}", "prompt_tokens": 230, "seconds": 4.83}
+{"id": "test-00404-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"has been taken offline\"}]}", "prompt_tokens": 219, "seconds": 4.795}
+{"id": "test-00404-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"deşeğ\"}]}", "prompt_tokens": 218, "seconds": 4.648}
+{"id": "test-00406-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is currently experiencing disruptions\"}]}", "prompt_tokens": 232, "seconds": 4.732}
+{"id": "test-00406-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"olayamaz\"}]}", "prompt_tokens": 233, "seconds": 4.518}
+{"id": "test-00410-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is currently undergoing repairs\"}]}", "prompt_tokens": 225, "seconds": 4.571}
+{"id": "test-00410-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_delay\",\"quote\":\"beklenti\"}]}", "prompt_tokens": 224, "seconds": 3.847}
+{"id": "test-00412-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"expected to shut\"}]}", "prompt_tokens": 226, "seconds": 4.484}
+{"id": "test-00412-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"kapalı\"}]}", "prompt_tokens": 232, "seconds": 4.471}
+{"id": "test-00416-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is undergoing maintenance\"}]}", "prompt_tokens": 226, "seconds": 4.44}
+{"id": "test-00416-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"belirilĿ\"}]}", "prompt_tokens": 232, "seconds": 5.23}
+{"id": "test-00418-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is currently experiencing technical difficulties\"}]}", "prompt_tokens": 219, "seconds": 4.847}
+{"id": "test-00418-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"gecersiz\"}]}", "prompt_tokens": 220, "seconds": 4.668}
+{"id": "test-00420-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"are experiencing disruptions\"}]}", "prompt_tokens": 230, "seconds": 4.844}
+{"id": "test-00420-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"değerlamaz\"}]}", "prompt_tokens": 234, "seconds": 4.931}
+{"id": "test-00424-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"will not be stopped\"}]}", "prompt_tokens": 228, "seconds": 4.739}
+{"id": "test-00424-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"açık değildir\"}]}", "prompt_tokens": 236, "seconds": 3.971}
+{"id": "test-00430-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"has been taken out of action\"}]}", "prompt_tokens": 224, "seconds": 4.957}
+{"id": "test-00430-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"gecersiz\"}]}", "prompt_tokens": 225, "seconds": 4.036}
+{"id": "test-00432-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"has been placed on hold\"}]}", "prompt_tokens": 233, "seconds": 4.685}
+{"id": "test-00432-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"değerlamaz\"}]}", "prompt_tokens": 235, "seconds": 4.573}
+{"id": "test-00436-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"has been suspended\"}]}", "prompt_tokens": 223, "seconds": 4.291}
+{"id": "test-00436-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"geışľğ\"}]}", "prompt_tokens": 226, "seconds": 4.337}
+{"id": "test-00438-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"kapalıs\"}]}", "prompt_tokens": 235, "seconds": 4.42}
+{"id": "test-00438-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"may be expected to close\"}]}", "prompt_tokens": 228, "seconds": 5.206}
+{"id": "test-00442-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"geışľğ\"}]}", "prompt_tokens": 237, "seconds": 4.547}
+{"id": "test-00442-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"has been taken out of action\"}]}", "prompt_tokens": 235, "seconds": 5.55}
+{"id": "test-00444-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"has been taken out of action\"}]}", "prompt_tokens": 220, "seconds": 4.951}
+{"id": "test-00444-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"belirilĿ\"}]}", "prompt_tokens": 220, "seconds": 4.235}
+{"id": "test-00446-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"are currently being maintained\"}]}", "prompt_tokens": 235, "seconds": 4.695}
+{"id": "test-00446-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"olmayar\"}]}", "prompt_tokens": 240, "seconds": 3.848}
+{"id": "test-00450-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is open not\"}]}", "prompt_tokens": 229, "seconds": 4.373}
+{"id": "test-00450-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"yasal değildir\"}]}", "prompt_tokens": 231, "seconds": 4.401}
+{"id": "test-00456-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"olayamaz\"}]}", "prompt_tokens": 225, "seconds": 4.404}
+{"id": "test-00456-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is undergoing maintenance\"}]}", "prompt_tokens": 225, "seconds": 4.498}
+{"id": "test-00458-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is experiencing disruptions\"}]}", "prompt_tokens": 230, "seconds": 4.517}
+{"id": "test-00458-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"geışľğ. çıkış yok\"}]}", "prompt_tokens": 232, "seconds": 5.572}
+{"id": "test-00462-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is currently experiencing disruptions\"}]}", "prompt_tokens": 224, "seconds": 4.647}
+{"id": "test-00462-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"gşğliğ\"}]}", "prompt_tokens": 225, "seconds": 4.645}
+{"id": "test-00464-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is closed\"}]}", "prompt_tokens": 228, "seconds": 4.613}
+{"id": "test-00464-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"belki bekleniyor\"}]}", "prompt_tokens": 239, "seconds": 4.79}
+{"id": "test-00468-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"gecersiz\"}]}", "prompt_tokens": 231, "seconds": 3.83}
+{"id": "test-00468-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is currently unavailable for the period 17:01 to 18:46\"}]}", "prompt_tokens": 231, "seconds": 6.629}
+{"id": "test-00470-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"iscurrentlyexperiencingdisruptions\"}]}", "prompt_tokens": 217, "seconds": 4.253}
+{"id": "test-00470-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"değerlamaz\"}]}", "prompt_tokens": 219, "seconds": 4.821}
+{"id": "test-00472-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"have been taken offline\"}]}", "prompt_tokens": 232, "seconds": 4.759}
+{"id": "test-00476-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is functioning not\"}]}", "prompt_tokens": 229, "seconds": 4.62}
+{"id": "test-00472-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"değerlamaz\"}]}", "prompt_tokens": 239, "seconds": 4.776}
+{"id": "test-00482-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"has ceased\"}]}", "prompt_tokens": 215, "seconds": 4.661}
+{"id": "test-00476-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"kaybolmuştur değildir\"}]}", "prompt_tokens": 238, "seconds": 5.789}
+{"id": "test-00482-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"olayamaz\"}]}", "prompt_tokens": 218, "seconds": 4.85}
+{"id": "test-00484-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is currently being maintained\"}]}", "prompt_tokens": 231, "seconds": 4.837}
+{"id": "test-00484-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"olayamaz\"}]}", "prompt_tokens": 232, "seconds": 4.782}
+{"id": "test-00488-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is currently undergoing repairs\"}]}", "prompt_tokens": 225, "seconds": 4.955}
+{"id": "test-00490-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"could possibly shut\"}]}", "prompt_tokens": 228, "seconds": 4.875}
+{"id": "test-00488-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"değerlamaz\"}]}", "prompt_tokens": 226, "seconds": 5.043}
+{"id": "test-00490-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"kapalı olabileceği için\"}]}", "prompt_tokens": 242, "seconds": 5.437}
+{"id": "test-00494-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"has been taken out of action\"}]}", "prompt_tokens": 231, "seconds": 5.264}
+{"id": "test-00496-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is experiencing disruptions\"}]}", "prompt_tokens": 218, "seconds": 4.874}
+{"id": "test-00494-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"gşğliğ\"}]}", "prompt_tokens": 234, "seconds": 5.087}
+{"id": "test-00496-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"olumayar\"}]}", "prompt_tokens": 221, "seconds": 4.617}
+{"id": "test-00498-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"are currently undergoing repairs\"}]}", "prompt_tokens": 229, "seconds": 4.631}
+{"id": "test-00502-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"was not closed\"}]}", "prompt_tokens": 229, "seconds": 4.183}
+{"id": "test-00498-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"geışľğler\"}]}", "prompt_tokens": 237, "seconds": 5.051}
+{"id": "test-00502-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"kaybolmuştur değildir\"}]}", "prompt_tokens": 234, "seconds": 4.429}
+{"id": "test-00508-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"has been suspended\"}]}", "prompt_tokens": 222, "seconds": 4.171}
+{"id": "test-00510-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"has ceased\"}]}", "prompt_tokens": 229, "seconds": 3.482}
+{"id": "test-00508-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"geışľğ\"}]}", "prompt_tokens": 224, "seconds": 4.233}
+{"id": "test-00510-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"olumayar\"}]}", "prompt_tokens": 236, "seconds": 4.121}
+{"id": "test-00514-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is currently undergoing repairs\"}]}", "prompt_tokens": 225, "seconds": 4.173}
+{"id": "test-00516-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is closed\"}]}", "prompt_tokens": 228, "seconds": 4.045}
+{"id": "test-00514-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"ayarlama\"}]}", "prompt_tokens": 225, "seconds": 4.125}
+{"id": "test-00516-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"kapalıs\"}]}", "prompt_tokens": 233, "seconds": 4.066}
+{"id": "test-00520-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is currently undergoing repairs\"}]}", "prompt_tokens": 226, "seconds": 4.055}
+{"id": "test-00520-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"kapanış\"}]}", "prompt_tokens": 227, "seconds": 3.991}
+{"id": "test-00522-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"has been disabled\"}]}", "prompt_tokens": 215, "seconds": 3.916}
+{"id": "test-00522-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"değerlamaz\"}]}", "prompt_tokens": 219, "seconds": 4.113}
+{"id": "test-00524-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"are temporarily suspended\"}]}", "prompt_tokens": 229, "seconds": 4.121}
+{"id": "test-00524-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"olayamaz\"}]}", "prompt_tokens": 233, "seconds": 4.115}
+{"id": "test-00528-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"was not shut down\"}]}", "prompt_tokens": 228, "seconds": 4.171}
+{"id": "test-00528-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"yanlış değildir\"}]}", "prompt_tokens": 231, "seconds": 4.043}
+{"id": "test-00534-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"has been disabled\"}]}", "prompt_tokens": 218, "seconds": 4.04}
+{"id": "test-00534-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"kapanş\"}]}", "prompt_tokens": 220, "seconds": 4.048}
+{"id": "test-00536-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is undergoing maintenance\"}]}", "prompt_tokens": 229, "seconds": 3.991}
+{"id": "test-00536-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"belirilĿ. çıkış yok\"}]}", "prompt_tokens": 234, "seconds": 4.411}
+{"id": "test-00540-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"has been taken out of action\"}]}", "prompt_tokens": 227, "seconds": 3.537}
+{"id": "test-00540-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"deşeğ\"}]}", "prompt_tokens": 226, "seconds": 4.115}
+{"id": "test-00542-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"expected to shut\"}]}", "prompt_tokens": 227, "seconds": 4.115}
+{"id": "test-00546-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is currently unavailable\"}]}", "prompt_tokens": 232, "seconds": 4.167}
+{"id": "test-00548-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is temporarily suspended\"}]}", "prompt_tokens": 223, "seconds": 3.404}
+{"id": "test-00546-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"gşğliğ\"}]}", "prompt_tokens": 233, "seconds": 3.501}
+{"id": "test-00542-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"kapalı olabileceği için\"}]}", "prompt_tokens": 240, "seconds": 5.162}
+{"id": "test-00548-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"belirilĿ\"}]}", "prompt_tokens": 227, "seconds": 4.049}
+{"id": "test-00550-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"are currently inaccessible\"}]}", "prompt_tokens": 235, "seconds": 3.261}
+{"id": "test-00554-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is operational not\"}]}", "prompt_tokens": 228, "seconds": 3.166}
+{"id": "test-00550-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"gşğliğ\"}]}", "prompt_tokens": 244, "seconds": 5.03}
+{"id": "test-00560-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"olayamaz\"}]}", "prompt_tokens": 219, "seconds": 3.91}
+{"id": "test-00562-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"has been disabled\"}]}", "prompt_tokens": 231, "seconds": 2.86}
+{"id": "test-00560-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is currently out of operation\"}]}", "prompt_tokens": 219, "seconds": 4.725}
+{"id": "test-00554-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"kaybolmuştur değildir\"}]}", "prompt_tokens": 232, "seconds": 6.129}
+{"id": "test-00562-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"geışľğ\"}]}", "prompt_tokens": 235, "seconds": 4.03}
+{"id": "test-00566-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_delay\",\"quote\":\"beklenti\"}]}", "prompt_tokens": 226, "seconds": 3.297}
+{"id": "test-00568-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"expected to shut\"}]}", "prompt_tokens": 227, "seconds": 3.362}
+{"id": "test-00566-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"iscurrentlyexperiencingissues\"}]}", "prompt_tokens": 225, "seconds": 4.773}
+{"id": "test-00572-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is undergoing maintenance\"}]}", "prompt_tokens": 226, "seconds": 3.9}
+{"id": "test-00572-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"güncellemeleri\"}]}", "prompt_tokens": 240, "seconds": 3.487}
+{"id": "test-00574-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"has been placed on hold\"}]}", "prompt_tokens": 221, "seconds": 3.428}
+{"id": "test-00568-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"olaylar olasılıkla bekleniyor\"}]}", "prompt_tokens": 233, "seconds": 5.035}
+{"id": "test-00574-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"olamayar\"}]}", "prompt_tokens": 225, "seconds": 4.053}
+{"id": "test-00576-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"değerlamaz\"}]}", "prompt_tokens": 235, "seconds": 4.18}
+{"id": "test-00580-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"will not be stopped\"}]}", "prompt_tokens": 232, "seconds": 4.131}
+{"id": "test-00576-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"have been placed on hold\"}]}", "prompt_tokens": 233, "seconds": 4.24}
+{"id": "test-00580-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"kaybolmuştur değildir\"}]}", "prompt_tokens": 239, "seconds": 4.64}
+{"id": "test-00586-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is undergoing maintenance\"}]}", "prompt_tokens": 220, "seconds": 4.321}
+{"id": "test-00586-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"olmayar\"}]}", "prompt_tokens": 223, "seconds": 4.321}
+{"id": "test-00588-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"has been taken out of action\"}]}", "prompt_tokens": 231, "seconds": 6.133}
+{"id": "test-00592-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"kapanış\"}]}", "prompt_tokens": 225, "seconds": 3.632}
+{"id": "test-00592-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"has been taken out of action\"}]}", "prompt_tokens": 225, "seconds": 4.435}
+{"id": "test-00594-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is expected to close\"}]}", "prompt_tokens": 224, "seconds": 2.648}
+{"id": "test-00588-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"belirilﬂ 12:59–13:54 saatleri boyunca\"}]}", "prompt_tokens": 239, "seconds": 7.843}
+{"id": "test-00594-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"belki bekleniyor\"}]}", "prompt_tokens": 228, "seconds": 4.57}
+{"id": "test-00598-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"deşeğ\"}]}", "prompt_tokens": 236, "seconds": 3.746}
+{"id": "test-00598-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is currently undergoing repairs\"}]}", "prompt_tokens": 227, "seconds": 5.316}
+{"id": "test-00600-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is currently inaccessible\"}]}", "prompt_tokens": 216, "seconds": 4.477}
+{"id": "test-00602-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"are undergoing maintenance\"}]}", "prompt_tokens": 232, "seconds": 4.428}
+{"id": "test-00600-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"gşğliğ\"}]}", "prompt_tokens": 220, "seconds": 4.542}
+{"id": "test-00602-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"kapanışlar\"}]}", "prompt_tokens": 243, "seconds": 4.633}
+{"id": "test-00606-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"was not shut down\"}]}", "prompt_tokens": 226, "seconds": 4.343}
+{"id": "test-00606-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"uyarı\"}]}", "prompt_tokens": 235, "seconds": 4.281}
+{"id": "test-00612-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is currently unavailable\"}]}", "prompt_tokens": 219, "seconds": 4.286}
+{"id": "test-00612-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"belirilĿ\"}]}", "prompt_tokens": 220, "seconds": 4.76}
+{"id": "test-00614-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is currently experiencing issues\"}]}", "prompt_tokens": 230, "seconds": 4.683}
+{"id": "test-00614-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"olayamaz\"}]}", "prompt_tokens": 238, "seconds": 4.564}
+{"id": "test-00618-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is temporarily suspended\"}]}", "prompt_tokens": 222, "seconds": 4.508}
+{"id": "test-00618-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"belirilĿ\"}]}", "prompt_tokens": 223, "seconds": 4.429}
+{"id": "test-00620-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"expected to shut\"}]}", "prompt_tokens": 226, "seconds": 4.307}
+{"id": "test-00624-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is temporarily suspended\"}]}", "prompt_tokens": 224, "seconds": 4.299}
+{"id": "test-00620-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"belki bekleniyor\"}]}", "prompt_tokens": 231, "seconds": 5.0}
+{"id": "test-00624-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"değerlamaz\"}]}", "prompt_tokens": 227, "seconds": 4.131}
+{"id": "test-00626-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"has been suspended\"}]}", "prompt_tokens": 222, "seconds": 4.142}
+{"id": "test-00626-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"değerlamaz\"}]}", "prompt_tokens": 227, "seconds": 4.275}
+{"id": "test-00628-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"are currently experiencing issues\"}]}", "prompt_tokens": 237, "seconds": 4.344}
+{"id": "test-00628-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"değerlamaz\"}]}", "prompt_tokens": 240, "seconds": 4.271}
+{"id": "test-00632-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is operational not\"}]}", "prompt_tokens": 232, "seconds": 4.166}
+{"id": "test-00632-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"kaybolmamıştır değildir\"}]}", "prompt_tokens": 242, "seconds": 4.457}
+{"id": "test-00638-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"has been taken offline\"}]}", "prompt_tokens": 219, "seconds": 3.704}
+{"id": "test-00638-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"deşeğ\"}]}", "prompt_tokens": 217, "seconds": 4.738}
+{"id": "test-00640-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is currently inaccessible\"}]}", "prompt_tokens": 232, "seconds": 4.748}
+{"id": "test-00644-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is currently being maintained\"}]}", "prompt_tokens": 224, "seconds": 4.731}
+{"id": "test-00640-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"çıkış yok\"}]}", "prompt_tokens": 236, "seconds": 4.75}
+{"id": "test-00644-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"belirilĿ\"}]}", "prompt_tokens": 227, "seconds": 4.859}
+{"id": "test-00646-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"may be expected to close\"}]}", "prompt_tokens": 234, "seconds": 4.883}
+{"id": "test-00646-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"kapalıs\"}]}", "prompt_tokens": 240, "seconds": 4.69}
+{"id": "test-00650-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is experiencing disruptions\"}]}", "prompt_tokens": 225, "seconds": 4.691}
+{"id": "test-00650-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"kapanış\"}]}", "prompt_tokens": 229, "seconds": 4.73}
+{"id": "test-00652-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is temporarily suspended\"}]}", "prompt_tokens": 221, "seconds": 4.782}
+{"id": "test-00652-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"olayamaz\"}]}", "prompt_tokens": 228, "seconds": 4.84}
+{"id": "test-00654-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"are experiencing technical difficulties\"}]}", "prompt_tokens": 232, "seconds": 4.897}
+{"id": "test-00654-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"değerlamaz\"}]}", "prompt_tokens": 234, "seconds": 5.036}
+{"id": "test-00658-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"was not closed\"}]}", "prompt_tokens": 231, "seconds": 4.916}
+{"id": "test-00664-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is currently out of operation\"}]}", "prompt_tokens": 220, "seconds": 4.953}
+{"id": "test-00658-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"kaybolmamıştır değildir\"}]}", "prompt_tokens": 244, "seconds": 5.074}
+{"id": "test-00664-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"geışľğ\"}]}", "prompt_tokens": 221, "seconds": 4.711}
+{"id": "test-00666-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is currently unavailable\"}]}", "prompt_tokens": 229, "seconds": 4.721}
+{"id": "test-00666-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"geçersiz\"}]}", "prompt_tokens": 232, "seconds": 4.706}
+{"id": "test-00670-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is currently experiencing technical difficulties\"}]}", "prompt_tokens": 223, "seconds": 5.444}
+{"id": "test-00670-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"geışľğ\"}]}", "prompt_tokens": 233, "seconds": 4.401}
+{"id": "test-00672-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"expected to shut\"}]}", "prompt_tokens": 226, "seconds": 4.348}
+{"id": "test-00672-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"kapalıs\"}]}", "prompt_tokens": 236, "seconds": 4.328}
+{"id": "test-00676-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is experiencing disruptions\"}]}", "prompt_tokens": 227, "seconds": 4.258}
+{"id": "test-00676-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"kapanş\"}]}", "prompt_tokens": 234, "seconds": 4.319}
+{"id": "test-00678-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is currently undergoing repairs\"}]}", "prompt_tokens": 220, "seconds": 4.361}
+{"id": "test-00678-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"olmayar\"}]}", "prompt_tokens": 223, "seconds": 4.361}
+{"id": "test-00680-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"have been taken out of action\"}]}", "prompt_tokens": 237, "seconds": 4.668}
+{"id": "test-00680-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"değerlamaz\"}]}", "prompt_tokens": 240, "seconds": 4.414}
+{"id": "test-00684-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"will not be halted\"}]}", "prompt_tokens": 230, "seconds": 4.356}
+{"id": "test-00684-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"kaybolmuştur değildir\"}]}", "prompt_tokens": 235, "seconds": 4.496}
+{"id": "test-00690-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"has been placed on hold\"}]}", "prompt_tokens": 218, "seconds": 4.376}
+{"id": "test-00690-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"gecersiz\"}]}", "prompt_tokens": 216, "seconds": 4.201}
+{"id": "test-00692-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is experiencing disruptions\"}]}", "prompt_tokens": 229, "seconds": 4.243}
+{"id": "test-00692-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"çıkış yok\"}]}", "prompt_tokens": 233, "seconds": 4.279}
+{"id": "test-00696-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"has been taken offline\"}]}", "prompt_tokens": 223, "seconds": 4.273}
+{"id": "test-00696-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"gşğliğ\"}]}", "prompt_tokens": 226, "seconds": 4.278}
+{"id": "test-00698-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"could possibly shut\"}]}", "prompt_tokens": 227, "seconds": 4.228}
+{"id": "test-00698-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"ihtimal ki bekliyor\"}]}", "prompt_tokens": 235, "seconds": 4.362}
+{"id": "test-00702-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is temporarily suspended\"}]}", "prompt_tokens": 226, "seconds": 3.52}
+{"id": "test-00702-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"olayamaz\"}]}", "prompt_tokens": 227, "seconds": 4.79}
+{"id": "test-00704-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is temporarily suspended\"}]}", "prompt_tokens": 218, "seconds": 4.815}
+{"id": "test-00706-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"are undergoing maintenance\"}]}", "prompt_tokens": 232, "seconds": 4.761}
+{"id": "test-00704-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"gşğliğ\"}]}", "prompt_tokens": 230, "seconds": 4.891}
+{"id": "test-00706-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"değerlamaz\"}]}", "prompt_tokens": 232, "seconds": 4.824}
+{"id": "test-00710-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"was not shut down\"}]}", "prompt_tokens": 228, "seconds": 4.736}
+{"id": "test-00716-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"has been taken offline\"}]}", "prompt_tokens": 223, "seconds": 4.743}
+{"id": "test-00710-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"kaybolmamıştır değildir\"}]}", "prompt_tokens": 236, "seconds": 5.599}
+{"id": "test-00716-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"olayamaz\"}]}", "prompt_tokens": 223, "seconds": 3.658}
+{"id": "test-00718-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is undergoing maintenance\"}]}", "prompt_tokens": 230, "seconds": 4.678}
+{"id": "test-00722-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is undergoing maintenance\"}]}", "prompt_tokens": 221, "seconds": 4.028}
+{"id": "test-00722-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"olamayaz\"}]}", "prompt_tokens": 226, "seconds": 3.914}
+{"id": "test-00718-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"belirilĿ\"}]}", "prompt_tokens": 235, "seconds": 4.836}
+{"id": "test-00724-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"expected to shut\"}]}", "prompt_tokens": 231, "seconds": 5.178}
+{"id": "test-00724-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"kapalıs\"}]}", "prompt_tokens": 240, "seconds": 5.239}
+{"id": "test-00728-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"olayamaz\"}]}", "prompt_tokens": 224, "seconds": 5.225}
+{"id": "test-00728-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"has been placed on hold\"}]}", "prompt_tokens": 227, "seconds": 6.831}
+{"id": "test-00730-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is experiencing disruptions\"}]}", "prompt_tokens": 217, "seconds": 4.81}
+{"id": "test-00730-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"kapanış\"}]}", "prompt_tokens": 218, "seconds": 4.669}
+{"id": "test-00732-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"are experiencing disruptions\"}]}", "prompt_tokens": 231, "seconds": 4.672}
+{"id": "test-00732-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"gecersiz\"}]}", "prompt_tokens": 235, "seconds": 4.668}
+{"id": "test-00736-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is open not during 06:18–08:53\"}]}", "prompt_tokens": 226, "seconds": 5.455}
+{"id": "test-00742-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"has been suspended\"}]}", "prompt_tokens": 223, "seconds": 4.678}
+{"id": "test-00742-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"değerlamaz\"}]}", "prompt_tokens": 226, "seconds": 4.0}
+{"id": "test-00736-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"kaybolmuştur değildir\"}]}", "prompt_tokens": 233, "seconds": 5.674}
+{"id": "test-00744-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"gşğliğ\"}]}", "prompt_tokens": 245, "seconds": 3.912}
+{"id": "test-00748-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"olumayar\"}]}", "prompt_tokens": 226, "seconds": 3.648}
+{"id": "test-00748-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is experiencing technical difficulties\"}]}", "prompt_tokens": 226, "seconds": 3.85}
+{"id": "test-00744-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is currently experiencing issues for the period 15:25 to 17:55\"}]}", "prompt_tokens": 239, "seconds": 7.979}
+{"id": "test-00750-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"expected be shut\"}]}", "prompt_tokens": 227, "seconds": 4.388}
+{"id": "test-00750-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"kapalıs\"}]}", "prompt_tokens": 236, "seconds": 4.374}
+{"id": "test-00754-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"has been taken offline\"}]}", "prompt_tokens": 228, "seconds": 4.367}
+{"id": "test-00754-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"kapanış\"}]}", "prompt_tokens": 228, "seconds": 4.441}
+{"id": "test-00756-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is experiencing technical difficulties\"}]}", "prompt_tokens": 220, "seconds": 4.558}
+{"id": "test-00756-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"olmayar\"}]}", "prompt_tokens": 223, "seconds": 3.906}
+{"id": "test-00758-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"have been taken out of action\"}]}", "prompt_tokens": 233, "seconds": 5.876}
+{"id": "test-00758-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"gecersiz\"}]}", "prompt_tokens": 231, "seconds": 4.814}
+{"id": "test-00762-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is active not\"}]}", "prompt_tokens": 232, "seconds": 4.731}
+{"id": "test-00762-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"kapalidir değildir\"}]}", "prompt_tokens": 238, "seconds": 4.735}
+{"id": "test-00768-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is currently experiencing technical difficulties\"}]}", "prompt_tokens": 221, "seconds": 4.781}
+{"id": "test-00768-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"belirtilĿ\"}]}", "prompt_tokens": 221, "seconds": 4.769}
+{"id": "test-00770-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is currently unavailable\"}]}", "prompt_tokens": 229, "seconds": 4.734}
+{"id": "test-00770-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"olayamaz\"}]}", "prompt_tokens": 234, "seconds": 4.676}
+{"id": "test-00774-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is currently out of operation\"}]}", "prompt_tokens": 226, "seconds": 4.837}
+{"id": "test-00774-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"kapanış\"}]}", "prompt_tokens": 226, "seconds": 4.777}
+{"id": "test-00776-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"kapalı\"}]}", "prompt_tokens": 237, "seconds": 4.704}
+{"id": "test-00776-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is expected to close\"}]}", "prompt_tokens": 229, "seconds": 5.422}
+{"id": "test-00780-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is currently experiencing technical difficulties\"}]}", "prompt_tokens": 231, "seconds": 4.394}
+{"id": "test-00780-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"olmayar\"}]}", "prompt_tokens": 233, "seconds": 4.483}
+{"id": "test-00782-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is currently unavailable\"}]}", "prompt_tokens": 219, "seconds": 4.465}
+{"id": "test-00782-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"gşğliğ\"}]}", "prompt_tokens": 224, "seconds": 4.662}
+{"id": "test-00784-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"have been placed on hold\"}]}", "prompt_tokens": 233, "seconds": 4.771}
+{"id": "test-00784-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"gşğliğ\"}]}", "prompt_tokens": 238, "seconds": 4.348}
+{"id": "test-00788-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"açık değildir\"}]}", "prompt_tokens": 237, "seconds": 3.632}
+{"id": "test-00788-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is open not until 11:32\"}]}", "prompt_tokens": 230, "seconds": 5.533}
+{"id": "test-00794-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is undergoing maintenance\"}]}", "prompt_tokens": 219, "seconds": 4.349}
+{"id": "test-00794-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"olayamaz\"}]}", "prompt_tokens": 221, "seconds": 4.354}
+{"id": "test-00796-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is currently out of operation\"}]}", "prompt_tokens": 231, "seconds": 4.502}
+{"id": "test-00796-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"çıkış yok\"}]}", "prompt_tokens": 237, "seconds": 4.352}
+{"id": "test-00800-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"has been taken out of action\"}]}", "prompt_tokens": 227, "seconds": 4.484}
+{"id": "test-00800-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"değerlamaz\"}]}", "prompt_tokens": 233, "seconds": 3.69}
+{"id": "test-00802-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"expected to shut\"}]}", "prompt_tokens": 228, "seconds": 4.357}
+{"id": "test-00802-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"kapalı\"}]}", "prompt_tokens": 239, "seconds": 4.246}
+{"id": "test-00806-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"değerlamaz\"}]}", "prompt_tokens": 236, "seconds": 4.352}
+{"id": "test-00806-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is currently out of operation\"}]}", "prompt_tokens": 230, "seconds": 4.436}
+{"id": "test-00808-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is currently out of operation\"}]}", "prompt_tokens": 219, "seconds": 4.445}
+{"id": "test-00808-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"geçersiz\"}]}", "prompt_tokens": 218, "seconds": 3.717}
+{"id": "test-00810-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"olumayar\"}]}", "prompt_tokens": 238, "seconds": 4.796}
+{"id": "test-00810-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"are currently unavailabel\"}]}", "prompt_tokens": 232, "seconds": 5.642}
+{"id": "test-00814-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"açık değildir\"}]}", "prompt_tokens": 238, "seconds": 4.711}
+{"id": "test-00820-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"has ceased\"}]}", "prompt_tokens": 219, "seconds": 3.468}
+{"id": "test-00820-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"kapanş\"}]}", "prompt_tokens": 219, "seconds": 3.661}
+{"id": "test-00814-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is operational not from 16:03 through 19:58\"}]}", "prompt_tokens": 230, "seconds": 7.693}
+{"id": "test-00822-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is currently being maintained\"}]}", "prompt_tokens": 234, "seconds": 4.244}
+{"id": "test-00822-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"geçersiz\"}]}", "prompt_tokens": 233, "seconds": 4.176}
+{"id": "test-00826-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"has ceased\"}]}", "prompt_tokens": 220, "seconds": 4.037}
+{"id": "test-00826-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"gşğliğ\"}]}", "prompt_tokens": 226, "seconds": 4.295}
+{"id": "test-00828-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is expected to close\"}]}", "prompt_tokens": 234, "seconds": 4.341}
+{"id": "test-00828-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"belki bekleniyor\"}]}", "prompt_tokens": 238, "seconds": 4.337}
+{"id": "test-00832-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is currently being maintained\"}]}", "prompt_tokens": 226, "seconds": 3.598}
+{"id": "test-00832-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"kapanış\"}]}", "prompt_tokens": 230, "seconds": 4.264}
+{"id": "test-00834-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"iscurrentlyexperiencingdisruptions\"}]}", "prompt_tokens": 219, "seconds": 4.455}
+{"id": "test-00836-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"are currently undergoing repairs\"}]}", "prompt_tokens": 233, "seconds": 4.251}
+{"id": "test-00834-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"belirilĿ\"}]}", "prompt_tokens": 223, "seconds": 4.412}
+{"id": "test-00836-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"gşğliğ\"}]}", "prompt_tokens": 235, "seconds": 4.555}
+{"id": "test-00840-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"will not be closed\"}]}", "prompt_tokens": 233, "seconds": 4.469}
+{"id": "test-00840-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"açık değildir\"}]}", "prompt_tokens": 236, "seconds": 4.412}
+{"id": "test-00846-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is currently out of operation\"}]}", "prompt_tokens": 221, "seconds": 5.202}
+{"id": "test-00846-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"değerlamaz\"}]}", "prompt_tokens": 220, "seconds": 4.286}
+{"id": "test-00848-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"has been placed on hold\"}]}", "prompt_tokens": 237, "seconds": 4.365}
+{"id": "test-00852-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is undergoing maintenance\"}]}", "prompt_tokens": 222, "seconds": 3.428}
+{"id": "test-00848-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"üçyol metro istasyonu\"}]}", "prompt_tokens": 236, "seconds": 5.127}
+{"id": "test-00852-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"belirilĿ\"}]}", "prompt_tokens": 227, "seconds": 4.233}
+{"id": "test-00854-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"could possibly be closed\"}]}", "prompt_tokens": 226, "seconds": 4.256}
+{"id": "test-00858-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is currently inaccessible\"}]}", "prompt_tokens": 229, "seconds": 3.506}
+{"id": "test-00854-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"kapalı olabileceği için\"}]}", "prompt_tokens": 240, "seconds": 5.103}
+{"id": "test-00858-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"deşeğ\"}]}", "prompt_tokens": 231, "seconds": 3.433}
+{"id": "test-00860-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"has been disabled\"}]}", "prompt_tokens": 219, "seconds": 4.385}
+{"id": "test-00860-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"değerlamaz\"}]}", "prompt_tokens": 229, "seconds": 4.457}
+{"id": "test-00862-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"are undergoing maintenance\"}]}", "prompt_tokens": 236, "seconds": 3.771}
+{"id": "test-00862-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"geışľğler\"}]}", "prompt_tokens": 243, "seconds": 5.395}
+{"id": "test-00866-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"was not shut down\"}]}", "prompt_tokens": 227, "seconds": 4.423}
+{"id": "test-00872-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is temporarily suspended\"}]}", "prompt_tokens": 221, "seconds": 4.328}
+{"id": "test-00866-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"kaybolmamıştır değildir\"}]}", "prompt_tokens": 228, "seconds": 5.396}
+{"id": "test-00872-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"geışľğ\"}]}", "prompt_tokens": 225, "seconds": 3.62}
+{"id": "test-00874-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is currently out of operation\"}]}", "prompt_tokens": 231, "seconds": 4.792}
+{"id": "test-00874-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"şoför yok\"}]}", "prompt_tokens": 234, "seconds": 4.735}
+{"id": "test-00878-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is currently being maintained\"}]}", "prompt_tokens": 224, "seconds": 4.756}
+{"id": "test-00878-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_delay\",\"quote\":\"değişiklik\"}]}", "prompt_tokens": 226, "seconds": 4.698}
+{"id": "test-00880-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"possibly is closed\"}]}", "prompt_tokens": 231, "seconds": 4.627}
+{"id": "test-00880-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"kapalı\"}]}", "prompt_tokens": 244, "seconds": 4.485}
+{"id": "test-00884-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"kapanş\"}]}", "prompt_tokens": 229, "seconds": 4.562}
+{"id": "test-00884-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is currently experiencing issues\"}]}", "prompt_tokens": 229, "seconds": 4.633}
+{"id": "test-00886-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is currently experiencing issues\"}]}", "prompt_tokens": 219, "seconds": 4.778}
+{"id": "test-00886-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"gşğliğ\"}]}", "prompt_tokens": 224, "seconds": 4.795}
+{"id": "test-00888-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"beklenti\"}]}", "prompt_tokens": 231, "seconds": 4.639}
+{"id": "test-00888-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"are currently out of operation\"}]}", "prompt_tokens": 229, "seconds": 5.453}
+{"id": "test-00892-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"will not be halted\"}]}", "prompt_tokens": 229, "seconds": 4.202}
+{"id": "test-00892-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"kaybolmamıştır değildir\"}]}", "prompt_tokens": 236, "seconds": 4.337}
+{"id": "test-00898-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"has been suspended\"}]}", "prompt_tokens": 220, "seconds": 3.343}
+{"id": "test-00898-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"geışľğ\"}]}", "prompt_tokens": 220, "seconds": 4.461}
+{"id": "test-00900-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is currently unavailable\"}]}", "prompt_tokens": 227, "seconds": 4.343}
+{"id": "test-00904-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"has been disabled\"}]}", "prompt_tokens": 222, "seconds": 4.345}
+{"id": "test-00900-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"çıkış yok\"}]}", "prompt_tokens": 232, "seconds": 4.427}
+{"id": "test-00904-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_delay\",\"quote\":\"gşğliğ\"}]}", "prompt_tokens": 228, "seconds": 4.55}
+{"id": "test-00906-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"could possibly be shut\"}]}", "prompt_tokens": 228, "seconds": 4.61}
+{"id": "test-00910-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is currently inaccessible\"}]}", "prompt_tokens": 234, "seconds": 4.429}
+{"id": "test-00906-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"belki bekleniyor\"}]}", "prompt_tokens": 236, "seconds": 5.334}
+{"id": "test-00910-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"olumayar\"}]}", "prompt_tokens": 237, "seconds": 4.157}
+{"id": "test-00912-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"iscurrentlyexperiencingissues\"}]}", "prompt_tokens": 221, "seconds": 4.368}
+{"id": "test-00912-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"değerlamaz\"}]}", "prompt_tokens": 231, "seconds": 4.247}
+{"id": "test-00914-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"are currently out of operation\"}]}", "prompt_tokens": 238, "seconds": 4.396}
+{"id": "test-00918-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is open not\"}]}", "prompt_tokens": 226, "seconds": 3.517}
+{"id": "test-00914-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"olumayar 08:27'den başlayıp 11:27'ye kadar\"}]}", "prompt_tokens": 239, "seconds": 6.047}
+{"id": "test-00918-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"açık değildir\"}]}", "prompt_tokens": 233, "seconds": 3.515}
+{"id": "test-00924-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is temporarily suspended\"}]}", "prompt_tokens": 223, "seconds": 4.549}
+{"id": "test-00924-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"kapanş\"}]}", "prompt_tokens": 225, "seconds": 4.569}
+{"id": "test-00926-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"yok\"}]}", "prompt_tokens": 241, "seconds": 4.454}
+{"id": "test-00926-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is currently out of operation\"}]}", "prompt_tokens": 236, "seconds": 5.373}
+{"id": "test-00930-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"has been disabled\"}]}", "prompt_tokens": 223, "seconds": 3.428}
+{"id": "test-00930-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"olayamaz\"}]}", "prompt_tokens": 224, "seconds": 4.368}
+{"id": "test-00932-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is expected to close\"}]}", "prompt_tokens": 229, "seconds": 4.553}
+{"id": "test-00932-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"kapalıs\"}]}", "prompt_tokens": 236, "seconds": 4.381}
+{"id": "test-00936-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is currently inaccessible\"}]}", "prompt_tokens": 228, "seconds": 4.323}
+{"id": "test-00936-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"beklenti\"}]}", "prompt_tokens": 232, "seconds": 4.137}
+{"id": "test-00938-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"has ceased\"}]}", "prompt_tokens": 218, "seconds": 4.019}
+{"id": "test-00940-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"are undergoing maintenance\"}]}", "prompt_tokens": 229, "seconds": 4.242}
+{"id": "test-00938-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"belirilĿ\"}]}", "prompt_tokens": 222, "seconds": 5.077}
+{"id": "test-00944-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"will not be closed\"}]}", "prompt_tokens": 232, "seconds": 3.624}
+{"id": "test-00940-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"belirilĿler\"}]}", "prompt_tokens": 238, "seconds": 4.395}
+{"id": "test-00950-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"has been taken offline\"}]}", "prompt_tokens": 220, "seconds": 3.541}
+{"id": "test-00944-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"kaybolmamıştır değildir\"}]}", "prompt_tokens": 240, "seconds": 4.376}
+{"id": "test-00950-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"kapanış\"}]}", "prompt_tokens": 220, "seconds": 4.239}
+{"id": "test-00952-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"has been suspended\"}]}", "prompt_tokens": 233, "seconds": 4.24}
+{"id": "test-00952-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"belirilĿ\"}]}", "prompt_tokens": 239, "seconds": 4.559}
+{"id": "test-00956-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"has been taken out of action\"}]}", "prompt_tokens": 225, "seconds": 4.616}
+{"id": "test-00956-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"olamayız\"}]}", "prompt_tokens": 224, "seconds": 4.699}
+{"id": "test-00958-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"could possibly be shut\"}]}", "prompt_tokens": 228, "seconds": 4.779}
+{"id": "test-00962-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is temporarily suspended\"}]}", "prompt_tokens": 225, "seconds": 4.715}
+{"id": "test-00958-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"kapalı olabileceği için\"}]}", "prompt_tokens": 244, "seconds": 5.754}
+{"id": "test-00962-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"geçersiz\"}]}", "prompt_tokens": 229, "seconds": 4.466}
+{"id": "test-00964-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is experiencing technical difficulties\"}]}", "prompt_tokens": 219, "seconds": 4.467}
+{"id": "test-00964-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"gecersiz\"}]}", "prompt_tokens": 224, "seconds": 4.551}
+{"id": "test-00966-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"have been disabled\"}]}", "prompt_tokens": 236, "seconds": 4.646}
+{"id": "test-00966-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"deşeğler\"}]}", "prompt_tokens": 245, "seconds": 4.641}
+{"id": "test-00970-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"was not shut down\"}]}", "prompt_tokens": 235, "seconds": 4.559}
+{"id": "test-00976-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is currently unavailable\"}]}", "prompt_tokens": 218, "seconds": 3.747}
+{"id": "test-00970-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"kaybolmuştur değildir\"}]}", "prompt_tokens": 242, "seconds": 4.825}
+{"id": "test-00976-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"deşeğ\"}]}", "prompt_tokens": 219, "seconds": 4.783}
+{"id": "test-00978-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is undergoing maintenance\"}]}", "prompt_tokens": 228, "seconds": 4.784}
+{"id": "test-00982-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is currently undergoing repairs\"}]}", "prompt_tokens": 227, "seconds": 4.814}
+{"id": "test-00978-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"geışľğ\"}]}", "prompt_tokens": 232, "seconds": 4.817}
+{"id": "test-00984-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"expected be shut\"}]}", "prompt_tokens": 225, "seconds": 5.291}
+{"id": "test-00982-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"değerlamaz\"}]}", "prompt_tokens": 222, "seconds": 5.355}
+{"id": "test-00988-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is experiencing disruptions\"}]}", "prompt_tokens": 227, "seconds": 5.563}
+{"id": "test-00984-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"ihtimal ki bekleniyor\"}]}", "prompt_tokens": 230, "seconds": 6.664}
+{"id": "test-00988-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"olayamaz\"}]}", "prompt_tokens": 224, "seconds": 5.117}
+{"id": "test-00990-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"has been taken offline\"}]}", "prompt_tokens": 218, "seconds": 5.145}
+{"id": "test-00990-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"geışľğ\"}]}", "prompt_tokens": 219, "seconds": 5.3}
+{"id": "test-00992-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"are experiencing technical difficulties\"}]}", "prompt_tokens": 234, "seconds": 5.314}
+{"id": "test-00996-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"was not shut down\"}]}", "prompt_tokens": 223, "seconds": 4.397}
+{"id": "test-00992-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"geışľğler\"}]}", "prompt_tokens": 242, "seconds": 4.547}
+{"id": "test-00996-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"uyarı\"}]}", "prompt_tokens": 235, "seconds": 1.977}

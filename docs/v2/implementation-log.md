@@ -167,3 +167,10 @@ Each entry records completed acceptance checks and concrete blockers.
 ## Addendum · human review packet
 
 - `scripts/export_review_packet.py` and `scripts/review_agreement.py` turn the independent-annotation step into two commands: a blind packet of 200 test reports with the key kept apart, and Cohen's kappa plus a disagreement list for two filled copies. Tests use a perfect annotator and a copy to check the arithmetic. No annotator has filled the packet.
+
+## Addendum · Operator adapter v3
+
+- TRL-Bench v3.1 replaced the small v3 phrase banks for training: 3,859 distinct masked train templates against about 280, split-owned frames and connectives, and test parts from Llama 3.2 3B that the maintainers did not read. The gold-quote check found a reader gap (`17.11.2026:` was not read as a date) and parts the reader could not bind, which were fixed or dropped.
+- The first dev run found that Ollama structured output never returned `kind`. `ollama_format` now requires it. The adapters went from about 61% to 99.5–100% on dev.
+- Test (616 reports, preregistered, amended before reading): adapter 89.6%, base with retrieval 83.8%, base 18.2%, lexicon 8.1%. The adapter's lead over retrieval is 5.8 points [2.6, 9.1]. See `experiments/results/v2_1/REPORT.md`.
+- A real-model hybrid test (`test_real_vnext_hybrid_grounds_a_report_and_recovers_a_meeting`) returns a clarification with the current Ollama and base model, with and without the schema change. It was not investigated further.

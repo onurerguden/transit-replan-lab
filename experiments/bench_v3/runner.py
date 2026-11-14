@@ -81,6 +81,8 @@ def proposal(arm: str, report: Report, rng: random.Random) -> Extraction | None:
         return lexicon_proposal(report.text)
     if arm == "model_ceiling":
         gold = report.incidents[0]["kind"] if report.incidents else None
+        if gold is None and report.family in {"negated", "hedged"}:
+            gold = "stop_closure"  # the gate blocks the quote, so the report is refused
         if report.kind_phrase and gold:
             return Extraction(
                 quotes=(

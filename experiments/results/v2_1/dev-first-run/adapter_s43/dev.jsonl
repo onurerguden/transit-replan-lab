@@ -1,0 +1,400 @@
+{"id": "dev-00052-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"remains closed\"}]}", "prompt_tokens": 217, "seconds": 6.129}
+{"id": "dev-00053-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"is closed down\"}]}", "prompt_tokens": 213, "seconds": 6.129}
+{"id": "dev-00052-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"kapalı kalacaktır\"}]}", "prompt_tokens": 229, "seconds": 6.185}
+{"id": "dev-00053-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"kapatılmıştır\"}]}", "prompt_tokens": 223, "seconds": 6.185}
+{"id": "dev-00055-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"remains closed\"}]}", "prompt_tokens": 226, "seconds": 3.483}
+{"id": "dev-00054-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"has gone out of service\"}]}", "prompt_tokens": 218, "seconds": 4.303}
+{"id": "dev-00054-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"işletim dışı\"}]}", "prompt_tokens": 224, "seconds": 4.303}
+{"id": "dev-00055-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"yolcuya kapalıdır\"}]}", "prompt_tokens": 237, "seconds": 5.632}
+{"id": "dev-00056-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"remain closed\"}]}", "prompt_tokens": 224, "seconds": 3.646}
+{"id": "dev-00059-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"remains closed\"}]}", "prompt_tokens": 219, "seconds": 3.785}
+{"id": "dev-00056-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"işletim dışıdır\"}]}", "prompt_tokens": 231, "seconds": 4.657}
+{"id": "dev-00059-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"kapatılmıştır\"}]}", "prompt_tokens": 226, "seconds": 3.275}
+{"id": "dev-00060-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"is not closed to riders\"}]}", "prompt_tokens": 224, "seconds": 3.927}
+{"id": "dev-00060-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"hizmet dışı değildir\"}]}", "prompt_tokens": 226, "seconds": 3.986}
+{"id": "dev-00061-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"is expected to be closed\"}]}", "prompt_tokens": 225, "seconds": 3.859}
+{"id": "dev-00061-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"muhtemelen kapalıdır\"}]}", "prompt_tokens": 230, "seconds": 4.614}
+{"id": "dev-00065-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"remains closed\"}]}", "prompt_tokens": 221, "seconds": 3.715}
+{"id": "dev-00065-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"kullanım dışı\"}]}", "prompt_tokens": 228, "seconds": 3.847}
+{"id": "dev-00066-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"has gone out of service\"}]}", "prompt_tokens": 217, "seconds": 3.844}
+{"id": "dev-00066-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"geçici süreyle kapalıdır\"}]}", "prompt_tokens": 226, "seconds": 4.087}
+{"id": "dev-00067-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"is taken out of operation\"}]}", "prompt_tokens": 218, "seconds": 3.919}
+{"id": "dev-00067-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"kapalı kalacaktır\"}]}", "prompt_tokens": 220, "seconds": 3.864}
+{"id": "dev-00068-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"remains closed\"}]}", "prompt_tokens": 225, "seconds": 3.201}
+{"id": "dev-00068-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"kapatılmıştır\"}]}", "prompt_tokens": 236, "seconds": 3.932}
+{"id": "dev-00069-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"are fenced off\"}]}", "prompt_tokens": 224, "seconds": 3.804}
+{"id": "dev-00072-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"stayes shut\"}]}", "prompt_tokens": 218, "seconds": 3.708}
+{"id": "dev-00069-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"kapalı kalacaktır\"}]}", "prompt_tokens": 230, "seconds": 4.465}
+{"id": "dev-00072-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"işletim dışı\"}]}", "prompt_tokens": 224, "seconds": 3.848}
+{"id": "dev-00073-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"is not shut\"}]}", "prompt_tokens": 223, "seconds": 3.709}
+{"id": "dev-00073-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"kapalı değil\"}]}", "prompt_tokens": 225, "seconds": 3.65}
+{"id": "dev-00074-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"is expected to be closed\"}]}", "prompt_tokens": 224, "seconds": 3.92}
+{"id": "dev-00074-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"muhtemelen kapalıdır\"}]}", "prompt_tokens": 229, "seconds": 3.985}
+{"id": "dev-00078-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"is taken out of operation\"}]}", "prompt_tokens": 222, "seconds": 3.226}
+{"id": "dev-00078-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"kullanım dışıdır\"}]}", "prompt_tokens": 227, "seconds": 3.884}
+{"id": "dev-00079-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"remains closed\"}]}", "prompt_tokens": 214, "seconds": 3.014}
+{"id": "dev-00080-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"is currently shut\"}]}", "prompt_tokens": 214, "seconds": 3.665}
+{"id": "dev-00079-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"hizmet dışı kalmıştır\"}]}", "prompt_tokens": 224, "seconds": 4.708}
+{"id": "dev-00081-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"remains closed\"}]}", "prompt_tokens": 225, "seconds": 3.033}
+{"id": "dev-00080-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"işletim dışı\"}]}", "prompt_tokens": 223, "seconds": 4.508}
+{"id": "dev-00081-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"kapatılmıştır\"}]}", "prompt_tokens": 235, "seconds": 3.742}
+{"id": "dev-00082-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"remain closed\"}]}", "prompt_tokens": 224, "seconds": 3.555}
+{"id": "dev-00082-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"kapalı kalacaktır\"}]}", "prompt_tokens": 229, "seconds": 4.234}
+{"id": "dev-00085-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"is currently shut\"}]}", "prompt_tokens": 219, "seconds": 3.627}
+{"id": "dev-00085-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"kapalı olacaktır\"}]}", "prompt_tokens": 221, "seconds": 3.702}
+{"id": "dev-00086-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"is not shut\"}]}", "prompt_tokens": 224, "seconds": 3.7}
+{"id": "dev-00087-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"maybe closed\"}]}", "prompt_tokens": 221, "seconds": 3.052}
+{"id": "dev-00086-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"hizmet dışı\"}]}", "prompt_tokens": 228, "seconds": 3.9}
+{"id": "dev-00087-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"kapatılması\"}]}", "prompt_tokens": 229, "seconds": 3.709}
+{"id": "dev-00091-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"is barred to passengers\"}]}", "prompt_tokens": 221, "seconds": 3.769}
+{"id": "dev-00092-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"is closed down\"}]}", "prompt_tokens": 214, "seconds": 3.566}
+{"id": "dev-00091-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"işletim dışıdır\"}]}", "prompt_tokens": 228, "seconds": 4.466}
+{"id": "dev-00092-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"kapalı olacaktır\"}]}", "prompt_tokens": 218, "seconds": 3.68}
+{"id": "dev-00093-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"is barred to passengers\"}]}", "prompt_tokens": 218, "seconds": 3.823}
+{"id": "dev-00093-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"kapatılmıştır\"}]}", "prompt_tokens": 223, "seconds": 3.823}
+{"id": "dev-00094-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"has gone out of service\"}]}", "prompt_tokens": 227, "seconds": 3.968}
+{"id": "dev-00094-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"kapalı\"}]}", "prompt_tokens": 232, "seconds": 3.752}
+{"id": "dev-00095-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"remain closed\"}]}", "prompt_tokens": 223, "seconds": 3.687}
+{"id": "dev-00095-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"kapatılmıştır\"}]}", "prompt_tokens": 235, "seconds": 3.887}
+{"id": "dev-00098-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"is taken out of operation\"}]}", "prompt_tokens": 223, "seconds": 3.851}
+{"id": "dev-00098-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"kapalı\"}]}", "prompt_tokens": 223, "seconds": 3.586}
+{"id": "dev-00099-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"is not closed to riders\"}]}", "prompt_tokens": 223, "seconds": 3.817}
+{"id": "dev-00099-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"kapalı değil\"}]}", "prompt_tokens": 224, "seconds": 3.779}
+{"id": "dev-00100-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"maybe closed\"}]}", "prompt_tokens": 220, "seconds": 3.702}
+{"id": "dev-00100-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"kapalıdır\"}]}", "prompt_tokens": 230, "seconds": 3.844}
+{"id": "dev-00104-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"is currently shut\"}]}", "prompt_tokens": 221, "seconds": 3.731}
+{"id": "dev-00104-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"kapatılmıştır\"}]}", "prompt_tokens": 228, "seconds": 3.709}
+{"id": "dev-00105-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"remains closed\"}]}", "prompt_tokens": 213, "seconds": 3.713}
+{"id": "dev-00105-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"hizmet dışı kalmıştır\"}]}", "prompt_tokens": 223, "seconds": 4.029}
+{"id": "dev-00106-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"is closed down\"}]}", "prompt_tokens": 215, "seconds": 3.032}
+{"id": "dev-00106-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"işletim dışıdır\"}]}", "prompt_tokens": 221, "seconds": 3.905}
+{"id": "dev-00107-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"is fenced off\"}]}", "prompt_tokens": 226, "seconds": 3.789}
+{"id": "dev-00108-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"are barred to passengers\"}]}", "prompt_tokens": 224, "seconds": 3.83}
+{"id": "dev-00107-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"yolcuya kapalıdır\"}]}", "prompt_tokens": 234, "seconds": 4.705}
+{"id": "dev-00111-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"is closed down\"}]}", "prompt_tokens": 218, "seconds": 3.142}
+{"id": "dev-00108-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"yolcuya kapalıdır\"}]}", "prompt_tokens": 233, "seconds": 4.641}
+{"id": "dev-00112-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"is not closed to riders\"}]}", "prompt_tokens": 223, "seconds": 3.222}
+{"id": "dev-00111-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"geçici süreyle kapalıdır\"}]}", "prompt_tokens": 226, "seconds": 4.044}
+{"id": "dev-00113-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"maybe closed\"}]}", "prompt_tokens": 222, "seconds": 2.972}
+{"id": "dev-00112-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"hizmet dışı değildir\"}]}", "prompt_tokens": 229, "seconds": 4.573}
+{"id": "dev-00117-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"has gone out of service\"}]}", "prompt_tokens": 225, "seconds": 3.893}
+{"id": "dev-00113-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"kapatılması bekleniyor\"}]}", "prompt_tokens": 228, "seconds": 3.977}
+{"id": "dev-00118-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"is barred to passengers\"}]}", "prompt_tokens": 214, "seconds": 3.173}
+{"id": "dev-00117-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"geçici süreyle kapalıdır\"}]}", "prompt_tokens": 231, "seconds": 4.114}
+{"id": "dev-00119-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"stays shut\"}]}", "prompt_tokens": 213, "seconds": 3.663}
+{"id": "dev-00118-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"hizmet dışı kalmıştır\"}]}", "prompt_tokens": 222, "seconds": 4.838}
+{"id": "dev-00120-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"is barred to passengers\"}]}", "prompt_tokens": 229, "seconds": 3.164}
+{"id": "dev-00119-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"kullanım dışıdır\"}]}", "prompt_tokens": 220, "seconds": 4.617}
+{"id": "dev-00120-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"kapatılmıştır\"}]}", "prompt_tokens": 237, "seconds": 3.804}
+{"id": "dev-00121-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"are currently shut\"}]}", "prompt_tokens": 222, "seconds": 3.675}
+{"id": "dev-00124-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"is barred to passengers\"}]}", "prompt_tokens": 222, "seconds": 3.174}
+{"id": "dev-00121-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"geçici süreyle kapalıdır\"}]}", "prompt_tokens": 232, "seconds": 4.609}
+{"id": "dev-00124-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"hizmet dışı kalmıştır\"}]}", "prompt_tokens": 225, "seconds": 4.044}
+{"id": "dev-00125-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"is not closed to riders\"}]}", "prompt_tokens": 223, "seconds": 3.161}
+{"id": "dev-00126-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"maybe closed\"}]}", "prompt_tokens": 222, "seconds": 3.43}
+{"id": "dev-00125-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"hizmet dışı değildir\"}]}", "prompt_tokens": 228, "seconds": 4.411}
+{"id": "dev-00126-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"kapalıdır\"}]}", "prompt_tokens": 229, "seconds": 3.592}
+{"id": "dev-00130-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"has gone out of service\"}]}", "prompt_tokens": 223, "seconds": 4.27}
+{"id": "dev-00130-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"kapalı olacaktır\"}]}", "prompt_tokens": 225, "seconds": 3.011}
+{"id": "dev-00131-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"is barred to passengers\"}]}", "prompt_tokens": 214, "seconds": 3.582}
+{"id": "dev-00131-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"işletim dışı\"}]}", "prompt_tokens": 221, "seconds": 3.648}
+{"id": "dev-00132-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"stays shut\"}]}", "prompt_tokens": 213, "seconds": 2.891}
+{"id": "dev-00132-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"işletim dışıdır\"}]}", "prompt_tokens": 221, "seconds": 4.368}
+{"id": "dev-00133-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"is taken out of operation\"}]}", "prompt_tokens": 227, "seconds": 3.807}
+{"id": "dev-00134-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"are fenced off\"}]}", "prompt_tokens": 224, "seconds": 3.684}
+{"id": "dev-00133-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"yolcuya kapalıdır\"}]}", "prompt_tokens": 235, "seconds": 4.621}
+{"id": "dev-00137-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"remains closed\"}]}", "prompt_tokens": 218, "seconds": 3.122}
+{"id": "dev-00134-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"geçici süreyle kapalıdır\"}]}", "prompt_tokens": 236, "seconds": 4.113}
+{"id": "dev-00137-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"kullanım dışıdır\"}]}", "prompt_tokens": 224, "seconds": 3.933}
+{"id": "dev-00138-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"is not shut\"}]}", "prompt_tokens": 219, "seconds": 3.078}
+{"id": "dev-00139-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"maybe closed\"}]}", "prompt_tokens": 222, "seconds": 3.523}
+{"id": "dev-00138-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"kapalı değil\"}]}", "prompt_tokens": 224, "seconds": 3.638}
+{"id": "dev-00139-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"kapatılması\"}]}", "prompt_tokens": 229, "seconds": 3.639}
+{"id": "dev-00143-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"remains closed\"}]}", "prompt_tokens": 220, "seconds": 3.56}
+{"id": "dev-00144-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"is barred to passengers\"}]}", "prompt_tokens": 215, "seconds": 3.612}
+{"id": "dev-00143-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"kullanım dışıdır\"}]}", "prompt_tokens": 225, "seconds": 4.361}
+{"id": "dev-00145-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"remains closed\"}]}", "prompt_tokens": 214, "seconds": 3.61}
+{"id": "dev-00144-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"yolcuya kapalıdır\"}]}", "prompt_tokens": 221, "seconds": 4.615}
+{"id": "dev-00146-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"is taken out of operation\"}]}", "prompt_tokens": 227, "seconds": 3.366}
+{"id": "dev-00145-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"geçici süreyle kapalıdır\"}]}", "prompt_tokens": 225, "seconds": 4.12}
+{"id": "dev-00147-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"are closed down\"}]}", "prompt_tokens": 221, "seconds": 3.125}
+{"id": "dev-00146-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"hizmet dışı kalmıştır\"}]}", "prompt_tokens": 236, "seconds": 4.211}
+{"id": "dev-00150-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"is barred to passengers\"}]}", "prompt_tokens": 220, "seconds": 3.7}
+{"id": "dev-00147-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"işletim dışı\"}]}", "prompt_tokens": 232, "seconds": 3.82}
+{"id": "dev-00151-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"is not closed to riders\"}]}", "prompt_tokens": 220, "seconds": 3.683}
+{"id": "dev-00150-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"geçici süreyle kapalıdır\"}]}", "prompt_tokens": 227, "seconds": 4.67}
+{"id": "dev-00152-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"is expected to be closed\"}]}", "prompt_tokens": 223, "seconds": 3.749}
+{"id": "dev-00151-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"hizmet dışı değildir\"}]}", "prompt_tokens": 227, "seconds": 3.914}
+{"id": "dev-00152-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"kapatılması\"}]}", "prompt_tokens": 228, "seconds": 3.748}
+{"id": "dev-00156-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"is barred to passengers\"}]}", "prompt_tokens": 223, "seconds": 3.806}
+{"id": "dev-00156-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"kapalı kalacaktır\"}]}", "prompt_tokens": 227, "seconds": 3.8}
+{"id": "dev-00157-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"is taken out of operation\"}]}", "prompt_tokens": 217, "seconds": 3.82}
+{"id": "dev-00157-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"kapalı kalacaktır\"}]}", "prompt_tokens": 220, "seconds": 3.804}
+{"id": "dev-00158-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"kapalı\"}]}", "prompt_tokens": 221, "seconds": 3.131}
+{"id": "dev-00158-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"is taken out of operation\"}]}", "prompt_tokens": 215, "seconds": 3.927}
+{"id": "dev-00159-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"is closed down\"}]}", "prompt_tokens": 227, "seconds": 3.066}
+{"id": "dev-00159-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"kapalı kalacaktır\"}]}", "prompt_tokens": 233, "seconds": 3.842}
+{"id": "dev-00160-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"stay shut\"}]}", "prompt_tokens": 223, "seconds": 3.575}
+{"id": "dev-00163-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"is closed down\"}]}", "prompt_tokens": 219, "seconds": 3.617}
+{"id": "dev-00160-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"yolcuya kapalıdır\"}]}", "prompt_tokens": 234, "seconds": 5.116}
+{"id": "dev-00164-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"kapalı değil\"}]}", "prompt_tokens": 225, "seconds": 2.982}
+{"id": "dev-00164-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"is not closed to riders\"}]}", "prompt_tokens": 222, "seconds": 3.78}
+{"id": "dev-00163-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"hizmet dışı kalmıştır\"}]}", "prompt_tokens": 225, "seconds": 4.647}
+{"id": "dev-00165-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"is expected to be closed\"}]}", "prompt_tokens": 221, "seconds": 3.775}
+{"id": "dev-00165-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"kapatılması\"}]}", "prompt_tokens": 227, "seconds": 3.651}
+{"id": "dev-00169-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"remains closed\"}]}", "prompt_tokens": 219, "seconds": 3.648}
+{"id": "dev-00169-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"işletim dışıdır\"}]}", "prompt_tokens": 228, "seconds": 4.386}
+{"id": "dev-00170-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"is currently shut\"}]}", "prompt_tokens": 215, "seconds": 3.656}
+{"id": "dev-00170-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"kapalı kalacaktır\"}]}", "prompt_tokens": 221, "seconds": 3.762}
+{"id": "dev-00171-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"is fenced off\"}]}", "prompt_tokens": 215, "seconds": 3.124}
+{"id": "dev-00171-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"kullanım dışı\"}]}", "prompt_tokens": 223, "seconds": 3.911}
+{"id": "dev-00172-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"remains closed\"}]}", "prompt_tokens": 224, "seconds": 3.154}
+{"id": "dev-00172-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"kapalı kalacaktır\"}]}", "prompt_tokens": 234, "seconds": 3.761}
+{"id": "dev-00173-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"are taken out of operation\"}]}", "prompt_tokens": 224, "seconds": 3.761}
+{"id": "dev-00176-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"is barred to passengers\"}]}", "prompt_tokens": 219, "seconds": 3.701}
+{"id": "dev-00173-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"hizmet dışı kalmıştır\"}]}", "prompt_tokens": 231, "seconds": 4.662}
+{"id": "dev-00177-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"is not closed to riders\"}]}", "prompt_tokens": 225, "seconds": 3.8}
+{"id": "dev-00176-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"kullanım dışı\"}]}", "prompt_tokens": 225, "seconds": 3.874}
+{"id": "dev-00178-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"maybe closed\"}]}", "prompt_tokens": 219, "seconds": 2.987}
+{"id": "dev-00177-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"hizmet dışı değildir\"}]}", "prompt_tokens": 227, "seconds": 4.028}
+{"id": "dev-00178-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"kapatılması\"}]}", "prompt_tokens": 230, "seconds": 3.72}
+{"id": "dev-00182-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"is barred to passengers\"}]}", "prompt_tokens": 221, "seconds": 3.754}
+{"id": "dev-00183-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"is barred to passengers\"}]}", "prompt_tokens": 216, "seconds": 3.685}
+{"id": "dev-00182-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"yolcuya kapalıdır\"}]}", "prompt_tokens": 228, "seconds": 4.724}
+{"id": "dev-00184-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"remains closed\"}]}", "prompt_tokens": 213, "seconds": 3.733}
+{"id": "dev-00183-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"geçici süreyle kapalıdır\"}]}", "prompt_tokens": 225, "seconds": 4.819}
+{"id": "dev-00184-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"hizmet dışı kalmıştır\"}]}", "prompt_tokens": 222, "seconds": 4.182}
+{"id": "dev-00185-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"has gone out of service\"}]}", "prompt_tokens": 229, "seconds": 3.226}
+{"id": "dev-00185-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"işletim dışı\"}]}", "prompt_tokens": 234, "seconds": 3.836}
+{"id": "dev-00186-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"are currently shut\"}]}", "prompt_tokens": 223, "seconds": 3.616}
+{"id": "dev-00186-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"kapalı olacaktır\"}]}", "prompt_tokens": 229, "seconds": 3.654}
+{"id": "dev-00189-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"stays shut\"}]}", "prompt_tokens": 215, "seconds": 3.654}
+{"id": "dev-00190-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"is not shut\"}]}", "prompt_tokens": 222, "seconds": 3.032}
+{"id": "dev-00189-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"yolcuya kapalıdır\"}]}", "prompt_tokens": 224, "seconds": 3.899}
+{"id": "dev-00191-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"maybe closed\"}]}", "prompt_tokens": 223, "seconds": 3.649}
+{"id": "dev-00190-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"kapalı değil\"}]}", "prompt_tokens": 227, "seconds": 3.73}
+{"id": "dev-00191-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"kapatılması\"}]}", "prompt_tokens": 229, "seconds": 3.751}
+{"id": "dev-00195-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"stays shut\"}]}", "prompt_tokens": 219, "seconds": 3.732}
+{"id": "dev-00196-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"is closed down\"}]}", "prompt_tokens": 215, "seconds": 3.611}
+{"id": "dev-00195-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"kapatılmıştır\"}]}", "prompt_tokens": 228, "seconds": 3.77}
+{"id": "dev-00197-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"stays shut\"}]}", "prompt_tokens": 214, "seconds": 3.58}
+{"id": "dev-00196-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"kapatılmıştır\"}]}", "prompt_tokens": 222, "seconds": 3.67}
+{"id": "dev-00198-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"is fenced off\"}]}", "prompt_tokens": 223, "seconds": 3.655}
+{"id": "dev-00197-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"geçici süreyle kapalıdır\"}]}", "prompt_tokens": 225, "seconds": 4.838}
+{"id": "dev-00199-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"remain closed\"}]}", "prompt_tokens": 223, "seconds": 3.805}
+{"id": "dev-00198-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"kapatılmıştır\"}]}", "prompt_tokens": 234, "seconds": 4.556}
+{"id": "dev-00199-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"işletim dışı\"}]}", "prompt_tokens": 231, "seconds": 3.998}
+{"id": "dev-00202-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"is fenced off\"}]}", "prompt_tokens": 221, "seconds": 3.774}
+{"id": "dev-00202-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"kapalı\"}]}", "prompt_tokens": 225, "seconds": 3.621}
+{"id": "dev-00203-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"is not shut\"}]}", "prompt_tokens": 220, "seconds": 3.696}
+{"id": "dev-00203-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"hizmet dışı değildir\"}]}", "prompt_tokens": 226, "seconds": 3.946}
+{"id": "dev-00204-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"is expected to be closed\"}]}", "prompt_tokens": 223, "seconds": 3.878}
+{"id": "dev-00208-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"is fenced off\"}]}", "prompt_tokens": 222, "seconds": 3.133}
+{"id": "dev-00204-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"kapatılması bekleniyor\"}]}", "prompt_tokens": 227, "seconds": 4.014}
+{"id": "dev-00209-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"stays shut\"}]}", "prompt_tokens": 213, "seconds": 3.099}
+{"id": "dev-00210-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"stays shut\"}]}", "prompt_tokens": 213, "seconds": 2.96}
+{"id": "dev-00208-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"hizmet dışı kalmıştır\"}]}", "prompt_tokens": 231, "seconds": 4.785}
+{"id": "dev-00209-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"hizmet dışı kalmıştır\"}]}", "prompt_tokens": 221, "seconds": 4.808}
+{"id": "dev-00210-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"kapatılmıştır\"}]}", "prompt_tokens": 224, "seconds": 3.856}
+{"id": "dev-00211-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"has gone out of service\"}]}", "prompt_tokens": 227, "seconds": 4.075}
+{"id": "dev-00211-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"işletim dışıdır\"}]}", "prompt_tokens": 233, "seconds": 4.017}
+{"id": "dev-00212-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"remain closed\"}]}", "prompt_tokens": 223, "seconds": 3.65}
+{"id": "dev-00212-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"kullanım dışı\"}]}", "prompt_tokens": 234, "seconds": 3.929}
+{"id": "dev-00215-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"is closed down\"}]}", "prompt_tokens": 217, "seconds": 3.033}
+{"id": "dev-00216-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"is not closed to riders\"}]}", "prompt_tokens": 221, "seconds": 3.196}
+{"id": "dev-00215-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"geçici süreyle kapalıdır\"}]}", "prompt_tokens": 227, "seconds": 4.506}
+{"id": "dev-00217-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"maybe closed\"}]}", "prompt_tokens": 222, "seconds": 3.452}
+{"id": "dev-00216-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"kapalı değil\"}]}", "prompt_tokens": 224, "seconds": 3.612}
+{"id": "dev-00217-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"kapatılması\"}]}", "prompt_tokens": 228, "seconds": 3.815}
+{"id": "dev-00221-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"is closed down\"}]}", "prompt_tokens": 221, "seconds": 3.76}
+{"id": "dev-00222-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"stays shut\"}]}", "prompt_tokens": 212, "seconds": 3.719}
+{"id": "dev-00221-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"yolcuya kapalıdır\"}]}", "prompt_tokens": 231, "seconds": 4.772}
+{"id": "dev-00223-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"is closed down\"}]}", "prompt_tokens": 215, "seconds": 3.629}
+{"id": "dev-00222-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"yolcuya kapalıdır\"}]}", "prompt_tokens": 222, "seconds": 4.636}
+{"id": "dev-00223-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"kapalı olacaktır\"}]}", "prompt_tokens": 219, "seconds": 3.826}
+{"id": "dev-00224-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"is fenced off\"}]}", "prompt_tokens": 225, "seconds": 3.905}
+{"id": "dev-00224-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"kapalı olacaktır\"}]}", "prompt_tokens": 232, "seconds": 3.905}
+{"id": "dev-00225-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"are currently shut\"}]}", "prompt_tokens": 224, "seconds": 3.84}
+{"id": "dev-00228-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"is closed down\"}]}", "prompt_tokens": 218, "seconds": 3.038}
+{"id": "dev-00225-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"hizmet dışı kalmıştır\"}]}", "prompt_tokens": 231, "seconds": 4.148}
+{"id": "dev-00228-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"kullanım dışı\"}]}", "prompt_tokens": 226, "seconds": 3.82}
+{"id": "dev-00229-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"is not closed to riders\"}]}", "prompt_tokens": 225, "seconds": 3.748}
+{"id": "dev-00230-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"maybe closed\"}]}", "prompt_tokens": 220, "seconds": 3.52}
+{"id": "dev-00229-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"kapalı değil\"}]}", "prompt_tokens": 228, "seconds": 3.658}
+{"id": "dev-00234-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"remains closed\"}]}", "prompt_tokens": 222, "seconds": 3.059}
+{"id": "dev-00230-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"muhtemelen kapalıdır\"}]}", "prompt_tokens": 229, "seconds": 3.929}
+{"id": "dev-00235-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"is fenced off\"}]}", "prompt_tokens": 213, "seconds": 3.496}
+{"id": "dev-00234-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"hizmet dışı kalmıştır\"}]}", "prompt_tokens": 229, "seconds": 4.647}
+{"id": "dev-00236-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"is barred to passengers\"}]}", "prompt_tokens": 214, "seconds": 3.755}
+{"id": "dev-00235-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"yolcuya kapalıdır\"}]}", "prompt_tokens": 221, "seconds": 4.629}
+{"id": "dev-00236-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"yolcuya kapalıdır\"}]}", "prompt_tokens": 222, "seconds": 4.091}
+{"id": "dev-00237-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"is closed down\"}]}", "prompt_tokens": 228, "seconds": 3.102}
+{"id": "dev-00238-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"are fenced off\"}]}", "prompt_tokens": 222, "seconds": 3.047}
+{"id": "dev-00237-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"işletim dışıdır\"}]}", "prompt_tokens": 234, "seconds": 3.92}
+{"id": "dev-00241-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"stayes shut\"}]}", "prompt_tokens": 218, "seconds": 3.462}
+{"id": "dev-00238-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"yolcuya kapalıdır\"}]}", "prompt_tokens": 230, "seconds": 4.444}
+{"id": "dev-00241-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"kapalı olacaktır\"}]}", "prompt_tokens": 223, "seconds": 3.638}
+{"id": "dev-00242-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"is not closed to riders\"}]}", "prompt_tokens": 223, "seconds": 4.461}
+{"id": "dev-00242-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"hizmet dışı\"}]}", "prompt_tokens": 228, "seconds": 3.942}
+{"id": "dev-00243-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"maybe closed\"}]}", "prompt_tokens": 220, "seconds": 3.695}
+{"id": "dev-00243-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"kapalıdır\"}]}", "prompt_tokens": 231, "seconds": 3.806}
+{"id": "dev-00247-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"has gone out of service\"}]}", "prompt_tokens": 224, "seconds": 3.961}
+{"id": "dev-00248-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"is currently shut\"}]}", "prompt_tokens": 214, "seconds": 3.239}
+{"id": "dev-00247-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"işletim dışıdır\"}]}", "prompt_tokens": 228, "seconds": 3.973}
+{"id": "dev-00248-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"kapatılmıştır\"}]}", "prompt_tokens": 222, "seconds": 3.791}
+{"id": "dev-00249-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"is taken out of operation\"}]}", "prompt_tokens": 215, "seconds": 3.911}
+{"id": "dev-00250-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"is currently shut\"}]}", "prompt_tokens": 224, "seconds": 3.643}
+{"id": "dev-00249-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"kapatılmıştır\"}]}", "prompt_tokens": 222, "seconds": 4.482}
+{"id": "dev-00250-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"işletim dışı\"}]}", "prompt_tokens": 235, "seconds": 3.975}
+{"id": "dev-00251-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"are currently shut\"}]}", "prompt_tokens": 225, "seconds": 3.767}
+{"id": "dev-00251-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"kapalı olacaktır\"}]}", "prompt_tokens": 230, "seconds": 3.708}
+{"id": "dev-00254-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"is currently shut\"}]}", "prompt_tokens": 220, "seconds": 3.709}
+{"id": "dev-00254-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"kapalı\"}]}", "prompt_tokens": 223, "seconds": 3.652}
+{"id": "dev-00255-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"is not closed to riders\"}]}", "prompt_tokens": 224, "seconds": 3.858}
+{"id": "dev-00256-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"maybe closed\"}]}", "prompt_tokens": 220, "seconds": 3.035}
+{"id": "dev-00255-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"hizmet dışı değildir\"}]}", "prompt_tokens": 228, "seconds": 4.509}
+{"id": "dev-00256-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"muhtemelen kapalıdır\"}]}", "prompt_tokens": 228, "seconds": 4.022}
+{"id": "dev-00260-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"is barred to passengers\"}]}", "prompt_tokens": 224, "seconds": 3.802}
+{"id": "dev-00260-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"kapalı kalacaktır\"}]}", "prompt_tokens": 226, "seconds": 3.797}
+{"id": "dev-00261-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"remains closed\"}]}", "prompt_tokens": 212, "seconds": 3.141}
+{"id": "dev-00261-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"kullanım dışı\"}]}", "prompt_tokens": 221, "seconds": 3.762}
+{"id": "dev-00262-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"remains closed\"}]}", "prompt_tokens": 213, "seconds": 2.965}
+{"id": "dev-00263-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"remains closed\"}]}", "prompt_tokens": 225, "seconds": 3.556}
+{"id": "dev-00262-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"kapatılmıştır\"}]}", "prompt_tokens": 223, "seconds": 3.695}
+{"id": "dev-00264-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"are fenced off\"}]}", "prompt_tokens": 223, "seconds": 3.569}
+{"id": "dev-00263-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"kapatılmıştır\"}]}", "prompt_tokens": 234, "seconds": 3.706}
+{"id": "dev-00267-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"is barred to passengers\"}]}", "prompt_tokens": 222, "seconds": 3.575}
+{"id": "dev-00264-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"kullanım dışıdır\"}]}", "prompt_tokens": 230, "seconds": 4.477}
+{"id": "dev-00268-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"is not closed to riders\"}]}", "prompt_tokens": 221, "seconds": 3.788}
+{"id": "dev-00267-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"hizmet dışı kalmıştır\"}]}", "prompt_tokens": 225, "seconds": 4.72}
+{"id": "dev-00269-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"maybe closed\"}]}", "prompt_tokens": 222, "seconds": 2.436}
+{"id": "dev-00268-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"hizmet dışı değildir\"}]}", "prompt_tokens": 230, "seconds": 4.754}
+{"id": "dev-00269-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"kapalıdır\"}]}", "prompt_tokens": 230, "seconds": 3.93}
+{"id": "dev-00273-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"is barred to passengers\"}]}", "prompt_tokens": 223, "seconds": 3.927}
+{"id": "dev-00273-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"kapalı kalacaktır\"}]}", "prompt_tokens": 230, "seconds": 3.851}
+{"id": "dev-00274-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"stays shut\"}]}", "prompt_tokens": 212, "seconds": 3.649}
+{"id": "dev-00274-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"kapalı kalacaktır\"}]}", "prompt_tokens": 220, "seconds": 3.758}
+{"id": "dev-00275-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"is fenced off\"}]}", "prompt_tokens": 213, "seconds": 3.757}
+{"id": "dev-00275-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"kapalı kalacaktır\"}]}", "prompt_tokens": 220, "seconds": 3.814}
+{"id": "dev-00276-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"is currently shut\"}]}", "prompt_tokens": 225, "seconds": 3.828}
+{"id": "dev-00276-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"kapalı\"}]}", "prompt_tokens": 232, "seconds": 3.764}
+{"id": "dev-00277-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"have gone out of service\"}]}", "prompt_tokens": 224, "seconds": 3.883}
+{"id": "dev-00280-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"is currently shut\"}]}", "prompt_tokens": 220, "seconds": 2.517}
+{"id": "dev-00277-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"kullanım dışı\"}]}", "prompt_tokens": 231, "seconds": 3.827}
+{"id": "dev-00282-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"maybe closed\"}]}", "prompt_tokens": 221, "seconds": 2.928}
+{"id": "dev-00280-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"hizmet dışı kalmıştır\"}]}", "prompt_tokens": 226, "seconds": 3.931}
+{"id": "dev-00281-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"is not closed to riders\"}]}", "prompt_tokens": 223, "seconds": 4.351}
+{"id": "dev-00281-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"hizmet dışı değildir\"}]}", "prompt_tokens": 226, "seconds": 4.408}
+{"id": "dev-00286-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"is currently shut\"}]}", "prompt_tokens": 221, "seconds": 3.558}
+{"id": "dev-00282-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"kapatılması\"}]}", "prompt_tokens": 226, "seconds": 3.57}
+{"id": "dev-00286-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"kapalı\"}]}", "prompt_tokens": 227, "seconds": 3.431}
+{"id": "dev-00287-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"is taken out of operation\"}]}", "prompt_tokens": 216, "seconds": 4.243}
+{"id": "dev-00288-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"is currently shut\"}]}", "prompt_tokens": 216, "seconds": 3.671}
+{"id": "dev-00287-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"işletim dışı\"}]}", "prompt_tokens": 220, "seconds": 4.484}
+{"id": "dev-00289-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"remains closed\"}]}", "prompt_tokens": 221, "seconds": 3.192}
+{"id": "dev-00288-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"işletim dışıdır\"}]}", "prompt_tokens": 222, "seconds": 4.145}
+{"id": "dev-00289-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"kapalı olacaktır\"}]}", "prompt_tokens": 232, "seconds": 3.78}
+{"id": "dev-00290-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"have gone out of service\"}]}", "prompt_tokens": 225, "seconds": 3.918}
+{"id": "dev-00293-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"stays shut\"}]}", "prompt_tokens": 217, "seconds": 3.033}
+{"id": "dev-00290-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"kapatılmıştır\"}]}", "prompt_tokens": 234, "seconds": 4.376}
+{"id": "dev-00293-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"il dışı\"}]}", "prompt_tokens": 225, "seconds": 3.721}
+{"id": "dev-00294-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"kapalı değil\"}]}", "prompt_tokens": 227, "seconds": 3.659}
+{"id": "dev-00294-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"is not shut\"}]}", "prompt_tokens": 220, "seconds": 3.721}
+{"id": "dev-00295-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"is expected to be closed\"}]}", "prompt_tokens": 223, "seconds": 3.983}
+{"id": "dev-00295-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"kapatılması bekleniyor\"}]}", "prompt_tokens": 227, "seconds": 3.93}
+{"id": "dev-00299-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"is fenced off\"}]}", "prompt_tokens": 222, "seconds": 3.066}
+{"id": "dev-00300-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"is closed down\"}]}", "prompt_tokens": 215, "seconds": 2.986}
+{"id": "dev-00299-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"geçici süreyle kapalıdır\"}]}", "prompt_tokens": 229, "seconds": 4.63}
+{"id": "dev-00301-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"is closed down\"}]}", "prompt_tokens": 215, "seconds": 3.543}
+{"id": "dev-00300-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"geçici süreyle kapalı\"}]}", "prompt_tokens": 226, "seconds": 4.558}
+{"id": "dev-00302-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"stays shut\"}]}", "prompt_tokens": 225, "seconds": 2.991}
+{"id": "dev-00301-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"hizmet dışı kalmıştır\"}]}", "prompt_tokens": 222, "seconds": 4.884}
+{"id": "dev-00302-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"kullanım dışı\"}]}", "prompt_tokens": 235, "seconds": 4.092}
+{"id": "dev-00303-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"are fenced off\"}]}", "prompt_tokens": 223, "seconds": 3.853}
+{"id": "dev-00303-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"kapalı olacaktır\"}]}", "prompt_tokens": 229, "seconds": 3.775}
+{"id": "dev-00306-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"is fenced off\"}]}", "prompt_tokens": 220, "seconds": 6.06}
+{"id": "dev-00306-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"kapatılmıştır\"}]}", "prompt_tokens": 226, "seconds": 6.169}
+{"id": "dev-00307-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"kapalı değil\"}]}", "prompt_tokens": 227, "seconds": 5.526}
+{"id": "dev-00307-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"is not closed to riders\"}]}", "prompt_tokens": 223, "seconds": 7.866}
+{"id": "dev-00308-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"is expected to be closed\"}]}", "prompt_tokens": 224, "seconds": 4.813}
+{"id": "dev-00312-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"is fenced off\"}]}", "prompt_tokens": 222, "seconds": 4.614}
+{"id": "dev-00308-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"muhtemelen kapalıdır\"}]}", "prompt_tokens": 229, "seconds": 5.651}
+{"id": "dev-00312-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"yolcuya kapalıdır\"}]}", "prompt_tokens": 231, "seconds": 4.064}
+{"id": "dev-00313-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"is fenced off\"}]}", "prompt_tokens": 214, "seconds": 3.074}
+{"id": "dev-00313-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"işletim dışı\"}]}", "prompt_tokens": 221, "seconds": 4.275}
+{"id": "dev-00314-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"is barred to passengers\"}]}", "prompt_tokens": 215, "seconds": 4.262}
+{"id": "dev-00315-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"stays shut\"}]}", "prompt_tokens": 225, "seconds": 4.07}
+{"id": "dev-00314-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"kapatılmıştır\"}]}", "prompt_tokens": 224, "seconds": 4.261}
+{"id": "dev-00315-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"kullanım dışıdır\"}]}", "prompt_tokens": 232, "seconds": 4.601}
+{"id": "dev-00316-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"are currently shut\"}]}", "prompt_tokens": 225, "seconds": 3.634}
+{"id": "dev-00319-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"is fenced off\"}]}", "prompt_tokens": 219, "seconds": 4.422}
+{"id": "dev-00316-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"hizmet dışı kalmıştır\"}]}", "prompt_tokens": 233, "seconds": 5.771}
+{"id": "dev-00320-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"kapalı değil\"}]}", "prompt_tokens": 226, "seconds": 2.731}
+{"id": "dev-00320-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"is not closed to riders\"}]}", "prompt_tokens": 225, "seconds": 4.326}
+{"id": "dev-00319-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"yolcuya kapalıdır\"}]}", "prompt_tokens": 225, "seconds": 5.971}
+{"id": "dev-00321-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"is expected to be closed\"}]}", "prompt_tokens": 223, "seconds": 4.495}
+{"id": "dev-00321-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"kapalıdır\"}]}", "prompt_tokens": 230, "seconds": 4.341}
+{"id": "dev-00325-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"is taken out of operation\"}]}", "prompt_tokens": 224, "seconds": 5.116}
+{"id": "dev-00325-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"yolcuya kapalıdır\"}]}", "prompt_tokens": 231, "seconds": 4.339}
+{"id": "dev-00326-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"is taken out of operation\"}]}", "prompt_tokens": 217, "seconds": 3.903}
+{"id": "dev-00327-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"remains closed\"}]}", "prompt_tokens": 214, "seconds": 3.126}
+{"id": "dev-00326-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"yolcuya kapalıdır\"}]}", "prompt_tokens": 224, "seconds": 3.957}
+{"id": "dev-00328-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"is currently shut\"}]}", "prompt_tokens": 224, "seconds": 3.541}
+{"id": "dev-00327-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"hizmet dışı kalmıştır\"}]}", "prompt_tokens": 224, "seconds": 5.276}
+{"id": "dev-00329-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"are fenced off\"}]}", "prompt_tokens": 224, "seconds": 4.249}
+{"id": "dev-00328-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"kapalı kalacaktır\"}]}", "prompt_tokens": 233, "seconds": 4.358}
+{"id": "dev-00329-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"işletim dışıdır\"}]}", "prompt_tokens": 231, "seconds": 4.458}
+{"id": "dev-00332-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"is taken out of operation\"}]}", "prompt_tokens": 222, "seconds": 4.326}
+{"id": "dev-00333-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"is not shut\"}]}", "prompt_tokens": 220, "seconds": 4.097}
+{"id": "dev-00332-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"hizmet dışı kalmıştır\"}]}", "prompt_tokens": 225, "seconds": 5.17}
+{"id": "dev-00333-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"kapalı değil\"}]}", "prompt_tokens": 225, "seconds": 3.675}
+{"id": "dev-00334-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"maybe closed\"}]}", "prompt_tokens": 222, "seconds": 3.073}
+{"id": "dev-00334-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"muhtemelen kapalıdır\"}]}", "prompt_tokens": 231, "seconds": 4.46}
+{"id": "dev-00338-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"is fenced off\"}]}", "prompt_tokens": 222, "seconds": 3.497}
+{"id": "dev-00339-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"is currently shut\"}]}", "prompt_tokens": 215, "seconds": 4.245}
+{"id": "dev-00338-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"hizmet dışı kalmıştır\"}]}", "prompt_tokens": 227, "seconds": 5.343}
+{"id": "dev-00340-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"remains closed\"}]}", "prompt_tokens": 215, "seconds": 3.868}
+{"id": "dev-00339-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"işletim dışı\"}]}", "prompt_tokens": 221, "seconds": 4.684}
+{"id": "dev-00341-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"remains closed\"}]}", "prompt_tokens": 225, "seconds": 3.028}
+{"id": "dev-00340-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"yolcuya kapalıdır\"}]}", "prompt_tokens": 225, "seconds": 4.046}
+{"id": "dev-00342-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"stay shut\"}]}", "prompt_tokens": 223, "seconds": 3.164}
+{"id": "dev-00341-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"geçici süreyle kapalıdır\"}]}", "prompt_tokens": 236, "seconds": 4.886}
+{"id": "dev-00345-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"stays shut\"}]}", "prompt_tokens": 219, "seconds": 3.879}
+{"id": "dev-00342-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"kapatılmıştır\"}]}", "prompt_tokens": 233, "seconds": 3.977}
+{"id": "dev-00345-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"kapatılmıştır\"}]}", "prompt_tokens": 226, "seconds": 4.226}
+{"id": "dev-00346-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"is not closed to riders\"}]}", "prompt_tokens": 222, "seconds": 4.281}
+{"id": "dev-00347-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"is expected to be closed\"}]}", "prompt_tokens": 225, "seconds": 4.202}
+{"id": "dev-00346-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"hizmet dışı değildir\"}]}", "prompt_tokens": 226, "seconds": 4.378}
+{"id": "dev-00347-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"kapatılması\"}]}", "prompt_tokens": 227, "seconds": 4.04}
+{"id": "dev-00351-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"remains closed\"}]}", "prompt_tokens": 218, "seconds": 4.037}
+{"id": "dev-00352-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"is taken out of operation\"}]}", "prompt_tokens": 217, "seconds": 4.075}
+{"id": "dev-00351-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"hizmet dışı kalmıştır\"}]}", "prompt_tokens": 230, "seconds": 5.036}
+{"id": "dev-00352-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"kullanım dışıdır\"}]}", "prompt_tokens": 219, "seconds": 3.936}
+{"id": "dev-00353-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"is barred to passengers\"}]}", "prompt_tokens": 217, "seconds": 3.871}
+{"id": "dev-00354-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"is fenced off\"}]}", "prompt_tokens": 227, "seconds": 3.124}
+{"id": "dev-00353-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"kullanım dışıdır\"}]}", "prompt_tokens": 221, "seconds": 4.007}
+{"id": "dev-00354-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"geçici süreyle kapalı\"}]}", "prompt_tokens": 239, "seconds": 4.342}
+{"id": "dev-00355-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"are fenced off\"}]}", "prompt_tokens": 225, "seconds": 3.399}
+{"id": "dev-00358-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"remains closed\"}]}", "prompt_tokens": 218, "seconds": 4.511}
+{"id": "dev-00355-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"hizmet dışı kalmıştır\"}]}", "prompt_tokens": 232, "seconds": 5.565}
+{"id": "dev-00359-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"is not shut\"}]}", "prompt_tokens": 220, "seconds": 4.262}
+{"id": "dev-00358-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"işletim dışıdır\"}]}", "prompt_tokens": 223, "seconds": 5.093}
+{"id": "dev-00359-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"hizmet dışı değildir\"}]}", "prompt_tokens": 227, "seconds": 3.999}
+{"id": "dev-00360-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"maybe closed\"}]}", "prompt_tokens": 221, "seconds": 3.028}
+{"id": "dev-00360-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"kapatılması\"}]}", "prompt_tokens": 229, "seconds": 4.167}
+{"id": "dev-00364-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"is taken out of operation\"}]}", "prompt_tokens": 223, "seconds": 4.313}
+{"id": "dev-00365-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"is closed down\"}]}", "prompt_tokens": 215, "seconds": 4.089}
+{"id": "dev-00364-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"kullanım dışıdır\"}]}", "prompt_tokens": 227, "seconds": 5.083}
+{"id": "dev-00365-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"kullanım dışıdır\"}]}", "prompt_tokens": 219, "seconds": 3.987}
+{"id": "dev-00366-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"remains closed\"}]}", "prompt_tokens": 214, "seconds": 3.791}
+{"id": "dev-00367-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"is currently shut\"}]}", "prompt_tokens": 227, "seconds": 3.136}
+{"id": "dev-00366-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"yolcuya kapalıdır\"}]}", "prompt_tokens": 222, "seconds": 4.145}
+{"id": "dev-00368-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"are closed down\"}]}", "prompt_tokens": 224, "seconds": 3.608}
+{"id": "dev-00367-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"hizmet dışı kalmıştır\"}]}", "prompt_tokens": 234, "seconds": 5.237}
+{"id": "dev-00371-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"is currently shut\"}]}", "prompt_tokens": 220, "seconds": 4.085}
+{"id": "dev-00368-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"işletim dışı\"}]}", "prompt_tokens": 234, "seconds": 4.946}
+{"id": "dev-00371-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"kapalı kalacaktır\"}]}", "prompt_tokens": 224, "seconds": 3.804}
+{"id": "dev-00372-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"is not shut\"}]}", "prompt_tokens": 222, "seconds": 3.728}
+{"id": "dev-00373-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"maybe closed\"}]}", "prompt_tokens": 219, "seconds": 2.429}
+{"id": "dev-00372-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"hizmet dışı değildir\"}]}", "prompt_tokens": 227, "seconds": 3.327}
+{"id": "dev-00373-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"quote\":\"muhtemelen kapalıdır\"}]}", "prompt_tokens": 229, "seconds": 1.653}

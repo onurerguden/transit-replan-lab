@@ -1,0 +1,565 @@
+{
+ "CALM": {
+  "en": [
+   [
+    "en-ca-t1",
+    "test",
+    "The regular bus schedule is in effect today, so plan your trip accordingly"
+   ],
+   [
+    "en-ca-t2",
+    "test",
+    "All transit lines are up and running today, with no disruptions expected"
+   ],
+   [
+    "en-ca-t3",
+    "test",
+    "Normal service levels are in place today, with no changes to the schedule"
+   ],
+   [
+    "en-ca-t4",
+    "test",
+    "The usual transit schedule is in effect today, with no unexpected changes"
+   ],
+   [
+    "en-ca-t5",
+    "test",
+    "The regular transit schedule is in place today, with no issues expected"
+   ],
+   [
+    "en-ca-t6",
+    "test",
+    "The usual transit schedule is in effect today, with no unexpected disruptions"
+   ],
+   [
+    "en-ca-t7",
+    "test",
+    "The regular bus and rail schedule is in place today, with no changes expected"
+   ],
+   [
+    "en-ca-t8",
+    "test",
+    "Transit services will operate on schedule today"
+   ]
+  ],
+  "tr": [
+   [
+    "tr-ca-t1",
+    "test",
+    "Tren seyrinin değişiklikleri için lütfen our website'inizi kontrol ediniz"
+   ],
+   [
+    "tr-ca-t2",
+    "test",
+    "Toplu taşıma seferleri bugün ve tomorrow tamamlanmaktadır"
+   ],
+   [
+    "tr-ca-t3",
+    "test",
+    "Toplu taşıma seferleri bugün tamamlanmıştır"
+   ],
+   [
+    "tr-ca-t4",
+    "test",
+    "Sürümdeki taşımacılık seferleri today's schedule'de devam edecek"
+   ]
+  ]
+ },
+ "CLOSED": {
+  "en": [
+   [
+    "en-cl-t1",
+    "test",
+    "has ceased",
+    "have ceased"
+   ],
+   [
+    "en-cl-t2",
+    "test",
+    "has been disabled",
+    "have been disabled"
+   ],
+   [
+    "en-cl-t3",
+    "test",
+    "is temporarily suspended",
+    "are temporarily suspended"
+   ],
+   [
+    "en-cl-t4",
+    "test",
+    "is undergoing maintenance",
+    "are undergoing maintenance"
+   ],
+   [
+    "en-cl-t5",
+    "test",
+    "has been taken offline",
+    "have been taken offline"
+   ],
+   [
+    "en-cl-t6",
+    "test",
+    "is currently inaccessible",
+    "are currently inaccessible"
+   ],
+   [
+    "en-cl-t7",
+    "test",
+    "is currently unavailable",
+    "are currently unavailabel"
+   ],
+   [
+    "en-cl-t8",
+    "test",
+    "is currently out of operation",
+    "are currently out of operation"
+   ],
+   [
+    "en-cl-t9",
+    "test",
+    "is currently experiencing issues",
+    "are currently experiencing issues"
+   ],
+   [
+    "en-cl-t10",
+    "test",
+    "has been suspended",
+    "have been suspended"
+   ],
+   [
+    "en-cl-t11",
+    "test",
+    "is currently undergoing repairs",
+    "are currently undergoing repairs"
+   ],
+   [
+    "en-cl-t12",
+    "test",
+    "is currently being maintained",
+    "are currently being maintained"
+   ],
+   [
+    "en-cl-t13",
+    "test",
+    "is currently experiencing disruptions",
+    "are currently experiencing disruptions"
+   ],
+   [
+    "en-cl-t14",
+    "test",
+    "has been placed on hold",
+    "have been placed on hold"
+   ],
+   [
+    "en-cl-t15",
+    "test",
+    "is currently experiencing technical difficulties",
+    "are currently experiencing technical difficulties"
+   ],
+   [
+    "en-cl-t16",
+    "test",
+    "has been taken out of action",
+    "have been taken out of action"
+   ],
+   [
+    "en-cl-t17",
+    "test",
+    "is experiencing technical difficulties",
+    "are experiencing technical difficulties"
+   ],
+   [
+    "en-cl-t18",
+    "test",
+    "is experiencing disruptions",
+    "are experiencing disruptions"
+   ]
+  ],
+  "tr": [
+   [
+    "tr-cl-t2",
+    "test",
+    "gşğliğ",
+    "gşğliğ"
+   ],
+   [
+    "tr-cl-t3",
+    "test",
+    "kapanş",
+    "kapanşlar"
+   ],
+   [
+    "tr-cl-t4",
+    "test",
+    "geışľğ",
+    "geışľğler"
+   ],
+   [
+    "tr-cl-t5",
+    "test",
+    "deşeğ",
+    "deşeğler"
+   ],
+   [
+    "tr-cl-t6",
+    "test",
+    "belirılĿ",
+    "belirılĿler"
+   ],
+   [
+    "tr-cl-t7",
+    "test",
+    "olumayar",
+    "olumayar"
+   ],
+   [
+    "tr-cl-t8",
+    "test",
+    "değerlamaz",
+    "değerlamaz"
+   ],
+   [
+    "tr-cl-t9",
+    "test",
+    "olayamaz",
+    "olayamaz"
+   ],
+   [
+    "tr-cl-t10",
+    "test",
+    "gecersiz",
+    "gecersiz"
+   ]
+  ]
+ },
+ "HEDGED": {
+  "en": [
+   [
+    "en-he-t1",
+    "test",
+    "might be shut"
+   ],
+   [
+    "en-he-t2",
+    "test",
+    "expected to shut"
+   ],
+   [
+    "en-he-t3",
+    "test",
+    "is expected to close"
+   ],
+   [
+    "en-he-t4",
+    "test",
+    "could possibly shut"
+   ],
+   [
+    "en-he-t5",
+    "test",
+    "may be expected to close"
+   ],
+   [
+    "en-he-t6",
+    "test",
+    "expected be shut"
+   ],
+   [
+    "en-he-t7",
+    "test",
+    "expected is closed"
+   ],
+   [
+    "en-he-t8",
+    "test",
+    "possibly is closed"
+   ],
+   [
+    "en-he-t9",
+    "test",
+    "could possibly be shut"
+   ],
+   [
+    "en-he-t10",
+    "test",
+    "could possibly be closed"
+   ]
+  ],
+  "tr": [
+   [
+    "tr-he-t1",
+    "test",
+    "İstasyonu kapalı olabileceği için bekleniyor"
+   ],
+   [
+    "tr-he-t2",
+    "test",
+    "olaylar olasılıkla bekleniyor"
+   ],
+   [
+    "tr-he-t3",
+    "test",
+    "ihtimal ki bekleniyor"
+   ],
+   [
+    "tr-he-t4",
+    "test",
+    "belki kapalıs"
+   ],
+   [
+    "tr-he-t5",
+    "test",
+    "muhtemelen kapalıs"
+   ],
+   [
+    "tr-he-t6",
+    "test",
+    "belki bekleniyor"
+   ]
+  ]
+ },
+ "LEADS": {
+  "en": [
+   [
+    "en-le-t1",
+    "test",
+    "Notice: Service Disruption: "
+   ],
+   [
+    "en-le-t2",
+    "test",
+    "Attention: Track Work Ahead: "
+   ],
+   [
+    "en-le-t3",
+    "test",
+    "Notice: Bus Route Change: "
+   ],
+   [
+    "en-le-t4",
+    "test",
+    "Caution: Pedestrian Crossing: "
+   ],
+   [
+    "en-le-t5",
+    "test",
+    "Update: Schedule Adjustment: "
+   ],
+   [
+    "en-le-t6",
+    "test",
+    "Reminder: Ticket Validation: "
+   ],
+   [
+    "en-le-t7",
+    "test",
+    "Important: Security Alert: "
+   ],
+   [
+    "en-le-t8",
+    "test",
+    "Update: Service Resumption: "
+   ],
+   [
+    "en-le-t9",
+    "test",
+    "Important: Accessibility Alert: "
+   ],
+   [
+    "en-le-t10",
+    "test",
+    "Attention all passengers: "
+   ]
+  ],
+  "tr": [
+   [
+    "tr-le-t1",
+    "test",
+    "\"Duyuru: \",: "
+   ],
+   [
+    "tr-le-t2",
+    "test",
+    "Uslub değişikliği ve güncellemeleri: "
+   ],
+   [
+    "tr-le-t3",
+    "test",
+    "Düzenleme: "
+   ],
+   [
+    "tr-le-t4",
+    "test",
+    "Ayarlama: "
+   ],
+   [
+    "tr-le-t5",
+    "test",
+    "Önlem: "
+   ],
+   [
+    "tr-le-t6",
+    "test",
+    "Mevzuat: "
+   ],
+   [
+    "tr-le-t7",
+    "test",
+    "Değişiklik: "
+   ],
+   [
+    "tr-le-t8",
+    "test",
+    "Beklenti: "
+   ],
+   [
+    "tr-le-t9",
+    "test",
+    "Ölçüm: "
+   ],
+   [
+    "tr-le-t10",
+    "test",
+    "Uygulama: "
+   ]
+  ]
+ },
+ "NEGATED": {
+  "en": [
+   [
+    "en-ne-t1",
+    "test",
+    "was not closed"
+   ],
+   [
+    "en-ne-t2",
+    "test",
+    "will not be stopped"
+   ],
+   [
+    "en-ne-t3",
+    "test",
+    "has not been suspended"
+   ],
+   [
+    "en-ne-t4",
+    "test",
+    "is open not"
+   ],
+   [
+    "en-ne-t5",
+    "test",
+    "is operational not"
+   ],
+   [
+    "en-ne-t6",
+    "test",
+    "will not be halted"
+   ],
+   [
+    "en-ne-t7",
+    "test",
+    "is functioning not"
+   ],
+   [
+    "en-ne-t8",
+    "test",
+    "was not shut down"
+   ],
+   [
+    "en-ne-t9",
+    "test",
+    "will not be closed"
+   ],
+   [
+    "en-ne-t10",
+    "test",
+    "is active not"
+   ]
+  ],
+  "tr": [
+   [
+    "tr-ne-t1",
+    "test",
+    "açık değildir"
+   ],
+   [
+    "tr-ne-t2",
+    "test",
+    "kaybolmuştur değildir"
+   ],
+   [
+    "tr-ne-t3",
+    "test",
+    "kapalidir değildir"
+   ],
+   [
+    "tr-ne-t4",
+    "test",
+    "yanlış değildir"
+   ],
+   [
+    "tr-ne-t5",
+    "test",
+    "kaybolmamıştır değildir"
+   ]
+  ]
+ },
+ "NOTES": {
+  "en": [
+   [
+    "en-no-t1",
+    "test",
+    "No smoking area"
+   ],
+   [
+    "en-no-t2",
+    "test",
+    "No Wi-Fi"
+   ],
+   [
+    "en-no-t3",
+    "test",
+    "No charging points"
+   ],
+   [
+    "en-no-t4",
+    "test",
+    "No food and drink vendors"
+   ],
+   [
+    "en-no-t5",
+    "test",
+    "No baby changing facilities"
+   ],
+   [
+    "en-no-t6",
+    "test",
+    "No disabled toilet facilities"
+   ],
+   [
+    "en-no-t7",
+    "test",
+    "No wheelchair accessibility"
+   ],
+   [
+    "en-no-t8",
+    "test",
+    "No free seating area"
+   ]
+  ],
+  "tr": [
+   [
+    "tr-no-t4",
+    "test",
+    "şoför yok"
+   ],
+   [
+    "tr-no-t8",
+    "test",
+    "çıkış yok"
+   ]
+  ]
+ }
+}

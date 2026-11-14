@@ -1,0 +1,17 @@
+{
+  "files": {
+    "calibration": "4aedf81dc076ef42da30972d21ef2f619857c45d8f7c3bde380854d80898f5bd",
+    "dev": "0b67eb4d3c5e297050d426853245b9c536879a244c698c4e1a2c17f5024df39a",
+    "test": "9ddd3a64c33cbf9e36a8eb0ad5783914a33442095dc71e380048e7c7f9d654ce",
+    "train": "d9f73ac0fd47e02f3b8fde195403968a49bb97a0c65c115853c38aa264146181"
+  },
+  "generator": "d624b7e0410a0e88303e05e7714e8c0f6dbbfec28988f7e97339aa3a8aaa98ad",
+  "sealed_parts": "16a9856b6517b5925fdec696bb95c0749bba9dd5604ffcf30041bc3de499370c",
+  "seed": 20261114,
+  "sizes": {
+    "calibration": 300,
+    "dev": 600,
+    "test": 1000,
+    "train": 3000
+  }
+}

@@ -155,10 +155,11 @@ def test_an_upgraded_clarification_can_still_be_answered(tmp_path: Path) -> None
     checkpoints = path.with_name("runs.checkpoints.sqlite")
     # The worker deletes the thread right after it settles the run, so allow it a moment.
     remaining = -1
-    for _ in range(100):
+    deadline = time.monotonic() + 30  # a loaded CI runner can take several seconds
+    while time.monotonic() < deadline:
         with closing(sqlite3.connect(checkpoints)) as connection:
             remaining = connection.execute("SELECT count(*) FROM checkpoints").fetchone()[0]
         if remaining == 0:
             break
-        time.sleep(0.05)
+        time.sleep(0.1)
     assert remaining == 0

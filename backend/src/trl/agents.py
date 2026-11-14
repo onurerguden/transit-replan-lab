@@ -25,7 +25,7 @@ from trl.domain import (
 from trl.gtfs import DATA_ROOT, Schedule, service_second
 from trl.notice import rule_notice
 from trl.settings import DEFAULT_MODEL, get_settings
-from trl.vnext import Extraction, preference_cost
+from trl.vnext import Extraction, ollama_format, preference_cost
 
 PROMPT_VERSION = "1"
 PROMPT_DIR = Path(__file__).with_name("prompts")
@@ -166,7 +166,7 @@ class OllamaModel:
             reasoning=False,
             keep_alive="15m",
             client_kwargs={"timeout": 120, "trust_env": False},
-            format=schema.model_json_schema(),
+            format=ollama_format(schema),
         )
         async with self.lock:
             message = await model.ainvoke(

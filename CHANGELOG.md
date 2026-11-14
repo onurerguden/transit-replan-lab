@@ -3,6 +3,20 @@
 This project follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 [semantic versioning](https://semver.org/).
 
+## [Unreleased]
+
+### Added
+
+- TRL-Bench v3.1 (`data/bench/v31`, `experiments/bench_v31`): split-owned sentence frames, 3,859 distinct train templates, test wording from a model of another family, a phrase-level audit and a gold-quote check by family.
+- An Ollama evaluator (`finetune/v3_evaluate.py`) with parallel requests, and a retrieval arm (`finetune/rag.py`) over the train bank.
+- Operator adapter v3 trained on v3.1 (three seeds), ADR 0017 and a preregistered comparison with the lexicon, the base model and retrieval.
+- MinHash near-duplicate removal and wording-overlap measures (`experiments/bench_v3/overlap.py`).
+
+### Fixed
+
+- The schema sent to Ollama now requires the event `kind` of a quote. Before, constrained decoding skipped it and the evidence gate ignored every model quote.
+- A numeric date followed by a label colon (`17.11.2026:`) is now read, so a notice for another day is no longer applied to the service day.
+
 ## [2.0.0] - 2026-11-14
 
 ### Added
