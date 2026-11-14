@@ -29,20 +29,27 @@ def grounded(text: str, phrase: str | None) -> str | None:
     return None
 
 
-def row(report: Report, prompt: str) -> dict[str, object] | None:
-    answer = Extraction()
-    if report.action != "abstain" and report.incidents:
-        quote = grounded(report.text, report.kind_phrase)
-        if quote is None:
-            return None
-        kind = report.incidents[0]["kind"]
-        answer = Extraction(
-            quotes=(
-                ExtractionQuote.model_validate(
-                    {"slot": "kind", "quote": quote, "kind": kind}
-                ),
-            )
+def target(report: Report) -> Extraction | None:
+    """The reply a perfect Operator gives for this report, or None if no quote is grounded."""
+    if report.action == "abstain" or not report.incidents:
+        return Extraction()
+    quote = grounded(report.text, report.kind_phrase)
+    if quote is None:
+        return None
+    kind = report.incidents[0]["kind"]
+    return Extraction(
+        quotes=(
+            ExtractionQuote.model_validate(
+                {"slot": "kind", "quote": quote, "kind": kind}
+            ),
         )
+    )
+
+
+def row(report: Report, prompt: str) -> dict[str, object] | None:
+    answer = target(report)
+    if answer is None:
+        return None
     return {
         "id": report.id,
         "messages": [
