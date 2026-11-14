@@ -4,6 +4,23 @@
  */
 
 export interface paths {
+    "/v1/route": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Route Endpoint */
+        post: operations["route_endpoint_v1_route_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/healthz": {
         parameters: {
             query?: never;
@@ -479,6 +496,36 @@ export interface components {
             /** Alight Index */
             alight_index: number;
         };
+        /** RouteAnswer */
+        RouteAnswer: {
+            /**
+             * Network
+             * @enum {string}
+             */
+            network: "core" | "full";
+            /**
+             * Status
+             * @enum {string}
+             */
+            status: "feasible" | "infeasible" | "search_incomplete";
+            /**
+             * Offers
+             * @default []
+             */
+            offers: components["schemas"]["Offer"][];
+            /**
+             * Kept Trips
+             * @default 0
+             */
+            kept_trips: number;
+            /**
+             * Work
+             * @default 0
+             */
+            work: number;
+            /** Detail */
+            detail?: string | null;
+        };
         /** RouteLine */
         RouteLine: {
             /** Id */
@@ -490,6 +537,36 @@ export interface components {
             mode: "metro" | "tram";
             /** Stops */
             stops: string[];
+        };
+        /**
+         * RouteQuery
+         * @description A stateless meeting query on the compiled network.
+         */
+        RouteQuery: {
+            /** A Stop */
+            a_stop: string;
+            /** B Stop */
+            b_stop: string;
+            /** Destination */
+            destination: string;
+            /** A Ready */
+            a_ready: number;
+            /** B Ready */
+            b_ready: number;
+            /**
+             * Wait Limit
+             * @default 600
+             */
+            wait_limit: number;
+            /** Meeting Start */
+            meeting_start?: number | null;
+            /** Meeting End */
+            meeting_end?: number | null;
+            /**
+             * Limit
+             * @default 3
+             */
+            limit: number;
         };
         /** RunEvidence */
         RunEvidence: {
@@ -696,6 +773,39 @@ export interface components {
 }
 export type $defs = Record<string, never>;
 export interface operations {
+    route_endpoint_v1_route_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["RouteQuery"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["RouteAnswer"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
     health_healthz_get: {
         parameters: {
             query?: never;

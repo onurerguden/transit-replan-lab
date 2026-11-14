@@ -64,7 +64,7 @@ shared destination: p50 1.56 s and p95 3.6 s per query on one process, 2.3 queri
 four, 513 MB peak. Of 40 queries, 13 had a meeting, 14 had none and 13 ended as an explicit
 *search incomplete* outcome after the work budget. The bounded search returns exactly what the
 full search returns on the core network. [Measurements](docs/adr/0014-compact-timetable-and-bounded-search.md).
-The web service itself serves the core network (Metro M1 and Konak Tram).
+Runs in the web interface use the core network (Metro M1 and Konak Tram). `POST /v1/route` answers a stateless meeting query on either network with `TRL_NETWORK=full`.
 
 **Correctness.** 200 deterministic backend tests, 7 interface unit tests and 15 browser tests,
 with 90% branch coverage. 27 defects found in review each have a regression. Router and verifier

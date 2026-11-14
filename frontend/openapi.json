@@ -5,6 +5,44 @@
     "version": "2.0.0"
   },
   "paths": {
+    "/v1/route": {
+      "post": {
+        "summary": "Route Endpoint",
+        "operationId": "route_endpoint_v1_route_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RouteQuery"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RouteAnswer"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/healthz": {
       "get": {
         "summary": "Health",
@@ -1376,6 +1414,63 @@
         ],
         "title": "Ride"
       },
+      "RouteAnswer": {
+        "properties": {
+          "network": {
+            "type": "string",
+            "enum": [
+              "core",
+              "full"
+            ],
+            "title": "Network"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "feasible",
+              "infeasible",
+              "search_incomplete"
+            ],
+            "title": "Status"
+          },
+          "offers": {
+            "items": {
+              "$ref": "#/components/schemas/Offer"
+            },
+            "type": "array",
+            "title": "Offers",
+            "default": []
+          },
+          "kept_trips": {
+            "type": "integer",
+            "title": "Kept Trips",
+            "default": 0
+          },
+          "work": {
+            "type": "integer",
+            "title": "Work",
+            "default": 0
+          },
+          "detail": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Detail"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "network",
+          "status"
+        ],
+        "title": "RouteAnswer"
+      },
       "RouteLine": {
         "properties": {
           "id": {
@@ -1406,6 +1501,82 @@
           "stops"
         ],
         "title": "RouteLine"
+      },
+      "RouteQuery": {
+        "properties": {
+          "a_stop": {
+            "type": "string",
+            "title": "A Stop"
+          },
+          "b_stop": {
+            "type": "string",
+            "title": "B Stop"
+          },
+          "destination": {
+            "type": "string",
+            "title": "Destination"
+          },
+          "a_ready": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "A Ready"
+          },
+          "b_ready": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "B Ready"
+          },
+          "wait_limit": {
+            "type": "integer",
+            "maximum": 7200.0,
+            "minimum": 0.0,
+            "title": "Wait Limit",
+            "default": 600
+          },
+          "meeting_start": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 0.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Meeting Start"
+          },
+          "meeting_end": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "maximum": 172800.0,
+                "exclusiveMinimum": 0.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Meeting End"
+          },
+          "limit": {
+            "type": "integer",
+            "maximum": 6.0,
+            "minimum": 1.0,
+            "title": "Limit",
+            "default": 3
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "a_stop",
+          "b_stop",
+          "destination",
+          "a_ready",
+          "b_ready"
+        ],
+        "title": "RouteQuery",
+        "description": "A stateless meeting query on the compiled network."
       },
       "RunEvidence": {
         "properties": {

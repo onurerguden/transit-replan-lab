@@ -121,7 +121,7 @@ Each entry records completed acceptance checks and concrete blockers.
 ## What was not done
 
 - Segment-scoped RAPTOR with arrival profiles, so full-network meetings on dense bus areas can end as incomplete.
-- Serving the full network through the API.
+- Running whole runs (intake, votes, verification) on the full network.
 - Independent annotation, two-router plan labels and a judge model for the paraphrases.
 - A single dispatcher for workers.
 
@@ -149,3 +149,7 @@ Each entry records completed acceptance checks and concrete blockers.
 ## Addendum · full-size model run
 
 - The three adapter seeds read all 2,000 test reports: 59.6%, 80.3% and 78.5% against 53.8% for rules, with no unsupported incident. This run uses the final reader and is labelled as an extension of the preregistered subset run.
+
+## Addendum · the full network behind the API
+
+- `POST /v1/route` serves meeting queries on the core or the full network (`TRL_NETWORK`). It loads the compiled arrays once, bounds each query, returns offers or an explicit `search_incomplete`, and rejects unknown stops with a problem response. Runs themselves still use the core schedule.

@@ -157,3 +157,26 @@ class RouteLine(Record):
 class Network(Record):
     stops: tuple[Stop, ...]
     lines: tuple[RouteLine, ...]
+
+
+class RouteQuery(Record):
+    """A stateless meeting query on the compiled network."""
+
+    a_stop: str
+    b_stop: str
+    destination: str
+    a_ready: Second
+    b_ready: Second
+    wait_limit: Annotated[int, Field(ge=0, le=7200)] = 600
+    meeting_start: Second | None = None
+    meeting_end: Annotated[int, Field(gt=0, le=172800)] | None = None
+    limit: Annotated[int, Field(ge=1, le=6)] = 3
+
+
+class RouteAnswer(Record):
+    network: Literal["core", "full"]
+    status: Literal["feasible", "infeasible", "search_incomplete"]
+    offers: tuple[Offer, ...] = ()
+    kept_trips: int = 0
+    work: int = 0
+    detail: str | None = None

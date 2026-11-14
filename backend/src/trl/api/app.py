@@ -14,6 +14,7 @@ from pydantic import BaseModel
 from trl import __version__, metrics
 from trl.api import middleware
 from trl.api.problems import install as install_problems
+from trl.api.routing import router as route_router
 from trl.contracts import Clarify, CreateRun, Disrupt, Network, Receipt, Retract, Retry, RunView
 from trl.gtfs import load_schedule
 from trl.lifecycle import SETTLED
@@ -88,6 +89,7 @@ def create_app(path: Path | None = None) -> FastAPI:
     app = FastAPI(title="Transit Replan Lab", version=__version__, lifespan=lifespan)
 
     install_problems(app)
+    app.include_router(route_router)
     middleware.install(app, get_settings().rate_limit)
     if get_settings().otel_endpoint:
         from opentelemetry.instrumentation.fastapi import FastAPIInstrumentor

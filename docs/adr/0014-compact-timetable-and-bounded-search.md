@@ -37,7 +37,7 @@ walking links still expand too many labels for the exact search.
 
 ## Consequences
 
-The API still runs on the core schedule. The full network is available through the library and
+Runs, clarification and verification still use the core schedule. A stateless `POST /v1/route` answers meeting queries on either network (`TRL_NETWORK`, default core) and reports an explicit `search_incomplete` when the work budget or the 20 s deadline ends the search. The full network is available through the library and
 the benchmark script, and its plans are checked by `trl.verifier.sqlite_reference`, which reads
 the raw archives instead of the compiled arrays. Closing the gap needs dominance across arrival times
 (range RAPTOR) instead of a label per second, which this release does not implement.

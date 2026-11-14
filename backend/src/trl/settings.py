@@ -34,6 +34,9 @@ class Settings(BaseSettings):
     # POST requests per minute per client. Zero turns the limit off.
     rate_limit: int = Field(default=600, ge=0, validation_alias="TRL_RATE_LIMIT")
     network: Literal["core", "full"] = Field(default="core", validation_alias="TRL_NETWORK")
+    cache: Path = Field(
+        default=CHECKOUT / ".local" / "cache" / "timetable", validation_alias="TRL_CACHE"
+    )
     # A worker that stops heartbeating loses its lease after this many seconds.
     lease_ttl: float = Field(default=20.0, gt=0, validation_alias="TRL_LEASE_TTL")
 
