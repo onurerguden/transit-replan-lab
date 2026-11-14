@@ -55,8 +55,7 @@ Each entry records completed acceptance checks and concrete blockers.
 - Stateful Hypothesis test over create, disrupt, retract, retry, replay, conflict, restart and
   stale writers, with database, lease, vote and incident invariants. `make test-deep` runs a
   long version.
-- Deviation from the plan: workers still run one task per receipt with a bounded backoff
-  instead of a single dispatcher loop, and `Create` idempotency stays globally scoped because
+- Deviation from the plan: `Create` idempotency stays globally scoped because
   the service has no client identity.
 
 ## F3 · Feeds, catalogue and footpaths (partial)
@@ -123,7 +122,6 @@ Each entry records completed acceptance checks and concrete blockers.
 - Segment-scoped RAPTOR with arrival profiles, so full-network meetings on dense bus areas can end as incomplete.
 - Running whole runs (intake, votes, verification) on the full network.
 - Independent annotation, two-router plan labels and a judge model for the paraphrases.
-- A single dispatcher for workers.
 
 ## Addendum · independent reference for the full network
 
@@ -153,3 +151,7 @@ Each entry records completed acceptance checks and concrete blockers.
 ## Addendum · the full network behind the API
 
 - `POST /v1/route` serves meeting queries on the core or the full network (`TRL_NETWORK`). It loads the compiled arrays once, bounds each query, returns offers or an explicit `search_incomplete`, and rejects unknown stops with a problem response. Runs themselves still use the core schedule.
+
+## Addendum · dispatcher
+
+- Workers no longer spin on a contended lease. One dispatcher loop per process scans planning runs, skips those another live worker holds with a read-only check, and starts the rest. The process-death and lease tests, the state machine (60 examples of 20 steps) and the browser suite pass unchanged.

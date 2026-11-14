@@ -41,6 +41,5 @@ incident because overlays only accumulated.
 ## Consequences
 
 Takeover after a crash waits for the lease to expire (`TRL_LEASE_TTL`, 20 s by default),
-where the file lock released immediately. Contenders poll with a bounded backoff rather than a
-dispatcher. The lease is host-local like the database. A state machine test drives the public
+where the file lock released immediately. A single dispatcher loop per process hands planning runs to workers: it skips runs another live worker holds, without writing, and picks a run up when its lease expires or a commit arrives. The lease is host-local like the database. A state machine test drives the public
 store API with restarts, replays, conflicts and stale writers against fourteen invariants.

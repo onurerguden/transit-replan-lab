@@ -82,6 +82,7 @@ class RunService:
         self.default_operator: OperatorMode = "rules"
         self.tasks: dict[tuple[str, int], asyncio.Task[None]] = {}
         self.changed = asyncio.Event()
+        self.owner = f"{os.getpid()}:{id(self)}"
 
     async def configure_default_operator(self) -> None:
         model = self.negotiator.model
@@ -161,9 +162,12 @@ class RunService:
         await asyncio.to_thread(self.prune_checkpoints)
         for receipt in await asyncio.to_thread(self.store.active):
             self.enqueue(receipt)
+        dispatcher = asyncio.create_task(self.dispatch())
         try:
             yield
         finally:
+            dispatcher.cancel()
+            await asyncio.gather(dispatcher, return_exceptions=True)
             self.store.subscribers.remove(notify)
             tasks = tuple(self.tasks.values())
             for task in tasks:
@@ -191,21 +195,36 @@ class RunService:
                     logger.info("run_state", status=state.status, version=state.version)
 
     async def _execute(self, receipt: Receipt) -> None:
-        owner = f"{os.getpid()}:{id(self)}"
-        delay = 0.05
+        """Run the revision if its lease is free. Otherwise the dispatcher tries again later."""
+        current = await asyncio.to_thread(self.store.read, receipt.run_id)
+        if current.version != receipt.version or current.status != "planning":
+            return
+        fence = await asyncio.to_thread(
+            self.store.acquire_lease, receipt.run_id, receipt.version, self.owner
+        )
+        if fence is not None:
+            await self._with_lease(receipt, fence)
+
+    async def dispatch(self) -> None:
+        """The one loop that hands planning runs to workers.
+
+        Runs another live worker holds are skipped without writing, so a second process does
+        not spin on them. A lease that expires or a revision that arrives is picked up on the
+        next scan, and a commit in this process triggers an immediate scan.
+        """
+        interval = max(0.2, min(1.0, self.store.lease_ttl / 2))
         while True:
-            current = await asyncio.to_thread(self.store.read, receipt.run_id)
-            if current.version != receipt.version or current.status != "planning":
-                return
-            fence = await asyncio.to_thread(
-                self.store.acquire_lease, receipt.run_id, receipt.version, owner
-            )
-            if fence is not None:
-                await self._with_lease(receipt, fence)
-                return
-            # Another live worker owns this revision. Retry with a bounded backoff.
-            await self.wait_for_change(delay)
-            delay = min(delay * 2, 1.0)
+            await self.wait_for_change(interval)
+            for receipt in await asyncio.to_thread(self.store.active):
+                key = (receipt.run_id, receipt.version)
+                running = self.tasks.get(key)
+                if running and not running.done():
+                    continue
+                if await asyncio.to_thread(
+                    self.store.leased_by_other, receipt.run_id, receipt.version, self.owner
+                ):
+                    continue
+                self.enqueue(receipt)
 
     async def _with_lease(self, receipt: Receipt, fence: Fence) -> None:
         worker = asyncio.current_task()

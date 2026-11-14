@@ -126,6 +126,20 @@ class RunStore:
             )
             return Fence(run_id, token)
 
+    def leased_by_other(self, run_id: str, version: int, owner: str) -> bool:
+        """Whether another live worker holds this revision. A read, so scans never write."""
+        with closing(self.connect()) as connection:
+            row = connection.execute(
+                "SELECT version, owner, expires_at FROM leases WHERE run_id=?", (run_id,)
+            ).fetchone()
+        return bool(
+            row
+            and row["owner"] is not None
+            and row["owner"] != owner
+            and row["version"] == version
+            and row["expires_at"] > self.clock()
+        )
+
     def heartbeat(self, fence: Fence) -> bool:
         with self.write() as connection:
             return (
