@@ -1,0 +1,26 @@
+{
+  "train_rows": 3039,
+  "valid_rows": 100,
+  "near_duplicates_dropped": 3093,
+  "families": {
+    "ambiguous_stop": 327,
+    "cancellation": 60,
+    "closure_from": 309,
+    "closure_note": 392,
+    "closure_pair": 317,
+    "closure_range": 325,
+    "closure_until": 313,
+    "delay": 60,
+    "foreign_zone": 326,
+    "hedged": 139,
+    "negated": 122,
+    "unrelated": 60,
+    "wrong_date": 289
+  },
+  "rag_examples": 0,
+  "sha256": {
+    "train": "6a9e45af0a39b0e964d6650d99c52e71efddc40b290a05e5ce860b660cdfaabb",
+    "valid": "aa28fa306ed9bdbee2e0a7ded81fbc0e2d43e278b44e422f0817d22a9677f868"
+  },
+  "source": "data/bench/v31 train split and dev groups below 50"
+}

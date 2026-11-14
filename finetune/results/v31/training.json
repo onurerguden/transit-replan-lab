@@ -1,0 +1,28 @@
+{
+  "runtime": "mlx_lm lora",
+  "base": "Qwen3.5 4B 4-bit MLX snapshot (mlx-community/Qwen3.5-4B-4bit)",
+  "config": "finetune/v31-c1.yml",
+  "trainable_parameters": "0.229M of 4,205.75M (0.005%)",
+  "iterations": 600,
+  "final_loss": {
+    "42": {
+      "train": 0.038,
+      "validation": 0.041
+    },
+    "43": {
+      "train": 0.009,
+      "validation": 0.023
+    },
+    "44": {
+      "train": 0.015,
+      "validation": 0.052
+    }
+  },
+  "adapter_sha256": {
+    "42": "de11f6a2d23c8d378f8b93edafe2cacc6a73b54f8ad35dcbb734dcd2f8ec696e",
+    "43": "1bdca9f615d22d1335c62ed987eb21625f09908eee2f3d6f10145af8a15d59ec",
+    "44": "980c3b4897d420530481d5a86c01914b14cbb13f62054022ace9a8cdfc053bfa"
+  },
+  "ollama_import": "finetune/export_adapter.py then finetune/fuse.py into qwen3.5:4b-q4_K_M; models trl-v31-s42, s43 and s44",
+  "note": "Train loss stays above zero. Validation rows are the first 50 dev groups."
+}
