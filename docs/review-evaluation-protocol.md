@@ -52,3 +52,21 @@ the production evidence gate. For the frozen synthetic diagnostic, all five
 shared failures came from vocabulary and clock binding. Address that gate
 on development data before training. Evaluate a later model on a fresh
 independent holdout.
+
+## TRL-Bench v3 annotation packet
+
+`scripts/export_review_packet.py` samples 100 bilingual groups (200 reports) from the v3 test
+split, shuffles them under anonymous ids and writes `packet.csv` and `INSTRUCTIONS.md` to
+`.local/review-packet`. The key that maps ids to benchmark reports and gold labels is written to a
+separate private directory and is never placed next to the packet. Give each of two annotators their
+own copy and ask them not to discuss it.
+
+```sh
+uv run --locked --project backend python -m scripts.export_review_packet
+uv run --locked --project backend python -m scripts.review_agreement a.csv b.csv
+```
+
+The second command prints Cohen's kappa for the action and the event, lists the disagreements for
+adjudication, and counts how often each annotator matches the generated label. Report the kappa
+before any adjudicated label is used, and keep reviewed reports out of later training. Reading
+the results needs two real annotators. None were available when v2.0.0 was released.

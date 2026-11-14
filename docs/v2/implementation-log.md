@@ -163,3 +163,7 @@ Each entry records completed acceptance checks and concrete blockers.
 ## Addendum · kept alternatives
 
 - Fast mode drops a label only after `alternatives` earlier labels that end on different trips cover it. At three, the top six rank keys match the exact search in 39 of 39 random core scenarios with 62% of the work. On the full network that setting is slower (p95 8.5 s, 3 of 40 incomplete), so the API defaults to one.
+
+## Addendum · human review packet
+
+- `scripts/export_review_packet.py` and `scripts/review_agreement.py` turn the independent-annotation step into two commands: a blind packet of 200 test reports with the key kept apart, and Cohen's kappa plus a disagreement list for two filled copies. Tests use a perfect annotator and a copy to check the arithmetic. No annotator has filled the packet.
