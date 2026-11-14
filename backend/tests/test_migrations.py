@@ -1,5 +1,6 @@
 import json
 import sqlite3
+import time
 from contextlib import closing
 from pathlib import Path
 from typing import Any
@@ -152,5 +153,12 @@ def test_an_upgraded_clarification_can_still_be_answered(tmp_path: Path) -> None
     assert outcome.status == "verified" and len(outcome.incidents) == 1
     # The settled revision left no execution checkpoint behind.
     checkpoints = path.with_name("runs.checkpoints.sqlite")
-    with closing(sqlite3.connect(checkpoints)) as connection:
-        assert connection.execute("SELECT count(*) FROM checkpoints").fetchone()[0] == 0
+    # The worker deletes the thread right after it settles the run, so allow it a moment.
+    remaining = -1
+    for _ in range(100):
+        with closing(sqlite3.connect(checkpoints)) as connection:
+            remaining = connection.execute("SELECT count(*) FROM checkpoints").fetchone()[0]
+        if remaining == 0:
+            break
+        time.sleep(0.05)
+    assert remaining == 0
