@@ -68,5 +68,10 @@ uv run --locked --project backend python -m scripts.review_agreement a.csv b.csv
 
 The second command prints Cohen's kappa for the action and the event, lists the disagreements for
 adjudication, and counts how often each annotator matches the generated label. Report the kappa
-before any adjudicated label is used, and keep reviewed reports out of later training. Reading
-the results needs two real annotators. None were available when v2.0.0 was released.
+before any adjudicated label is used, and keep reviewed reports out of later training. The packet was annotated
+by five LLM annotators (two Claude model tiers at different effort levels) working from the packet alone. Pairwise
+kappa for action and event ranged from 0.992 to 1.000. Their only disagreement was `r0150`, which carries an explicit
+service-day date. Against the generated labels they matched 187 to 188 of 200 actions and 199 to 200 events. The
+differences are 12 reports that name only "Konak", where the generated label is `ask` because the name is shared by two
+stops. The annotators were not given the stop catalogue. Annotators from one model family are not independent of each
+other, so read this as a consistency check and not as a measure of human agreement.
