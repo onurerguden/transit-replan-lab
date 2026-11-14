@@ -90,7 +90,7 @@ The [baseline](v2/baseline.md) lists the reproduced defects, and the
 - [x] F3 · Pin all five feeds with health checks, generate footpaths, build the gazetteer and add network profiles.
 - [x] F4 · Freeze the sealed TRL-Bench v3 notice layer before any language change.
 - [x] F5 · Replace the time grammar and evidence gate, with round-trip and gate-soundness property suites.
-- [x] F6 · Ship the compact timetable and McRAPTOR with differential tests, budgets and load measurements.
+- [x] F6 · Ship the compact timetable, the bounded and fast searches, differential tests, budgets and load measurements.
 - [x] F7 · Sample scenarios, require two-router label agreement, and build the resumable evaluation harness and preregistration.
 - [x] F8 · Train Operator LoRA v2 and run the single final evaluation.
 - [x] F9 · Deliver addressable runs, the incident and clarification interface, bilingual UI and accessibility tests.
