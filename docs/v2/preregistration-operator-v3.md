@@ -26,20 +26,21 @@ quote through the evidence gate.
 | `base` | `qwen3.5:4b-q4_K_M` in Ollama with structured output, prompt `operator_vnext` |
 | `base_rag` | The same model, prompt `finetune/prompts/operator_rag.md` and the k nearest train examples |
 | `adapter` | The adapter configuration chosen on dev, fused into the same Ollama base, prompt `operator_vnext` |
-| `adapter_rag` | An adapter trained on retrieval-formatted rows, same retrieval as `base_rag` |
 
 Every arm uses temperature 0, seed 42 and the same evidence gate and clarification policy. All
-model arms run through Ollama so that the production path is what is measured.
+model arms run through Ollama so that the production path is what is measured. Model arms read the
+hard slice only. In the other five families the lexicon already finds the event kind or the report
+is refused before the model is asked, so the model is not consulted; the lexicon arm covers them.
 
 ## Choosing configurations (development reports only)
 
 - The retrieval depth k is chosen from {2, 4, 8} on the accuracy of `base_rag` over the dev hard
   slice. Ties go to the smaller k.
-- The adapter configuration is chosen from the candidate grid in `finetune/v31-c*.yml` on the
-  mean dev hard-slice accuracy of three seeds, after fusing each seed into Ollama. A configuration
-  whose seed range on dev exceeds 5 points loses to one within 5 points.
-- The chosen configuration is retrained with five seeds (42 to 46). The seed with the median dev
-  hard-slice accuracy is the `adapter` arm. The other seeds are reported with it.
+- The adapter has one configuration, `finetune/v31-c1.yml` (rank 8, scale 16, eight layers, 600
+  iterations), the recipe of adapter v2 trained on v3.1 data. A second candidate with rank 16 was
+  dropped for compute time before any evaluation. Three seeds (42, 43, 44) are trained and fused
+  into Ollama. The seed with the median dev hard-slice accuracy is the `adapter` arm. The other
+  seeds are reported with it.
 
 ## Hard slice
 
@@ -53,20 +54,21 @@ Accuracy over the test hard slice, where a report is correct when the action and
 set match the generated label. Confidence intervals use the two-level cluster bootstrap of
 `experiments.bench_v3.stats` (cluster by part combination, then by group), 10,000 resamples.
 
+An adapter trained on retrieval-formatted rows was cut for compute time. The report says so.
+
 ## Contrasts (one Holm family, α = 0.05)
 
 1. `adapter` − `lexicon`
 2. `adapter` − `base`
 3. `adapter` − `base_rag`
 4. `base_rag` − `base`
-5. `adapter_rag` − `adapter` (only if `adapter_rag` is trained)
 
 Each contrast reports the paired difference with its cluster interval and the exact McNemar test.
 
 ## Safety endpoint
 
 No arm may apply an unsupported incident. Report the count and the Clopper–Pearson 95% upper bound
-over all test reports. Any unsupported application by a model arm blocks adoption of that arm.
+over the test hard slice. Any unsupported application by a model arm blocks adoption of that arm.
 
 ## Adoption rule
 
@@ -76,7 +78,7 @@ The adapter replaces the unadapted Operator only if all of these hold on the tes
 2. The lower bound for `adapter` − `base_rag` is above 0. If not, retrieval is the candidate and is
    adopted only if its lower bound against `lexicon` is above 0.
 3. No unsupported application.
-4. The range of hard-slice accuracy across the five seeds is at most 5 percentage points.
+4. The range of hard-slice accuracy across the three seeds is at most 5 percentage points.
 
 Otherwise the result is reported as not adopted and the Operator default is unchanged.
 
