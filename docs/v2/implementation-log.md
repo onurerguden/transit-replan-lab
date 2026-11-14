@@ -123,7 +123,6 @@ Each entry records completed acceptance checks and concrete blockers.
 - Segment-scoped RAPTOR with arrival profiles, so full-network meetings on dense bus areas can end as incomplete.
 - Serving the full network through the API.
 - Independent annotation, two-router plan labels and a judge model for the paraphrases.
-- A full-size test run for the model arms.
 - A single dispatcher for workers.
 
 ## Addendum · independent reference for the full network
@@ -146,3 +145,7 @@ Each entry records completed acceptance checks and concrete blockers.
 ## Addendum · second router
 
 - `experiments/bench_v3/reference_router.py` is a time-dependent Dijkstra over stops that shares no code with the label search. With loose limits and no closures the label search never beat it, and matched its earliest meeting in at least 95% of 40 random core scenarios (deep test). It is a lower bound check on core scenarios. It does not produce plan labels for the benchmark, which scores report reading and clarification.
+
+## Addendum · full-size model run
+
+- The three adapter seeds read all 2,000 test reports: 59.6%, 80.3% and 78.5% against 53.8% for rules, with no unsupported incident. This run uses the final reader and is labelled as an extension of the preregistered subset run.

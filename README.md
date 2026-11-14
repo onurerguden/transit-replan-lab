@@ -51,7 +51,8 @@ parsers from text that the gate has checked. The upper bound on unsupported appl
 **Language model arms (first 600 test reports, preregistered subset, three training seeds).** A 4B
 local model with a LoRA adapter trained on the train split reads 59.5%, 77.7% and 76.8% across
 seeds, against 53.7% for rules, the phrase list and the unadapted model, and 96.2% for a gold quote.
-No arm applies an unsupported incident. On 438 reports rewritten by a model from another family
+No arm applies an unsupported incident. On all 2,000 test reports with the final reader, rules read
+53.8% and the seeds 59.6%, 80.3% and 78.5%. On 438 reports rewritten by a model from another family
 (label noise from dropped negations is documented), rules read 36.8% and the three seeds 43.8–52.7%.
 The seed spread is large, so a single seed would have
 misreported the recipe. The adapter is still **not adopted** because the registered adoption rule

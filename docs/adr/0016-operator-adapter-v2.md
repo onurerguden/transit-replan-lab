@@ -48,6 +48,15 @@ cannot be satisfied and the adapter stays **not adopted**. The rule was register
 seeds existed and is not changed afterwards. A later registration should use a dev bank with
 predicates outside the production list.
 
+## Full test split
+
+After the subset result, all three seeds also read the remaining 1,400 test reports. This run
+uses the reader as fixed after the preregistered run (the `Not:` and conjoined-stop fixes), so the
+rules arm reads 53.8% and the gold quote 96.2% rather than 51.4% and 84.1%. On all 2,000 reports
+the seeds read **59.6%** [55.1%, 63.8%], **80.3%** [77.3%, 83.5%] and **78.5%** [74.1%, 82.7%].
+No arm applied an unsupported incident (upper bound 0.18%). The subset conclusions hold. See
+[`bench-full`](../../experiments/results/v2/bench-full/test.md).
+
 ## Consequences
 
 The default operator stays deterministic. The adapter is kept as a measured negative result and
