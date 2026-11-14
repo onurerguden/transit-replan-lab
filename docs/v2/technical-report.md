@@ -86,6 +86,17 @@ three families where the rewrite changed the meaning (negated, hedged, foreign z
 are faithful readings of altered text. Outside those families no arm applied an unsupported
 incident in 326 reports each. The set measures robustness to wording with label noise, not clean accuracy.
 
+### Operator adapter v3 and retrieval
+
+TRL-Bench v3.1 gives the train split 3,859 distinct masked templates, where v3 had about 280, and
+takes the test wording from a model of another family. On 616 hard-slice test reports, run through
+Ollama structured output, a LoRA adapter on Qwen3.5-4B reads 89.6% [87.2, 92.0], the same model with
+four retrieved train examples 83.8%, the unadapted model 18.2% and the production lexicon 8.1%. The
+adapter's lead over retrieval is 5.8 points [2.6, 9.1]. No arm but the base model applied an
+unsupported incident. The first dev run showed that Ollama's constrained decoding skipped the optional
+`kind` field, which hid every model quote from the evidence gate. See ADR 0017 and
+`experiments/results/v2_1/REPORT.md`.
+
 ## Performance
 
 On the whole network, with riders near a shared destination, the exact search runs at p50 1.4 s and p95
