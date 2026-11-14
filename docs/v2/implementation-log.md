@@ -142,3 +142,7 @@ Each entry records completed acceptance checks and concrete blockers.
 ## Addendum · second-family paraphrases
 
 - `llama3.2:3b` (the installed Ollama is too old for Gemma) rewrote the first 300 test groups through placeholders. 438 reports passed validation. Arms were registered before they read them. Results are in `experiments/results/v2/bench-paraphrase`. Without a judge model the labels are noisy where the rewrite dropped a negation, a hedge or a time zone, and the report says so.
+
+## Addendum · second router
+
+- `experiments/bench_v3/reference_router.py` is a time-dependent Dijkstra over stops that shares no code with the label search. With loose limits and no closures the label search never beat it, and matched its earliest meeting in at least 95% of 40 random core scenarios (deep test). It is a lower bound check on core scenarios. It does not produce plan labels for the benchmark, which scores report reading and clarification.
