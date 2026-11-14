@@ -122,7 +122,7 @@ Each entry records completed acceptance checks and concrete blockers.
 
 - Segment-scoped RAPTOR with arrival profiles, so full-network meetings on dense bus areas can end as incomplete.
 - Serving the full network through the API.
-- A second-family paraphrase bank, independent annotation and two-router plan labels.
+- Independent annotation, two-router plan labels and a judge model for the paraphrases.
 - A full-size test run for the model arms.
 - A single dispatcher for workers.
 
@@ -138,3 +138,7 @@ Each entry records completed acceptance checks and concrete blockers.
 ## Addendum · adapter seeds
 
 - Two more seeds (43, 44) were trained and scored on the same 600 reports: 77.7% and 76.8% against 59.5% for seed 42. The adoption rule, registered earlier on a dev set where every arm is perfect, is unchanged, so the adapter is still not adopted.
+
+## Addendum · second-family paraphrases
+
+- `llama3.2:3b` (the installed Ollama is too old for Gemma) rewrote the first 300 test groups through placeholders. 438 reports passed validation. Arms were registered before they read them. Results are in `experiments/results/v2/bench-paraphrase`. Without a judge model the labels are noisy where the rewrite dropped a negation, a hedge or a time zone, and the report says so.

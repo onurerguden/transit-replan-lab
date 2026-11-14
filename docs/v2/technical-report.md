@@ -77,6 +77,15 @@ all in ambiguous-stop reports. With seed 42 it returned no quote for new closure
 The adoption rule required a gain on the dev adoption set, where every arm is perfect because
 dev phrases are in the production list, so the adapter is not adopted.
 
+**Paraphrased reports.** The first 300 test groups were rewritten by `llama3.2:3b`, a model from
+another family, through placeholders, and 438 reports passed validation. No second model judged the meaning,
+and reading examples showed that the rewriter sometimes dropped a negation, a hedge or a `UTC`
+label. On these reports rules read 36.8% [32.4%, 41.1%], the phrase list 37.7%, and the three adapter
+seeds 43.8%, 48.4% and 52.7%. Every arm's apparent unsupported applications (36 to 44) fall in the
+three families where the rewrite changed the meaning (negated, hedged, foreign zone), so they
+are faithful readings of altered text. Outside those families no arm applied an unsupported
+incident in 326 reports each. The set measures robustness to wording with label noise, not clean accuracy.
+
 ## Performance
 
 On the whole network, with riders near a shared destination, one process answers at p50 1.56 s

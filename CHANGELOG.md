@@ -13,7 +13,7 @@ This project follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) an
 - A transition table, `system_error`, a retry command, add, replace and retract commands for incidents, up to three clarification rounds, numbered migrations with backup, and `trl db` for backup, restore, check and prune.
 - Execution leases with fencing tokens, notifier-driven event streams, a separate pruned checkpoint database and RFC 9457 problem details everywhere.
 - A shared time grammar for Turkish and English reports, clause-scoped negation, case-insensitive identifiers, conjoined stops, trips named by a stop and a departure time, and a verified-quote evidence gate.
-- TRL-Bench v3: 4,900 generated groups in four disjoint splits with an audit, a freeze manifest, a preregistration and cluster statistics.
+- TRL-Bench v3: 4,900 generated groups in four disjoint splits with an audit, a freeze manifest, a preregistration, cluster statistics and a paraphrased test set from a second model family.
 - Prometheus metrics, readiness, rate limiting, security headers, a Grafana dashboard, CodeQL, dependency scans and a release workflow with signed images.
 - Interface: runs reopen from a link, active disruptions with a retract button, retry, English and Turkish, light and dark themes and an accessibility check.
 

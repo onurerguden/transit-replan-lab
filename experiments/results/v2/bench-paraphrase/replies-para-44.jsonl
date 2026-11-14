@@ -1,0 +1,438 @@
+{"id": "testp-00000-en", "reply": "{\"quotes\":[]}", "seconds": 1.285}
+{"id": "testp-00000-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"durduruldu\"}]}", "seconds": 1.184}
+{"id": "testp-00001-en", "reply": "{\"quotes\":[]}", "seconds": 0.806}
+{"id": "testp-00001-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"yolcu alımına durdurulmuştür\"}]}", "seconds": 1.315}
+{"id": "testp-00002-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"closed\"}]}", "seconds": 1.031}
+{"id": "testp-00002-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"servisçeversizdir\"}]}", "seconds": 1.21}
+{"id": "testp-00004-en", "reply": "{\"quotes\":[]}", "seconds": 0.897}
+{"id": "testp-00004-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"service vermekten men Edilir\"}]}", "seconds": 1.216}
+{"id": "testp-00005-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_delay\",\"quote\":\"delayed\"}]}", "seconds": 1.052}
+{"id": "testp-00005-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_delay\",\"quote\":\"gecikme\"}]}", "seconds": 1.159}
+{"id": "testp-00006-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_cancellation\",\"quote\":\"cancellation of metro:WEEKDAY_0_0116\"}]}", "seconds": 1.3}
+{"id": "testp-00006-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_cancellation\",\"quote\":\"iptali\"}]}", "seconds": 1.156}
+{"id": "testp-00007-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"closed\"}]}", "seconds": 1.036}
+{"id": "testp-00007-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"sona ermektedir\"}]}", "seconds": 1.176}
+{"id": "testp-00008-en", "reply": "{\"quotes\":[]}", "seconds": 0.799}
+{"id": "testp-00008-tr", "reply": "{\"quotes\":[]}", "seconds": 0.899}
+{"id": "testp-00009-en", "reply": "{\"quotes\":[]}", "seconds": 0.895}
+{"id": "testp-00009-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"kapalı\"}]}", "seconds": 1.043}
+{"id": "testp-00010-en", "reply": "{\"quotes\":[]}", "seconds": 0.901}
+{"id": "testp-00010-tr", "reply": "{\"quotes\":[]}", "seconds": 0.903}
+{"id": "testp-00011-en", "reply": "{\"quotes\":[]}", "seconds": 0.808}
+{"id": "testp-00011-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"hizmet vermemektedir\"}]}", "seconds": 1.232}
+{"id": "testp-00013-en", "reply": "{\"quotes\":[]}", "seconds": 0.895}
+{"id": "testp-00013-tr", "reply": "{\"quotes\":[]}", "seconds": 0.901}
+{"id": "testp-00014-en", "reply": "{\"quotes\":[]}", "seconds": 0.81}
+{"id": "testp-00014-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"alım yapamazsınız\"}]}", "seconds": 1.212}
+{"id": "testp-00015-en", "reply": "{\"quotes\":[]}", "seconds": 0.806}
+{"id": "testp-00015-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"service-free\"}]}", "seconds": 1.139}
+{"id": "testp-00016-en", "reply": "{\"quotes\":[]}", "seconds": 0.896}
+{"id": "testp-00016-tr", "reply": "{\"quotes\":[]}", "seconds": 0.903}
+{"id": "testp-00017-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"interrupted\"}]}", "seconds": 1.142}
+{"id": "testp-00017-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"servis vermeyecektir\"}]}", "seconds": 1.235}
+{"id": "testp-00018-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_delay\",\"quote\":\"late\"}]}", "seconds": 1.122}
+{"id": "testp-00018-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_delay\",\"quote\":\"geciktiler\"}]}", "seconds": 1.175}
+{"id": "testp-00019-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_cancellation\",\"quote\":\"has been officially called off\"}]}", "seconds": 1.118}
+{"id": "testp-00019-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_cancellation\",\"quote\":\"iptal\"}]}", "seconds": 1.161}
+{"id": "testp-00020-en", "reply": "{\"quotes\":[]}", "seconds": 0.805}
+{"id": "testp-00020-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"durdurulmuştür\"}]}", "seconds": 1.211}
+{"id": "testp-00021-en", "reply": "{\"quotes\":[]}", "seconds": 0.807}
+{"id": "testp-00021-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"yolculuk yapmak mümkün değildir\"}]}", "seconds": 1.229}
+{"id": "testp-00022-en", "reply": "{\"quotes\":[]}", "seconds": 0.799}
+{"id": "testp-00022-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"kapalı\"}]}", "seconds": 1.141}
+{"id": "testp-00024-en", "reply": "{\"quotes\":[]}", "seconds": 0.895}
+{"id": "testp-00024-tr", "reply": "{\"quotes\":[]}", "seconds": 0.898}
+{"id": "testp-00026-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"will be closed\"}]}", "seconds": 1.071}
+{"id": "testp-00026-tr", "reply": "{\"quotes\":[]}", "seconds": 0.901}
+{"id": "testp-00027-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"closed\"}]}", "seconds": 1.036}
+{"id": "testp-00027-tr", "reply": "{\"quotes\":[]}", "seconds": 0.894}
+{"id": "testp-00028-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"has been closed\"}]}", "seconds": 1.06}
+{"id": "testp-00028-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"yolcu alınmaya durdurulmuştür\"}]}", "seconds": 1.297}
+{"id": "testp-00029-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is closed\"}]}", "seconds": 1.142}
+{"id": "testp-00029-tr", "reply": "{\"quotes\":[]}", "seconds": 0.901}
+{"id": "testp-00030-en", "reply": "{\"quotes\":[]}", "seconds": 0.901}
+{"id": "testp-00030-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"hizmet vermeyecektir\"}]}", "seconds": 1.255}
+{"id": "testp-00031-en", "reply": "{\"quotes\":[]}", "seconds": 0.805}
+{"id": "testp-00031-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_delay\",\"quote\":\"gecikme\"}]}", "seconds": 1.16}
+{"id": "testp-00033-en", "reply": "{\"quotes\":[]}", "seconds": 0.897}
+{"id": "testp-00033-tr", "reply": "{\"quotes\":[]}", "seconds": 0.899}
+{"id": "testp-00034-en", "reply": "{\"quotes\":[]}", "seconds": 0.897}
+{"id": "testp-00034-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"kapalıdır\"}]}", "seconds": 1.161}
+{"id": "testp-00035-en", "reply": "{\"quotes\":[]}", "seconds": 0.893}
+{"id": "testp-00035-tr", "reply": "{\"quotes\":[]}", "seconds": 0.897}
+{"id": "testp-00036-en", "reply": "{\"quotes\":[]}", "seconds": 0.904}
+{"id": "testp-00036-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"yolcu alımına son verilmiştir\"}]}", "seconds": 1.274}
+{"id": "testp-00039-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"will remain closed\"}]}", "seconds": 1.157}
+{"id": "testp-00039-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"servis vermeyecektir\"}]}", "seconds": 1.236}
+{"id": "testp-00040-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"will remain closed\"}]}", "seconds": 1.064}
+{"id": "testp-00040-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"service vermeyecektir\"}]}", "seconds": 1.208}
+{"id": "testp-00041-en", "reply": "{\"quotes\":[]}", "seconds": 0.807}
+{"id": "testp-00041-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"vermeyecektir\"}]}", "seconds": 1.194}
+{"id": "testp-00042-en", "reply": "{\"quotes\":[]}", "seconds": 0.896}
+{"id": "testp-00042-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"hizmet vermeyecektir\"}]}", "seconds": 1.251}
+{"id": "testp-00043-en", "reply": "{\"quotes\":[]}", "seconds": 0.895}
+{"id": "testp-00043-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"yolcu alımına son\"}]}", "seconds": 1.232}
+{"id": "testp-00044-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_delay\",\"quote\":\"delayed by 7 minutes\"}]}", "seconds": 1.121}
+{"id": "testp-00044-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_delay\",\"quote\":\"gecikmeyle\"}]}", "seconds": 1.174}
+{"id": "testp-00046-en", "reply": "{\"quotes\":[]}", "seconds": 0.896}
+{"id": "testp-00046-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"durdurulmuştur\"}]}", "seconds": 1.209}
+{"id": "testp-00047-en", "reply": "{\"quotes\":[]}", "seconds": 0.893}
+{"id": "testp-00047-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"kapalı\"}]}", "seconds": 1.148}
+{"id": "testp-00048-en", "reply": "{\"quotes\":[]}", "seconds": 0.895}
+{"id": "testp-00048-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"kapalı olabilir\"}]}", "seconds": 1.163}
+{"id": "testp-00049-en", "reply": "{\"quotes\":[]}", "seconds": 0.9}
+{"id": "testp-00049-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"durdurulmuştür\"}]}", "seconds": 1.21}
+{"id": "testp-00050-en", "reply": "{\"quotes\":[]}", "seconds": 0.808}
+{"id": "testp-00050-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"hizmet vermeyeceğiz\"}]}", "seconds": 1.246}
+{"id": "testp-00053-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"closed\"}]}", "seconds": 1.03}
+{"id": "testp-00053-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"hizmet vermez\"}]}", "seconds": 1.101}
+{"id": "testp-00054-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is unavailable\"}]}", "seconds": 1.048}
+{"id": "testp-00054-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"hizmet veremeyecek\"}]}", "seconds": 1.128}
+{"id": "testp-00055-en", "reply": "{\"quotes\":[]}", "seconds": 0.901}
+{"id": "testp-00055-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"çalışmayacaktır\"}]}", "seconds": 1.277}
+{"id": "testp-00056-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"has been halted\"}]}", "seconds": 1.16}
+{"id": "testp-00056-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"kaldırıldı\"}]}", "seconds": 1.18}
+{"id": "testp-00057-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_delay\",\"quote\":\"delayed\"}]}", "seconds": 1.052}
+{"id": "testp-00057-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_delay\",\"quote\":\"gecikmeyle\"}]}", "seconds": 1.174}
+{"id": "testp-00058-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_cancellation\",\"quote\":\"rescinded\"}]}", "seconds": 1.083}
+{"id": "testp-00058-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_cancellation\",\"quote\":\"iptali\"}]}", "seconds": 1.068}
+{"id": "testp-00059-en", "reply": "{\"quotes\":[]}", "seconds": 0.796}
+{"id": "testp-00059-tr", "reply": "{\"quotes\":[]}", "seconds": 0.897}
+{"id": "testp-00061-en", "reply": "{\"quotes\":[]}", "seconds": 0.898}
+{"id": "testp-00061-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"kapalı\"}]}", "seconds": 1.141}
+{"id": "testp-00062-en", "reply": "{\"quotes\":[]}", "seconds": 0.899}
+{"id": "testp-00062-tr", "reply": "{\"quotes\":[]}", "seconds": 0.904}
+{"id": "testp-00063-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is closed to travellers\"}]}", "seconds": 1.176}
+{"id": "testp-00063-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"durdurulmuştur\"}]}", "seconds": 1.214}
+{"id": "testp-00065-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"will be closed to passengers\"}]}", "seconds": 1.196}
+{"id": "testp-00065-tr", "reply": "{\"quotes\":[]}", "seconds": 0.898}
+{"id": "testp-00067-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"has been closed\"}]}", "seconds": 1.065}
+{"id": "testp-00067-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"Yolcu Alımına Durdurulmuştur\"}]}", "seconds": 1.318}
+{"id": "testp-00068-en", "reply": "{\"quotes\":[]}", "seconds": 0.898}
+{"id": "testp-00068-tr", "reply": "{\"quotes\":[]}", "seconds": 0.993}
+{"id": "testp-00069-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"closed\"}]}", "seconds": 1.126}
+{"id": "testp-00069-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"service vermemektedir\"}]}", "seconds": 1.199}
+{"id": "testp-00071-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_cancellation\",\"quote\":\"has been called off\"}]}", "seconds": 1.101}
+{"id": "testp-00071-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_cancellation\",\"quote\":\"iptal\"}]}", "seconds": 1.155}
+{"id": "testp-00072-en", "reply": "{\"quotes\":[]}", "seconds": 0.806}
+{"id": "testp-00072-tr", "reply": "{\"quotes\":[]}", "seconds": 0.897}
+{"id": "testp-00073-en", "reply": "{\"quotes\":[]}", "seconds": 0.801}
+{"id": "testp-00073-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"kapalıdır\"}]}", "seconds": 1.162}
+{"id": "testp-00074-en", "reply": "{\"quotes\":[]}", "seconds": 0.896}
+{"id": "testp-00074-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"kapalı\"}]}", "seconds": 1.139}
+{"id": "testp-00078-en", "reply": "{\"quotes\":[]}", "seconds": 0.899}
+{"id": "testp-00078-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"hizmet dışıdır\"}]}", "seconds": 1.21}
+{"id": "testp-00079-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"has been halted\"}]}", "seconds": 1.067}
+{"id": "testp-00079-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"service verme\"}]}", "seconds": 1.139}
+{"id": "testp-00080-en", "reply": "{\"quotes\":[]}", "seconds": 0.806}
+{"id": "testp-00080-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"durdurulmuştür\"}]}", "seconds": 1.213}
+{"id": "testp-00081-en", "reply": "{\"quotes\":[]}", "seconds": 0.897}
+{"id": "testp-00081-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"hizmet vermeyecektir\"}]}", "seconds": 1.254}
+{"id": "testp-00082-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"closed\"}]}", "seconds": 1.122}
+{"id": "testp-00082-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"hizmet vermeyecektir\"}]}", "seconds": 1.25}
+{"id": "testp-00083-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_delay\",\"quote\":\"is 52 minutes behind schedule\"}]}", "seconds": 1.135}
+{"id": "testp-00083-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_delay\",\"quote\":\"gecikmeyle\"}]}", "seconds": 1.174}
+{"id": "testp-00084-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_cancellation\",\"quote\":\"called off\"}]}", "seconds": 1.072}
+{"id": "testp-00084-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_cancellation\",\"quote\":\"iptal\"}]}", "seconds": 1.068}
+{"id": "testp-00085-en", "reply": "{\"quotes\":[]}", "seconds": 0.899}
+{"id": "testp-00085-tr", "reply": "{\"quotes\":[]}", "seconds": 0.897}
+{"id": "testp-00087-en", "reply": "{\"quotes\":[]}", "seconds": 0.897}
+{"id": "testp-00087-tr", "reply": "{\"quotes\":[]}", "seconds": 0.899}
+{"id": "testp-00088-en", "reply": "{\"quotes\":[]}", "seconds": 0.9}
+{"id": "testp-00088-tr", "reply": "{\"quotes\":[]}", "seconds": 0.994}
+{"id": "testp-00091-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"has been shut down\"}]}", "seconds": 1.175}
+{"id": "testp-00091-tr", "reply": "{\"quotes\":[]}", "seconds": 0.894}
+{"id": "testp-00092-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"closed\"}]}", "seconds": 1.03}
+{"id": "testp-00092-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"hizmet dışıdir\"}]}", "seconds": 1.113}
+{"id": "testp-00093-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"will be closed\"}]}", "seconds": 1.066}
+{"id": "testp-00093-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"durdurulmuştur\"}]}", "seconds": 1.208}
+{"id": "testp-00094-en", "reply": "{\"quotes\":[]}", "seconds": 0.895}
+{"id": "testp-00094-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"yolcu alımına durdurulmuştür\"}]}", "seconds": 1.319}
+{"id": "testp-00095-en", "reply": "{\"quotes\":[]}", "seconds": 0.898}
+{"id": "testp-00095-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"service free'dir\"}]}", "seconds": 1.182}
+{"id": "testp-00097-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_cancellation\",\"quote\":\"cancelled\"}]}", "seconds": 1.051}
+{"id": "testp-00097-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_cancellation\",\"quote\":\"iptali\"}]}", "seconds": 1.156}
+{"id": "testp-00099-en", "reply": "{\"quotes\":[]}", "seconds": 0.798}
+{"id": "testp-00099-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"haric tutuldu\"}]}", "seconds": 1.198}
+{"id": "testp-00104-en", "reply": "{\"quotes\":[]}", "seconds": 0.798}
+{"id": "testp-00104-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"hizmet vermez\"}]}", "seconds": 1.195}
+{"id": "testp-00106-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is closed\"}]}", "seconds": 1.056}
+{"id": "testp-00106-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"alımı durduruldu\"}]}", "seconds": 1.208}
+{"id": "testp-00108-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"closed to travelers\"}]}", "seconds": 1.158}
+{"id": "testp-00108-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"hizmet vermeyecektir\"}]}", "seconds": 1.248}
+{"id": "testp-00110-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_cancellation\",\"quote\":\"has been terminated\"}]}", "seconds": 1.085}
+{"id": "testp-00110-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_cancellation\",\"quote\":\"iptal\"}]}", "seconds": 1.058}
+{"id": "testp-00111-en", "reply": "{\"quotes\":[]}", "seconds": 0.894}
+{"id": "testp-00111-tr", "reply": "{\"quotes\":[]}", "seconds": 0.901}
+{"id": "testp-00112-en", "reply": "{\"quotes\":[]}", "seconds": 0.804}
+{"id": "testp-00112-tr", "reply": "{\"quotes\":[]}", "seconds": 0.9}
+{"id": "testp-00113-en", "reply": "{\"quotes\":[]}", "seconds": 0.897}
+{"id": "testp-00113-tr", "reply": "{\"quotes\":[]}", "seconds": 0.9}
+{"id": "testp-00114-en", "reply": "{\"quotes\":[]}", "seconds": 0.9}
+{"id": "testp-00114-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"durdurulmuştür\"}]}", "seconds": 1.218}
+{"id": "testp-00115-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is currently closed\"}]}", "seconds": 1.158}
+{"id": "testp-00115-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"service verilmedikti\"}]}", "seconds": 1.174}
+{"id": "testp-00118-en", "reply": "{\"quotes\":[]}", "seconds": 0.894}
+{"id": "testp-00118-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"yolcu alımına son verildi\"}]}", "seconds": 1.264}
+{"id": "testp-00119-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"has been closed\"}]}", "seconds": 1.068}
+{"id": "testp-00119-tr", "reply": "{\"quotes\":[]}", "seconds": 0.897}
+{"id": "testp-00120-en", "reply": "{\"quotes\":[]}", "seconds": 0.898}
+{"id": "testp-00120-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"servis vermeyecektir\"}]}", "seconds": 1.234}
+{"id": "testp-00121-en", "reply": "{\"quotes\":[]}", "seconds": 0.898}
+{"id": "testp-00121-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"hizmet vermeyecektir\"}]}", "seconds": 1.252}
+{"id": "testp-00122-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_delay\",\"quote\":\"behind schedule\"}]}", "seconds": 1.069}
+{"id": "testp-00122-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_delay\",\"quote\":\"geciktirildi\"}]}", "seconds": 1.192}
+{"id": "testp-00124-en", "reply": "{\"quotes\":[]}", "seconds": 0.897}
+{"id": "testp-00124-tr", "reply": "{\"quotes\":[]}", "seconds": 0.807}
+{"id": "testp-00126-en", "reply": "{\"quotes\":[]}", "seconds": 0.898}
+{"id": "testp-00126-tr", "reply": "{\"quotes\":[]}", "seconds": 0.902}
+{"id": "testp-00127-en", "reply": "{\"quotes\":[]}", "seconds": 0.905}
+{"id": "testp-00127-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"hizmet vermeyecektir\"}]}", "seconds": 1.252}
+{"id": "testp-00128-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"closed\"}]}", "seconds": 1.121}
+{"id": "testp-00128-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"Havagazı tramvay durağı\"}]}", "seconds": 1.282}
+{"id": "testp-00130-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is closed\"}]}", "seconds": 1.05}
+{"id": "testp-00130-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"durdurulmuştür\"}]}", "seconds": 1.217}
+{"id": "testp-00131-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is currently closed\"}]}", "seconds": 1.065}
+{"id": "testp-00131-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"yolcu alımına son verildi\"}]}", "seconds": 1.261}
+{"id": "testp-00134-en", "reply": "{\"quotes\":[]}", "seconds": 0.807}
+{"id": "testp-00134-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"hizmet dışı\"}]}", "seconds": 1.198}
+{"id": "testp-00136-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_delay\",\"quote\":\"put on hold\"}]}", "seconds": 1.066}
+{"id": "testp-00136-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_cancellation\",\"quote\":\"iptal\"}]}", "seconds": 1.065}
+{"id": "testp-00138-en", "reply": "{\"quotes\":[]}", "seconds": 0.894}
+{"id": "testp-00138-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"kapalıdır\"}]}", "seconds": 1.161}
+{"id": "testp-00139-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"shut down\"}]}", "seconds": 1.059}
+{"id": "testp-00139-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"kapalıdır\"}]}", "seconds": 1.158}
+{"id": "testp-00140-en", "reply": "{\"quotes\":[]}", "seconds": 0.902}
+{"id": "testp-00140-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"durdurulmuştur\"}]}", "seconds": 1.307}
+{"id": "testp-00141-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"remains closed\"}]}", "seconds": 1.155}
+{"id": "testp-00141-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"durdurulmuştur\"}]}", "seconds": 1.214}
+{"id": "testp-00143-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"will remain closed\"}]}", "seconds": 1.156}
+{"id": "testp-00143-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"durdurulmuştür\"}]}", "seconds": 1.214}
+{"id": "testp-00144-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is currently closed\"}]}", "seconds": 1.064}
+{"id": "testp-00144-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"hizmet vermez\"}]}", "seconds": 1.19}
+{"id": "testp-00145-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"has been closed to the general public\"}]}", "seconds": 1.142}
+{"id": "testp-00145-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"durmayacaktır\"}]}", "seconds": 1.058}
+{"id": "testp-00147-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"closed\"}]}", "seconds": 1.124}
+{"id": "testp-00147-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"hizmet vermeyecektir\"}]}", "seconds": 1.246}
+{"id": "testp-00149-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_cancellation\",\"quote\":\"has been officially terminated\"}]}", "seconds": 1.104}
+{"id": "testp-00149-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_cancellation\",\"quote\":\"iptali\"}]}", "seconds": 1.066}
+{"id": "testp-00150-en", "reply": "{\"quotes\":[]}", "seconds": 0.899}
+{"id": "testp-00150-tr", "reply": "{\"quotes\":[]}", "seconds": 0.894}
+{"id": "testp-00151-en", "reply": "{\"quotes\":[]}", "seconds": 0.897}
+{"id": "testp-00151-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"kapalıdır\"}]}", "seconds": 1.156}
+{"id": "testp-00152-en", "reply": "{\"quotes\":[]}", "seconds": 0.896}
+{"id": "testp-00152-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"kapalı\"}]}", "seconds": 1.142}
+{"id": "testp-00153-en", "reply": "{\"quotes\":[]}", "seconds": 0.904}
+{"id": "testp-00153-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"durduruldu\"}]}", "seconds": 1.269}
+{"id": "testp-00154-en", "reply": "{\"quotes\":[]}", "seconds": 0.893}
+{"id": "testp-00154-tr", "reply": "{\"quotes\":[]}", "seconds": 0.9}
+{"id": "testp-00156-en", "reply": "{\"quotes\":[]}", "seconds": 0.897}
+{"id": "testp-00156-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_delay\",\"quote\":\"duraklamadan\"}]}", "seconds": 1.179}
+{"id": "testp-00157-en", "reply": "{\"quotes\":[]}", "seconds": 0.805}
+{"id": "testp-00157-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"yolcu alımına son\"}]}", "seconds": 1.229}
+{"id": "testp-00158-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"has been closed\"}]}", "seconds": 1.066}
+{"id": "testp-00158-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"servicio vermeyeceği\"}]}", "seconds": 1.208}
+{"id": "testp-00159-en", "reply": "{\"quotes\":[]}", "seconds": 0.898}
+{"id": "testp-00159-tr", "reply": "{\"quotes\":[]}", "seconds": 0.902}
+{"id": "testp-00160-en", "reply": "{\"quotes\":[]}", "seconds": 0.902}
+{"id": "testp-00160-tr", "reply": "{\"quotes\":[]}", "seconds": 0.901}
+{"id": "testp-00161-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_delay\",\"quote\":\"running 51 minutes behind schedule\"}]}", "seconds": 1.137}
+{"id": "testp-00161-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_delay\",\"quote\":\"gecikme\"}]}", "seconds": 1.156}
+{"id": "testp-00162-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_cancellation\",\"quote\":\"has been aborted\"}]}", "seconds": 1.088}
+{"id": "testp-00162-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_cancellation\",\"quote\":\"iptal\"}]}", "seconds": 1.065}
+{"id": "testp-00163-en", "reply": "{\"quotes\":[]}", "seconds": 0.893}
+{"id": "testp-00163-tr", "reply": "{\"quotes\":[]}", "seconds": 0.895}
+{"id": "testp-00164-en", "reply": "{\"quotes\":[]}", "seconds": 0.896}
+{"id": "testp-00164-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"kapalıdır\"}]}", "seconds": 1.161}
+{"id": "testp-00165-en", "reply": "{\"quotes\":[]}", "seconds": 0.895}
+{"id": "testp-00165-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"kapalı\"}]}", "seconds": 1.141}
+{"id": "testp-00166-en", "reply": "{\"quotes\":[]}", "seconds": 0.898}
+{"id": "testp-00166-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"durdurulmuştür\"}]}", "seconds": 1.22}
+{"id": "testp-00167-en", "reply": "{\"quotes\":[]}", "seconds": 0.896}
+{"id": "testp-00167-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"durduruldu\"}]}", "seconds": 1.182}
+{"id": "testp-00169-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is temporarily closed\"}]}", "seconds": 1.07}
+{"id": "testp-00169-tr", "reply": "{\"quotes\":[]}", "seconds": 0.9}
+{"id": "testp-00170-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"has been halted\"}]}", "seconds": 1.071}
+{"id": "testp-00170-tr", "reply": "{\"quotes\":[]}", "seconds": 0.807}
+{"id": "testp-00173-en", "reply": "{\"quotes\":[]}", "seconds": 0.901}
+{"id": "testp-00173-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"service-free\"}]}", "seconds": 1.148}
+{"id": "testp-00174-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_delay\",\"quote\":\"running 49 minutes behind schedule\"}]}", "seconds": 1.137}
+{"id": "testp-00174-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_delay\",\"quote\":\"gecikme\"}]}", "seconds": 1.156}
+{"id": "testp-00175-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_cancellation\",\"quote\":\"terminated\"}]}", "seconds": 1.05}
+{"id": "testp-00175-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_cancellation\",\"quote\":\"iptali\"}]}", "seconds": 1.068}
+{"id": "testp-00176-en", "reply": "{\"quotes\":[]}", "seconds": 0.807}
+{"id": "testp-00176-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"durduruldu\"}]}", "seconds": 1.174}
+{"id": "testp-00177-en", "reply": "{\"quotes\":[]}", "seconds": 0.898}
+{"id": "testp-00177-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"kapalıdır\"}]}", "seconds": 1.162}
+{"id": "testp-00178-en", "reply": "{\"quotes\":[]}", "seconds": 0.81}
+{"id": "testp-00178-tr", "reply": "{\"quotes\":[]}", "seconds": 0.896}
+{"id": "testp-00179-en", "reply": "{\"quotes\":[]}", "seconds": 0.9}
+{"id": "testp-00179-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_delay\",\"quote\":\"fakat 15:39'den itibaren servicevermektedir\"}]}", "seconds": 1.359}
+{"id": "testp-00180-en", "reply": "{\"quotes\":[]}", "seconds": 0.896}
+{"id": "testp-00180-tr", "reply": "{\"quotes\":[]}", "seconds": 0.896}
+{"id": "testp-00182-en", "reply": "{\"quotes\":[]}", "seconds": 0.8}
+{"id": "testp-00182-tr", "reply": "{\"quotes\":[]}", "seconds": 0.905}
+{"id": "testp-00185-en", "reply": "{\"quotes\":[]}", "seconds": 0.896}
+{"id": "testp-00185-tr", "reply": "{\"quotes\":[]}", "seconds": 0.905}
+{"id": "testp-00186-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"closed\"}]}", "seconds": 1.123}
+{"id": "testp-00186-tr", "reply": "{\"quotes\":[]}", "seconds": 0.897}
+{"id": "testp-00187-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_delay\",\"quote\":\"behind schedule\"}]}", "seconds": 1.071}
+{"id": "testp-00187-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_delay\",\"quote\":\"geciktirilmiştir\"}]}", "seconds": 1.192}
+{"id": "testp-00188-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_cancellation\",\"quote\":\"has been officially put on hold\"}]}", "seconds": 1.135}
+{"id": "testp-00188-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_cancellation\",\"quote\":\"iptal\"}]}", "seconds": 1.07}
+{"id": "testp-00189-en", "reply": "{\"quotes\":[]}", "seconds": 0.806}
+{"id": "testp-00189-tr", "reply": "{\"quotes\":[]}", "seconds": 0.809}
+{"id": "testp-00190-en", "reply": "{\"quotes\":[]}", "seconds": 0.897}
+{"id": "testp-00190-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"kapalıdır\"}]}", "seconds": 1.165}
+{"id": "testp-00191-en", "reply": "{\"quotes\":[]}", "seconds": 0.806}
+{"id": "testp-00191-tr", "reply": "{\"quotes\":[]}", "seconds": 0.899}
+{"id": "testp-00193-en", "reply": "{\"quotes\":[]}", "seconds": 0.898}
+{"id": "testp-00193-tr", "reply": "{\"quotes\":[]}", "seconds": 0.9}
+{"id": "testp-00195-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is currently closed\"}]}", "seconds": 1.062}
+{"id": "testp-00195-tr", "reply": "{\"quotes\":[]}", "seconds": 0.895}
+{"id": "testp-00196-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"closed to passengers\"}]}", "seconds": 1.069}
+{"id": "testp-00196-tr", "reply": "{\"quotes\":[]}", "seconds": 0.807}
+{"id": "testp-00198-en", "reply": "{\"quotes\":[]}", "seconds": 0.897}
+{"id": "testp-00198-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"hizmet vermeyecektir\"}]}", "seconds": 1.26}
+{"id": "testp-00199-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"suspended\"}]}", "seconds": 1.14}
+{"id": "testp-00199-tr", "reply": "{\"quotes\":[]}", "seconds": 0.901}
+{"id": "testp-00201-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_cancellation\",\"quote\":\"has been terminated\"}]}", "seconds": 1.086}
+{"id": "testp-00201-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_cancellation\",\"quote\":\"iptal\"}]}", "seconds": 1.066}
+{"id": "testp-00202-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"suspended\"}]}", "seconds": 1.14}
+{"id": "testp-00202-tr", "reply": "{\"quotes\":[]}", "seconds": 0.896}
+{"id": "testp-00203-en", "reply": "{\"quotes\":[]}", "seconds": 0.9}
+{"id": "testp-00203-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"kapalıdır\"}]}", "seconds": 1.159}
+{"id": "testp-00204-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"shut down\"}]}", "seconds": 1.156}
+{"id": "testp-00204-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"kapalı olabilir\"}]}", "seconds": 1.162}
+{"id": "testp-00205-en", "reply": "{\"quotes\":[]}", "seconds": 0.896}
+{"id": "testp-00205-tr", "reply": "{\"quotes\":[]}", "seconds": 0.904}
+{"id": "testp-00208-en", "reply": "{\"quotes\":[]}", "seconds": 0.897}
+{"id": "testp-00208-tr", "reply": "{\"quotes\":[]}", "seconds": 0.899}
+{"id": "testp-00209-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is closed\"}]}", "seconds": 1.051}
+{"id": "testp-00209-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"hizmet vermeyecektir\"}]}", "seconds": 1.242}
+{"id": "testp-00210-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is closed\"}]}", "seconds": 1.052}
+{"id": "testp-00210-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"hizmet dışıdır\"}]}", "seconds": 1.211}
+{"id": "testp-00211-en", "reply": "{\"quotes\":[]}", "seconds": 0.895}
+{"id": "testp-00211-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"hizmet vermeyecektir\"}]}", "seconds": 1.344}
+{"id": "testp-00212-en", "reply": "{\"quotes\":[]}", "seconds": 0.897}
+{"id": "testp-00212-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"hizmet dışıdır\"}]}", "seconds": 1.215}
+{"id": "testp-00213-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_delay\",\"quote\":\"behind schedule\"}]}", "seconds": 1.071}
+{"id": "testp-00213-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_delay\",\"quote\":\"gecikme\"}]}", "seconds": 1.155}
+{"id": "testp-00214-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_cancellation\",\"quote\":\"has been terminated\"}]}", "seconds": 1.085}
+{"id": "testp-00214-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_cancellation\",\"quote\":\"iptal\"}]}", "seconds": 1.156}
+{"id": "testp-00215-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is closed\"}]}", "seconds": 1.05}
+{"id": "testp-00215-tr", "reply": "{\"quotes\":[]}", "seconds": 0.806}
+{"id": "testp-00216-en", "reply": "{\"quotes\":[]}", "seconds": 0.799}
+{"id": "testp-00216-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"kapalıdır\"}]}", "seconds": 1.157}
+{"id": "testp-00218-en", "reply": "{\"quotes\":[]}", "seconds": 0.899}
+{"id": "testp-00218-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"hizmet vermemektedir\"}]}", "seconds": 1.233}
+{"id": "testp-00219-en", "reply": "{\"quotes\":[]}", "seconds": 0.798}
+{"id": "testp-00219-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"Durdu\"}]}", "seconds": 1.141}
+{"id": "testp-00221-en", "reply": "{\"quotes\":[]}", "seconds": 0.895}
+{"id": "testp-00221-tr", "reply": "{\"quotes\":[]}", "seconds": 0.898}
+{"id": "testp-00224-en", "reply": "{\"quotes\":[]}", "seconds": 0.901}
+{"id": "testp-00224-tr", "reply": "{\"quotes\":[]}", "seconds": 0.906}
+{"id": "testp-00225-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"temporarily halted\"}]}", "seconds": 1.159}
+{"id": "testp-00225-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"hizmet dışıdır\"}]}", "seconds": 1.211}
+{"id": "testp-00226-en", "reply": "{\"quotes\":[]}", "seconds": 0.806}
+{"id": "testp-00226-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_delay\",\"quote\":\"gecikme\"}]}", "seconds": 1.158}
+{"id": "testp-00229-en", "reply": "{\"quotes\":[]}", "seconds": 0.896}
+{"id": "testp-00229-tr", "reply": "{\"quotes\":[]}", "seconds": 0.9}
+{"id": "testp-00230-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is likely to remain closed\"}]}", "seconds": 1.094}
+{"id": "testp-00230-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_delay\",\"quote\":\"kapatılabilir\"}]}", "seconds": 1.182}
+{"id": "testp-00231-en", "reply": "{\"quotes\":[]}", "seconds": 0.898}
+{"id": "testp-00231-tr", "reply": "{\"quotes\":[]}", "seconds": 0.902}
+{"id": "testp-00235-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"halted\"}]}", "seconds": 1.054}
+{"id": "testp-00235-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"hizmet veremeyecek\"}]}", "seconds": 1.227}
+{"id": "testp-00236-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is closed to passengers\"}]}", "seconds": 1.085}
+{"id": "testp-00236-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"hizmet vermeyecektedir\"}]}", "seconds": 1.244}
+{"id": "testp-00238-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"closed\"}]}", "seconds": 1.125}
+{"id": "testp-00238-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"hizmet vermeyecektir\"}]}", "seconds": 1.246}
+{"id": "testp-00239-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_delay\",\"quote\":\"tardiness of 15 minutes\"}]}", "seconds": 1.158}
+{"id": "testp-00239-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_delay\",\"quote\":\"geciktirilmesi\"}]}", "seconds": 1.194}
+{"id": "testp-00240-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_cancellation\",\"quote\":\"put out of commission\"}]}", "seconds": 1.101}
+{"id": "testp-00240-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_cancellation\",\"quote\":\"iptal\"}]}", "seconds": 1.067}
+{"id": "testp-00241-en", "reply": "{\"quotes\":[]}", "seconds": 0.805}
+{"id": "testp-00241-tr", "reply": "{\"quotes\":[]}", "seconds": 0.8}
+{"id": "testp-00242-en", "reply": "{\"quotes\":[]}", "seconds": 0.895}
+{"id": "testp-00242-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"kapalıdır\"}]}", "seconds": 1.161}
+{"id": "testp-00244-en", "reply": "{\"quotes\":[]}", "seconds": 0.898}
+{"id": "testp-00244-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"durdurulmuştür\"}]}", "seconds": 1.217}
+{"id": "testp-00245-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"closed\"}]}", "seconds": 1.125}
+{"id": "testp-00245-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"yolcu alımına durdurulmuştur\"}]}", "seconds": 1.32}
+{"id": "testp-00249-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"has been closed\"}]}", "seconds": 1.068}
+{"id": "testp-00249-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"servisü durduruldu\"}]}", "seconds": 1.228}
+{"id": "testp-00251-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"closed\"}]}", "seconds": 1.124}
+{"id": "testp-00251-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"hizmet vermeyecektir\"}]}", "seconds": 1.255}
+{"id": "testp-00252-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_delay\",\"quote\":\"behind schedule\"}]}", "seconds": 1.069}
+{"id": "testp-00252-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_delay\",\"quote\":\"gecikmeyle\"}]}", "seconds": 1.079}
+{"id": "testp-00253-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"has been abandoned\"}]}", "seconds": 1.066}
+{"id": "testp-00253-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_cancellation\",\"quote\":\"iptal\"}]}", "seconds": 1.059}
+{"id": "testp-00254-en", "reply": "{\"quotes\":[]}", "seconds": 0.809}
+{"id": "testp-00254-tr", "reply": "{\"quotes\":[]}", "seconds": 0.903}
+{"id": "testp-00255-en", "reply": "{\"quotes\":[]}", "seconds": 0.809}
+{"id": "testp-00255-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"kapalıdır\"}]}", "seconds": 1.158}
+{"id": "testp-00256-en", "reply": "{\"quotes\":[]}", "seconds": 0.896}
+{"id": "testp-00256-tr", "reply": "{\"quotes\":[]}", "seconds": 0.897}
+{"id": "testp-00257-en", "reply": "{\"quotes\":[]}", "seconds": 0.901}
+{"id": "testp-00257-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"hizmet dışı\"}]}", "seconds": 1.202}
+{"id": "testp-00258-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"will be closed\"}]}", "seconds": 1.158}
+{"id": "testp-00258-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"çalışmayacaktır\"}]}", "seconds": 1.175}
+{"id": "testp-00260-en", "reply": "{\"quotes\":[]}", "seconds": 0.897}
+{"id": "testp-00260-tr", "reply": "{\"quotes\":[]}", "seconds": 0.899}
+{"id": "testp-00261-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"has been closed\"}]}", "seconds": 1.065}
+{"id": "testp-00261-tr", "reply": "{\"quotes\":[]}", "seconds": 0.898}
+{"id": "testp-00262-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"has been closed\"}]}", "seconds": 1.067}
+{"id": "testp-00262-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"kapanmıştır\"}]}", "seconds": 1.159}
+{"id": "testp-00264-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"service has been halted\"}]}", "seconds": 1.176}
+{"id": "testp-00264-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"yolcu alımına durdurulmuştür\"}]}", "seconds": 1.319}
+{"id": "testp-00265-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_delay\",\"quote\":\"fallen 45 minutes behind schedule\"}]}", "seconds": 1.138}
+{"id": "testp-00265-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_delay\",\"quote\":\"gecikme\"}]}", "seconds": 1.155}
+{"id": "testp-00266-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_delay\",\"quote\":\"put on hold\"}]}", "seconds": 1.067}
+{"id": "testp-00266-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_cancellation\",\"quote\":\"iptal\"}]}", "seconds": 1.067}
+{"id": "testp-00267-en", "reply": "{\"quotes\":[]}", "seconds": 0.893}
+{"id": "testp-00267-tr", "reply": "{\"quotes\":[]}", "seconds": 0.807}
+{"id": "testp-00268-en", "reply": "{\"quotes\":[]}", "seconds": 0.898}
+{"id": "testp-00268-tr", "reply": "{\"quotes\":[]}", "seconds": 0.899}
+{"id": "testp-00270-en", "reply": "{\"quotes\":[]}", "seconds": 0.902}
+{"id": "testp-00270-tr", "reply": "{\"quotes\":[]}", "seconds": 0.895}
+{"id": "testp-00271-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"has been closed\"}]}", "seconds": 1.068}
+{"id": "testp-00271-tr", "reply": "{\"quotes\":[]}", "seconds": 0.897}
+{"id": "testp-00273-en", "reply": "{\"quotes\":[]}", "seconds": 0.808}
+{"id": "testp-00273-tr", "reply": "{\"quotes\":[]}", "seconds": 0.898}
+{"id": "testp-00274-en", "reply": "{\"quotes\":[]}", "seconds": 0.803}
+{"id": "testp-00274-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"servis verilmez\"}]}", "seconds": 1.172}
+{"id": "testp-00275-en", "reply": "{\"quotes\":[]}", "seconds": 0.807}
+{"id": "testp-00275-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"kapalı\"}]}", "seconds": 1.043}
+{"id": "testp-00277-en", "reply": "{\"quotes\":[]}", "seconds": 0.9}
+{"id": "testp-00277-tr", "reply": "{\"quotes\":[]}", "seconds": 0.901}
+{"id": "testp-00280-en", "reply": "{\"quotes\":[]}", "seconds": 0.897}
+{"id": "testp-00280-tr", "reply": "{\"quotes\":[]}", "seconds": 0.809}
+{"id": "testp-00281-en", "reply": "{\"quotes\":[]}", "seconds": 0.899}
+{"id": "testp-00281-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"kapalıdır\"}]}", "seconds": 1.169}
+{"id": "testp-00282-en", "reply": "{\"quotes\":[]}", "seconds": 0.894}
+{"id": "testp-00282-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"closed\"}]}", "seconds": 1.036}
+{"id": "testp-00283-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is closed\"}]}", "seconds": 1.147}
+{"id": "testp-00283-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"durdurulmuştür\"}]}", "seconds": 1.306}
+{"id": "testp-00284-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"is closed to passengers\"}]}", "seconds": 1.083}
+{"id": "testp-00284-tr", "reply": "{\"quotes\":[]}", "seconds": 0.797}
+{"id": "testp-00286-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"will remain closed\"}]}", "seconds": 1.159}
+{"id": "testp-00286-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"yolcu alımına son verilmiştir\"}]}", "seconds": 1.269}
+{"id": "testp-00287-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"closed\"}]}", "seconds": 1.031}
+{"id": "testp-00287-tr", "reply": "{\"quotes\":[]}", "seconds": 0.896}
+{"id": "testp-00288-en", "reply": "{\"quotes\":[]}", "seconds": 0.808}
+{"id": "testp-00288-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"durdurulmuştur\"}]}", "seconds": 1.212}
+{"id": "testp-00291-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_delay\",\"quote\":\"behind schedule\"}]}", "seconds": 1.067}
+{"id": "testp-00291-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_delay\",\"quote\":\"gecikmeyle\"}]}", "seconds": 1.174}
+{"id": "testp-00292-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_cancellation\",\"quote\":\"has been put on hold\"}]}", "seconds": 1.111}
+{"id": "testp-00292-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"trip_cancellation\",\"quote\":\"iptal\"}]}", "seconds": 1.063}
+{"id": "testp-00293-en", "reply": "{\"quotes\":[]}", "seconds": 0.894}
+{"id": "testp-00293-tr", "reply": "{\"quotes\":[]}", "seconds": 0.901}
+{"id": "testp-00294-en", "reply": "{\"quotes\":[]}", "seconds": 0.897}
+{"id": "testp-00294-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"kapalıdır\"}]}", "seconds": 1.158}
+{"id": "testp-00295-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"shut down\"}]}", "seconds": 1.06}
+{"id": "testp-00295-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"kapalı olabilir\"}]}", "seconds": 1.161}
+{"id": "testp-00297-en", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"will remain closed\"}]}", "seconds": 1.159}
+{"id": "testp-00297-tr", "reply": "{\"quotes\":[{\"slot\":\"kind\",\"kind\":\"stop_closure\",\"quote\":\"servis vermeyecektir\"}]}", "seconds": 1.23}
+{"id": "testp-00299-en", "reply": "{\"quotes\":[]}", "seconds": 0.897}
+{"id": "testp-00299-tr", "reply": "{\"quotes\":[]}", "seconds": 0.897}
