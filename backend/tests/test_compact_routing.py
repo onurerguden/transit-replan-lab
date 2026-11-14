@@ -140,3 +140,22 @@ def test_fast_mode_keeps_the_best_offer_and_does_less_work(seed: int) -> None:
         fast_work += quick.work
     assert fast_work <= exact_work
     assert compared >= 1
+
+
+def test_keeping_three_alternatives_reproduces_the_exact_top_six() -> None:
+    table, footpaths, schedule = core()
+    rng = random.Random(500)
+    stops = sorted(schedule.stops)
+    exact_work = kept_work = identical = compared = 0
+    for _ in range(20):
+        query = scenario(rng, stops)
+        slow, kept = SearchStats(), SearchStats()
+        exact, _ = route(table, footpaths, query, limit=6, stats=slow)
+        fast, _ = route(table, footpaths, query, limit=6, stats=kept, fast=3)
+        exact_work += slow.work
+        kept_work += kept.work
+        if exact:
+            compared += 1
+            identical += [rank_key(o) for o in exact] == [rank_key(o) for o in fast]
+    assert compared >= 10 and identical == compared
+    assert kept_work < exact_work

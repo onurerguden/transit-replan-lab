@@ -305,7 +305,7 @@ def route(
     budget: Budget | None = None,
     stats: SearchStats | None = None,
     horizons: tuple[int, ...] = HORIZONS,
-    fast: bool = False,
+    fast: int = 0,
 ) -> tuple[list[Offer], Window]:
     """Return the best offers. Meetings are searched in growing horizons past a lower bound.
 

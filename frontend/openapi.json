@@ -1578,6 +1578,13 @@
             "type": "boolean",
             "title": "Exact",
             "default": false
+          },
+          "alternatives": {
+            "type": "integer",
+            "maximum": 6.0,
+            "minimum": 1.0,
+            "title": "Alternatives",
+            "default": 1
           }
         },
         "additionalProperties": false,

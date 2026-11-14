@@ -578,6 +578,11 @@ export interface components {
              * @default false
              */
             exact: boolean;
+            /**
+             * Alternatives
+             * @default 1
+             */
+            alternatives: number;
         };
         /** RunEvidence */
         RunEvidence: {

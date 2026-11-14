@@ -135,7 +135,7 @@ def alternatives(
     margin_aware: bool = False,
     stats: SearchStats | None = None,
     budget: Budget | None = None,
-    dominate: bool = False,
+    dominate: int = 0,
 ) -> list[ArrivalWindow]:
     earliest = constraint.ready
     latest = min(deadline, earliest + constraint.travel_limit)
@@ -166,25 +166,30 @@ def alternatives(
         if len(final) > MAX_LABELS:
             raise SearchIncomplete("Arrival window budget exhausted.")
 
-    seen: dict[str, list[tuple[int, int, int, bool]]] = defaultdict(list)
+    seen: dict[str, list[tuple[int, int, int, bool, str]]] = defaultdict(list)
     targets = set(destinations)
 
     def covered(label: Label) -> bool:
-        """Whether an earlier, no costlier label at this stop makes this one redundant.
+        """Whether earlier, no costlier labels at this stop make this one redundant.
 
         Waiting at an open stop is free, so anything reachable from the later label is reachable
-        from the earlier one. Destinations keep every arrival because the meeting needs a rider
-        to arrive late enough to wait for the other.
+        from an earlier one. A label is dropped only after `dominate` earlier labels that end on
+        different trips already cover it, which keeps a few alternative chains per stop.
+        Destinations keep every arrival because a meeting needs a rider to arrive late enough
+        to wait for the other.
         """
         if label.stop in targets:
             return False
+        last = next((leg.trip for leg in reversed(label.legs) if leg.kind == "ride"), "")
         mine = (label.arrival, label.rides, label.walking, label.walked)
-        if any(
-            old[0] <= mine[0] and old[1] <= mine[1] and old[2] <= mine[2] and old[3] <= mine[3]
+        better = {
+            old[4]
             for old in seen[label.stop]
-        ):
+            if old[0] <= mine[0] and old[1] <= mine[1] and old[2] <= mine[2] and old[3] <= mine[3]
+        }
+        if len(better) >= dominate:
             return True
-        seen[label.stop].append(mine)
+        seen[label.stop].append((*mine, last))
         return False
 
     def add(label: Label) -> None:
@@ -335,7 +340,7 @@ def find_offers(
     margin_aware: bool = False,
     stats: SearchStats | None = None,
     budget: Budget | None = None,
-    fast: bool = False,
+    fast: int = 0,
 ) -> list[Offer]:
     overlay = overlay or Overlay.compile(())
     budget = budget or Budget()
@@ -362,7 +367,7 @@ def find_offers(
         margin_aware=margin_aware,
         stats=stats,
         budget=budget,
-        dominate=fast and not overlay.closures,
+        dominate=0 if overlay.closures else fast,
     )
     b = alternatives(
         schedule,
@@ -374,7 +379,7 @@ def find_offers(
         margin_aware=margin_aware,
         stats=stats,
         budget=budget,
-        dominate=fast and not overlay.closures,
+        dominate=0 if overlay.closures else fast,
     )
     b_by_stop: dict[str, list[ArrivalWindow]] = defaultdict(list)
     for window in sorted(b, key=lambda item: item.first.arrival):

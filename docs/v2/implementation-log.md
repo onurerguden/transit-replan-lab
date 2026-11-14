@@ -119,7 +119,7 @@ Each entry records completed acceptance checks and concrete blockers.
 
 ## What was not done
 
-- A segment-scoped RAPTOR with profiles that keeps every alternative chain. Fast mode covers the best offer.
+- A true range-RAPTOR. Fast mode with kept alternatives covers the best offer and, at three alternatives, the whole top six on the core network.
 - Running whole runs (intake, votes, verification) on the full network.
 - Independent annotation, two-router plan labels and a judge model for the paraphrases.
 
@@ -159,3 +159,7 @@ Each entry records completed acceptance checks and concrete blockers.
 ## Addendum · fast mode
 
 - An opt-in dominance across arrival times at non-destination stops, skipped when closures exist. Differential tests against the exact search agree on the best offer's rank. On the full network it removes the incomplete outcomes (13 of 40 become 0) and reaches p95 1.49 s. Compilation now switches off trips with backwards times, which a fast-mode benchmark exposed through a verifier rejection.
+
+## Addendum · kept alternatives
+
+- Fast mode drops a label only after `alternatives` earlier labels that end on different trips cover it. At three, the top six rank keys match the exact search in 39 of 39 random core scenarios with 62% of the work. On the full network that setting is slower (p95 8.5 s, 3 of 40 incomplete), so the API defaults to one.

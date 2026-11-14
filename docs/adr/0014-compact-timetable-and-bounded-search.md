@@ -32,9 +32,11 @@ no more rides, no more walking and the same walk state already reached that stop
 open stop is free, so anything the dropped label could do the kept one can do. Destinations keep
 every arrival because a meeting needs a rider to arrive late enough to wait for the other. The
 mode is skipped when a closure exists, because waiting inside a closed stop is not allowed.
-It preserves the best offer's rank (meeting, rides, walks), which differential tests check against
-the exact search on random core scenarios. It does not preserve every alternative chain, so
-exact mode stays available (`exact: true`).
+A label is dropped only after `alternatives` earlier labels that end on different trips already
+cover it. With one alternative the best offer's rank (meeting, rides, walks) matches the exact
+search, which differential tests check on random core scenarios. With three alternatives the
+whole top six matches in every one of 39 random core scenarios at 62% of the exact work (one
+alternative matches in 36 of 39 at 24% of the work). Exact mode stays available (`exact: true`).
 
 ## Measured result
 
@@ -49,6 +51,10 @@ plan that the verifier rejected.
 | Exact | 4 | 13 | 14 | 13 | 1.54 s | 3.47 s | 2.67 |
 | Fast | 1 | 26 | 14 | 0 | 0.56 s | 1.49 s | 1.66 |
 | Fast | 4 | 26 | 14 | 0 | 0.63 s | 1.65 s | 5.2 |
+
+On the full network three alternatives cost much more, because walking links multiply the
+candidate chains: 23 meetings, 3 incomplete, p50 1.77 s and p95 8.5 s on one process. The API
+defaults to one alternative.
 
 Fast mode finds meetings in 13 queries where the exact search ran out of its work budget, and no
 emitted offer failed the verifier in either mode. The one-process p95 meets the 1.5 s target by a

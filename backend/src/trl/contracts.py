@@ -173,6 +173,8 @@ class RouteQuery(Record):
     limit: Annotated[int, Field(ge=1, le=6)] = 3
     # Exact search keeps every alternative chain. The default dominates across arrival times.
     exact: bool = False
+    # In fast mode, labels kept per stop that end on different trips before one is dropped.
+    alternatives: Annotated[int, Field(ge=1, le=6)] = 1
 
 
 class RouteAnswer(Record):
