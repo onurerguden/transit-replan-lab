@@ -9,9 +9,9 @@ from pathlib import Path
 import pytest
 
 from trl.disruptions import Overlay
-from trl.domain import Constraint, Scenario, StopClosure
+from trl.domain import Constraint, Offer, Scenario, StopClosure
 from trl.gtfs import DATA_ROOT, Schedule, load_schedule
-from trl.routing import Budget, SearchIncomplete, find_offers
+from trl.routing import Budget, SearchIncomplete, SearchStats, find_offers
 from trl.scenarios import load_scenario
 from trl.timetable.compact import CompactTimetable, compile_timetable, get_timetable
 from trl.timetable.footpaths import Footpaths, from_transfers
@@ -110,3 +110,33 @@ def test_delays_widen_the_bound_without_changing_the_answer() -> None:
     offers, _ = route(table, footpaths, query, overlay=delayed)
     assert offers == expected
     assert date.min < DAY
+
+
+def rank_key(offer: Offer) -> tuple[int, int, int]:
+    rides = sum(leg.kind == "ride" for leg in offer.a.legs) + sum(
+        leg.kind == "ride" for leg in offer.b.legs
+    )
+    walks = sum(leg.kind == "walk" for leg in (*offer.a.legs, *offer.b.legs))
+    return offer.meeting, rides, walks
+
+
+@pytest.mark.parametrize("seed", range(6))
+def test_fast_mode_keeps_the_best_offer_and_does_less_work(seed: int) -> None:
+    table, footpaths, schedule = core()
+    rng = random.Random(100 + seed)
+    stops = sorted(schedule.stops)
+    exact_work = fast_work = compared = 0
+    for _ in range(8):
+        query = scenario(rng, stops)
+        slow, quick = SearchStats(), SearchStats()
+        exact, _ = route(table, footpaths, query, limit=1, stats=slow)
+        fast, window = route(table, footpaths, query, limit=1, stats=quick, fast=True)
+        assert bool(exact) == bool(fast)
+        if exact:
+            assert rank_key(exact[0]) == rank_key(fast[0])
+            assert check_plan(window.schedule, query, fast[0], Overlay.compile(())) is None
+            compared += 1
+        exact_work += slow.work
+        fast_work += quick.work
+    assert fast_work <= exact_work
+    assert compared >= 1

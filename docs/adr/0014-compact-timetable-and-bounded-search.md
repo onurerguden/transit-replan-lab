@@ -25,19 +25,39 @@ so building and scanning it as objects costs minutes and gigabytes.
 - Differential tests compare the bounded search with the full search on random core scenarios
   with closures, a delay and several seeds. They agree exactly.
 
+## Fast mode
+
+An opt-in `fast` mode drops a label at a non-destination stop when an earlier or equal label with
+no more rides, no more walking and the same walk state already reached that stop. Waiting at an
+open stop is free, so anything the dropped label could do the kept one can do. Destinations keep
+every arrival because a meeting needs a rider to arrive late enough to wait for the other. The
+mode is skipped when a closure exists, because waiting inside a closed stop is not allowed.
+It preserves the best offer's rank (meeting, rides, walks), which differential tests check against
+the exact search on random core scenarios. It does not preserve every alternative chain, so
+exact mode stays available (`exact: true`).
+
 ## Measured result
 
-On the 2026-10-21 weekday with riders starting near a shared destination (40 queries, two
-repeats, one and four processes, Apple M1 Pro): load and footpath generation in 0.3 s, 152 MB
-after load, 513 MB peak. One process gave p50 1.56 s and p95 3.6 s. Four processes gave 2.3
-queries per second. Of 40 queries, 13 were feasible, 14 infeasible and 13 ended as an explicit
-incomplete outcome after the work budget. No emitted offer failed the verifier. The target of
-a p95 under 1.5 s and no incomplete outcomes was not met. Dense bus meetings with generated
-walking links still expand too many labels for the exact search.
+On the 2026-10-21 weekday, with riders starting near a shared destination (40 queries, two repeats,
+Apple M1 Pro), the network loads in 0.3 s and takes 152 MB after load (513 MB peak). Compilation
+now also switches off trips whose times run backwards (one İZBAN trip), which exposed an invalid
+plan that the verifier rejected.
+
+| Mode | Processes | Feasible | None | Incomplete | p50 | p95 | Queries per second |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| Exact | 1 | 13 | 14 | 13 | 1.42 s | 3.17 s | 0.79 |
+| Exact | 4 | 13 | 14 | 13 | 1.54 s | 3.47 s | 2.67 |
+| Fast | 1 | 26 | 14 | 0 | 0.56 s | 1.49 s | 1.66 |
+| Fast | 4 | 26 | 14 | 0 | 0.63 s | 1.65 s | 5.2 |
+
+Fast mode finds meetings in 13 queries where the exact search ran out of its work budget, and no
+emitted offer failed the verifier in either mode. The one-process p95 meets the 1.5 s target by a
+small margin and four processes miss it slightly under contention. Raw rows are in
+`experiments/results/v2/perf` and `perf-fast`.
 
 ## Consequences
 
 Runs, clarification and verification still use the core schedule. A stateless `POST /v1/route` answers meeting queries on either network (`TRL_NETWORK`, default core) and reports an explicit `search_incomplete` when the work budget or the 20 s deadline ends the search. The full network is available through the library and
 the benchmark script, and its plans are checked by `trl.verifier.sqlite_reference`, which reads
-the raw archives instead of the compiled arrays. Closing the gap needs dominance across arrival times
-(range RAPTOR) instead of a label per second, which this release does not implement.
+the raw archives instead of the compiled arrays. Fast mode removes most of the gap without a full range-RAPTOR. A profile-based search that
+keeps alternatives is still not implemented.

@@ -76,6 +76,7 @@ max-args = 8
 "src/trl/language/*.py" = ["RUF001", "RUF003"]   # Turkish and typographic punctuation is the input
 "src/trl/language/timeexpr.py" = ["C901"]        # one pass per grammar rule, covered by round trips
 "src/trl/routing.py" = ["C901", "PLR0913", "PLR0915"]  # F6 routing v2
+"src/trl/timetable/query.py" = ["PLR0913"]         # keyword-only search options
 "../experiments/runner.py" = ["ASYNC240", "PLR0915"]      # F7 bench v3 runner
 "../experiments/vnext_cases.py" = ["C901", "PLR0915"]     # F7 bench v3 generator
 "../experiments/vnext_mediation.py" = ["ASYNC240", "PLR0915"]

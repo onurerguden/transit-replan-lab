@@ -69,16 +69,19 @@ def solve(
             limit=query.limit,
             budget=Budget(deadline_s=DEADLINE_S),
             stats=stats,
+            fast=not query.exact,
         )
     except SearchIncomplete as exc:
         return RouteAnswer(
             network=network,
+            mode="exact" if query.exact else "fast",
             status="search_incomplete",
             work=stats.work,
             detail=str(exc),
         )
     return RouteAnswer(
         network=network,
+        mode="exact" if query.exact else "fast",
         status="feasible" if offers else "infeasible",
         offers=tuple(offers),
         kept_trips=window.kept_trips,

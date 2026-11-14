@@ -8,7 +8,7 @@ This project follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) an
 ### Added
 
 - Five official İzmir feeds (Metro, every tram line, İZBAN, ESHOT, İzdeniz) described in `feeds.json`, with a committed health report, labelled calendar projections and generated footpaths. İzdeniz is recorded as unavailable because its URL returns a web page.
-- `POST /v1/route`, a stateless meeting query on the core or the full network with an explicit incomplete outcome.
+- `POST /v1/route`, a stateless meeting query on the core or the full network. A fast mode that dominates across arrival times removes the incomplete outcomes on the full network benchmark and keeps the best offer. Exact mode keeps every alternative chain and can end as incomplete.
 - A compiled network (`trl.timetable`) with a cache, a bounded query and a deterministic work budget, measured on the full network.
 - An independent verifier package with its own incident semantics and presence intervals.
 - A transition table, `system_error`, a retry command, add, replace and retract commands for incidents, up to three clarification rounds, numbered migrations with backup, and `trl db` for backup, restore, check and prune.

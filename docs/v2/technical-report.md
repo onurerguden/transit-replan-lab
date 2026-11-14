@@ -88,12 +88,14 @@ incident in 326 reports each. The set measures robustness to wording with label 
 
 ## Performance
 
-On the whole network, with riders near a shared destination, one process answers at p50 1.56 s
-and p95 3.6 s, four processes at 2.3 queries per second, using 513 MB at peak. Of 40 queries, 13
-were incomplete under a two-million work-unit budget. The budget is deterministic and the
-outcome is explicit. The exact search keeps one label per arrival second, which is expensive on
-dense bus networks. Dominance across arrival times would remove most of that cost and is not
-implemented.
+On the whole network, with riders near a shared destination, the exact search runs at p50 1.4 s and p95
+3.2 s and ends 13 of 40 queries as an explicit incomplete outcome under a two-million work-unit
+budget, because it keeps one label per arrival second. A fast mode drops a label at a
+non-destination stop when an earlier label with no more rides or walking reached it. That keeps
+the best offer and cannot remove arrivals at the destination. On the same queries it finds 26
+meetings with none incomplete, at p50 0.56 s and p95 1.49 s on one process and 5.2 queries per
+second on four. Differential tests check that it returns the exact search's best offer, and every
+emitted plan is verified, including against a reader of the raw archives.
 
 ## Threats to validity
 

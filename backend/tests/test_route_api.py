@@ -23,13 +23,16 @@ def test_the_core_network_answers_a_meeting_query(
     try:
         with client(tmp_path, monkeypatch, "core") as http:
             response = http.post("/v1/route", json=BODY)
+            exact = http.post("/v1/route", json={**BODY, "exact": True})
             unknown = http.post("/v1/route", json={**BODY, "a_stop": "bus:none"})
     finally:
         get_settings.cache_clear()
     assert response.status_code == 200
     body = response.json()
     assert body["network"] == "core" and body["status"] == "feasible" and body["offers"]
-    assert body["offers"][0]["meeting"] >= 30600
+    assert body["offers"][0]["meeting"] >= 30600 and body["mode"] == "fast"
+    assert exact.json()["mode"] == "exact"
+    assert exact.json()["offers"][0]["meeting"] == body["offers"][0]["meeting"]
     assert unknown.status_code == 422
     assert unknown.headers["content-type"] == "application/problem+json"
 

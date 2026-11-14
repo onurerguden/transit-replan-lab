@@ -171,10 +171,13 @@ class RouteQuery(Record):
     meeting_start: Second | None = None
     meeting_end: Annotated[int, Field(gt=0, le=172800)] | None = None
     limit: Annotated[int, Field(ge=1, le=6)] = 3
+    # Exact search keeps every alternative chain. The default dominates across arrival times.
+    exact: bool = False
 
 
 class RouteAnswer(Record):
     network: Literal["core", "full"]
+    mode: Literal["fast", "exact"] = "fast"
     status: Literal["feasible", "infeasible", "search_incomplete"]
     offers: tuple[Offer, ...] = ()
     kept_trips: int = 0

@@ -22,7 +22,7 @@ from numpy.typing import NDArray
 
 from trl.gtfs import Feed, Profile, feed_specs, service_date, service_second
 
-COMPILER_VERSION = "compact-1"
+COMPILER_VERSION = "compact-2"
 WEEKDAYS = ("monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday")
 Int = NDArray[np.int32]
 
@@ -199,6 +199,16 @@ def assemble(key: str, builder: Builder) -> CompactTimetable:
     service_index = np.asarray(
         [builder.services.get(name, -1) for name in builder.trip_services], dtype=np.int32
     )
+    # A trip whose times go backwards, or that has fewer than two calls, cannot be ridden.
+    # It is switched off by giving it no service. `trl feeds` reports the same trips.
+    arrival, departure = calls[:, 3], calls[:, 4]
+    same_trip = calls[1:, 0] == calls[:-1, 0]
+    backwards = np.zeros(len(builder.trip_ids), dtype=bool)
+    broken_rows = np.flatnonzero(same_trip & (arrival[1:] < departure[:-1]))
+    backwards[calls[broken_rows, 0]] = True
+    backwards[calls[np.flatnonzero(departure < arrival), 0]] = True
+    backwards |= np.diff(trip_ptr) < 2
+    service_index = np.where(backwards, -1, service_index).astype(np.int32)
     rows = builder.service_rows
     return CompactTimetable(
         key=key,

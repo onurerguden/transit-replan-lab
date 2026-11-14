@@ -6,6 +6,7 @@ the report also lists the deterministic work units of each query.
 
 import argparse
 import json
+import os
 import platform
 import random
 import resource
@@ -30,6 +31,7 @@ DAY = date(2026, 10, 21)
 Overlay0 = Overlay.compile(())
 ROOT = DATA_ROOT / "gtfs"
 CACHE = Path(".local/cache/timetable")
+OPTIONS = {"fast": False}
 _STATE: dict[str, tuple[CompactTimetable, Footpaths]] = {}
 
 
@@ -101,6 +103,7 @@ def run_one(query: Scenario) -> dict[str, object]:
             query,
             budget=Budget(max_work=2_000_000, deadline_s=30),
             stats=stats,
+            fast=OPTIONS["fast"] or os.environ.get("TRL_BENCH_FAST") == "1",
         )
         status = "feasible" if offers else "infeasible"
         invalid = sum(
@@ -145,6 +148,9 @@ def summarize(rows: list[dict[str, object]]) -> dict[str, object]:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "--fast", action="store_true", help="dominate across arrival times"
+    )
     parser.add_argument("--queries", type=int, default=60)
     parser.add_argument("--repeats", type=int, default=3)
     parser.add_argument("--workers", type=int, nargs="*", default=[1, 4])
@@ -152,6 +158,9 @@ def main() -> None:
         "--output", type=Path, default=Path("experiments/results/v2/perf")
     )
     args = parser.parse_args()
+    OPTIONS["fast"] = args.fast
+    if args.fast:
+        os.environ["TRL_BENCH_FAST"] = "1"  # worker processes read it
     args.output.mkdir(parents=True, exist_ok=True)
     cold_started = time.perf_counter()
     state()

@@ -305,6 +305,7 @@ def route(
     budget: Budget | None = None,
     stats: SearchStats | None = None,
     horizons: tuple[int, ...] = HORIZONS,
+    fast: bool = False,
 ) -> tuple[list[Offer], Window]:
     """Return the best offers. Meetings are searched in growing horizons past a lower bound.
 
@@ -323,11 +324,17 @@ def route(
         narrowed = scenario.model_copy(update={"meeting_end": end})
         window = window_schedule(tt, footpaths, narrowed, delays)
         offers = find_offers(
-            window.schedule, narrowed, overlay=overlay, limit=limit, budget=budget, stats=stats
+            window.schedule,
+            narrowed,
+            overlay=overlay,
+            limit=limit,
+            budget=budget,
+            stats=stats,
+            fast=fast,
         )
         if len(offers) >= limit:
             return offers, window
     offers = find_offers(
-        full.schedule, scenario, overlay=overlay, limit=limit, budget=budget, stats=stats
+        full.schedule, scenario, overlay=overlay, limit=limit, budget=budget, stats=stats, fast=fast
     )
     return offers, full

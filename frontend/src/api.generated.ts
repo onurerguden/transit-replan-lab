@@ -504,6 +504,12 @@ export interface components {
              */
             network: "core" | "full";
             /**
+             * Mode
+             * @default fast
+             * @enum {string}
+             */
+            mode: "fast" | "exact";
+            /**
              * Status
              * @enum {string}
              */
@@ -567,6 +573,11 @@ export interface components {
              * @default 3
              */
             limit: number;
+            /**
+             * Exact
+             * @default false
+             */
+            exact: boolean;
         };
         /** RunEvidence */
         RunEvidence: {

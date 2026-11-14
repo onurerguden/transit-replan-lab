@@ -135,6 +135,7 @@ def alternatives(
     margin_aware: bool = False,
     stats: SearchStats | None = None,
     budget: Budget | None = None,
+    dominate: bool = False,
 ) -> list[ArrivalWindow]:
     earliest = constraint.ready
     latest = min(deadline, earliest + constraint.travel_limit)
@@ -165,10 +166,33 @@ def alternatives(
         if len(final) > MAX_LABELS:
             raise SearchIncomplete("Arrival window budget exhausted.")
 
+    seen: dict[str, list[tuple[int, int, int, bool]]] = defaultdict(list)
+    targets = set(destinations)
+
+    def covered(label: Label) -> bool:
+        """Whether an earlier, no costlier label at this stop makes this one redundant.
+
+        Waiting at an open stop is free, so anything reachable from the later label is reachable
+        from the earlier one. Destinations keep every arrival because the meeting needs a rider
+        to arrive late enough to wait for the other.
+        """
+        if label.stop in targets:
+            return False
+        mine = (label.arrival, label.rides, label.walking, label.walked)
+        if any(
+            old[0] <= mine[0] and old[1] <= mine[1] and old[2] <= mine[2] and old[3] <= mine[3]
+            for old in seen[label.stop]
+        ):
+            return True
+        seen[label.stop].append(mine)
+        return False
+
     def add(label: Label) -> None:
         nonlocal accepted
         if budget is not None:
             budget.charge()
+        if dominate and covered(label):
+            return
         key = (label.stop, label.arrival, label.walked)
         costs = frontier[key]
         candidate = cost(label)
@@ -311,6 +335,7 @@ def find_offers(
     margin_aware: bool = False,
     stats: SearchStats | None = None,
     budget: Budget | None = None,
+    fast: bool = False,
 ) -> list[Offer]:
     overlay = overlay or Overlay.compile(())
     budget = budget or Budget()
@@ -337,6 +362,7 @@ def find_offers(
         margin_aware=margin_aware,
         stats=stats,
         budget=budget,
+        dominate=fast and not overlay.closures,
     )
     b = alternatives(
         schedule,
@@ -348,6 +374,7 @@ def find_offers(
         margin_aware=margin_aware,
         stats=stats,
         budget=budget,
+        dominate=fast and not overlay.closures,
     )
     b_by_stop: dict[str, list[ArrivalWindow]] = defaultdict(list)
     for window in sorted(b, key=lambda item: item.first.arrival):

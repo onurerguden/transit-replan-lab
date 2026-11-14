@@ -119,7 +119,7 @@ Each entry records completed acceptance checks and concrete blockers.
 
 ## What was not done
 
-- Segment-scoped RAPTOR with arrival profiles, so full-network meetings on dense bus areas can end as incomplete.
+- A segment-scoped RAPTOR with profiles that keeps every alternative chain. Fast mode covers the best offer.
 - Running whole runs (intake, votes, verification) on the full network.
 - Independent annotation, two-router plan labels and a judge model for the paraphrases.
 
@@ -155,3 +155,7 @@ Each entry records completed acceptance checks and concrete blockers.
 ## Addendum · dispatcher
 
 - Workers no longer spin on a contended lease. One dispatcher loop per process scans planning runs, skips those another live worker holds with a read-only check, and starts the rest. The process-death and lease tests, the state machine (60 examples of 20 steps) and the browser suite pass unchanged.
+
+## Addendum · fast mode
+
+- An opt-in dominance across arrival times at non-destination stops, skipped when closures exist. Differential tests against the exact search agree on the best offer's rank. On the full network it removes the incomplete outcomes (13 of 40 become 0) and reaches p95 1.49 s. Compilation now switches off trips with backwards times, which a fast-mode benchmark exposed through a verifier rejection.
