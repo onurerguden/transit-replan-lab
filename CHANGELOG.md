@@ -3,7 +3,7 @@
 This project follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
 [semantic versioning](https://semver.org/).
 
-## [Unreleased]
+## [2.1.0] - 2026-11-14
 
 ### Added
 
@@ -11,11 +11,17 @@ This project follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) an
 - An Ollama evaluator (`finetune/v3_evaluate.py`) with parallel requests, and a retrieval arm (`finetune/rag.py`) over the train bank.
 - Operator adapter v3 trained on v3.1 (three seeds), ADR 0017 and a preregistered comparison with the lexicon, the base model and retrieval.
 - MinHash near-duplicate removal and wording-overlap measures (`experiments/bench_v3/overlap.py`).
+- Paired contrasts with cluster-bootstrap intervals (`experiments/bench_v31/contrasts.py`) and a CI audit of the v3.1 freeze manifest.
+
+### Results
+
+- On 616 test reports of the hard slice the adapter reads 89.6%, 92.2% and 89.0% across three seeds, against 83.8% for the base model with retrieved examples, 18.2% for the base model and 8.1% for the production lexicon. The adapter leads retrieval by 5.8 points [2.6, 9.1] and applies no unsupported incident. [ADR 0017](docs/adr/0017-operator-adapter-v3.md).
 
 ### Fixed
 
 - The schema sent to Ollama now requires the event `kind` of a quote. Before, constrained decoding skipped it and the evidence gate ignored every model quote.
 - A numeric date followed by a label colon (`17.11.2026:`) is now read, so a notice for another day is no longer applied to the service day.
+- A checkpoint cleanup test waits up to thirty seconds on a slow runner.
 
 ## [2.0.0] - 2026-11-14
 
