@@ -51,7 +51,12 @@ test('shows independent votes and a mediated replay on mobile', async ({ page })
   await expect(page.getByRole('complementary')).toContainText('Selected a compromise offer.')
   await expect(page.locator('.timeline').getByText('Accepted the offer.')).toHaveCount(2)
   await expect(page.getByText(/7 model calls/)).toBeVisible()
+  await page.locator('.evidence summary').click()
+  await expect(page.getByRole('region', { name: 'Rider A evidence' })).toContainText('Accepted')
   expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(390)
+  if (process.env.TRL_MOBILE_CAPTURE) {
+    await page.screenshot({ path: process.env.TRL_MOBILE_CAPTURE, fullPage: true })
+  }
 })
 
 test('withdraws the old verified plan while a new revision is pending', async ({ page }) => {
@@ -75,4 +80,104 @@ test('withdraws the old verified plan while a new revision is pending', async ({
     release()
   }
   await expect(page.getByRole('status')).toHaveText('Verified')
+})
+
+test('retries a committed command with its original key after losing the response', async ({ page }) => {
+  const keys: string[] = []
+  await page.route('**/disruptions', async route => {
+    keys.push(route.request().headers()['idempotency-key']!)
+    if (keys.length === 1) {
+      const committed = await route.fetch()
+      expect(committed.status()).toBe(202)
+      await route.abort('connectionreset')
+      return
+    }
+    await route.continue()
+  })
+  await page.goto('/')
+  await expect(page.getByRole('status')).toHaveText('Ready')
+  await page.getByRole('button', { name: 'Apply disruption' }).click()
+  await expect(page.getByRole('alert')).toContainText('Retry to recover its result')
+  await page.getByRole('button', { name: 'Retry', exact: true }).click()
+  await expect(page.getByRole('status')).toHaveText('Verified')
+  await expect(page.locator('.run-bar')).toContainText('Revision 1')
+  await expect(page.getByText('A new disruption report is queued.')).toHaveCount(1)
+  expect(keys).toHaveLength(2)
+  expect(keys[0]).toBeTruthy()
+  expect(keys[1]).toBe(keys[0])
+})
+
+test('recovers a failed outcome read without reissuing the command', async ({ page }) => {
+  let reads = 0
+  let submissions = 0
+  await page.route(/\/v1\/runs\/[a-f0-9]{32}$/, async route => {
+    reads += 1
+    if (reads === 2) await route.abort('connectionreset')
+    else await route.continue()
+  })
+  await page.route('**/disruptions', route => {
+    submissions += 1
+    return route.continue()
+  })
+  await page.goto('/')
+  await expect(page.getByRole('status')).toHaveText('Ready')
+  await page.getByRole('button', { name: 'Apply disruption' }).click()
+  await expect(page.getByRole('alert')).toContainText('Refresh to load')
+  await page.getByRole('button', { name: 'Refresh outcome' }).click()
+  await expect(page.getByRole('status')).toHaveText('Verified')
+  expect(reads).toBe(3)
+  expect(submissions).toBe(1)
+})
+
+test('clarifies an ambiguous notice and keeps evidence bound to the selected offer', async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 960 })
+  await page.goto('/')
+  await expect(page.getByRole('status')).toHaveText('Ready')
+  await page.getByRole('textbox', { name: 'Disruption notice text' })
+    .fill('Konak is closed from 08:24 to 10:00.')
+  await page.getByRole('button', { name: 'Apply disruption' }).click()
+  await expect(page.getByRole('status')).toHaveText('Clarification needed')
+  await expect(page.getByRole('region', { name: 'Joint offers' })).toHaveCount(0)
+  await page.getByRole('textbox', { name: 'Which stop or trip is affected, and when?' })
+    .fill('Konak İskele tram')
+  await page.getByRole('button', { name: 'Send clarification' }).click()
+  await expect(page.getByRole('status')).toHaveText('Verified')
+  await expect(page.locator('.run-bar')).toContainText('Revision 1')
+  const evidence = page.locator('.evidence')
+  await evidence.locator('summary').focus()
+  await page.keyboard.press('Enter')
+  await expect(evidence).toContainText('Timetable check passed')
+  const rider = page.getByRole('region', { name: 'Rider A evidence' })
+  await expect(rider).toBeVisible()
+  await expect(rider).toContainText('Accepted')
+  await expect(rider).toContainText('Walk')
+  await expect(rider).toContainText('Fahrettin Altay')
+  await expect(page.getByText('Konak İskele closed · 08:24–10:00')).toBeVisible()
+  if (process.env.TRL_EVIDENCE_CAPTURE) {
+    await page.screenshot({ path: process.env.TRL_EVIDENCE_CAPTURE, fullPage: true })
+  }
+  await page.getByRole('button', { name: /Offer 2/ }).click()
+  await evidence.locator('summary').click()
+  await expect(evidence).toContainText('No verification recorded')
+  await expect(rider).toContainText('No vote')
+})
+
+test('retries startup against the same run after losing the creation receipt', async ({ page }) => {
+  const receipts: { key: string; id: string }[] = []
+  await page.route('**/v1/runs', async route => {
+    const response = await route.fetch()
+    expect(response.status()).toBe(201)
+    const body = await response.json() as { run_id: string }
+    receipts.push({ key: route.request().headers()['idempotency-key']!, id: body.run_id })
+    if (receipts.length === 1) await route.abort('connectionreset')
+    else await route.fulfill({ response })
+  })
+  await page.goto('/')
+  await expect(page.getByRole('alert')).toBeVisible()
+  await page.getByRole('button', { name: 'Retry', exact: true }).click()
+  await expect(page.getByRole('status')).toHaveText('Ready')
+  expect(receipts).toHaveLength(2)
+  expect(receipts[0]?.key).toBeTruthy()
+  expect(receipts[0]?.id).toBeTruthy()
+  expect(receipts[1]).toEqual(receipts[0])
 })

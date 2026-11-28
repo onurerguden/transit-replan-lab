@@ -205,3 +205,39 @@ textarea {
   .selectors { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.16fr) 39px; }
   .selectors label, .selectors select { min-width: 0; width: 100%; }
 }
+
+.evidence { margin-top: .8rem; border-top: 1px solid var(--edge); }
+.evidence summary {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto auto; align-items: center;
+  gap: .6rem; padding: .72rem 0 .15rem; list-style: none; cursor: pointer;
+}
+.evidence summary::-webkit-details-marker { display: none; }
+.evidence[open] summary > svg { transform: rotate(180deg); }
+.evidence summary strong { display: block; font-size: .86rem; }
+.evidence small { color: var(--muted); font-size: .68rem; }
+.evidence-verdict { display: inline-flex; align-items: center; gap: .3rem; font-size: .73rem; color: var(--muted); }
+.evidence-verdict.verified { color: var(--green); }
+.evidence-riders { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .55rem; margin-top: .65rem; }
+.evidence-rider { min-width: 0; background: #f6f9fc; border: 1px solid #e4ebf2; border-radius: 7px; padding: .65rem; }
+.evidence-rider-heading { display: flex; justify-content: space-between; gap: .45rem; font-size: .79rem; }
+.evidence-rider-heading span { color: #40617a; font-weight: 650; }
+.evidence-rider p { color: var(--muted); font-size: .74rem; margin-top: .25rem; }
+.evidence-rider ol { display: grid; gap: .5rem; margin: .65rem 0 0; padding: 0; list-style: none; }
+.evidence-rider li { display: grid; gap: .12rem; border-top: 1px solid #e0e9f1; padding-top: .44rem; overflow-wrap: anywhere; }
+.evidence-rider li span { font-size: .69rem; color: #48627c; font-variant-numeric: tabular-nums; }
+.evidence-rider li strong { font-size: .77rem; }
+.error-banner > svg { flex: none; }
+.error-banner > span { flex: 1; }
+.error-banner button {
+  border: 1px solid #d6a79a; background: #fff9f6; color: #892e20; border-radius: 5px;
+  min-height: 34px; padding: .22rem .58rem; font-size: .78rem; font-weight: 720;
+}
+@media (max-width: 520px) {
+  .evidence-riders { grid-template-columns: minmax(0, 1fr); }
+}
+.applied-incident {
+  display: grid; gap: .2rem; margin-top: .58rem; padding: .52rem .62rem;
+  background: #fff5ef; border-left: 2px solid #b66149; border-radius: 4px;
+  color: #743b2c; font-size: .73rem; overflow-wrap: anywhere;
+}
+.applied-incident strong { font-size: .69rem; }

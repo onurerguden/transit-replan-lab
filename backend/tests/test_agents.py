@@ -142,3 +142,51 @@ def test_operator_cannot_guess_between_named_platforms(tmp_path: Path) -> None:
         assert not view.votes and view.metrics.calls == 1
 
     asyncio.run(exercise())
+
+
+@pytest.mark.parametrize(
+    ("notice", "prediction"),
+    [
+        (
+            "Konak İskele tram stop is closed from 08:24 to 10:00.",
+            '{"kind":"stop_closure","stop":"tram:7","start":"08:30","end":"10:00"}',
+        ),
+        (
+            "Trip metro:WEEKDAY_0_0001 is delayed by 8 minutes.",
+            '{"kind":"trip_cancellation","trip":"metro:WEEKDAY_0_0001"}',
+        ),
+        (
+            "Trip metro:WEEKDAY_0_0001 is delayed by 8 minutes.",
+            '{"kind":"trip_delay","trip":"metro:WEEKDAY_0_0001","minutes":12}',
+        ),
+    ],
+)
+def test_operator_cannot_change_supported_incident(
+    tmp_path: Path, notice: str, prediction: str
+) -> None:
+    async def exercise() -> None:
+        schedule = load_schedule()
+
+        class Overconfident(ReplayModel):
+            async def generate(
+                self, stage: Stage, view: RoleView, schema: type[Record], repair: bool
+            ) -> ModelReply:
+                if stage == "operator":
+                    return ModelReply(prediction, 5, 4)
+                return await super().generate(stage, view, schema, repair)
+
+        store = RunStore(tmp_path / "grounding.sqlite")
+        service = RunService(store, schedule, Overconfident(schedule))
+        run = service.new_run(CreateRun(architecture="five"), "start")
+        receipt = store.command(
+            run.run_id,
+            "notice",
+            Disrupt(version=0, notice=notice),
+        )
+        await service.execute(receipt)
+        view = store.view(run.run_id)
+        assert view.status == "clarification"
+        assert view.incident is None and view.verified_offer is None
+        assert not view.offers and not view.votes
+
+    asyncio.run(exercise())

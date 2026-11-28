@@ -2,13 +2,18 @@
 
 import argparse
 import asyncio
+import fcntl
 import hashlib
 import json
 import os
 import subprocess
+from collections.abc import Generator
+from contextlib import contextmanager
+from dataclasses import dataclass
 from pathlib import Path
 from time import perf_counter
 from typing import Literal
+from uuid import uuid4
 
 from trl.agents import PROMPT_VERSION, OllamaModel, ReplayModel
 from trl.contracts import CreateRun, Disrupt
@@ -21,7 +26,7 @@ from trl.storage import RunStore
 from trl.verify import verify_offer
 
 from .generate import Case
-from .report import Row, report, rows
+from .report import Row, report
 
 ARMS: tuple[Architecture, ...] = ("rules", "single", "three", "five")
 
@@ -35,12 +40,116 @@ def cases(split: str) -> list[Case]:
     return [Case.model_validate_json(line) for line in data.splitlines()]
 
 
+@dataclass(frozen=True)
+class Condition:
+    commit: str
+    source_diff: str | None
+    execution: Literal["replay", "ollama"]
+    model_digest: str
+    operator_digest: str | None
+    gtfs: dict[str, str]
+
+    def accepts(self, row: Row, split: str) -> bool:
+        uses_model = row.arm != "rules"
+        return (
+            row.split == split
+            and row.commit == self.commit
+            and row.source_diff == self.source_diff
+            and row.execution == self.execution
+            and row.prompt_version == PROMPT_VERSION
+            and row.seed == 42
+            and row.gtfs == self.gtfs
+            and row.model_digest == (self.model_digest if uses_model else "rules")
+            and row.operator_digest == (self.operator_digest if uses_model else None)
+        )
+
+
+def revision(split: str) -> tuple[str, str | None]:
+    commit = subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip()
+    dirty = subprocess.check_output(["git", "status", "--porcelain"])
+    if not dirty:
+        return commit, None
+    if split == "locked":
+        raise SystemExit("Run the locked evaluation from a clean checkout.")
+    sources = (
+        "backend/src",
+        "backend/pyproject.toml",
+        "backend/uv.lock",
+        "experiments/*.py",
+        "data/scenarios/dev",
+        "data/gtfs",
+        "data/fixtures",
+    )
+    patch = subprocess.check_output(
+        [
+            "git",
+            "diff",
+            "--no-ext-diff",
+            "--full-index",
+            "--binary",
+            "HEAD",
+            "--",
+            *sources,
+        ]
+    )
+    digest = hashlib.sha256(patch)
+    untracked = subprocess.check_output(
+        ["git", "ls-files", "-z", "--others", "--exclude-standard", "--", *sources]
+    )
+    if not patch and not untracked:
+        return commit, None
+    for name in sorted(item for item in untracked.split(b"\0") if item):
+        path = Path(os.fsdecode(name))
+        content = (
+            os.fsencode(os.readlink(path)) if path.is_symlink() else path.read_bytes()
+        )
+        digest.update(name + b"\0" + hashlib.sha256(content).digest())
+    return commit, digest.hexdigest()
+
+
+@contextmanager
+def lock_results(path: Path) -> Generator[None]:
+    with path.open("a") as lock:
+        try:
+            fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+        except BlockingIOError as exc:
+            raise SystemExit(
+                "An evaluation is already writing to this output directory."
+            ) from exc
+        yield
+
+
+def recover_rows(path: Path) -> list[Row]:
+    if not path.is_file():
+        return []
+    with path.open("rb+") as handle:
+        payload = handle.read()
+        end = payload.rfind(b"\n") + 1
+        completed = [
+            Row.model_validate_json(line) for line in payload[:end].splitlines()
+        ]
+        if len({(row.case, row.arm) for row in completed}) != len(completed):
+            raise SystemExit("Results contain duplicate case and coordinator pairs.")
+        if end != len(payload):
+            handle.truncate(end)
+            os.fsync(handle.fileno())
+    return completed
+
+
 async def evaluate(split: str, output: Path, replay: bool, limit: int | None) -> None:
-    if limit is not None and not replay:
-        raise SystemExit("A limit is available only for replay smoke tests.")
+    if limit is not None and (not replay or limit <= 0):
+        raise SystemExit("Provide a positive limit only for replay smoke tests.")
+    if replay and split != "dev":
+        raise SystemExit("Replay smoke tests use the development split.")
     output.mkdir(parents=True, exist_ok=True)
+    with lock_results(output / f"{split}.lock"):
+        await run_cases(split, output, replay, limit)
+
+
+async def run_cases(split: str, output: Path, replay: bool, limit: int | None) -> None:
     result_path = output / f"{split}.jsonl"
-    data = rows(result_path) if result_path.is_file() else []
+    commit, source_diff = revision(split)
+    data = recover_rows(result_path)
     done = {(row.case, row.arm) for row in data}
     schedule = load_schedule()
     store = RunStore(output / f"{split}.sqlite")
@@ -53,22 +162,19 @@ async def evaluate(split: str, output: Path, replay: bool, limit: int | None) ->
         )
     )
     info = await model.info()
-    digest = info.digest
+    operator_digest = None
     if isinstance(model, OllamaModel) and model.operator_model:
-        digest = (await model.stage_info("operator")).digest
+        operator_digest = (await model.stage_info("operator")).digest
     service = RunService(store, schedule, model)
-    revision = await asyncio.to_thread(
-        subprocess.check_output, ["git", "rev-parse", "HEAD"], text=True
+    condition = Condition(
+        commit=commit,
+        source_diff=source_diff,
+        execution="replay" if replay else "ollama",
+        model_digest=info.digest,
+        operator_digest=operator_digest,
+        gtfs={item.id: item.sha256 for item in feed_specs(DATA_ROOT / "gtfs")},
     )
-    commit = revision.strip()
-    feeds = {item.id: item.sha256 for item in feed_specs(DATA_ROOT / "gtfs")}
-    if any(
-        row.commit != commit
-        or row.prompt_version != PROMPT_VERSION
-        or row.gtfs != feeds
-        or (row.arm != "rules" and row.model_digest != digest)
-        for row in data
-    ):
+    if any(not condition.accepts(row, split) for row in data):
         raise SystemExit("Existing rows belong to a different experimental condition.")
     test_cases = cases(split)
     if limit is not None:
@@ -105,7 +211,8 @@ async def evaluate(split: str, output: Path, replay: bool, limit: int | None) ->
                 )
                 receipt = store.create(
                     request,
-                    f"{scenario.id}:{arm}",
+                    # Only a durable result row counts as a completed measurement.
+                    f"{scenario.id}:{arm}:{uuid4().hex}",
                     scenario,
                     initial[0] if initial else None,
                 )
@@ -172,8 +279,15 @@ async def evaluate(split: str, output: Path, replay: bool, limit: int | None) ->
                     input_tokens=view.metrics.input_tokens,
                     output_tokens=view.metrics.output_tokens,
                     elapsed_ms=elapsed,
-                    model_digest=digest if architecture != "rules" else "rules",
-                    gtfs=feeds,
+                    model_digest=condition.model_digest
+                    if architecture != "rules"
+                    else "rules",
+                    operator_digest=condition.operator_digest
+                    if architecture != "rules"
+                    else None,
+                    execution=condition.execution,
+                    gtfs=condition.gtfs,
+                    source_diff=condition.source_diff,
                     prompt_version=PROMPT_VERSION,
                     commit=commit,
                     seed=42,
@@ -184,6 +298,7 @@ async def evaluate(split: str, output: Path, replay: bool, limit: int | None) ->
                 handle.flush()
                 os.fsync(handle.fileno())
                 data.append(row)
+                done.add((scenario.id, arm))
                 print(
                     f"{split} {len(data)} {scenario.id} {arm} {run.status}", flush=True
                 )
@@ -197,6 +312,8 @@ def main() -> None:
     parser.add_argument("--replay", action="store_true")
     parser.add_argument("--limit", type=int)
     args = parser.parse_args()
+    if args.replay and args.split != "dev":
+        parser.error("--replay requires --split dev")
 
     async def exercise() -> None:
         splits = ("dev", "locked") if args.split == "all" else (args.split,)

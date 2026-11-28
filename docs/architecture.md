@@ -19,9 +19,15 @@ The application owns the current incident version, offers, votes, and status. Th
 
 The router and independent verifier both read the same schedule and incident types. The verifier reconstructs trip legs from the schedule without importing the router. Verification also requires one acceptance per rider for the same current-version offer. Agents receive role-specific projections of state.
 
+## Incident and route evidence
+
+The Operator proposes a typed incident. The application compares its fields with the explicit event supported by the notice before it changes the timetable. An ambiguous or conflicting notice produces a clarification. For terminal walks, the route engine intersects feasible arrival windows with the rider wait limits. The independent verifier checks the resulting timestamps against the schedule. [Decision record](adr/0006-incident-evidence-and-walking-windows.md).
+
 ## Interface direction
 
-The simulation opens on paired maps with a common geographic extent, clear transfer symbols, and matching stop labels. A compact journey comparison under the maps gives arrival and waiting times. The timeline sits alongside the maps on wide screens and follows them on narrow screens. Clicking an offer highlights its exact legs and retains keyboard focus on the offer. Verification state is written out beside an icon, and a closed stop has a distinct map marker. The map and fonts must work offline.
+The simulation opens on paired maps with a common geographic extent, clear transfer symbols, and matching stop labels. A compact journey comparison under the maps gives arrival and waiting times. The timeline sits alongside the maps on wide screens and follows them on narrow screens. Clicking an offer highlights its exact legs and retains keyboard focus on the offer. The evidence inspector shows the selected revision, trip IDs and dates, rider votes, destination waits, and the verifier's result. Verification state is written out beside an icon, and a closed stop has a distinct map marker. The map and fonts must work offline.
+
+A dropped command response can be retried with its original request body and idempotency key. The browser streams the activity and reads the outcome when the current revision reaches a terminal event. A failed outcome read has its own retry without an additional mutation.
 
 ## Inspect a run
 

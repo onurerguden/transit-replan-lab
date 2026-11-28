@@ -1,16 +1,21 @@
+from dataclasses import replace
 from datetime import date
 
+import pytest
 from hypothesis import given, settings
 from hypothesis import strategies as st
 
+from trl import routing
 from trl.disruptions import Overlay
 from trl.domain import (
     Constraint,
+    Itinerary,
     Offer,
     Scenario,
     Stop,
     StopClosure,
     StopTime,
+    Transfer,
     Trip,
     TripCancellation,
     TripDelay,
@@ -234,3 +239,134 @@ def test_verifier_rejects_broken_legs_limits_and_meeting() -> None:
         verify_offer(schedule, scenario, offer, votes(offer), 0, closed_destination)
         == "closed_platform"
     )
+
+
+def test_waiting_upstream_enables_terminal_walk() -> None:
+    schedule = replace(
+        network([("b", "d", 12, 16)]),
+        transfers=(Transfer(origin="a", destination="d", duration=4),),
+    )
+    scenario = small(2, 0)
+    offer = find_offers(schedule, scenario)[0]
+    assert (offer.a.arrival, offer.b.arrival, offer.meeting) == (14, 16, 16)
+    assert verify_offer(schedule, scenario, offer, votes(offer), 0, EMPTY) is None
+
+
+def test_verifier_requires_known_endpoints_for_zero_leg_itineraries() -> None:
+    scenario = small().model_copy(
+        update={
+            "a": Constraint(stop="missing", ready=0, wait_limit=0),
+            "b": Constraint(stop="missing", ready=0, wait_limit=0),
+            "destinations": ("missing",),
+        }
+    )
+    route = Itinerary(origin="missing", destination="missing", start=0, arrival=0, legs=())
+    offer = Offer(id="v0-1", version=0, a=route, b=route, meeting=0)
+    assert verify_offer(network([]), scenario, offer, votes(offer), 0, EMPTY) == "unknown_origin"
+
+
+@given(
+    st.integers(0, 25),
+    st.integers(0, 25),
+    st.integers(0, 6),
+    st.integers(0, 6),
+    st.integers(0, 25),
+    st.integers(1, 5),
+    st.sampled_from(["a", "d"]),
+    st.booleans(),
+)
+@settings(max_examples=150, deadline=None)
+def test_walking_windows_match_exhaustive_second_by_second_search(
+    start_a: int,
+    start_b: int,
+    wait_a: int,
+    wait_b: int,
+    closed_at: int,
+    closed_for: int,
+    closed_stop: str,
+    walk_b: bool,
+) -> None:
+    walks = (Transfer(origin="a", destination="d", duration=3),)
+    if walk_b:
+        walks += (Transfer(origin="b", destination="d", duration=2),)
+    schedule = replace(network([("b", "d", start_b, start_b + 2)]), transfers=walks)
+    scenario = small(wait_a, wait_b).model_copy(
+        update={
+            "a": Constraint(stop="a", ready=start_a, wait_limit=wait_a),
+            "b": Constraint(stop="b", ready=start_b, wait_limit=wait_b),
+        }
+    )
+    end = closed_at + closed_for
+    overlay = Overlay.compile((StopClosure(stop=closed_stop, start=closed_at, end=end),))
+
+    def open_between(stop: str, start: int, last: int) -> bool:
+        return stop != closed_stop or not any(closed_at <= t < end for t in range(start, last + 1))
+
+    def walk_arrivals(origin: str, ready: int, duration: int) -> list[int]:
+        return [
+            t + duration
+            for t in range(ready, 31 - duration)
+            if open_between(origin, t, t + duration) and open_between("d", t, t + duration)
+        ]
+
+    b_arrivals = walk_arrivals("b", start_b, 2) if walk_b else []
+    if open_between("d", start_b + 2, start_b + 2):
+        b_arrivals.append(start_b + 2)
+    expected = min(
+        (
+            (meeting, max(a - start_a, b - start_b))
+            for a in walk_arrivals("a", start_a, 3)
+            for b in b_arrivals
+            for meeting in range(max(a, b), min(a + wait_a, b + wait_b, 30) + 1)
+            if open_between("d", min(a, b), meeting)
+        ),
+        default=None,
+    )
+    offers = find_offers(schedule, scenario, overlay=overlay)
+    assert bool(offers) == (expected is not None)
+    if offers:
+        first = offers[0]
+        assert (
+            first.meeting,
+            max(first.a.arrival - start_a, first.b.arrival - start_b),
+        ) == expected
+    for offer in offers:
+        assert verify_offer(schedule, scenario, offer, votes(offer), 0, overlay) is None
+
+
+def test_meeting_cannot_wait_through_a_destination_closure() -> None:
+    schedule = network([("a", "d", 1, 7), ("b", "d", 2, 8)])
+    scenario = small().model_copy(update={"meeting_start": 12})
+    offer = find_offers(schedule, scenario)[0]
+    overlay = Overlay.compile((StopClosure(stop="d", start=10, end=11),))
+    assert not find_offers(schedule, scenario, overlay=overlay)
+    assert verify_offer(schedule, scenario, offer, votes(offer), 0, overlay) == "closed_destination"
+
+
+def test_unconfirmed_transfer_cannot_support_accessible_route() -> None:
+    schedule = network([("b", "d", 12, 16)])
+    schedule = replace(
+        schedule,
+        stops={
+            key: stop.model_copy(update={"accessible": True})
+            for key, stop in schedule.stops.items()
+        },
+        transfers=(Transfer(origin="a", destination="d", duration=4),),
+    )
+    scenario = small(2, 0)
+    offer = find_offers(schedule, scenario)[0]
+    strict = scenario.model_copy(
+        update={"a": scenario.a.model_copy(update={"accessible_only": True})}
+    )
+    assert not find_offers(schedule, strict)
+    assert (
+        verify_offer(schedule, strict, offer, votes(offer), 0, EMPTY)
+        == "unknown_transfer_accessibility"
+    )
+
+
+def test_pair_budget_exhaustion_is_a_search_error(monkeypatch: pytest.MonkeyPatch) -> None:
+    schedule = network([("a", "d", 2, 7), ("b", "d", 3, 8)])
+    monkeypatch.setattr(routing, "MAX_PAIRS", 0)
+    with pytest.raises(routing.SearchIncomplete, match="pair budget"):
+        find_offers(schedule, small())

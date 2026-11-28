@@ -128,12 +128,14 @@ def create_app(path: Path | None = None) -> FastAPI:
     ) -> AsyncIterator[ServerSentEvent]:
         cursor = max(last, after)
         while True:
-            batch = runs.store.events(view.id, cursor)
-            if not batch and follow and runs.store.read(view.id).status != "planning":
-                # A terminal update and its event commit together.
-                batch = runs.store.events(view.id, cursor)
-                if not batch:
-                    break
+            batch = await asyncio.to_thread(runs.store.events, view.id, cursor)
+            if not batch and follow:
+                state = await asyncio.to_thread(runs.store.read, view.id)
+                if state.status != "planning":
+                    # A terminal update and its event commit together.
+                    batch = await asyncio.to_thread(runs.store.events, view.id, cursor)
+                    if not batch:
+                        break
             for event in batch:
                 cursor = event.seq
                 yield ServerSentEvent(id=str(event.seq), data=event)

@@ -275,7 +275,7 @@ class RunService:
             )
         except SearchIncomplete:
             offers = ()
-            updates = {"status": "search_incomplete", "error": "label_budget"}
+            updates = {"status": "search_incomplete", "error": "search_budget"}
             event = EventDraft(kind="error", role="router", message="The search budget ran out.")
         self.store.step(run.id, run.version, "search", event=event, updates=updates, offers=offers)
         return {}

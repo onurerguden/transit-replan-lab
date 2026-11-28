@@ -228,21 +228,32 @@ def parse_decision(decision: NoticeDecision, schedule: Schedule, day: date) -> D
         return None
     try:
         if decision.kind == "stop_closure":
-            if decision.stop not in schedule.stops or not decision.start or not decision.end:
+            if (
+                decision.stop not in schedule.stops
+                or not decision.start
+                or not decision.end
+                or decision.trip is not None
+                or decision.minutes is not None
+            ):
                 return None
             start = service_second(decision.start + ":00")
             end = service_second(decision.end + ":00")
             if end > 172800:
                 return None
             return StopClosure(stop=decision.stop, start=start, end=end)
-        if decision.trip not in schedule.trips:
+        if (
+            decision.trip not in schedule.trips
+            or decision.stop is not None
+            or decision.start is not None
+            or decision.end is not None
+        ):
             return None
         trip = schedule.trips[decision.trip]
         if not schedule.runs(trip.service, day):
             return None
-        if decision.kind == "trip_cancellation":
+        if decision.kind == "trip_cancellation" and decision.minutes is None:
             return TripCancellation(trip=trip.id, service_date=day)
-        if decision.minutes is not None:
+        if decision.kind == "trip_delay" and decision.minutes is not None:
             return TripDelay(trip=trip.id, service_date=day, seconds=decision.minutes * 60)
     except ValueError:
         return None

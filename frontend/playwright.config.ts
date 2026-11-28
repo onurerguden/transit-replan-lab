@@ -6,6 +6,7 @@ const external = process.env.TRL_E2E_BASE
 
 export default defineConfig({
   testDir: 'e2e',
+  outputDir: external ? 'test-results/deployed' : 'test-results/local',
   timeout: 45_000,
   use: {
     baseURL: external ?? `http://127.0.0.1:${webPort}`,

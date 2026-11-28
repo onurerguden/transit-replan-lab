@@ -35,6 +35,9 @@ class Row(Record):
     seed: int
     counteroffers: bool
     error: str | None = None
+    execution: Literal["replay", "ollama"] | None = None
+    operator_digest: str | None = None
+    source_diff: str | None = None
 
 
 def rows(path: Path) -> list[Row]:
@@ -108,6 +111,11 @@ def report(data: list[Row]) -> str:
         ),
         "",
     ]
+    if data and all(row.execution == "replay" for row in data):
+        sections += [
+            "Recorded replay smoke run. The table measures the replay harness.",
+            "",
+        ]
     for split in ("dev", "locked"):
         if not any(row.split == split for row in data):
             continue
